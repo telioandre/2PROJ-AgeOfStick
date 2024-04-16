@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Casern : MonoBehaviour
 {
@@ -9,12 +10,12 @@ public class Casern : MonoBehaviour
     public GameObject objectToInstantiate2;
     public GameObject objectToInstantiate3;
     public GameObject objectToInstantiate4;
-    public GameObject objectToInstantiate5;
     private float cooldown = 1f;
     private float lastPressTimeE;
     private float lastPressTimeQ;
     protected int numberOfTroop1 = 0;
     protected int numberOfTroop2 = 0;
+    public List<GameObject> troops = new List<GameObject>();
 
     void Start()
     {
@@ -32,6 +33,11 @@ public class Casern : MonoBehaviour
                 GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
                 if (newObject != null)
                 {
+                    troops.Add(newObject);
+                    for(int i=0; i<troops.Count; i++)
+                    {
+                        Debug.Log(troops[i] + " la");
+                    }
                     Movement script = newObject.GetComponent<Movement>();
                     if (script != null)
                     {
@@ -62,6 +68,11 @@ public class Casern : MonoBehaviour
                 GameObject newObject = Instantiate(objectToInstantiate2, transform.position, Quaternion.identity);
                 if (newObject != null)
                 {
+                    troops.Add(newObject);
+                    /*for (int i = 0; i < troops.Count; i++)
+                    {
+                        Debug.Log(troops[i] + " la");
+                    }*/
                     Movement script = newObject.GetComponent<Movement>();
                     if (script != null)
                     {
@@ -92,6 +103,7 @@ public class Casern : MonoBehaviour
                 GameObject newObject = Instantiate(objectToInstantiate3, transform.position, Quaternion.identity);
                 if (newObject != null)
                 {
+                    troops.Add(newObject);
                     Movement script = newObject.GetComponent<Movement>();
                     if (script != null)
                     {
@@ -122,6 +134,7 @@ public class Casern : MonoBehaviour
                 GameObject newObject = Instantiate(objectToInstantiate4, transform.position, Quaternion.identity);
                 if (newObject != null)
                 {
+                    troops.Add(newObject);
                     Movement script = newObject.GetComponent<Movement>();
                     if (script != null)
                     {
@@ -174,7 +187,7 @@ public class Casern : MonoBehaviour
                 Debug.Log("Maximum troop reached");
             }
         }
-    if (Input.GetKeyDown(KeyCode.Q) && Time.time - lastPressTimeQ > cooldown)
+    /*if (Input.GetKeyDown(KeyCode.Q) && Time.time - lastPressTimeQ > cooldown)
         {
             if (numberOfTroop2 < 10)
             {
@@ -204,7 +217,7 @@ public class Casern : MonoBehaviour
             {
                 Debug.Log("Maximum troop reached");
             }
-        }
+        }*/
     }
 
     public void DestroyTroop1()
