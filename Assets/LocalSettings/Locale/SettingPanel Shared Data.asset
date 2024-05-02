@@ -14,7 +14,95 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: SettingPanel
   m_TableCollectionNameGuidString: 4a1101680a8158b4997259921328c55e
-  m_Entries: []
+  m_Entries:
+  - m_Id: 5923803136
+    m_Key: global
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194580992
+    m_Key: sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41931902976
+    m_Key: controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57396301824
+    m_Key: graphisms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99360313344
+    m_Key: credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9778006200320
+    m_Key: solo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15749038346240
+    m_Key: solo_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15839211687936
+    m_Key: easy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15870215983104
+    m_Key: normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872124391424
+    m_Key: hard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15873688866816
+    m_Key: impossible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16605938847744
+    m_Key: back_to_menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18127552647168
+    m_Key: 'language
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18636523048960
+    m_Key: multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18656181751808
+    m_Key: options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18668739497984
+    m_Key: leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20398252363776
+    m_Key: multiplayer_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20587730046976
+    m_Key: matchmaking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20909273780224
+    m_Key: play_friend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34001655304192
+    m_Key: 'resolution
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49086641606656
+    m_Key: fullscreen
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

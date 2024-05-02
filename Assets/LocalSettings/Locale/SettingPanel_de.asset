@@ -17,7 +17,91 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 4a1101680a8158b4997259921328c55e, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 5923803136
+    m_Localized: Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194580992
+    m_Localized: Klang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41931902976
+    m_Localized: Kontrolliert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57396301824
+    m_Localized: Graphismen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99360313344
+    m_Localized: Kredite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9778006200320
+    m_Localized: "\u2022 Einzelspieler"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15749038346240
+    m_Localized: Einzelspieler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15839211687936
+    m_Localized: Einfach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15870215983104
+    m_Localized: Normaler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872124391424
+    m_Localized: Hart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15873688866816
+    m_Localized: "Unm\xF6glich"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16605938847744
+    m_Localized: "Zur\xFCck zum Men\xFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18127552647168
+    m_Localized: Sprachen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18636523048960
+    m_Localized: "\u2022 Multispieler"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18656181751808
+    m_Localized: "\u2022 Einstellung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18668739497984
+    m_Localized: "\u2022 verlassen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20398252363776
+    m_Localized: Multispieler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20587730046976
+    m_Localized: Spielvermittlungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20909273780224
+    m_Localized: mit einem Freund spielen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34001655304192
+    m_Localized: "Aufl\xF6sung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49086641606656
+    m_Localized: Vollbildschirm
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
