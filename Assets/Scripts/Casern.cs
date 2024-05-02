@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Casern : MonoBehaviour
 {
     [SerializeField]
+    public Player player;
     public GameObject objectToInstantiate;
     public GameObject objectToInstantiate2;
     public GameObject objectToInstantiate3;
@@ -13,9 +15,11 @@ public class Casern : MonoBehaviour
     private float cooldown = 1f;
     private float lastPressTimeE;
     private float lastPressTimeQ;
-    protected int numberOfTroop1 = 0;
-    protected int numberOfTroop2 = 0;
+    public int numberOfTroop1 = 0;
+    public int numberOfTroop2 = 0;
     public List<GameObject> troops = new List<GameObject>();
+    public GameObject IA;
+    private float buildTime;
 
     void Start()
     {
@@ -27,10 +31,11 @@ public class Casern : MonoBehaviour
     {
         if(Time.time - lastPressTimeE > cooldown)
         {
-            if (numberOfTroop1 < 10)
+            if (numberOfTroop1 < 10 && player.GetMoney()>=100)
             {
                 lastPressTimeE = Time.time;
                 GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+
                 if (newObject != null)
                 {
                     troops.Add(newObject);
@@ -42,8 +47,9 @@ public class Casern : MonoBehaviour
                     if (script != null)
                     {
                         numberOfTroop1 += 1;
-                        Debug.Log(numberOfTroop1);
+                        // Debug.Log(numberOfTroop1 + " NUMBER OF TROOPS");
                         script.setPlayer(1);
+                        player.AddMoney(-100);
                     }
                     else
                     {
@@ -222,12 +228,12 @@ public class Casern : MonoBehaviour
 
     public void DestroyTroop1()
     {
-        //numberOfTroop1 -= 1;
+        numberOfTroop1 -= 1;
         Debug.Log("troop ID 1 : " + numberOfTroop1);
     }
     public void DestroyTroop2()
     {
-        //numberOfTroop2 -= 1;
+        numberOfTroop2 -= 1;
         Debug.Log("troop ID 2 : " + numberOfTroop2);
     }
 }
