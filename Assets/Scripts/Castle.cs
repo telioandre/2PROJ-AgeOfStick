@@ -74,7 +74,6 @@ public class Castle : MonoBehaviour
                     Debug.Log(opponentBaseName + " win !");
                     // Ferme l'appli et la preview
                     Application.Quit();
-                    //EditorApplication.ExitPlaymode();
                 }
                 // 1 seconde de délai entre chaque attaque
                 yield return new WaitForSeconds(1f);

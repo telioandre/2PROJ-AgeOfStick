@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: SettingPanel_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 4a1101680a8158b4997259921328c55e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5923803136
+    m_Localized: Globales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194580992
+    m_Localized: Sonido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41931902976
+    m_Localized: Controla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57396301824
+    m_Localized: Grafismos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99360313344
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9778006200320
+    m_Localized: "\u2022 Solo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15749038346240
+    m_Localized: Solo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15839211687936
+    m_Localized: "F\xE1cil"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15870215983104
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872124391424
+    m_Localized: "Dif\xEDcil"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15873688866816
+    m_Localized: Imposible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16605938847744
+    m_Localized: "Volver al Men\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18127552647168
+    m_Localized: idiomas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18636523048960
+    m_Localized: "\u2022 multijugador"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18656181751808
+    m_Localized: "\u2022 ajustes"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18668739497984
+    m_Localized: "\u2022 dejar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20398252363776
+    m_Localized: multijugador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20587730046976
+    m_Localized: matchmaking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20909273780224
+    m_Localized: jugar con un amigo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34001655304192
+    m_Localized: "resoluci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49086641606656
+    m_Localized: Pantalla completa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61119235756032
+    m_Localized: "dise\xF1ador gr\xE1fica/entretenimiento"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63138675691520
+    m_Localized: desarrolladores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69781723418624
+    m_Localized: "Moviendo la c\xE1mara"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88710818697216
+    m_Localized: Volumen
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

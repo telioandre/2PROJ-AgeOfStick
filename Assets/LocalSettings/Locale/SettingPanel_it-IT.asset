@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: SettingPanel_it-IT
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: it-IT
+  m_SharedData: {fileID: 11400000, guid: 4a1101680a8158b4997259921328c55e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5923803136
+    m_Localized: Globali
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19194580992
+    m_Localized: Suono
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41931902976
+    m_Localized: Controlli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57396301824
+    m_Localized: Grafismi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99360313344
+    m_Localized: Crediti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9778006200320
+    m_Localized: "\u2022 Singolo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15749038346240
+    m_Localized: Singolo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15839211687936
+    m_Localized: Facile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15870215983104
+    m_Localized: Normale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872124391424
+    m_Localized: Difficile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15873688866816
+    m_Localized: Impossibile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16605938847744
+    m_Localized: Torna al Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18127552647168
+    m_Localized: lingue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18636523048960
+    m_Localized: "\u2022 multigiocatore"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18656181751808
+    m_Localized: "\u2022 impostazioni"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18668739497984
+    m_Localized: "\u2022 congedo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20398252363776
+    m_Localized: multigiocatore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20587730046976
+    m_Localized: abbinamento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20909273780224
+    m_Localized: giocare con un amico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34001655304192
+    m_Localized: risoluzione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49086641606656
+    m_Localized: Schermo intero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61119235756032
+    m_Localized: designer grafico/intrattenimento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63138675691520
+    m_Localized: sviluppatori
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69781723418624
+    m_Localized: Spostamento della telecamera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88710818697216
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
