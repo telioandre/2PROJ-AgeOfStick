@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: SettingPanel
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 4a1101680a8158b4997259921328c55e, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: ccfb99f94e4283d47923241fc1a61d62, type: 2}
+  - {fileID: 11400000, guid: 9bc529f3577bf3a4f9b76fa0653d07c3, type: 2}
+  - {fileID: 11400000, guid: 4aced8bd20f45c04b8be04532e577c78, type: 2}
+  - {fileID: 11400000, guid: 48606043ef9ed294eb918f9397cc6b2d, type: 2}
+  - {fileID: 11400000, guid: 1057801039d655e44ad49c178f9ca501, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []
