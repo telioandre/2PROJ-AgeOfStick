@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.XPath;
 using UnityEngine;
 using TMPro;
 
 public class Player : MonoBehaviour
 {
-    public int xp = 0;
-    public int money = 500;
+    public int xp;
+    public int money;
     public int age = 1;
     public Castle castle;
     public string baseName;
@@ -136,10 +135,9 @@ public class Player : MonoBehaviour
         yield return null;
     }
 
-
     private void Update()
     {
-        textMoney.text = "Money : " + money;
+        textMoney.text = "Money : " + castle.player.GetMoney();
         textXp.text = "XP : " + xp;
     }
 }

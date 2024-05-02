@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -11,12 +10,25 @@ public class Movement : MonoBehaviour
     public int ID;
     public bool movementAllowed = true;
     public int life;
+    public int maxLife;
     public int attack;
+    public int troopLevel;
+    public float buildTime;
     public Player player;
     public Casern casern;
+    public Image health;
+    public Image background;
+    public Image fill;
+
+    private System.Random random = new System.Random();
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        health.fillAmount = (float)life / maxLife;
     }
 
     //Permet de lancer le mouvement de chaque unité en fonction de leur ID
@@ -40,20 +52,30 @@ public class Movement : MonoBehaviour
         return ID;
     }
 
+  
+
     //Initialise les paramètres de l'objet prefab
     public void setPlayer(int playerId)
     {
         ID = playerId;
-        life = 100;
-        attack = 0;
+        life = life + (player.age * 1);
+        maxLife = life;
+        for(int i = 0; i < player.age; i++) {
+            attack = Mathf.RoundToInt(attack * 1.5f);
+        }
+        buildTime = buildTime + (player.age * 0);
+        transform.position = new Vector2(3500, 0);
+        Invoke("Endbuild", buildTime);
+    }
+    private void Endbuild()
+    {
         if (ID == 1)
         {
             transform.position = new Vector2(50, 600);
-
         }
         else if (ID == 2)
         {
-            transform.position = new Vector2(3000, 600);
+            transform.position = new Vector2(3500, 600);
         }
     }
 
@@ -62,9 +84,19 @@ public class Movement : MonoBehaviour
         while(life > 0 && Enemy != null && Enemy.life > 0)
         {
             //On divise par 2 car la coroutine se lance 2 fois (1 par objet en contact)
-            life -= Enemy.attack/2;
-            Enemy.life -= attack/2;
-            Debug.Log("My life : " + life + " Enemy life : " + Enemy.life);
+            int damage = Enemy.attack / 2 + random.Next(0, 10);
+            char allyChar = name[6];
+            char enemyChar = Enemy.name[6];
+            int allyNumber = int.Parse(allyChar.ToString());
+            int enemyNumber = int.Parse(enemyChar.ToString());
+
+            if (superEffective(allyNumber, enemyNumber))
+            {
+                damage = Mathf.RoundToInt(damage * 1.5f);
+            }
+            life -= damage;
+            Enemy.life -= attack/2 + random.Next(0, 10); ;
+            //Debug.Log("My life : " + life + " Enemy life : " + Enemy.life);
             if (Enemy.life <= 0)
             {
                 ally.AddMoney(100);
@@ -99,6 +131,15 @@ public class Movement : MonoBehaviour
         }
 
         myRb.constraints = RigidbodyConstraints2D.None;
+    }
+
+    public bool superEffective(int ally, int enemy)
+    {
+        if(ally == enemy + 1 || (ally == 1 && enemy == 4))
+        {
+            return true;
+        }
+        return false;
     }
 
     public IEnumerator troopUnderSpecial(Movement ally, SpecialCollision special)
