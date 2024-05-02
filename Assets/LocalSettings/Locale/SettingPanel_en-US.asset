@@ -102,6 +102,22 @@ MonoBehaviour:
     m_Localized: Fullscreen
     m_Metadata:
       m_Items: []
+  - m_Id: 61119235756032
+    m_Localized: graphic designer/animations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63138675691520
+    m_Localized: 'developpers '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69781723418624
+    m_Localized: Move camera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88710818697216
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

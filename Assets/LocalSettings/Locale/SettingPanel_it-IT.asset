@@ -102,6 +102,22 @@ MonoBehaviour:
     m_Localized: Schermo intero
     m_Metadata:
       m_Items: []
+  - m_Id: 61119235756032
+    m_Localized: designer grafico/intrattenimento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63138675691520
+    m_Localized: sviluppatori
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69781723418624
+    m_Localized: Spostamento della telecamera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88710818697216
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

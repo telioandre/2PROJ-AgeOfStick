@@ -103,6 +103,22 @@ MonoBehaviour:
     m_Key: fullscreen
     m_Metadata:
       m_Items: []
+  - m_Id: 61119235756032
+    m_Key: graphist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63138675691520
+    m_Key: devs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69781723418624
+    m_Key: move_cam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88710818697216
+    m_Key: volume
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

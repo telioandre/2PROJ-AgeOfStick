@@ -102,6 +102,22 @@ MonoBehaviour:
     m_Localized: "Plein \xE9cran"
     m_Metadata:
       m_Items: []
+  - m_Id: 61119235756032
+    m_Localized: graphiste/animations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63138675691520
+    m_Localized: "d\xE9veloppeurs"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69781723418624
+    m_Localized: "D\xE9placer la cam\xE9ra"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88710818697216
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
