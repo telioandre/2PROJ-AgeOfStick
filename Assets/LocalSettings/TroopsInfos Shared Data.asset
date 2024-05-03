@@ -39,6 +39,22 @@ MonoBehaviour:
     m_Key: level
     m_Metadata:
       m_Items: []
+  - m_Id: 22075101548544
+    m_Key: money
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25499130007552
+    m_Key: keep_going
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25752918953984
+    m_Key: options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26063372947456
+    m_Key: stop
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
