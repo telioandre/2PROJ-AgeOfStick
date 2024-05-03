@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: TroopsInfos
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 3ba2f319b03f2a34b87d2fedbe267bfc, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: bce920a6896080146b584de2e547c525, type: 2}
+  - {fileID: 11400000, guid: 517b90fe67433a9448e18ad11c3a479a, type: 2}
+  - {fileID: 11400000, guid: 503f859793423ab43968c7ad1ced719e, type: 2}
+  - {fileID: 11400000, guid: 2d16b4dd3d452f64ea56c37ef3c2d285, type: 2}
+  - {fileID: 11400000, guid: afa75cf108f5e56439c6fe4e32590aaa, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []
