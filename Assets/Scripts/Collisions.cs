@@ -10,14 +10,26 @@ public class Collisions : MonoBehaviour {
         Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
         Castle castle = collision.gameObject.GetComponent<Castle>();
         Player ally = currentMovement.player;
+        Player otherPlayer;
 
         if (collision.gameObject.CompareTag("Special") && gameObject.CompareTag("Player"))
         {
             SpecialCollision special = collision.gameObject.GetComponent<SpecialCollision>();
             int SpecialID = collision.gameObject.GetComponent<SpecialCollision>().ID;
-            if(SpecialID != currentMovement.ID)
+            Player player1 = special.player1;
+            Player player2 = special.player2;
+            if(player1.baseName == "ally")
             {
-                StartCoroutine(currentMovement.troopUnderSpecial(currentMovement, special));
+                otherPlayer = player1;
+            }
+            else
+            {
+                otherPlayer = player2;
+            }
+
+            if (SpecialID != currentMovement.ID)
+            {
+                StartCoroutine(currentMovement.troopUnderSpecial(currentMovement, special, otherPlayer));
             }
             else
             {

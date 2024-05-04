@@ -30,10 +30,11 @@ public class IA : MonoBehaviour
     {
         enemies = new List<GameObject>() { enemy1, enemy2, enemy3, enemy4 };
         casern = FindObjectOfType<Casern>();
+        //player.AgeUp();
 
-         selectedDifficulty = DifficultyManager.difficulty;
-         difficulty = selectedDifficulty.ToString().Split(' ')[0];
-         Debug.Log(difficulty); 
+        selectedDifficulty = DifficultyManager.difficulty;
+        difficulty = selectedDifficulty.ToString().Split(' ')[0];
+        Debug.Log(difficulty); 
     }
 
     void Update()
@@ -59,48 +60,27 @@ public class IA : MonoBehaviour
                             switch (lastEnemy)
                                 {
                                 case "Troop 1 ally(Clone)":
-                                    enemyToInstantiate = enemy4;
+                                    casern.CreateTroop(24);
                                     break;
 
                                 case "Troop 2 ally(Clone)":
-                                    enemyToInstantiate = enemy1;
+                                    casern.CreateTroop(21);
                                     break;
 
                                 case "Troop 3 ally(Clone)":
-                                    enemyToInstantiate = enemy2;
+                                    casern.CreateTroop(22);
                                     break;
 
                                 case "Troop 4 ally(Clone)":
-                                    enemyToInstantiate = enemy3;
+                                    casern.CreateTroop(23);
                                     break;
                                 }
                             break;
                         }
-                    
-                    GameObject newObject = Instantiate(enemyToInstantiate, transform.position, Quaternion.identity);
-                    if (newObject != null)
-                        {
-                            Movement script = newObject.GetComponent<Movement>();
-                            if (script != null)
-                            {
-                                casern.numberOfTroop2 += 1;                                
-                                // Debug.Log(casern.numberOfTroop2 + "  Troupes 2 nombre");
-                                script.setPlayer(2);
-                            }
-                            else
-                            {
-                                Debug.LogError("Movement script not found on the instantiated object");
-                            }
-                        }
-                        else
-                        {
-                            Debug.LogError("Failed to instantiate enemy1");
-                        }
-                    
                 }
             }
             timer = 0f;
-            //GenerateRandomNumber();
+            GenerateRandomNumber();
         }
     }
 
@@ -108,8 +88,13 @@ public class IA : MonoBehaviour
     {
         if (randomNumber == 1)
         {
-            //Debug.Log(" IAttaque spéciale");
+            Debug.Log(" IAttaque spéciale");
             player.SpecialAttack(2);
+        }
+        if(randomNumber == 2)
+        {
+            Debug.Log(" IAge Up");
+            player.AgeUp();
         }
     }
 }

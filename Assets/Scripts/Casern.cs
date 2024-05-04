@@ -5,222 +5,133 @@ public class Casern : MonoBehaviour
 {
     [SerializeField]
     public Player player;
+    public Player opponent;
+
     public GameObject objectToInstantiate;
     public GameObject objectToInstantiate2;
     public GameObject objectToInstantiate3;
     public GameObject objectToInstantiate4;
-    private float cooldown = 1f;
-    private float lastPressTimeE;
-    private float lastPressTimeQ;
+    public GameObject objectToInstantiate5;
+    public GameObject objectToInstantiate6;
+    public GameObject objectToInstantiate7;
+    public GameObject objectToInstantiate8;
+
+    private GameObject troopToInstantiate;
+    private int cost;
+
     public int numberOfTroop1 = 0;
     public int numberOfTroop2 = 0;
     public List<GameObject> troops = new List<GameObject>();
-    public GameObject IA;
-    private float buildTime;
+    public IA IA;
+
+    private List<int> troop1costs;
+    private List<int> troop2costs;
+    private List<int> troop3costs;
+    private List<int> troop4costs;
 
     void Start()
     {
-        lastPressTimeE = -cooldown;
-        lastPressTimeQ = -cooldown;
+        troop1costs = new List<int>() { 2, 7, 12, 25, 60, 150 };
+        troop2costs = new List<int>() { 1, 5, 9, 20, 55, 110 };
+        troop3costs = new List<int>() { 7, 11, 22, 49, 95, 172 };
+        troop4costs = new List<int>() { 9, 20, 41, 100, 200, 300 };
     }
 
-    public void CreateTroop1()
+    public void CreateTroop(int value)
     {
-        if(Time.time - lastPressTimeE > cooldown)
+        int id = value / 10;
+        int troop = value % 10;
+        switch(id)
         {
-            if (numberOfTroop1 < 10 && player.GetMoney()>=100)
-            {
-                lastPressTimeE = Time.time;
-                GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+            case 1:
+                switch (troop)
+                {
+                    case 1:
+                        cost = troop1costs[player.age - 1];
+                        if (numberOfTroop1 < 10 && player.GetMoney() >= cost)
+                        {
+                            troopToInstantiate = objectToInstantiate;
+                        }
+                            break;
 
-                if (newObject != null)
-                {
-                    troops.Add(newObject);
-                    for(int i=0; i<troops.Count; i++)
-                    {
-                        Debug.Log(troops[i] + " la");
-                    }
-                    Movement script = newObject.GetComponent<Movement>();
-                    if (script != null)
-                    {
-                        numberOfTroop1 += 1;
-                        // Debug.Log(numberOfTroop1 + " NUMBER OF TROOPS");
-                        script.setPlayer(1);
-                        player.AddMoney(-100);
-                    }
-                    else
-                    {
-                        Debug.LogError("Movement script not found on the instantiated object");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Failed to instantiate objectToInstantiate");
-                }
-            }
-        }
-    }
+                    case 2:
+                        cost = troop2costs[player.age - 1];
+                        if (numberOfTroop1 < 10 && player.GetMoney() >= cost)
+                        {
+                            troopToInstantiate = objectToInstantiate2;
+                        }
+                        break;
 
-    public void CreateTroop2()
-    {
-        if (Time.time - lastPressTimeE > cooldown)
-        {
-            if (numberOfTroop1 < 10)
-            {
-                lastPressTimeE = Time.time;
-                GameObject newObject = Instantiate(objectToInstantiate2, transform.position, Quaternion.identity);
-                if (newObject != null)
-                {
-                    troops.Add(newObject);
-                    /*for (int i = 0; i < troops.Count; i++)
-                    {
-                        Debug.Log(troops[i] + " la");
-                    }*/
-                    Movement script = newObject.GetComponent<Movement>();
-                    if (script != null)
-                    {
-                        numberOfTroop1 += 1;
-                        Debug.Log(numberOfTroop1);
-                        script.setPlayer(1);
-                    }
-                    else
-                    {
-                        Debug.LogError("Movement script not found on the instantiated object");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Failed to instantiate objectToInstantiate");
-                }
-            }
-        }
-    }
+                    case 3:
+                        cost = troop3costs[player.age - 1];
+                        if (numberOfTroop1 < 10 && player.GetMoney() >= cost)
+                        {
+                            troopToInstantiate = objectToInstantiate3;
+                        }
+                        break;
 
-    public void CreateTroop3()
-    {
-        if (Time.time - lastPressTimeE > cooldown)
-        {
-            if (numberOfTroop1 < 10)
-            {
-                lastPressTimeE = Time.time;
-                GameObject newObject = Instantiate(objectToInstantiate3, transform.position, Quaternion.identity);
-                if (newObject != null)
-                {
-                    troops.Add(newObject);
-                    Movement script = newObject.GetComponent<Movement>();
-                    if (script != null)
-                    {
-                        numberOfTroop1 += 1;
-                        Debug.Log(numberOfTroop1);
-                        script.setPlayer(1);
-                    }
-                    else
-                    {
-                        Debug.LogError("Movement script not found on the instantiated object");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Failed to instantiate objectToInstantiate");
-                }
-            }
-        }
-    }
+                    case 4:
+                        cost = troop4costs[player.age - 1];
+                        if (numberOfTroop1 < 10 && player.GetMoney() >= cost)
+                        {
+                            troopToInstantiate = objectToInstantiate4;
+                        }
+                        break;
 
-    public void CreateTroop4()
-    {
-        if (Time.time - lastPressTimeE > cooldown)
-        {
-            if (numberOfTroop1 < 10)
-            {
-                lastPressTimeE = Time.time;
-                GameObject newObject = Instantiate(objectToInstantiate4, transform.position, Quaternion.identity);
-                if (newObject != null)
-                {
-                    troops.Add(newObject);
-                    Movement script = newObject.GetComponent<Movement>();
-                    if (script != null)
-                    {
-                        numberOfTroop1 += 1;
-                        Debug.Log(numberOfTroop1);
-                        script.setPlayer(1);
-                    }
-                    else
-                    {
-                        Debug.LogError("Movement script not found on the instantiated object");
-                    }
                 }
-                else
+                break;
+
+            case 2:
+                switch (troop)
                 {
-                    Debug.LogError("Failed to instantiate objectToInstantiate");
+                    case 1:
+                        cost = troop1costs[player.age - 1];
+                        if (numberOfTroop1 < 10 && player.GetMoney() >= cost)
+                        {
+                            troopToInstantiate = objectToInstantiate5;
+                        }
+                        break;
+
+                    case 2:
+                        cost = troop2costs[player.age - 1];
+                        if (numberOfTroop1 < 10 && player.GetMoney() >= cost)
+                        {
+                            troopToInstantiate = objectToInstantiate6;
+                        }
+                        break;
+
+                    case 3:
+                        cost = troop3costs[player.age - 1];
+                        if (numberOfTroop1 < 10 && player.GetMoney() >= cost)
+                        {
+                            troopToInstantiate = objectToInstantiate7;
+                        }
+                        break;
+
+                    case 4:
+                        cost = troop4costs[player.age - 1];
+                        if (numberOfTroop1 < 10 && player.GetMoney() >= cost)
+                        {
+                            troopToInstantiate = objectToInstantiate8;
+                        }
+                        break;
                 }
-            }
+                break;
         }
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && Time.time - lastPressTimeE > cooldown)
+        GameObject newObject = Instantiate(troopToInstantiate, transform.position, Quaternion.identity);
+        if(id == 1)
         {
-            if(numberOfTroop1 < 10)
-            {
-                lastPressTimeE = Time.time;
-                Debug.Log("E key pressed");
-                GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
-                if (newObject != null)
-                {
-                    Movement script = newObject.GetComponent<Movement>();
-                    if (script != null)
-                    {
-                        numberOfTroop1 += 1;
-                        Debug.Log(numberOfTroop1);
-                        script.setPlayer(1);
-                    }
-                    else
-                    {
-                        Debug.LogError("Movement script not found on the instantiated object");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Failed to instantiate objectToInstantiate");
-                }
-            }
-            else
-            {
-                Debug.Log("Maximum troop reached");
-            }
+            numberOfTroop1 += 1;
+            troops.Add(newObject);
+            player.AddMoney(-cost);
         }
-    /*if (Input.GetKeyDown(KeyCode.Q) && Time.time - lastPressTimeQ > cooldown)
+        else
         {
-            if (numberOfTroop2 < 10)
-            {
-                lastPressTimeQ = Time.time;
-                Debug.Log("A key pressed");
-                GameObject newObject = Instantiate(objectToInstantiate5, transform.position, Quaternion.identity);
-                if (newObject != null)
-                {
-                    Movement script = newObject.GetComponent<Movement>();
-                    if (script != null)
-                    {
-                        numberOfTroop2 += 1;
-                        Debug.Log(numberOfTroop2);
-                        script.setPlayer(2);
-                    }
-                    else
-                    {
-                        Debug.LogError("Movement script not found on the instantiated object");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Failed to instantiate objectToInstantiate");
-                }
-            }
-            else
-            {
-                Debug.Log("Maximum troop reached");
-            }
-        }*/
+            numberOfTroop2 += 1;
+            opponent.AddMoney(-cost);
+        }
+        Movement script = newObject.GetComponent<Movement>();
+        script.setPlayer(id);
     }
 
     public void DestroyTroop1()
