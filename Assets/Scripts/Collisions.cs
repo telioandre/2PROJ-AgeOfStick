@@ -13,14 +13,27 @@ public class Collisions : MonoBehaviour
         Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
         Castle castle = collision.gameObject.GetComponent<Castle>();
         Player ally = currentMovement.player;
+        Player otherPlayer;
 
         if (collision.gameObject.CompareTag("Special") && gameObject.CompareTag("Player"))
         {
             SpecialCollision special = collision.gameObject.GetComponent<SpecialCollision>();
             int SpecialID = collision.gameObject.GetComponent<SpecialCollision>().ID;
             if (SpecialID != currentMovement.ID)
+            Player player1 = special.player1;
+            Player player2 = special.player2;
+            if(player1.baseName == "ally")
             {
-                StartCoroutine(currentMovement.troopUnderSpecial(currentMovement, special));
+                otherPlayer = player1;
+            }
+            else
+            {
+                otherPlayer = player2;
+            }
+
+            if (SpecialID != currentMovement.ID)
+            {
+                StartCoroutine(currentMovement.troopUnderSpecial(currentMovement, special, otherPlayer));
             }
             else
             {
@@ -33,7 +46,7 @@ public class Collisions : MonoBehaviour
         {
             if (castle != null)
             {
-                //Commence une coroutine qui va faire des dégâts au chateau
+                //Commence une coroutine qui va faire des dÃ©gÃ¢ts au chateau
                 Debug.Log("envoie " + castle.ID + "recoit : " + currentMovement.ID);
                 StartCoroutine(castle.DeleteLifePoint(currentMovement.attack, currentMovement.ID, castle));
             }
@@ -42,7 +55,7 @@ public class Collisions : MonoBehaviour
         // Si une collision concerne un autre joueur
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
         {
-            if (otherMovement != null)
+            if (otherMovement != null && currentMovement.ID != otherMovement.ID)
             {
                 Player enemy = otherMovement.player;
                 //Permet de stop le mouvement 
@@ -62,6 +75,12 @@ public class Collisions : MonoBehaviour
                     else if (ally == null && enemy == null)
                     {
                         Debug.Log("aucun des 2");
+
+                        if (ally != null && enemy != null)
+                        {
+                            //Commence une coroutine qui diminue les pv des 2 joueurs en contact
+                            StartCoroutine(currentMovement.attackPlayer(otherMovement, myRb, ally, enemy));
+                        }
                     }
                     else if (ally == null)
                     {
@@ -74,7 +93,7 @@ public class Collisions : MonoBehaviour
                 }
                 else
                 {
-                    // Si les 2 objets en contact ont le même ID ils ne se font pas de dégâts
+                    // Si les 2 objets en contact ont le mÃªme ID ils ne se font pas de dÃ©gÃ¢ts
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }
             }
@@ -83,7 +102,7 @@ public class Collisions : MonoBehaviour
 
     public void OnCollisionExit2D(Collision2D collision)
     {
-        //Permet qu'aucun objet ne soit figé (par exemple si 2 objets avec le même ID ne bougent pas et que le 1er bat l'ennemi et reprend sa course, alors le 2e ne sera pas figé non plus
+        //Permet qu'aucun objet ne soit figÃ© (par exemple si 2 objets avec le mÃªme ID ne bougent pas et que le 1er bat l'ennemi et reprend sa course, alors le 2e ne sera pas figÃ© non plus
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
         {
             Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();

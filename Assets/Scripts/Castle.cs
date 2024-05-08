@@ -51,10 +51,15 @@ public class Castle : MonoBehaviour
         }
     }
 
-    public void AddLifePoint(int age)
+    public void AddLifePoint(int new_life_point)
     {
-        lifePoint += age*200;
+        lifePoint = new_life_point;
         Debug.Log("life point = " + lifePoint);
+    }
+    public void AddMaxLifePoint(int new_max_life_point)
+    {
+        maxLifePoint = new_max_life_point;
+        Debug.Log("max life point = " + maxLifePoint);
     }
 
     public IEnumerator DeleteLifePoint(int damage, int movement, Castle castle)
