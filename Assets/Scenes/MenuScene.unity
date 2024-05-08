@@ -1252,11 +1252,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!1 &113209558 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4481105972338246952, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-  m_PrefabInstance: {fileID: 190866985}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &117980648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2355,11 +2350,7 @@ Transform:
   - {fileID: 1449982398}
   - {fileID: 1451763173}
   - {fileID: 1061219751}
-<<<<<<< HEAD
-  - {fileID: 1171761146}
   - {fileID: 2130986596}
-=======
->>>>>>> origin/Telio
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &178064376
@@ -2509,245 +2500,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184208027}
   m_CullTransparentMesh: 1
---- !u!1001 &190866985
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: fill
-      value: 
-<<<<<<< HEAD
-      objectReference: {fileID: 0}
-=======
-      objectReference: {fileID: 1395642945}
->>>>>>> origin/Telio
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: life
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: speed
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: attack
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: casern
-      value: 
-      objectReference: {fileID: 1764241911}
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: health
-      value: 
-<<<<<<< HEAD
-      objectReference: {fileID: 0}
-=======
-      objectReference: {fileID: 1351481272}
->>>>>>> origin/Telio
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1647736725}
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: buildTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: attackTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: background
-      value: 
-<<<<<<< HEAD
-      objectReference: {fileID: 0}
-=======
-      objectReference: {fileID: 1608982731}
->>>>>>> origin/Telio
-    - target: {fileID: -6329223770188209094, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: troopLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367740095798913418, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1507386734099243324, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7482667652216324306, guid: da0fc6de3c0219140ae97ccc1f8fc442, type: 3}
-    - target: {fileID: 1507386734099243324, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1507386734099243324, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1507386734099243324, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Color.r
-      value: 0.028301895
-      objectReference: {fileID: 0}
-    - target: {fileID: 4004351820964825815, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Name
-      value: Background
-      objectReference: {fileID: 0}
-    - target: {fileID: 4481105972338246952, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Name
-      value: Troop 1 ally
-      objectReference: {fileID: 0}
-    - target: {fileID: 4481105972338246952, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4521597436379871876, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 4521597436379871876, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 4521597436379871876, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4521597436379871876, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -976
-      objectReference: {fileID: 0}
-    - target: {fileID: 6476635371085768398, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Name
-      value: TroopHealth
-      objectReference: {fileID: 0}
-    - target: {fileID: 6479668412558930702, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1919
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -557
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937177694991042613, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7715046900404561303, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.6201754
-      objectReference: {fileID: 0}
-    - target: {fileID: 7715046900404561303, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.216218
-      objectReference: {fileID: 0}
-    - target: {fileID: 7715046900404561303, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.42749
-      objectReference: {fileID: 0}
-    - target: {fileID: 8904244180523909581, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_Name
-      value: TroopHealth
-      objectReference: {fileID: 0}
-    - target: {fileID: 9143715274841713079, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8904244180523909581, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-    - {fileID: 6268341325344176435, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-<<<<<<< HEAD
-    - {fileID: 7105766178913848617, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-    - {fileID: 2177519449709211213, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-    - {fileID: 2717269801233308122, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-    - {fileID: 8172513142636666259, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-=======
-    - {fileID: 6388162250032968504, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
->>>>>>> origin/Telio
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
 --- !u!1 &201374921
 GameObject:
   m_ObjectHideFlags: 0
@@ -3864,18 +3616,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258846326}
   m_CullTransparentMesh: 1
---- !u!1 &259150823 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3155294315424664827, guid: bb58bee2cd6e5e34d8d74e3666f615ba, type: 3}
-  m_PrefabInstance: {fileID: 1369580371}
-  m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &264463521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4051,8 +3791,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
-=======
->>>>>>> origin/Telio
 --- !u!114 &267682649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5090,29 +4828,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: {fileID: 322926498}
-<<<<<<< HEAD
---- !u!114 &331313758 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4922751750341703179, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
-  m_PrefabInstance: {fileID: 255894292}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &335364638 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6211041839906036841, guid: 85f1fa6edf0afe2438011b24b50314d3, type: 3}
-  m_PrefabInstance: {fileID: 2007493522}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &346563536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5247,8 +4962,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346563536}
   m_CullTransparentMesh: 1
-=======
->>>>>>> origin/Telio
 --- !u!1 &350523784
 GameObject:
   m_ObjectHideFlags: 0
@@ -5554,7 +5267,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4481105972338246952, guid: 3983ac95aa3b22042b682540556bc110, type: 3}
   m_PrefabInstance: {fileID: 1413542042}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &377868498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5632,19 +5344,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377868498}
   m_CullTransparentMesh: 1
---- !u!114 &378971406 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3456365984195014182, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
-  m_PrefabInstance: {fileID: 255894292}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
->>>>>>> origin/Telio
 --- !u!1 &387646993
 GameObject:
   m_ObjectHideFlags: 0
@@ -9772,18 +9471,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626310126}
   m_CullTransparentMesh: 1
---- !u!1 &638208466 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3155294315424664827, guid: 93e63bbd1270adc4ba24d9681f6ba5da, type: 3}
-  m_PrefabInstance: {fileID: 948224752}
-  m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &637052547
 GameObject:
   m_ObjectHideFlags: 0
@@ -9960,8 +9647,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637052547}
   m_CullTransparentMesh: 1
-=======
->>>>>>> origin/Telio
+--- !u!1 &638208466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3155294315424664827, guid: 93e63bbd1270adc4ba24d9681f6ba5da, type: 3}
+  m_PrefabInstance: {fileID: 948224752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &640629718
 GameObject:
   m_ObjectHideFlags: 0
@@ -10271,8 +9961,12 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-<<<<<<< HEAD
   specialAttack: {fileID: 3155294315424664827, guid: bb58bee2cd6e5e34d8d74e3666f615ba, type: 3}
+  troop1level: 0
+  troop2level: 0
+  troop3level: 0
+  troop4level: 0
+  numberOfTroop: 0
 --- !u!1 &661209718
 GameObject:
   m_ObjectHideFlags: 0
@@ -10449,14 +10143,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661209718}
   m_CullTransparentMesh: 1
-=======
-  specialAttack: {fileID: 259150823}
-  troop1level: 0
-  troop2level: 0
-  troop3level: 0
-  troop4level: 0
-  numberOfTroop: 0
->>>>>>> origin/Telio
 --- !u!1 &662598028
 GameObject:
   m_ObjectHideFlags: 0
@@ -10517,8 +10203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11351,7 +11037,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< HEAD
 --- !u!1 &709255174
 GameObject:
   m_ObjectHideFlags: 0
@@ -11622,19 +11307,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722257768}
   m_CullTransparentMesh: 1
---- !u!114 &725668755 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2804620970403286066, guid: 3983ac95aa3b22042b682540556bc110, type: 3}
-  m_PrefabInstance: {fileID: 1651784081}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
->>>>>>> origin/Telio
 --- !u!1 &730927097
 GameObject:
   m_ObjectHideFlags: 0
@@ -12040,8 +11712,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12580,7 +12252,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773724681}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 --- !u!1 &801544226
 GameObject:
   m_ObjectHideFlags: 0
@@ -12726,19 +12397,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801544226}
   m_CullTransparentMesh: 1
---- !u!114 &801946560 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2719736310076406723, guid: 85f1fa6edf0afe2438011b24b50314d3, type: 3}
-  m_PrefabInstance: {fileID: 1544986868}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
->>>>>>> origin/Telio
 --- !u!1 &812980669
 GameObject:
   m_ObjectHideFlags: 0
@@ -13769,8 +13427,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14363,18 +14021,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-<<<<<<< HEAD
---- !u!114 &899745711 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3495822671281466353, guid: b2cdd3fc96406db43a8cd547383dfbc2, type: 3}
-  m_PrefabInstance: {fileID: 1985828807}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &907876294
 GameObject:
   m_ObjectHideFlags: 0
@@ -14511,8 +14157,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907876294}
   m_CullTransparentMesh: 1
-=======
->>>>>>> origin/Telio
 --- !u!1 &910919112
 GameObject:
   m_ObjectHideFlags: 0
@@ -15267,17 +14911,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926851926}
   m_CullTransparentMesh: 1
---- !u!114 &934224466 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3755726933843893154, guid: 3983ac95aa3b22042b682540556bc110, type: 3}
-  m_PrefabInstance: {fileID: 1413542042}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &948223228
 GameObject:
   m_ObjectHideFlags: 0
@@ -15412,8 +15045,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948223228}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-=======
 --- !u!1001 &948224752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15479,7 +15110,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93e63bbd1270adc4ba24d9681f6ba5da, type: 3}
->>>>>>> origin/Telio
 --- !u!1 &952291776
 GameObject:
   m_ObjectHideFlags: 0
@@ -16549,8 +16179,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23280,17 +22910,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348740610}
   m_CullTransparentMesh: 1
---- !u!114 &1351481272 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2034670251072887913, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-  m_PrefabInstance: {fileID: 190866985}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1353820158
 GameObject:
   m_ObjectHideFlags: 0
@@ -24115,7 +23734,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4481105972338246952, guid: 85f1fa6edf0afe2438011b24b50314d3, type: 3}
   m_PrefabInstance: {fileID: 2007493522}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &1387454691
 GameObject:
   m_ObjectHideFlags: 0
@@ -24193,38 +23811,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399686302}
-=======
---- !u!114 &1395642945 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4354501882884931099, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-  m_PrefabInstance: {fileID: 190866985}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
->>>>>>> origin/Telio
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1399686305
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24233,8 +23824,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399686302}
   m_CullTransparentMesh: 1
-=======
->>>>>>> origin/Telio
 --- !u!1 &1401277143
 GameObject:
   m_ObjectHideFlags: 0
@@ -26737,11 +26326,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!1 &1593286029
-=======
---- !u!1 &1602991539
->>>>>>> origin/Telio
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26749,37 +26334,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1593286030}
-  - component: {fileID: 1593286032}
-  - component: {fileID: 1593286031}
-  m_Layer: 0
-  m_Name: Image
-=======
   - component: {fileID: 1602991540}
   - component: {fileID: 1602991543}
-  - component: {fileID: 1602991542}
   - component: {fileID: 1602991541}
   m_Layer: 0
-  m_Name: Up troop level
->>>>>>> origin/Telio
+  m_Name: 
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
-<<<<<<< HEAD
+  m_IsActive: 0
 --- !u!224 &1593286030
-=======
---- !u!224 &1602991540
->>>>>>> origin/Telio
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1593286029}
+  m_GameObject: {fileID: 1602991539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -26789,14 +26360,57 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -207.8, y: 94.313}
-  m_SizeDelta: {x: 67.8529, y: 67.8529}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593286031
-=======
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602991539}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5.75109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!222 &1593286032
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602991539}
+  m_CullTransparentMesh: 1
+--- !u!1 &1602991539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593286030}
+  - component: {fileID: 1593286032}
+  - component: {fileID: 1593286031}
+  - component: {fileID: 1602991542}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1602991540
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593286029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26805,20 +26419,16 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -696, y: 238}
-  m_SizeDelta: {x: 65, y: 65}
+  m_AnchoredPosition: {x: -207.8, y: 94.313}
+  m_SizeDelta: {x: 67.8529, y: 67.8529}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602991541
->>>>>>> origin/Telio
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1593286029}
-=======
-  m_GameObject: {fileID: 1602991539}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -26875,7 +26485,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602991539}
->>>>>>> origin/Telio
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -26889,13 +26498,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
   m_Sprite: {fileID: 0}
   m_Type: 0
-=======
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
->>>>>>> origin/Telio
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -26904,21 +26508,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
-<<<<<<< HEAD
---- !u!222 &1593286032
-=======
 --- !u!222 &1602991543
->>>>>>> origin/Telio
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1593286029}
-=======
-  m_GameObject: {fileID: 1602991539}
->>>>>>> origin/Telio
   m_CullTransparentMesh: 1
 --- !u!224 &1608038590
 RectTransform:
@@ -26987,17 +26583,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1608982731 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1203455954248453138, guid: 812d3a3a8c610c24c8290496c05657fb, type: 3}
-  m_PrefabInstance: {fileID: 190866985}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1624001952
 GameObject:
   m_ObjectHideFlags: 0
@@ -29332,7 +28917,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
 --- !u!1 &1703895518
 GameObject:
   m_ObjectHideFlags: 0
@@ -29510,8 +29094,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703895518}
   m_CullTransparentMesh: 1
-=======
->>>>>>> origin/Telio
 --- !u!1 &1717215649
 GameObject:
   m_ObjectHideFlags: 0
@@ -30406,7 +29988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1647736725}
   opponent: {fileID: 655193080}
-  objectToInstantiate: {fileID: 113209558}
+  objectToInstantiate: {fileID: 0}
   objectToInstantiate2: {fileID: 371216736}
   objectToInstantiate3: {fileID: 268759787}
   objectToInstantiate4: {fileID: 684383485}
@@ -31793,6 +31375,112 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845252849}
   m_CullTransparentMesh: 1
+--- !u!1001 &1852554070
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: fill
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: life
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: speed
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: attack
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 1764241911}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 655193080}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: buildTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: attackTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -6329223770188209094, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: troopLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481105972338246952, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_Name
+      value: Troop 1 ally
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481105972338246952, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 968
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -582
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937177694991042613, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 6699392967303935780, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
 --- !u!1 &1856309752
 GameObject:
   m_ObjectHideFlags: 0
@@ -31852,8 +31540,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: username
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -31877,7 +31565,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.05
+  m_fontSize: 55.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -34655,7 +34343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bb2d02b57d0754da46e81abe6e0773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 --- !u!1 &2030738193
 GameObject:
   m_ObjectHideFlags: 0
@@ -34689,19 +34376,6 @@ Transform:
   - {fileID: 948223229}
   m_Father: {fileID: 992000567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2038178110 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3043664004640620178, guid: 0e1b083fc9288a3408e99a97be33b2d5, type: 3}
-  m_PrefabInstance: {fileID: 255894292}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
->>>>>>> origin/Telio
 --- !u!1 &2043845916
 GameObject:
   m_ObjectHideFlags: 0
@@ -35561,18 +35235,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104895751}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
---- !u!114 &2109111271 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1846144751334982098, guid: b2cdd3fc96406db43a8cd547383dfbc2, type: 3}
-  m_PrefabInstance: {fileID: 1804290797}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2109946922
 GameObject:
   m_ObjectHideFlags: 0
@@ -35883,19 +35545,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
---- !u!114 &2118093294 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2691396943575594001, guid: 85f1fa6edf0afe2438011b24b50314d3, type: 3}
-  m_PrefabInstance: {fileID: 1544986868}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
->>>>>>> origin/Telio
 --- !u!224 &2121540062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35942,7 +35591,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!114 &2128482957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36177,19 +35825,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &2143601959 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3495822671281466353, guid: b2cdd3fc96406db43a8cd547383dfbc2, type: 3}
-  m_PrefabInstance: {fileID: 1804290797}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
->>>>>>> origin/Telio
 --- !u!1 &2146878236
 GameObject:
   m_ObjectHideFlags: 0
@@ -36530,8 +36165,8 @@ SceneRoots:
   - {fileID: 178064375}
   - {fileID: 7789637064115067384}
   - {fileID: 2845742484983630305}
-  - {fileID: 190866985}
   - {fileID: 255894292}
+  - {fileID: 1852554070}
   - {fileID: 1413542042}
   - {fileID: 1651784081}
   - {fileID: 1985828807}
