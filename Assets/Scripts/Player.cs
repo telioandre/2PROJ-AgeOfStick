@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -20,11 +21,18 @@ public class Player : MonoBehaviour
     public int troop2level;
     public int troop3level;
     public int troop4level;
+    public int numberOfTroop;
+    private float specialCooldown = 20f;
+    private float lastPlayer1Special;
+    private float lastPlayer2Special;
 
     private void Start()
     {
         specialCosts = new List<int>() { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int>() { 6500, 8000, 9500, 11000, 12500 };
+
+        lastPlayer1Special = -specialCooldown;
+        lastPlayer2Special= -specialCooldown;
     }
 
     public string GetName()
@@ -98,18 +106,37 @@ public class Player : MonoBehaviour
         return age;
     }
 
+    public bool checkCooldown(int ID)
+    {
+        if(ID == 1 && Time.time - lastPlayer1Special > specialCooldown + ((age-1) * 5))
+        {
+            lastPlayer1Special = Time.time;
+            return true;
+
+        }
+        else if(ID == 2 && Time.time - lastPlayer2Special > specialCooldown + ((age - 1) * 5))
+        {
+            lastPlayer2Special = Time.time;
+            return true;
+        }
+        Debug.Log("Too early");
+        return false;
+    }
+
     public void SpecialAttack(int ID)
     {
-        int cost = specialCosts[age-1];
-        if(GetXp() >= cost)
+        if (checkCooldown(ID))
         {
-            SuppXp(cost);
-            StartCoroutine(SpecialAttackCoroutine(ID));
-            
-        }
-        else
-        {
-            Debug.Log("Not enough XP");
+            int cost = specialCosts[age - 1];
+            if (GetXp() >= cost)
+            {
+                SuppXp(cost);
+                StartCoroutine(SpecialAttackCoroutine(ID));
+            }
+            else
+            {
+                Debug.Log("Not enough XP");
+            }
         }
     }
 

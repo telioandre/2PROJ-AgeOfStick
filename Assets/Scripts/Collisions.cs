@@ -51,7 +51,7 @@ public class Collisions : MonoBehaviour {
         // Si une collision concerne un autre joueur
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
         {
-            if (otherMovement != null)
+            if (otherMovement != null && currentMovement.ID != otherMovement.ID)
             {
                     Player enemy = otherMovement.player;
                     //Permet de stop le mouvement 
@@ -67,18 +67,6 @@ public class Collisions : MonoBehaviour {
                         {
                             //Commence une coroutine qui diminue les pv des 2 joueurs en contact
                             StartCoroutine(currentMovement.attackPlayer(otherMovement, myRb, ally, enemy));
-                        }
-                        else if (ally == null && enemy == null)
-                        {
-                            Debug.Log("aucun des 2");
-                        }
-                        else if (ally == null)
-                        {
-                            Debug.Log("y a rien bro.. ally");
-                        }
-                        else if (enemy == null)
-                        {
-                            Debug.Log("Nan vrmt r enemy");
                         }
                     }
                     else
