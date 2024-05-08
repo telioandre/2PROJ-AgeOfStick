@@ -1,31 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.XPath;
 using UnityEngine;
 using TMPro;
 
 public class Player : MonoBehaviour
 {
-    public int xp;
-    public int money;
+    public int xp = 0;
+    public int money = 500;
     public int age = 1;
     public Castle castle;
     public string baseName;
     public TextMeshProUGUI textMoney;
     public TextMeshProUGUI textXp;
-    public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white};
+    public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white };
     public GameObject specialAttack;
 
     public string GetName()
     {
         return baseName;
     }
-    public void AddXp(int new_xp) 
+    public void AddXp(int new_xp)
     {
         xp += new_xp;
         Debug.Log("xp = " + xp);
     }
 
-    public void SuppXp(int new_xp) 
+    public void SuppXp(int new_xp)
     {
         xp -= new_xp;
         Debug.Log("xp = " + xp);
@@ -42,10 +43,10 @@ public class Player : MonoBehaviour
         Debug.Log("money = " + money);
     }
 
-    public void SuppMoney(int new_money) 
+    public void SuppMoney(int new_money)
     {
         money -= new_money;
-        if(money < 0)
+        if (money < 0)
         {
             money = 0;
         }
@@ -53,7 +54,7 @@ public class Player : MonoBehaviour
     }
 
     public int GetMoney()
-    { 
+    {
         return money;
     }
 
@@ -82,7 +83,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int GetAge() 
+    public int GetAge()
     {
         return age;
     }
@@ -92,13 +93,13 @@ public class Player : MonoBehaviour
         Debug.Log(GetMoney());
     }
 
-    public void SpecialAttack(int ID)
+    public void SpecialAttack()
     {
-        if(GetXp() >= 100)
+        if (GetXp() >= 100)
         {
             SuppXp(100);
-            StartCoroutine(SpecialAttackCoroutine(ID));
-            
+            StartCoroutine(SpecialAttackCoroutine());
+
         }
         else
         {
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public IEnumerator SpecialAttackCoroutine(int ID)
+    public IEnumerator SpecialAttackCoroutine()
     {
         List<int> generatedNumbers = new List<int>();
         int randomNumber;
@@ -120,24 +121,17 @@ public class Player : MonoBehaviour
             while (generatedNumbers.Contains(randomNumber));
 
             generatedNumbers.Add(randomNumber);
-            if(ID == 1)
-            {
-                Vector2 newPosition = transform.position + new Vector3(200f * randomNumber, 400f, 0f);
-                GameObject newObject = Instantiate(specialAttack, newPosition, Quaternion.identity);
-            } 
-            else if(ID == 2)
-            {
-                Vector2 newPosition = transform.position + new Vector3(-200f * randomNumber, 400f, 0f);
-                GameObject newObject = Instantiate(specialAttack, newPosition, Quaternion.identity);
-            }
+            Vector2 newPosition = transform.position + new Vector3(200f * randomNumber, 400f, 0f);
+            GameObject newObject = Instantiate(specialAttack, newPosition, Quaternion.identity);
             yield return new WaitForSeconds(0.2f);
         }
         yield return null;
     }
 
+
     private void Update()
     {
-        textMoney.text = "Money : " + castle.player.GetMoney();
+        textMoney.text = "Money : " + money;
         textXp.text = "XP : " + xp;
     }
 }

@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Collisions : MonoBehaviour {
+public class Collisions : MonoBehaviour
+{
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -15,7 +18,7 @@ public class Collisions : MonoBehaviour {
         {
             SpecialCollision special = collision.gameObject.GetComponent<SpecialCollision>();
             int SpecialID = collision.gameObject.GetComponent<SpecialCollision>().ID;
-            if(SpecialID != currentMovement.ID)
+            if (SpecialID != currentMovement.ID)
             {
                 StartCoroutine(currentMovement.troopUnderSpecial(currentMovement, special));
             }
@@ -41,41 +44,41 @@ public class Collisions : MonoBehaviour {
         {
             if (otherMovement != null)
             {
-                    Player enemy = otherMovement.player;
-                    //Permet de stop le mouvement 
-                    if (currentMovement != null && otherMovement != null && myRb != null && enemyRb != null)
-                    {
-                        myRb.constraints = RigidbodyConstraints2D.FreezeAll;
-                        enemyRb.constraints = RigidbodyConstraints2D.FreezeAll;
-                    }
-                    if (otherMovement.ID != currentMovement.ID)
-                    {
+                Player enemy = otherMovement.player;
+                //Permet de stop le mouvement 
+                if (currentMovement != null && otherMovement != null && myRb != null && enemyRb != null)
+                {
+                    myRb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    enemyRb.constraints = RigidbodyConstraints2D.FreezeAll;
+                }
+                if (otherMovement.ID != currentMovement.ID)
+                {
 
-                        if (ally != null && enemy != null)
-                        {
-                            //Commence une coroutine qui diminue les pv des 2 joueurs en contact
-                            StartCoroutine(currentMovement.attackPlayer(otherMovement, myRb, ally, enemy));
-                        }
-                        else if (ally == null && enemy == null)
-                        {
-                            Debug.Log("aucun des 2");
-                        }
-                        else if (ally == null)
-                        {
-                            Debug.Log("y a rien bro.. ally");
-                        }
-                        else if (enemy == null)
-                        {
-                            Debug.Log("Nan vrmt r enemy");
-                        }
-                    }
-                    else
+                    if (ally != null && enemy != null)
                     {
-                        // Si les 2 objets en contact ont le même ID ils ne se font pas de dégâts
-                        myRb.constraints = RigidbodyConstraints2D.FreezeAll;
+                        //Commence une coroutine qui diminue les pv des 2 joueurs en contact
+                        StartCoroutine(currentMovement.attackPlayer(otherMovement, myRb, ally, enemy));
+                    }
+                    else if (ally == null && enemy == null)
+                    {
+                        Debug.Log("aucun des 2");
+                    }
+                    else if (ally == null)
+                    {
+                        Debug.Log("y a rien bro.. ally");
+                    }
+                    else if (enemy == null)
+                    {
+                        Debug.Log("Nan vrmt r enemy");
                     }
                 }
+                else
+                {
+                    // Si les 2 objets en contact ont le même ID ils ne se font pas de dégâts
+                    myRb.constraints = RigidbodyConstraints2D.FreezeAll;
+                }
             }
+        }
     }
 
     public void OnCollisionExit2D(Collision2D collision)
