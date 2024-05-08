@@ -10,14 +10,26 @@ public class Collisions : MonoBehaviour {
         Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
         Castle castle = collision.gameObject.GetComponent<Castle>();
         Player ally = currentMovement.player;
+        Player otherPlayer;
 
         if (collision.gameObject.CompareTag("Special") && gameObject.CompareTag("Player"))
         {
             SpecialCollision special = collision.gameObject.GetComponent<SpecialCollision>();
             int SpecialID = collision.gameObject.GetComponent<SpecialCollision>().ID;
-            if(SpecialID != currentMovement.ID)
+            Player player1 = special.player1;
+            Player player2 = special.player2;
+            if(player1.baseName == "ally")
             {
-                StartCoroutine(currentMovement.troopUnderSpecial(currentMovement, special));
+                otherPlayer = player1;
+            }
+            else
+            {
+                otherPlayer = player2;
+            }
+
+            if (SpecialID != currentMovement.ID)
+            {
+                StartCoroutine(currentMovement.troopUnderSpecial(currentMovement, special, otherPlayer));
             }
             else
             {
@@ -39,7 +51,7 @@ public class Collisions : MonoBehaviour {
         // Si une collision concerne un autre joueur
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
         {
-            if (otherMovement != null)
+            if (otherMovement != null && currentMovement.ID != otherMovement.ID)
             {
                     Player enemy = otherMovement.player;
                     //Permet de stop le mouvement 
@@ -55,18 +67,6 @@ public class Collisions : MonoBehaviour {
                         {
                             //Commence une coroutine qui diminue les pv des 2 joueurs en contact
                             StartCoroutine(currentMovement.attackPlayer(otherMovement, myRb, ally, enemy));
-                        }
-                        else if (ally == null && enemy == null)
-                        {
-                            Debug.Log("aucun des 2");
-                        }
-                        else if (ally == null)
-                        {
-                            Debug.Log("y a rien bro.. ally");
-                        }
-                        else if (enemy == null)
-                        {
-                            Debug.Log("Nan vrmt r enemy");
                         }
                     }
                     else
