@@ -10,23 +10,13 @@ public class IA : MonoBehaviour
     private float timer = 0f;
     private float interval = 3f;
     private int randomNumber = 0;
-    void GenerateRandomNumber()
-    {
-        randomNumber = random.Next(1, 4);
-        Debug.Log("Nombre aléatoire : " + randomNumber);
-        IaSpecialAttack();
-    }
     public Player opponent;
     public Casern casern;
 
     private DifficultyManager selectedDifficulty;
-
-    private System.Random random = new System.Random();
-    private float timer = 0f;
-    private float interval = 2f;
     private string difficulty;
 
-   
+
 
     private void Start()
     {
@@ -107,7 +97,7 @@ public class IA : MonoBehaviour
                             case "Troop 1 ally(Clone)":
                                 casern.InstantiateTroop(24);
                                 break;
-                                
+
                             case "Troop 2 ally(Clone)":
                                 casern.InstantiateTroop(21);
                                 break;
@@ -136,9 +126,9 @@ public class IA : MonoBehaviour
         player.AgeUp();
     }
     void IaSpecialAttack()
-    { 
+    {
         Debug.Log(" IAttaque spéciale");
         player.SpecialAttack(2);
-        
+
     }
 }
