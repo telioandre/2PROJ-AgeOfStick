@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Collisions : MonoBehaviour
 {
@@ -19,10 +20,9 @@ public class Collisions : MonoBehaviour
         {
             SpecialCollision special = collision.gameObject.GetComponent<SpecialCollision>();
             int SpecialID = collision.gameObject.GetComponent<SpecialCollision>().ID;
-            if (SpecialID != currentMovement.ID)
             Player player1 = special.player1;
             Player player2 = special.player2;
-            if(player1.baseName == "ally")
+            if (player1.baseName == "ally")
             {
                 otherPlayer = player1;
             }
