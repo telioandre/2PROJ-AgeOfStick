@@ -1,9 +1,21 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IA : MonoBehaviour
 {
     public Player player;
+
+    private System.Random random = new System.Random();
+    private float timer = 0f;
+    private float interval = 3f;
+    private int randomNumber = 0;
+    void GenerateRandomNumber()
+    {
+        randomNumber = random.Next(1, 4);
+        Debug.Log("Nombre aléatoire : " + randomNumber);
+        IaSpecialAttack();
+    }
     public Player opponent;
     public Casern casern;
 
@@ -30,6 +42,7 @@ public class IA : MonoBehaviour
         {
             timer = 0f;
             GenerateRandomNumber();
+
         }
     }
     void GenerateRandomNumber()
@@ -114,12 +127,17 @@ public class IA : MonoBehaviour
     }
     void IAgeUp()
     {
+        if (randomNumber == 1)
+        {
+            Debug.Log(" IAttaque spéciale");
+            player.SpecialAttack(2);
+        }
         Debug.Log(" IAge Up");
         player.AgeUp();
     }
     void IaSpecialAttack()
     { 
-        Debug.Log(" IAttaque sp�ciale");
+        Debug.Log(" IAttaque spéciale");
         player.SpecialAttack(2);
         
     }

@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.XPath;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
-    public int xp;
-    public int money;
+    public int xp = 0;
+    public int money = 500;
     public int age = 1;
     public Castle castle;
     public string baseName;
     public TextMeshProUGUI textMoney;
     public TextMeshProUGUI textXp;
-    public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white};
+    public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white };
     public GameObject specialAttack;
     private List<int> specialCosts;
     private List<int> ageCosts;
@@ -39,13 +40,13 @@ public class Player : MonoBehaviour
     {
         return baseName;
     }
-    public void AddXp(int new_xp) 
+    public void AddXp(int new_xp)
     {
         xp += new_xp;
         //Debug.Log("xp = " + xp);
     }
 
-    public void SuppXp(int new_xp) 
+    public void SuppXp(int new_xp)
     {
         xp -= new_xp;
         //Debug.Log("xp = " + xp);
@@ -62,10 +63,10 @@ public class Player : MonoBehaviour
         //Debug.Log("money = " + money);
     }
 
-    public void SuppMoney(int new_money) 
+    public void SuppMoney(int new_money)
     {
         money -= new_money;
-        if(money < 0)
+        if (money < 0)
         {
             money = 0;
         }
@@ -73,7 +74,7 @@ public class Player : MonoBehaviour
     }
 
     public int GetMoney()
-    { 
+    {
         return money;
     }
 
@@ -101,7 +102,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int GetAge() 
+    public int GetAge()
     {
         return age;
     }
@@ -123,8 +124,17 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    public void SpecialAttack(int ID)
+    public void SpecialAttack()
     {
+        if (GetXp() >= 100)
+        {
+            SuppXp(100);
+            StartCoroutine(SpecialAttackCoroutine());
+
+        }
+        else
+        {
+            Debug.Log("Not enough XP");
         if (checkCooldown(ID))
         {
             int cost = specialCosts[age - 1];
@@ -140,7 +150,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public IEnumerator SpecialAttackCoroutine(int ID)
+    public IEnumerator SpecialAttackCoroutine()
     {
         List<int> generatedNumbers = new List<int>();
         int randomNumber;
@@ -154,6 +164,8 @@ public class Player : MonoBehaviour
             while (generatedNumbers.Contains(randomNumber));
 
             generatedNumbers.Add(randomNumber);
+            Vector2 newPosition = transform.position + new Vector3(200f * randomNumber, 400f, 0f);
+            GameObject newObject = Instantiate(specialAttack, newPosition, Quaternion.identity);
             if(ID == 1)
             {
                 Vector2 newPosition = transform.position + new Vector3(200f * randomNumber, 400f, 0f);
@@ -169,6 +181,11 @@ public class Player : MonoBehaviour
         yield return null;
     }
 
+
+    private void Update()
+    {
+        textMoney.text = "Money : " + money;
+        textXp.text = "XP : " + xp;
     public void upgradeTroopLevel(int troop)
     {
         switch (troop)

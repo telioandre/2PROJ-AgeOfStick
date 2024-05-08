@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Movement : MonoBehaviour
 {
@@ -11,8 +11,8 @@ public class Movement : MonoBehaviour
     public int ID;
     public bool movementAllowed = true;
     public int life;
-    public int maxLife;
     public int attack;
+    public Player player;
     public int troopLevel;
     public float buildTime;
     public float attackTime;
@@ -65,7 +65,7 @@ public class Movement : MonoBehaviour
         //health.transform.localPosition = rb2d.transform.position;
     }
 
-    //Permet de lancer le mouvement de chaque unité en fonction de leur ID
+    //Permet de lancer le mouvement de chaque unitÃ© en fonction de leur ID
     void FixedUpdate()
     {
         if (movementAllowed)
@@ -77,6 +77,7 @@ public class Movement : MonoBehaviour
             }
             else if (ID == 2)
             {
+                rb2d.velocity = new Vector2(-(Speed + 100), rb2d.velocity.y);
                 rb2d.velocity = new Vector2(-(speed), rb2d.velocity.y);
             }
         }
@@ -87,10 +88,12 @@ public class Movement : MonoBehaviour
         return ID;
     }
 
-    //Initialise les paramètres de l'objet prefab
+    //Initialise les paramÃ¨tres de l'objet prefab
     public void setPlayer(int playerId)
     {
         ID = playerId;
+        life = 100;
+        attack = 0;
         char troopName = name[6];
         int troopNumber = int.Parse(troopName.ToString());
         Debug.Log(name);
@@ -133,15 +136,23 @@ public class Movement : MonoBehaviour
         if (ID == 1)
         {
             transform.position = new Vector2(50, 600);
+
         }
         else if (ID == 2)
         {
+            transform.position = new Vector2(3000, 600);
             transform.position = new Vector2(5500, 600);
         }
     }
 
     public IEnumerator attackPlayer(Movement Enemy, Rigidbody2D myRb, Player ally, Player enemy)
     {
+        while (life > 0 && Enemy != null && Enemy.life > 0)
+        {
+            //On divise par 2 car la coroutine se lance 2 fois (1 par objet en contact)
+            life -= Enemy.attack / 2;
+            Enemy.life -= attack / 2;
+            Debug.Log("My life : " + life + " Enemy life : " + Enemy.life);
         yield return new WaitForSeconds(attackTime);
         while (life > 0 && Enemy != null && Enemy.life > 0)
         {
@@ -165,7 +176,7 @@ public class Movement : MonoBehaviour
                 casern.DestroyTroop(Enemy.ID);
                 Destroy(Enemy.gameObject);
             }
-            if(life <= 0)
+            if (life <= 0)
             {
                 dropRewards(allyNumber, ally, enemy);
                 life = 0;
@@ -177,6 +188,14 @@ public class Movement : MonoBehaviour
         myRb.constraints = RigidbodyConstraints2D.None;
     }
 
+    public IEnumerator troopUnderSpecial(Movement ally, SpecialCollision special)
+    {
+        ally.life -= 1000;
+        if (ally.life < 0)
+        {
+            life = 0;
+            Destroy(special.gameObject);
+            Destroy(ally.gameObject);
     public bool superEffective(int ally, int enemy)
     {
         if(ally == enemy + 1 || (ally == 1 && enemy == 4))
