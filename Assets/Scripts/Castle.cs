@@ -7,6 +7,7 @@ public class Castle : MonoBehaviour
     public int maxLifePoint = 1000;
     public int lifePoint = 1000;
     public int numberOfTower = 0;
+    public int TowerSpotAvailable = 4;
     public int ID;
     public Image bar;
     public Player player;
@@ -67,11 +68,11 @@ public class Castle : MonoBehaviour
         // Vérification des ID différents
         if (movement != castle.ID)
         {
-            Debug.Log("num 1 :  " + movement + " num 2 : " + castle.ID);
+            //Debug.Log("num 1 :  " + movement + " num 2 : " + castle.ID);
             while (lifePoint > 0)
             {
                 lifePoint -= damage;
-                Debug.Log("life point = " + player.GetName() + " " + lifePoint);
+                //Debug.Log("life point = " + player.GetName() + " " + lifePoint);
                 if (lifePoint <= 0)
                 {
                     // Opérateur ternaire qui indique qui a gagné

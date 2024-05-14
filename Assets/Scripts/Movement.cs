@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Xml;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Movement : MonoBehaviour
 {
-
     public Rigidbody2D rb2d;
     public float speed;
     public int ID;
@@ -19,6 +19,8 @@ public class Movement : MonoBehaviour
     public float attackTime;
     public Casern casern;
     public int maxLife;
+    public int troopId;
+    public string uniqueId;
     /*public Image health;
     public Image background;
     public Image fill;*/
@@ -78,7 +80,6 @@ public class Movement : MonoBehaviour
             }
             else if (ID == 2)
             {
-                rb2d.velocity = new Vector2(-(speed + 100), rb2d.velocity.y);
                 rb2d.velocity = new Vector2(-(speed), rb2d.velocity.y);
             }
         }
@@ -89,15 +90,20 @@ public class Movement : MonoBehaviour
         return ID;
     }
 
+    public string getUniqueId()
+    {
+        return uniqueId;
+    }
+
     //Initialise les paramètres de l'objet prefab
-    public void setPlayer(int playerId)
+    public void setPlayer(int playerId, int newTroopId)
     {
         ID = playerId;
-        life = 100;
-        attack = 0;
+        troopId = newTroopId;
+        uniqueId = System.Guid.NewGuid().ToString();
         char troopName = name[6];
         int troopNumber = int.Parse(troopName.ToString());
-        Debug.Log(name);
+        //Debug.Log(name);
         switch (troopNumber)
         {
             case 1:
@@ -148,7 +154,7 @@ public class Movement : MonoBehaviour
 
     public bool superEffective(int ally, int enemy)
     {
-        if (ally == enemy + 1 || (ally == 1 && enemy == 4))
+        if (ally == enemy - 1 || (ally == 1 && enemy == 4))
         {
             return true;
         }
@@ -157,6 +163,8 @@ public class Movement : MonoBehaviour
 
     public void dropRewards(int troop, Player ally, Player enemy)
     {
+        //Debug.Log(troop + " troop name");
+
         switch (troop)
         {
             case 1:
@@ -196,44 +204,38 @@ public class Movement : MonoBehaviour
 
     public IEnumerator attackPlayer(Movement Enemy, Rigidbody2D myRb, Player ally, Player enemy)
     {
+        yield return new WaitForSeconds(attackTime);
         while (life > 0 && Enemy != null && Enemy.life > 0)
         {
             //On divise par 2 car la coroutine se lance 2 fois (1 par objet en contact)
-            life -= Enemy.attack / 2;
-            Enemy.life -= attack / 2;
-            Debug.Log("My life : " + life + " Enemy life : " + Enemy.life);
-            yield return new WaitForSeconds(attackTime);
-            while (life > 0 && Enemy != null && Enemy.life > 0)
+            int damage = Enemy.attack / 2 /*+ random.Next(0, 10)*/;
+            char allyChar = name[6];
+            char enemyChar = Enemy.name[6];
+            int allyNumber = int.Parse(allyChar.ToString());
+            int enemyNumber = int.Parse(enemyChar.ToString());
+            
+            if (superEffective(allyNumber, enemyNumber))
             {
-                //On divise par 2 car la coroutine se lance 2 fois (1 par objet en contact)
-                int damage = Enemy.attack / 2 + random.Next(0, 10);
-                char allyChar = name[6];
-                char enemyChar = Enemy.name[6];
-                int allyNumber = int.Parse(allyChar.ToString());
-                int enemyNumber = int.Parse(enemyChar.ToString());
-
-                if (superEffective(allyNumber, enemyNumber))
-                {
-                    damage = Mathf.RoundToInt(damage * 1.5f);
-                }
-                life -= damage;
-                Enemy.life -= attack / 2 + random.Next(0, 10); ;
-                if (Enemy.life <= 0)
-                {
-                    dropRewards(enemyNumber, ally, enemy);
-                    Enemy.life = 0;
-                    casern.DestroyTroop(Enemy.ID);
-                    Destroy(Enemy.gameObject);
-                }
-                if (life <= 0)
-                {
-                    dropRewards(allyNumber, ally, enemy);
-                    life = 0;
-                    casern.DestroyTroop(Enemy.ID);
-                    Destroy(gameObject);
-                }
+                Debug.Log("DEGAT AVANT : " + damage);
+                damage = Mathf.RoundToInt(damage * 1.5f);
+                Debug.Log("DEGAT APRES : " + damage);
             }
-
+            life -= damage;
+            Enemy.life -= attack / 2 + random.Next(0, 10);
+            if (Enemy.life <= 0)
+            {
+                dropRewards(enemyNumber, ally, enemy);
+                Enemy.life = 0;
+                casern.DestroyTroop(Enemy.ID, Enemy.uniqueId);
+                Destroy(Enemy.gameObject);
+            }
+            if (life <= 0)
+            {
+                dropRewards(allyNumber, ally, enemy);
+                life = 0;
+                casern.DestroyTroop(ID, uniqueId);
+                Destroy(gameObject);      
+            }
             myRb.constraints = RigidbodyConstraints2D.None;
         }
     }
@@ -243,8 +245,8 @@ public class Movement : MonoBehaviour
 
             char troopChar = troop.name[6];
             int troopNumber = int.Parse(troopChar.ToString());
-            int damage = 0;
-            Debug.Log(troop.player.age + " enemy age " + otherPlayer.age + " ally age");
+            int damage;
+            //Debug.Log(troop.player.age + " enemy age " + otherPlayer.age + " ally age");
             if (otherPlayer.age == troop.player.age)
             {
                 if (troopNumber == 4)
@@ -273,13 +275,13 @@ public class Movement : MonoBehaviour
                 damage = troop.maxLife;
             }
 
-            Debug.Log(damage + " damage done by special");
+            //Debug.Log(damage + " damage done by special");
             troop.life -= damage;
             Destroy(special.gameObject);
-            if (troop.life < 0)
+            if (troop.life <= 0)
             {
                 life = 0;
-                casern.DestroyTroop(troop.ID);
+                casern.DestroyTroop(troop.ID, troop.uniqueId);
                 dropRewards(troopNumber, otherPlayer, troop.player);
                 Destroy(troop.gameObject);
             }

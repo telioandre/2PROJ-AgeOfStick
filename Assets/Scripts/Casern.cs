@@ -17,6 +17,7 @@ public class Casern : MonoBehaviour
     public GameObject objectToInstantiate8;
 
     private GameObject troopToInstantiate;
+    private int troopId;
     private int cost;
     private float cooldown = 1f;
     private float lastPlayer1Invoque;
@@ -24,7 +25,8 @@ public class Casern : MonoBehaviour
 
     //public int numberOfTroop1 = 0;
     //public int numberOfTroop2 = 0;
-    public List<GameObject> troops = new List<GameObject>();
+    public List<GameObject> troopsPlayer1 = new List<GameObject>();
+    public List<GameObject> troopsPlayer2 = new List<GameObject>();
     public IA IA;
 
     private List<int> troop1costs;
@@ -43,6 +45,10 @@ public class Casern : MonoBehaviour
         troop4costs = new List<int>() { 9, 20, 41, 100, 200, 300 };
     }
 
+    public void getFirstTroop()
+    {
+        Debug.Log(troopsPlayer1[0].name);
+    }
     public void InstantiateTroop(int value)
     {
         bool isValid = false;
@@ -61,6 +67,7 @@ public class Casern : MonoBehaviour
                             if (player.GetMoney() >= cost)
                             {
                                 troopToInstantiate = objectToInstantiate;
+                                troopId = 1;
                                 isValid = true;
                             }
                             break;
@@ -70,6 +77,7 @@ public class Casern : MonoBehaviour
                             if (player.GetMoney() >= cost)
                             {
                                 troopToInstantiate = objectToInstantiate2;
+                                troopId = 2;
                                 isValid = true;
                             }
                             break;
@@ -79,6 +87,7 @@ public class Casern : MonoBehaviour
                             if (player.GetMoney() >= cost)
                             {
                                 troopToInstantiate = objectToInstantiate3;
+                                troopId = 3;
                                 isValid = true;
                             }
                             break;
@@ -88,6 +97,7 @@ public class Casern : MonoBehaviour
                             if (player.GetMoney() >= cost)
                             {
                                 troopToInstantiate = objectToInstantiate4;
+                                troopId = 4;
                                 isValid = true;
                             }
                             break;
@@ -103,37 +113,41 @@ public class Casern : MonoBehaviour
                     {
 
                         case 1:
-                            cost = troop1costs[player.age - 1];
+                            cost = troop1costs[opponent.age - 1];
                             if (opponent.GetMoney() >= cost)
                             {
                                 troopToInstantiate = objectToInstantiate5;
+                                troopId = 1;
                                 isValid = true;
                             }
                             break;
 
                         case 2:
-                            cost = troop2costs[player.age - 1];
+                            cost = troop2costs[opponent.age - 1];
                             if (opponent.GetMoney() >= cost)
                             {
                                 troopToInstantiate = objectToInstantiate6;
+                                troopId = 2;
                                 isValid = true;
                             }
                             break;
 
                         case 3:
-                            cost = troop3costs[player.age - 1];
+                            cost = troop3costs[opponent.age - 1];
                             if (opponent.GetMoney() >= cost)
                             {
                                 troopToInstantiate = objectToInstantiate7;
+                                troopId = 3;
                                 isValid = true;
                             }
                             break;
 
                         case 4:
-                            cost = troop4costs[player.age - 1];
+                            cost = troop4costs[opponent.age - 1];
                             if (opponent.GetMoney() >= cost)
                             {
                                 troopToInstantiate = objectToInstantiate8;
+                                troopId = 4;
                                 isValid = true;
                             }
                             break;
@@ -143,37 +157,63 @@ public class Casern : MonoBehaviour
         }
         if (isValid)
         {
-            CreateTroop(id, troopToInstantiate);
+            CreateTroop(id, troopId, troopToInstantiate);
+        }
+        else
+        {
+            //Debug.Log("not enough money or too fast");
         }
     }
 
-    public void CreateTroop(int id, GameObject troopToCreate)
+    public void CreateTroop(int id, int troopId, GameObject troopToCreate)
     {
         GameObject newObject = Instantiate(troopToCreate, transform.position, Quaternion.identity);
         if (id == 1)
         {
             player.numberOfTroop += 1;
-            troops.Add(newObject);
+            troopsPlayer1.Add(newObject);
             player.AddMoney(-cost);
         }
         else
         {
             opponent.numberOfTroop += 1;
+            troopsPlayer2.Add(newObject);
             opponent.AddMoney(-cost);
         }
         Movement script = newObject.GetComponent<Movement>();
-        script.setPlayer(id);
+        script.setPlayer(id, troopId);
     }
 
-    public void DestroyTroop(int id)
+    public void DestroyTroop(int id, string uniqueTroopId)
     {
+        //Debug.Log(uniqueTroopId + " unique ID");
         if (id == 1)
         {
+            for(int i = troopsPlayer1.Count-1; i>=0; i--)
+            {
+                GameObject troop = troopsPlayer1[i];
+                Movement movement = troop.GetComponent<Movement>();
+                if(movement.uniqueId == uniqueTroopId)
+                {
+                    troopsPlayer1.Remove(troop);
+                }
+            }
             player.numberOfTroop -= 1;
+            //troopsPlayer1.Remove(troop);
         }
         else
         {
+            for (int i = troopsPlayer2.Count-1; i >= 0; i--)
+            {
+                GameObject troop = troopsPlayer2[i];
+                Movement movement = troop.GetComponent<Movement>();
+                if (movement.uniqueId == uniqueTroopId)
+                {
+                    troopsPlayer2.Remove(troop);
+                }
+            }
             opponent.numberOfTroop -= 1;
+            //troopsPlayer2.Remove(troop);
         }
     }
 }
