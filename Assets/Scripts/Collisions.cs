@@ -47,7 +47,7 @@ public class Collisions : MonoBehaviour
             if (castle != null)
             {
                 //Commence une coroutine qui va faire des dégâts au chateau
-                Debug.Log("envoie " + castle.ID + "recoit : " + currentMovement.ID);
+                //Debug.Log("envoie " + castle.ID + "recoit : " + currentMovement.ID);
                 StartCoroutine(castle.DeleteLifePoint(currentMovement.attack, currentMovement.ID, castle));
             }
         }
@@ -72,30 +72,25 @@ public class Collisions : MonoBehaviour
                         //Commence une coroutine qui diminue les pv des 2 joueurs en contact
                         StartCoroutine(currentMovement.attackPlayer(otherMovement, myRb, ally, enemy));
                     }
-                    else if (ally == null && enemy == null)
-                    {
-                        Debug.Log("aucun des 2");
-
-                        if (ally != null && enemy != null)
-                        {
-                            //Commence une coroutine qui diminue les pv des 2 joueurs en contact
-                            StartCoroutine(currentMovement.attackPlayer(otherMovement, myRb, ally, enemy));
-                        }
-                    }
-                    else if (ally == null)
-                    {
-                        Debug.Log("y a rien bro.. ally");
-                    }
-                    else if (enemy == null)
-                    {
-                        Debug.Log("Nan vrmt r enemy");
-                    }
                 }
                 else
                 {
                     // Si les 2 objets en contact ont le même ID ils ne se font pas de dégâts
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }
+            }
+        }
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();
+        Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
+        {
+            if (myRb.constraints == RigidbodyConstraints2D.FreezeAll)
+            {
+                enemyRb.constraints = RigidbodyConstraints2D.FreezeAll;
             }
         }
     }
