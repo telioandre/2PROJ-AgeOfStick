@@ -1,14 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Castle : MonoBehaviour
 {
     public int maxLifePoint = 1000;
     public int lifePoint = 1000;
-    public int numberOfTower = 0;
-    public int TowerSpotAvailable = 4;
-    public int ID;
+    public int numberOfTower;
+    [FormerlySerializedAs("TowerSpotAvailable")] public int towerSpotAvailable = 4;
+    [FormerlySerializedAs("ID")] public int id;
     public Image bar;
     public Player player;
     void Start()
@@ -16,7 +17,6 @@ public class Castle : MonoBehaviour
         if (player == null)
         {
             Debug.LogError("Player reference is not set in Castle.");
-            return;
         }
     }
     public void AddTower() {
@@ -52,21 +52,21 @@ public class Castle : MonoBehaviour
         }
     }
 
-    public void AddLifePoint(int new_life_point)
+    public void AddLifePoint(int newLifePoint)
     {
-        lifePoint = new_life_point;
+        lifePoint = newLifePoint;
         Debug.Log("life point = " + lifePoint);
     }
-    public void AddMaxLifePoint(int new_max_life_point)
+    public void AddMaxLifePoint(int newMaxLifePoint)
     {
-        maxLifePoint = new_max_life_point;
+        maxLifePoint = newMaxLifePoint;
         Debug.Log("max life point = " + maxLifePoint);
     }
 
     public IEnumerator DeleteLifePoint(int damage, int movement, Castle castle)
     {
-        // Vérification des ID différents
-        if (movement != castle.ID)
+        // VÃ©rification des ID diffÃ©rents
+        if (movement != castle.id)
         {
             //Debug.Log("num 1 :  " + movement + " num 2 : " + castle.ID);
             while (lifePoint > 0)
@@ -75,13 +75,13 @@ public class Castle : MonoBehaviour
                 //Debug.Log("life point = " + player.GetName() + " " + lifePoint);
                 if (lifePoint <= 0)
                 {
-                    // Opérateur ternaire qui indique qui a gagné
+                    // OpÃ©rateur ternaire qui indique qui a gagnÃ©
                     string opponentBaseName = (player.baseName == "ally") ? "enemy" : "ally";
                     Debug.Log(opponentBaseName + " win !");
                     // Ferme l'appli et la preview
                     Application.Quit();
                 }
-                // 1 seconde de délai entre chaque attaque
+                // 1 seconde de dÃ©lai entre chaque attaque
                 yield return new WaitForSeconds(1f);
             }
         }

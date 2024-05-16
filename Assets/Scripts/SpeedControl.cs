@@ -5,6 +5,10 @@ public class SpeedControl : MonoBehaviour
     public void Accelerate()
     {
         Time.timeScale = 2f;
+        
+    }public void AccelerateFaster()
+    {
+        Time.timeScale = 3f;
     }
 
     public void Pause()

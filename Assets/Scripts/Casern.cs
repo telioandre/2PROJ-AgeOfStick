@@ -1,51 +1,166 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Casern : MonoBehaviour
 {
     public Player player;
     public Player opponent;
 
-    public GameObject objectToInstantiate;
-    public GameObject objectToInstantiate2;
-    public GameObject objectToInstantiate3;
-    public GameObject objectToInstantiate4;
-    public GameObject objectToInstantiate5;
-    public GameObject objectToInstantiate6;
-    public GameObject objectToInstantiate7;
-    public GameObject objectToInstantiate8;
+    public GameObject currentTroop1;
+    public GameObject currentTroop2;
+    public GameObject currentTroop3;
+    public GameObject currentTroop4;
+    public GameObject currentTroop5;
+    public GameObject currentTroop6;
+    public GameObject currentTroop7;
+    public GameObject currentTroop8;
 
-    private GameObject troopToInstantiate;
-    private int troopId;
-    private int cost;
-    private float cooldown = 1f;
-    private float lastPlayer1Invoque;
-    private float lastPlayer2Invoque;
+    public GameObject age2Troop1;
+    public GameObject age2Troop2;
+    public GameObject age2Troop3;
+    public GameObject age2Troop4;
+    public GameObject age2Troop5;
+    public GameObject age2Troop6;
+    public GameObject age2Troop7;
+    public GameObject age2Troop8;
+
+    public GameObject age3Troop1;
+    public GameObject age3Troop2;
+    public GameObject age3Troop3;
+    public GameObject age3Troop4;
+    public GameObject age3Troop5;
+    public GameObject age3Troop6;
+    public GameObject age3Troop7;
+    public GameObject age3Troop8;
+
+    public GameObject age4Troop1;
+    public GameObject age4Troop2;
+    public GameObject age4Troop3;
+    public GameObject age4Troop4;
+    public GameObject age4Troop5;
+    public GameObject age4Troop6;
+    public GameObject age4Troop7;
+    public GameObject age4Troop8;
+
+    public GameObject age5Troop1;
+    public GameObject age5Troop2;
+    public GameObject age5Troop3;
+    public GameObject age5Troop4;
+    public GameObject age5Troop5;
+    public GameObject age5Troop6;
+    public GameObject age5Troop7;
+    public GameObject age5Troop8;
+
+    public GameObject age6Troop1;
+    public GameObject age6Troop2;
+    public GameObject age6Troop3;
+    public GameObject age6Troop4;
+    public GameObject age6Troop5;
+    public GameObject age6Troop6;
+    public GameObject age6Troop7;
+    public GameObject age6Troop8;
+
+    private GameObject _troopToInstantiate;
+    private int _troopId;
+    private int _cost;
+    private float _cooldown = 1f;
+    private float _lastPlayer1Invoque;
+    private float _lastPlayer2Invoque;
 
     //public int numberOfTroop1 = 0;
     //public int numberOfTroop2 = 0;
-    public List<GameObject> troopsPlayer1 = new List<GameObject>();
-    public List<GameObject> troopsPlayer2 = new List<GameObject>();
-    public IA IA;
+    public List<GameObject> troopsPlayer1 = new();
+    public List<GameObject> troopsPlayer2 = new();
+    [FormerlySerializedAs("IA")] public Ia ia;
 
-    private List<int> troop1costs;
-    private List<int> troop2costs;
-    private List<int> troop3costs;
-    private List<int> troop4costs;
+    private List<int> _troop1Costs;
+    private List<int> _troop2Costs;
+    private List<int> _troop3Costs;
+    private List<int> _troop4Costs;
 
     void Start()
     {
-        lastPlayer1Invoque = -cooldown;
-        lastPlayer2Invoque = -cooldown;
+        _lastPlayer1Invoque = -_cooldown;
+        _lastPlayer2Invoque = -_cooldown;
 
-        troop1costs = new List<int>() { 2, 7, 12, 25, 60, 150 };
-        troop2costs = new List<int>() { 1, 5, 9, 20, 55, 110 };
-        troop3costs = new List<int>() { 7, 11, 22, 49, 95, 172 };
-        troop4costs = new List<int>() { 9, 20, 41, 100, 200, 300 };
+        _troop1Costs = new List<int>() { 2, 7, 12, 25, 60, 150 };
+        _troop2Costs = new List<int>() { 1, 5, 9, 20, 55, 110 };
+        _troop3Costs = new List<int>() { 7, 11, 22, 49, 95, 172 };
+        _troop4Costs = new List<int>() { 9, 20, 41, 100, 200, 300 };
     }
 
-    public void getFirstTroop()
+    private void Update()
+    {
+        switch (player.age)
+        {
+            case 2:
+                currentTroop1 = age2Troop1;
+                currentTroop2 = age2Troop2;
+                currentTroop3 = age2Troop3;
+                currentTroop4 = age2Troop4;
+                break;
+            case 3:
+                currentTroop1 = age3Troop1;
+                currentTroop2 = age3Troop2;
+                currentTroop3 = age3Troop3;
+                currentTroop4 = age3Troop4;
+                break;
+            case 4:
+                currentTroop1 = age4Troop1;
+                currentTroop2 = age4Troop2;
+                currentTroop3 = age4Troop3;
+                currentTroop4 = age4Troop4;
+                break;
+            case 5:
+                currentTroop1 = age5Troop1;
+                currentTroop2 = age5Troop2;
+                currentTroop3 = age5Troop3;
+                currentTroop4 = age5Troop4;
+                break;
+            case 6:
+                currentTroop1 = age6Troop1;
+                currentTroop2 = age6Troop2;
+                currentTroop3 = age6Troop3;
+                currentTroop4 = age6Troop4;
+                break;
+        }
+        switch (opponent.age)
+        {
+            case 2:
+                currentTroop5 = age2Troop5;
+                currentTroop6 = age2Troop6;
+                currentTroop7 = age2Troop7;
+                currentTroop8 = age2Troop8;
+                break;
+            case 3:
+                currentTroop5 = age3Troop5;
+                currentTroop6 = age3Troop6;
+                currentTroop7 = age3Troop7;
+                currentTroop8 = age3Troop8;
+                break;
+            case 4:
+                currentTroop5 = age4Troop5;
+                currentTroop6 = age4Troop6;
+                currentTroop7 = age4Troop7;
+                currentTroop8 = age4Troop8;
+                break;
+            case 5:
+                currentTroop5 = age5Troop5;
+                currentTroop6 = age5Troop6;
+                currentTroop7 = age5Troop7;
+                currentTroop8 = age5Troop8;
+                break;
+            case 6:
+                currentTroop5 = age6Troop5;
+                currentTroop6 = age6Troop6;
+                currentTroop7 = age6Troop7;
+                currentTroop8 = age6Troop8;
+                break;
+        }
+    }
+
+    public void GetFirstTroop()
     {
         Debug.Log(troopsPlayer1[0].name);
     }
@@ -57,47 +172,47 @@ public class Casern : MonoBehaviour
         switch (id)
         {
             case 1:
-                if (player.numberOfTroop < 10 && Time.time - lastPlayer1Invoque > cooldown)
+                if (player.numberOfTroop < 10 && Time.time - _lastPlayer1Invoque > _cooldown)
                 {
-                    lastPlayer1Invoque = Time.time;
+                    _lastPlayer1Invoque = Time.time;
                     switch (troop)
                     {
                         case 1:
-                            cost = troop1costs[player.age - 1];
-                            if (player.GetMoney() >= cost)
+                            _cost = _troop1Costs[player.age - 1];
+                            if (player.GetMoney() >= _cost)
                             {
-                                troopToInstantiate = objectToInstantiate;
-                                troopId = 1;
+                                _troopToInstantiate = currentTroop1;
+                                _troopId = 1;
                                 isValid = true;
                             }
                             break;
 
                         case 2:
-                            cost = troop2costs[player.age - 1];
-                            if (player.GetMoney() >= cost)
+                            _cost = _troop2Costs[player.age - 1];
+                            if (player.GetMoney() >= _cost)
                             {
-                                troopToInstantiate = objectToInstantiate2;
-                                troopId = 2;
+                                _troopToInstantiate = currentTroop2;
+                                _troopId = 2;
                                 isValid = true;
                             }
                             break;
 
                         case 3:
-                            cost = troop3costs[player.age - 1];
-                            if (player.GetMoney() >= cost)
+                            _cost = _troop3Costs[player.age - 1];
+                            if (player.GetMoney() >= _cost)
                             {
-                                troopToInstantiate = objectToInstantiate3;
-                                troopId = 3;
+                                _troopToInstantiate = currentTroop3;
+                                _troopId = 3;
                                 isValid = true;
                             }
                             break;
 
                         case 4:
-                            cost = troop4costs[player.age - 1];
-                            if (player.GetMoney() >= cost)
+                            _cost = _troop4Costs[player.age - 1];
+                            if (player.GetMoney() >= _cost)
                             {
-                                troopToInstantiate = objectToInstantiate4;
-                                troopId = 4;
+                                _troopToInstantiate = currentTroop4;
+                                _troopId = 4;
                                 isValid = true;
                             }
                             break;
@@ -106,48 +221,48 @@ public class Casern : MonoBehaviour
 
                 break;
             case 2:
-                if (opponent.numberOfTroop < 10 && Time.time - lastPlayer2Invoque > cooldown)
+                if (opponent.numberOfTroop < 10 && Time.time - _lastPlayer2Invoque > _cooldown)
                 {
-                    lastPlayer2Invoque = Time.time;
+                    _lastPlayer2Invoque = Time.time;
                     switch (troop)
                     {
 
                         case 1:
-                            cost = troop1costs[opponent.age - 1];
-                            if (opponent.GetMoney() >= cost)
+                            _cost = _troop1Costs[opponent.age - 1];
+                            if (opponent.GetMoney() >= _cost)
                             {
-                                troopToInstantiate = objectToInstantiate5;
-                                troopId = 1;
+                                _troopToInstantiate = currentTroop5;
+                                _troopId = 1;
                                 isValid = true;
                             }
                             break;
 
                         case 2:
-                            cost = troop2costs[opponent.age - 1];
-                            if (opponent.GetMoney() >= cost)
+                            _cost = _troop2Costs[opponent.age - 1];
+                            if (opponent.GetMoney() >= _cost)
                             {
-                                troopToInstantiate = objectToInstantiate6;
-                                troopId = 2;
+                                _troopToInstantiate = currentTroop6;
+                                _troopId = 2;
                                 isValid = true;
                             }
                             break;
 
                         case 3:
-                            cost = troop3costs[opponent.age - 1];
-                            if (opponent.GetMoney() >= cost)
+                            _cost = _troop3Costs[opponent.age - 1];
+                            if (opponent.GetMoney() >= _cost)
                             {
-                                troopToInstantiate = objectToInstantiate7;
-                                troopId = 3;
+                                _troopToInstantiate = currentTroop7;
+                                _troopId = 3;
                                 isValid = true;
                             }
                             break;
 
                         case 4:
-                            cost = troop4costs[opponent.age - 1];
-                            if (opponent.GetMoney() >= cost)
+                            _cost = _troop4Costs[opponent.age - 1];
+                            if (opponent.GetMoney() >= _cost)
                             {
-                                troopToInstantiate = objectToInstantiate8;
-                                troopId = 4;
+                                _troopToInstantiate = currentTroop8;
+                                _troopId = 4;
                                 isValid = true;
                             }
                             break;
@@ -157,7 +272,7 @@ public class Casern : MonoBehaviour
         }
         if (isValid)
         {
-            CreateTroop(id, troopId, troopToInstantiate);
+            CreateTroop(id, _troopId, _troopToInstantiate);
         }
         else
         {
@@ -172,16 +287,16 @@ public class Casern : MonoBehaviour
         {
             player.numberOfTroop += 1;
             troopsPlayer1.Add(newObject);
-            player.AddMoney(-cost);
+            player.AddMoney(-_cost);
         }
         else
         {
             opponent.numberOfTroop += 1;
             troopsPlayer2.Add(newObject);
-            opponent.AddMoney(-cost);
+            opponent.AddMoney(-_cost);
         }
         Movement script = newObject.GetComponent<Movement>();
-        script.setPlayer(id, troopId);
+        script.SetPlayer(id, troopId);
     }
 
     public void DestroyTroop(int id, string uniqueTroopId)

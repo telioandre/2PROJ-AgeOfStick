@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int age = 1;
     public Castle castle;
     public Casern casern;
+    public Player opponent;
     public string baseName;
     public TextMeshProUGUI textMoney;
     public TextMeshProUGUI textXp;
@@ -18,33 +19,34 @@ public class Player : MonoBehaviour
     public GameObject specialAttack;
     public List<int> specialCosts;
     public List<int> ageCosts;
-    public int troop1level;
-    public int troop2level;
-    public int troop3level;
-    public int troop4level;
+    [FormerlySerializedAs("troop1level")] public int troop1Level;
+    [FormerlySerializedAs("troop2level")] public int troop2Level;
+    [FormerlySerializedAs("troop3level")] public int troop3Level;
+    [FormerlySerializedAs("troop4level")] public int troop4Level;
     public int numberOfTroop;
-    private float specialCooldown = 20f;
-    private float lastPlayer1Special;
-    private float lastPlayer2Special;
-    List<List<int>> troops1UpgradeCosts = new List<List<int>>()
+    public float precision;
+    private float _specialCooldown = /*2*/0f;
+    private float _lastPlayer1Special;
+    private float _lastPlayer2Special;
+    List<List<int>> _troops1UpgradeCosts = new List<List<int>>()
     {
         new() { 30, 1 },
         new() { 80, 2 },
         new() { 190, 4 },
     };
-    List<List<int>> troops2UpgradeCosts = new List<List<int>>()
+    List<List<int>> _troops2UpgradeCosts = new List<List<int>>()
     {
         new() { 20, 1 },
         new() { 50, 1 },
         new() { 110, 3 },
     };
-    List<List<int>> troops3UpgradeCosts = new List<List<int>>()
+    List<List<int>> _troops3UpgradeCosts = new List<List<int>>()
     {
         new() { 80, 2 },
         new() { 120, 3 },
         new() { 210, 5 },
     };
-    List<List<int>> troops4UpgradeCosts = new List<List<int>>()
+    List<List<int>> _troops4UpgradeCosts = new List<List<int>>()
     {
         new() { 100, 2 },
         new() { 210, 4 },
@@ -56,23 +58,23 @@ public class Player : MonoBehaviour
         specialCosts = new List<int>() { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int>() { 6500, 8000, 9500, 11000, 12500 };
 
-        lastPlayer1Special = -specialCooldown;
-        lastPlayer2Special = -specialCooldown;
+        _lastPlayer1Special = -_specialCooldown;
+        _lastPlayer2Special = -_specialCooldown;
     }
 
     public string GetName()
     {
         return baseName;
     }
-    public void AddXp(int new_xp)
+    public void AddXp(int newXp)
     {
-        xp += new_xp;
+        xp += newXp;
         //Debug.Log("xp = " + xp);
     }
 
-    public void SuppXp(int new_xp)
+    public void SuppXp(int newXp)
     {
-        xp -= new_xp;
+        xp -= newXp;
         //Debug.Log("xp = " + xp);
     }
 
@@ -81,15 +83,15 @@ public class Player : MonoBehaviour
         return xp;
     }
 
-    public void AddMoney(int new_money)
+    public void AddMoney(int newMoney)
     {
-        money += new_money;
+        money += newMoney;
         //Debug.Log("money = " + money);
     }
 
-    public void SuppMoney(int new_money)
+    public void SuppMoney(int newMoney)
     {
-        money -= new_money;
+        money -= newMoney;
         if (money < 0)
         {
             money = 0;
@@ -114,10 +116,11 @@ public class Player : MonoBehaviour
             {
                 xp -= ageCosts[age - 1];
                 age += 1;
+                //casern = GetNewCasern();
                 castle.AddLifePoint(Mathf.RoundToInt(castle.lifePoint * 1.35f));
                 castle.AddMaxLifePoint(Mathf.RoundToInt(castle.maxLifePoint * 1.35f));
-                SpriteRenderer SpriteColor = GetComponent<SpriteRenderer>();
-                SpriteColor.color = ageColors[age - 1];
+                SpriteRenderer spriteColor = GetComponent<SpriteRenderer>();
+                spriteColor.color = ageColors[age - 1];
             }
         }
         else
@@ -130,30 +133,30 @@ public class Player : MonoBehaviour
     {
         return age;
     }
-    public bool checkCooldown(int ID)
+    public bool CheckCooldown(int id)
     {
-        if (ID == 1 && Time.time - lastPlayer1Special > specialCooldown + ((age - 1) * 5))
+        if (id == 1 /*&& Time.time - lastPlayer1Special > specialCooldown + ((age - 1) * 5)*/)
         {
-            lastPlayer1Special = Time.time;
+            _lastPlayer1Special = Time.time;
             return true;
         }
-        if (ID == 2 && Time.time - lastPlayer2Special > specialCooldown + ((age - 1) * 5))
+        if (id == 2 && Time.time - _lastPlayer2Special > _specialCooldown + ((age - 1) * 5))
         {
-            lastPlayer2Special = Time.time;
+            _lastPlayer2Special = Time.time;
             return true;
         }
         return false;            
     }
 
-    public void SpecialAttack(int ID)
+    public void SpecialAttack(int id)
     {
-        if (checkCooldown(ID))
+        if (CheckCooldown(id))
         {
             int cost = specialCosts[age - 1];
             if (GetXp() >= cost)
             {
                 SuppXp(cost);
-                StartCoroutine(SpecialAttackCoroutine(ID));
+                StartCoroutine(SpecialAttackCoroutine(id));
             }
             else
             {
@@ -162,87 +165,152 @@ public class Player : MonoBehaviour
         }
     }
 
-    public IEnumerator SpecialAttackCoroutine(int ID)
+    // ReSharper disable Unity.PerformanceAnalysis
+    public IEnumerator SpecialAttackCoroutine(int id)
     {
-        List<int> generatedNumbers = new();
         List<float> positions = new();
         int randomNumber;
-        if(ID == 1)
+        int start = Mathf.RoundToInt(150f);
+        int end = Mathf.RoundToInt(6280f);
+        if (id == 1)
         {
-            foreach (GameObject gameobject in casern.troopsPlayer2)
+            if (casern.troopsPlayer2.Count > 0)
             {
-                Debug.Log(gameobject.transform.position.x + " position X");
-                positions.Add(gameobject.transform.position.x);
+                start = Mathf.RoundToInt(casern.troopsPlayer2[0].transform.position.x);
+                end = Mathf.RoundToInt(casern.troopsPlayer2[casern.troopsPlayer2.Count - 1].transform.position.x);
+                for (int i = 0; i < casern.troopsPlayer2.Count; i++)
+                {
+                    Rigidbody2D script = casern.troopsPlayer2[i].GetComponent<Rigidbody2D>();
+                    if (script.constraints != RigidbodyConstraints2D.FreezeAll)
+                    {
+                        positions.Add(script.transform.position.x - 420f - i * 190);
+                    }
+                    else
+                    {
+                        positions.Add(script.transform.position.x - 50f);
+                    }
+                }
+                /*foreach (GameObject gameobject in casern.troopsPlayer2)
+                {
+                    //Debug.Log(gameobject.transform.position.x + " position X");
+                    Rigidbody2D script = gameobject.GetComponent<Rigidbody2D>();
+                    if (script.constraints != RigidbodyConstraints2D.FreezeAll)
+                    {
+                        positions.Add(gameobject.transform.position.x - 400f * i);
+                    }
+                    else
+                    {
+                        positions.Add(gameobject.transform.position.x - 50f);
+                    }
+                }*/
+            }
+            int range = 10 - positions.Count;
+            for (int i = 0; i < range; i++)
+            {
+                do
+                {
+                    randomNumber = Random.Range(start, end);
+                }
+                while (positions.Contains(randomNumber));
+                positions.Add(randomNumber);
             }
         }
         else
         {
-            foreach (GameObject gameobject in casern.troopsPlayer1)
+            if (casern.troopsPlayer1.Count > 0)
             {
-                //Debug.Log(gameobject.transform.position.x + " position X");
+                foreach (GameObject gameobject in casern.troopsPlayer1)
+                {
+                    //Debug.Log(gameobject.transform.position.x + " position X");
+                    Rigidbody2D script = gameobject.GetComponent<Rigidbody2D>();
+                    if (script.constraints != RigidbodyConstraints2D.FreezeAll)
+                    {
+                        positions.Add(gameobject.transform.position.x + 400f);
+                    }
+                    else
+                    {
+                        positions.Add(gameobject.transform.position.x - 50f);
+                    }
+                }
+            }
+
+            int range = 10 - positions.Count;
+            for(int i=0; i < range; i++)
+            {
+                do
+                {
+                    randomNumber = Random.Range(start, end);
+                }
+                while (positions.Contains(randomNumber));
+                positions.Add(randomNumber);
             }
         }
         for (int i = 0; i < positions.Count; i++)
         {
-            do
+            float precisionShot = Random.Range(-precision, precision) * Random.Range(-500f, 500f);
+            print(precisionShot);
+            if (precisionShot < 150f)
             {
-                randomNumber = Random.Range(1, 21);
+                precisionShot = 150f;
             }
-            while (generatedNumbers.Contains(randomNumber));
-
-            positions.Add(randomNumber * 200);
-            if (ID == 1)
+            else if (precisionShot > 6280f)
             {
-                Vector2 newPosition = transform.position + new Vector3(positions[i], 400f, 0f);
-                GameObject newObject = Instantiate(specialAttack, newPosition, Quaternion.identity);
+                precisionShot = 6280f;
             }
-            else if (ID == 2)
+            //print(precisionShot + " precision shot");
+            //print(positions[i] + precisionShot + " actual  shot");
+            if (id == 1)
             {
-                Vector2 newPosition = transform.position + new Vector3(-200f * randomNumber, 400f, 0f);
-                GameObject newObject = Instantiate(specialAttack, newPosition, Quaternion.identity);
+                Vector2 newPosition = transform.position + new Vector3(positions[i] + precisionShot, 400f, 0f);
+                Instantiate(specialAttack, newPosition, Quaternion.identity);
             }
-            yield return new WaitForSeconds(0.2f);
+            else if (id == 2)
+            {
+                Vector2 newPosition = transform.position + new Vector3(positions[i] + precisionShot, 400f, 0f);
+                Instantiate(specialAttack, newPosition, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(0.6f);
         }
         yield return null;
     }
 
-    public void upgradeTroopLevel(int troop)
+    public void UpgradeTroopLevel(int troop)
     {
         switch (troop)
         {
             case 1:
-                Debug.Log(money + " money " + troops1UpgradeCosts[troop1level][0] + " cout " + (money - troops1UpgradeCosts[troop1level][0]) + " resultat");
-                if(troop1level < 3 && money >= troops1UpgradeCosts[troop1level][0] && age >= troops1UpgradeCosts[troop1level][1])
+                Debug.Log(money + " money " + _troops1UpgradeCosts[troop1Level][0] + " cout " + (money - _troops1UpgradeCosts[troop1Level][0]) + " resultat");
+                if(troop1Level < 3 && money >= _troops1UpgradeCosts[troop1Level][0] && age >= _troops1UpgradeCosts[troop1Level][1])
                 {
-                    AddMoney(-troops1UpgradeCosts[troop1level][0]);
-                    troop1level += 1;
+                    AddMoney(-_troops1UpgradeCosts[troop1Level][0]);
+                    troop1Level += 1;
                 }
                 break;
 
             case 2:
-                Debug.Log(money + " money " + troops2UpgradeCosts[troop2level][0] + " cout " + (money - troops2UpgradeCosts[troop2level][0]) + " resultat");
-                if (troop2level < 3 && money >= troops2UpgradeCosts[troop2level][0] && age >= troops2UpgradeCosts[troop2level][1])
+                Debug.Log(money + " money " + _troops2UpgradeCosts[troop2Level][0] + " cout " + (money - _troops2UpgradeCosts[troop2Level][0]) + " resultat");
+                if (troop2Level < 3 && money >= _troops2UpgradeCosts[troop2Level][0] && age >= _troops2UpgradeCosts[troop2Level][1])
                 {
-                    AddMoney(-troops2UpgradeCosts[troop2level][0]);
-                    troop2level += 1;
+                    AddMoney(-_troops2UpgradeCosts[troop2Level][0]);
+                    troop2Level += 1;
                 }
                 break;
 
             case 3:
-                Debug.Log(money + " money " + troops3UpgradeCosts[troop3level][0] + " cout " + (money - troops3UpgradeCosts[troop3level][0]) + " resultat");
-                if (troop3level < 3 && money >= troops3UpgradeCosts[troop3level][0] && age >= troops3UpgradeCosts[troop3level][1])
+                Debug.Log(money + " money " + _troops3UpgradeCosts[troop3Level][0] + " cout " + (money - _troops3UpgradeCosts[troop3Level][0]) + " resultat");
+                if (troop3Level < 3 && money >= _troops3UpgradeCosts[troop3Level][0] && age >= _troops3UpgradeCosts[troop3Level][1])
                 {
-                    AddMoney(-troops3UpgradeCosts[troop3level][0]);
-                    troop3level += 1;
+                    AddMoney(-_troops3UpgradeCosts[troop3Level][0]);
+                    troop3Level += 1;
                 }
                 break;
 
             case 4:
-                Debug.Log(money + " money " + troops4UpgradeCosts[troop4level][0] + " cout " + (money - troops4UpgradeCosts[troop4level][0]) + " resultat");
-                if (troop4level < 3 && money >= troops4UpgradeCosts[troop4level][0] && age >= troops4UpgradeCosts[troop4level][1])
+                Debug.Log(money + " money " + _troops4UpgradeCosts[troop4Level][0] + " cout " + (money - _troops4UpgradeCosts[troop4Level][0]) + " resultat");
+                if (troop4Level < 3 && money >= _troops4UpgradeCosts[troop4Level][0] && age >= _troops4UpgradeCosts[troop4Level][1])
                 {
-                    AddMoney(-troops4UpgradeCosts[troop4level][0]);
-                    troop4level += 1;
+                    AddMoney(-_troops4UpgradeCosts[troop4Level][0]);
+                    troop4Level += 1;
                 }
                 break;
         }
@@ -252,5 +320,26 @@ public class Player : MonoBehaviour
     {
         textMoney.text = "Money : " + castle.player.GetMoney();
         textXp.text = "XP : " + castle.player.GetXp();
+        switch (age)
+        {
+            case 1:
+                precision = 5f;
+                break;
+            case 2:
+                precision = 4f;
+                break;
+            case 3:
+                precision = 3f;
+                break;
+            case 4:
+                precision = 1f;
+                break;
+            case 5:
+                precision = 1f;
+                break;
+            case 6:
+                precision = 0f;
+                break;
+        }
     }
 }

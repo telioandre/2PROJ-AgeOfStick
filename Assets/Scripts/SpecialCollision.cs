@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpecialCollision : MonoBehaviour
 {
-    public int ID = 0;
+    public int id;
     public Player player1;
     public Player player2;
 

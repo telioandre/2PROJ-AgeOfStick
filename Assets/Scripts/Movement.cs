@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Xml;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Movement : MonoBehaviour
 {
     public Rigidbody2D rb2d;
     public float speed;
-    public int ID;
+    public int id;
     public bool movementAllowed = true;
     public int life;
     public int attack;
@@ -26,38 +23,37 @@ public class Movement : MonoBehaviour
     public Image fill;*/
 
 
-    private List<int> troop1dropsXp;
-    private List<int> troop2dropsXp;
-    private List<int> troop3dropsXp;
-    private List<int> troop4dropsXp;
+    private List<int> _troop1dropsXp;
+    private List<int> _troop2dropsXp;
+    private List<int> _troop3dropsXp;
+    private List<int> _troop4dropsXp;
 
-    private List<int> troop1drops;
-    private List<int> troop2drops;
-    private List<int> troop3drops;
-    private List<int> troop4drops;
+    private List<int> _troop1drops;
+    private List<int> _troop2drops;
+    private List<int> _troop3drops;
+    private List<int> _troop4drops;
 
-    private List<int> troop1dropsRange;
-    private List<int> troop2dropsRange;
-    private List<int> troop3dropsRange;
-    private List<int> troop4dropsRange;
+    private List<int> _troop1dropsRange;
+    private List<int> _troop2dropsRange;
+    private List<int> _troop3dropsRange;
+    private List<int> _troop4dropsRange;
 
-    private System.Random random = new System.Random();
-    void Start()
+    private void Start()
     {
-        troop1dropsXp = new List<int>() { 190, 200, 210, 220, 230, 240 };
-        troop2dropsXp = new List<int>() { 200, 210, 220, 230, 240, 250 };
-        troop3dropsXp = new List<int>() { 220, 230, 240, 250, 260, 270 };
-        troop4dropsXp = new List<int>() { 250, 260, 270, 280, 290, 300 };
+        _troop1dropsXp = new List<int>() { 190, 200, 210, 220, 230, 240 };
+        _troop2dropsXp = new List<int>() { 200, 210, 220, 230, 240, 250 };
+        _troop3dropsXp = new List<int>() { 220, 230, 240, 250, 260, 270 };
+        _troop4dropsXp = new List<int>() { 250, 260, 270, 280, 290, 300 };
 
-        troop1drops = new List<int>() { 2, 8, 17, 32, 75, 150 };
-        troop2drops = new List<int>() { 1, 3, 13, 25, 60, 130 };
-        troop3drops = new List<int>() { 4, 9, 19, 34, 85, 175 };
-        troop4drops = new List<int>() { 6, 11, 20, 40, 100, 195 };
+        _troop1drops = new List<int>() { 2, 8, 17, 32, 75, 150 };
+        _troop2drops = new List<int>() { 1, 3, 13, 25, 60, 130 };
+        _troop3drops = new List<int>() { 4, 9, 19, 34, 85, 175 };
+        _troop4drops = new List<int>() { 6, 11, 20, 40, 100, 195 };
 
-        troop1dropsRange = new List<int>() { 2, 4, 4, 8, 20, 25 };
-        troop2dropsRange = new List<int>() { 1, 4, 4, 10, 20, 30 };
-        troop3dropsRange = new List<int>() { 2, 6, 6, 11, 25, 20 };
-        troop4dropsRange = new List<int>() { 6, 6, 15, 20, 30, 45 };
+        _troop1dropsRange = new List<int>() { 2, 4, 4, 8, 20, 25 };
+        _troop2dropsRange = new List<int>() { 1, 4, 4, 10, 20, 30 };
+        _troop3dropsRange = new List<int>() { 2, 6, 6, 11, 25, 20 };
+        _troop4dropsRange = new List<int>() { 6, 6, 15, 20, 30, 45 };
 
         rb2d = GetComponent<Rigidbody2D>();
     }
@@ -73,32 +69,32 @@ public class Movement : MonoBehaviour
     {
         if (movementAllowed)
         {
-            if (ID == 1)
+            if (id == 1)
             {
 
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
             }
-            else if (ID == 2)
+            else if (id == 2)
             {
                 rb2d.velocity = new Vector2(-(speed), rb2d.velocity.y);
             }
         }
     }
 
-    public int getId()
+    public int GetId()
     {
-        return ID;
+        return id;
     }
 
-    public string getUniqueId()
+    public string GetUniqueId()
     {
         return uniqueId;
     }
 
     //Initialise les paramètres de l'objet prefab
-    public void setPlayer(int playerId, int newTroopId)
+    public void SetPlayer(int playerId, int newTroopId)
     {
-        ID = playerId;
+        id = playerId;
         troopId = newTroopId;
         uniqueId = System.Guid.NewGuid().ToString();
         char troopName = name[6];
@@ -107,19 +103,19 @@ public class Movement : MonoBehaviour
         switch (troopNumber)
         {
             case 1:
-                troopLevel = player.troop1level;
+                troopLevel = player.troop1Level;
                 break;
 
             case 2:
-                troopLevel = player.troop2level;
+                troopLevel = player.troop2Level;
                 break;
 
             case 3:
-                troopLevel = player.troop3level;
+                troopLevel = player.troop3Level;
                 break;
 
             case 4:
-                troopLevel = player.troop4level;
+                troopLevel = player.troop4Level;
                 break;
         }
         for (int i = 1; i < player.age; i++)
@@ -140,19 +136,19 @@ public class Movement : MonoBehaviour
     }
     private void Endbuild()
     {
-        if (ID == 1)
+        if (id == 1)
         {
             transform.position = new Vector2(50, 600);
 
         }
-        else if (ID == 2)
+        else if (id == 2)
         {
             transform.position = new Vector2(3000, 600);
             transform.position = new Vector2(5500, 600);
         }
     }
 
-    public bool superEffective(int ally, int enemy)
+    public bool SuperEffective(int ally, int enemy)
     {
         if (ally == enemy - 1 || (ally == 1 && enemy == 4))
         {
@@ -161,7 +157,7 @@ public class Movement : MonoBehaviour
         return false;
     }
 
-    public void dropRewards(int troop, Player ally, Player enemy)
+    public void DropRewards(int troop, Player ally, Player enemy)
     {
         //Debug.Log(troop + " troop name");
 
@@ -169,78 +165,78 @@ public class Movement : MonoBehaviour
         {
             case 1:
 
-                ally.AddMoney(troop1drops[player.age - 1] + troop1dropsRange[player.age - 1]);
-                ally.AddXp(troop1dropsXp[player.age - 1]);
-                enemy.AddMoney((troop1drops[player.age - 1] + troop1dropsRange[player.age - 1]) / 2);
-                enemy.AddXp(troop1dropsXp[player.age - 1] / 2);
+                ally.AddMoney(_troop1drops[player.age - 1] + _troop1dropsRange[player.age - 1]);
+                ally.AddXp(_troop1dropsXp[player.age - 1]);
+                enemy.AddMoney((_troop1drops[player.age - 1] + _troop1dropsRange[player.age - 1]) / 2);
+                enemy.AddXp(_troop1dropsXp[player.age - 1] / 2);
                 break;
 
             case 2:
 
-                ally.AddMoney(troop2drops[player.age - 1] + troop2dropsRange[player.age - 1]);
-                ally.AddXp(troop2dropsXp[player.age - 1]);
-                enemy.AddMoney((troop2drops[player.age - 1] + troop2dropsRange[player.age - 1]) / 2);
-                enemy.AddXp(troop2dropsXp[player.age - 1] / 2);
+                ally.AddMoney(_troop2drops[player.age - 1] + _troop2dropsRange[player.age - 1]);
+                ally.AddXp(_troop2dropsXp[player.age - 1]);
+                enemy.AddMoney((_troop2drops[player.age - 1] + _troop2dropsRange[player.age - 1]) / 2);
+                enemy.AddXp(_troop2dropsXp[player.age - 1] / 2);
                 break;
 
             case 3:
 
-                ally.AddMoney(troop3drops[player.age - 1] + troop3dropsRange[player.age - 1]);
-                ally.AddXp(troop3dropsXp[player.age - 1]);
-                enemy.AddMoney((troop3drops[player.age - 1] + troop3dropsRange[player.age - 1]) / 2);
-                enemy.AddXp(troop3dropsXp[player.age - 1] / 2);
+                ally.AddMoney(_troop3drops[player.age - 1] + _troop3dropsRange[player.age - 1]);
+                ally.AddXp(_troop3dropsXp[player.age - 1]);
+                enemy.AddMoney((_troop3drops[player.age - 1] + _troop3dropsRange[player.age - 1]) / 2);
+                enemy.AddXp(_troop3dropsXp[player.age - 1] / 2);
                 break;
 
             case 4:
 
-                ally.AddMoney(troop4drops[player.age - 1] + troop4dropsRange[player.age - 1]);
-                ally.AddXp(troop4dropsXp[player.age - 1]);
-                enemy.AddMoney((troop4drops[player.age - 1] + troop4dropsRange[player.age - 1]) / 2);
-                enemy.AddXp(troop4dropsXp[player.age - 1] / 2);
+                ally.AddMoney(_troop4drops[player.age - 1] + _troop4dropsRange[player.age - 1]);
+                ally.AddXp(_troop4dropsXp[player.age - 1]);
+                enemy.AddMoney((_troop4drops[player.age - 1] + _troop4dropsRange[player.age - 1]) / 2);
+                enemy.AddXp(_troop4dropsXp[player.age - 1] / 2);
                 break;
         }
 
     }
 
-    public IEnumerator attackPlayer(Movement Enemy, Rigidbody2D myRb, Player ally, Player enemy)
+    public IEnumerator AttackPlayer(Movement enemyMovement, Rigidbody2D myRb, Player ally, Player enemy)
     {
         yield return new WaitForSeconds(attackTime);
-        while (life > 0 && Enemy != null && Enemy.life > 0)
+        while (life > 0 && enemyMovement && enemyMovement.life > 0)
         {
             //On divise par 2 car la coroutine se lance 2 fois (1 par objet en contact)
-            int damage = Enemy.attack / 2 /*+ random.Next(0, 10)*/;
+            int damage = enemyMovement.attack / 2 /*+ random.Next(0, 10)*/;
             char allyChar = name[6];
-            char enemyChar = Enemy.name[6];
+            char enemyChar = enemyMovement.name[6];
             int allyNumber = int.Parse(allyChar.ToString());
             int enemyNumber = int.Parse(enemyChar.ToString());
             
-            if (superEffective(allyNumber, enemyNumber))
+            if (SuperEffective(allyNumber, enemyNumber))
             {
                 Debug.Log("DEGAT AVANT : " + damage);
                 damage = Mathf.RoundToInt(damage * 1.5f);
                 Debug.Log("DEGAT APRES : " + damage);
             }
             life -= damage;
-            Enemy.life -= attack / 2 + random.Next(0, 10);
-            if (Enemy.life <= 0)
+            enemyMovement.life -= attack / 2 + Random.Range(0, 10);
+            if (enemyMovement.life <= 0)
             {
-                dropRewards(enemyNumber, ally, enemy);
-                Enemy.life = 0;
-                casern.DestroyTroop(Enemy.ID, Enemy.uniqueId);
-                Destroy(Enemy.gameObject);
+                DropRewards(enemyNumber, ally, enemy);
+                enemyMovement.life = 0;
+                casern.DestroyTroop(enemyMovement.id, enemyMovement.uniqueId);
+                Destroy(enemyMovement.gameObject);
             }
             if (life <= 0)
             {
-                dropRewards(allyNumber, ally, enemy);
+                DropRewards(allyNumber, ally, enemy);
                 life = 0;
-                casern.DestroyTroop(ID, uniqueId);
+                casern.DestroyTroop(id, uniqueId);
                 Destroy(gameObject);      
             }
             myRb.constraints = RigidbodyConstraints2D.None;
         }
     }
 
-        public IEnumerator troopUnderSpecial(Movement troop, SpecialCollision special, Player otherPlayer)
+        public IEnumerator TroopUnderSpecial(Movement troop, SpecialCollision special, Player otherPlayer)
         {
 
             char troopChar = troop.name[6];
@@ -281,8 +277,8 @@ public class Movement : MonoBehaviour
             if (troop.life <= 0)
             {
                 life = 0;
-                casern.DestroyTroop(troop.ID, troop.uniqueId);
-                dropRewards(troopNumber, otherPlayer, troop.player);
+                casern.DestroyTroop(troop.id, troop.uniqueId);
+                DropRewards(troopNumber, otherPlayer, troop.player);
                 Destroy(troop.gameObject);
             }
             yield return null;

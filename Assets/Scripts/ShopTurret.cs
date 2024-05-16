@@ -3,50 +3,50 @@ using UnityEngine.UI;
 
 public class TourelleLente : MonoBehaviour
 {
-    private Archi archiClass;
+    private Archi _archiClass;
 
     public SpriteRenderer spriteRenderer1;
     public SpriteRenderer spriteRenderer2;
-    public SpriteRenderer spriteRenderer3;// Référence au SpriteRenderer du sprite que vous voulez afficher
-    public Button button;  // Référence au bouton
+    public SpriteRenderer spriteRenderer3;// RÃ©fÃ©rence au SpriteRenderer du sprite que vous voulez afficher
+    public Button button;  // RÃ©fÃ©rence au bouton
 
-    // Fonction appelée lors du clic sur le bouton
+    // Fonction appelÃ©e lors du clic sur le bouton
     void OnButtonClick()
     {
         Debug.Log("clique");
         spriteRenderer1.enabled = !spriteRenderer1.enabled;
         spriteRenderer2.enabled = !spriteRenderer2.enabled;
-        spriteRenderer3.enabled = !spriteRenderer3.enabled;// Inverser la visibilité du sprite lors du clic sur le bouton
+        spriteRenderer3.enabled = !spriteRenderer3.enabled;// Inverser la visibilitÃ© du sprite lors du clic sur le bouton
 
         if (gameObject.CompareTag("Turret Slow"))
         {
-            Debug.Log("Turret Slow cliquée");
-            archiClass.ChoiceType(1);
+            Debug.Log("Turret Slow cliquÃ©e");
+            _archiClass.ChoiceType(1);
         }
         else if (gameObject.CompareTag("Turret Medium"))
         {
-            Debug.Log("Turret Medium cliquée");
-            archiClass.ChoiceType(2);
+            Debug.Log("Turret Medium cliquÃ©e");
+            _archiClass.ChoiceType(2);
         }
         else if (gameObject.CompareTag("Turret Fast"))
         {
-            Debug.Log("Turret Fast cliquée");
-            archiClass.ChoiceType(3);
+            Debug.Log("Turret Fast cliquÃ©e");
+            _archiClass.ChoiceType(3);
         }
     }
 
     public bool IsSpriteEnabled()
     {
-        return spriteRenderer1.enabled; // Retourne l'état actuel du SpriteRenderer
+        return spriteRenderer1.enabled; // Retourne l'Ã©tat actuel du SpriteRenderer
     }
 
     void Start()
     {
-        archiClass = FindObjectOfType<Archi>();
+        _archiClass = FindObjectOfType<Archi>();
         // Assurez-vous que le bouton est non null
         if (button != null)
         {
-            // Ajoutez un écouteur d'événements pour détecter le clic sur le bouton
+            // Ajoutez un Ã©couteur d'Ã©vÃ©nements pour dÃ©tecter le clic sur le bouton
             button.onClick.AddListener(OnButtonClick);
         }
         else
@@ -61,7 +61,7 @@ public class TourelleLente : MonoBehaviour
         }
         else
         {            
-            // Désactivez le sprite au démarrage
+            // DÃ©sactivez le sprite au dÃ©marrage
             spriteRenderer1.enabled = false;
             spriteRenderer2.enabled = false;
             spriteRenderer3.enabled = false;

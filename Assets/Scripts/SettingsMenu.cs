@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -7,18 +6,18 @@ public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public TMPro.TMP_Dropdown resolutionDropdown;
-    Resolution[] resolutions;
+    Resolution[] _resolutions;
 
     private void Start()
     {
-        resolutions = Screen.resolutions;
+        _resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
 
-        for (int i=0; i < resolutions.Length; i++)
+        for (int i=0; i < _resolutions.Length; i++)
         {
-            string option = resolutions[i].width + "x" + resolutions[i].height;
+            string option = _resolutions[i].width + "x" + _resolutions[i].height;
             options.Add(option);
         }
 
