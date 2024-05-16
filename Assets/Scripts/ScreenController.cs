@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreenController : MonoBehaviour
@@ -30,7 +28,7 @@ public class ScreenController : MonoBehaviour
         Screen.SetResolution(3440, 1440, FullScreenMode.Windowed);
     }
 
-    public void setFullscreen()
+    public void SetFullscreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
     }

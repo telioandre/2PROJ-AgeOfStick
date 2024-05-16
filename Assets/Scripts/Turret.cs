@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
 
     public string name1 = "none";
     public string age = "none";
-    public int type = 0;
-    public int placement = 0;
+    public int type;
+    public int placement;
 
 
     // Constructeur de la classe
@@ -18,12 +18,12 @@ public class Turret : MonoBehaviour
         type = typeTurret;
         placement = placementTurret;
         // Obtenez le composant SpriteRenderer
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         // Assurez-vous que le composant SpriteRenderer existe
-        if (spriteRenderer == null)
+        if (_spriteRenderer == null)
         {
-            // Si le SpriteRenderer n'est pas trouvé sur cet objet, ajoutez-le
-            spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            // Si le SpriteRenderer n'est pas trouvÃ© sur cet objet, ajoutez-le
+            _spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         }
     }
 
@@ -49,12 +49,12 @@ public class Turret : MonoBehaviour
             Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
             if (newSprite != null)
             {
-                spriteRenderer.sprite = newSprite;
-                Debug.Log("Sprite HexagonFlat chargé avec succès.");
+                _spriteRenderer.sprite = newSprite;
+                Debug.Log("Sprite HexagonFlat chargÃ© avec succÃ¨s.");
             }
             else
             {
-                Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
+                Debug.LogError("Le sprite HexagonFlat n'a pas Ã©tÃ© trouvÃ© dans les ressources.");
             }
         }
         else if (type == 2)
@@ -62,12 +62,12 @@ public class Turret : MonoBehaviour
             Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
             if (newSprite != null)
             {
-                spriteRenderer.sprite = newSprite;
-                Debug.Log("Sprite IsometricDiamond chargé avec succès.");
+                _spriteRenderer.sprite = newSprite;
+                Debug.Log("Sprite IsometricDiamond chargÃ© avec succÃ¨s.");
             }
             else
             {
-                Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
+                Debug.LogError("Le sprite IsometricDiamond n'a pas Ã©tÃ© trouvÃ© dans les ressources.");
             }
         }
         else if (type == 3)
@@ -75,12 +75,12 @@ public class Turret : MonoBehaviour
             Sprite newSprite = Resources.Load<Sprite>("Circle");
             if (newSprite != null)
             {
-                spriteRenderer.sprite = newSprite;
-                Debug.Log("Sprite Circle chargé avec succès.");
+                _spriteRenderer.sprite = newSprite;
+                Debug.Log("Sprite Circle chargÃ© avec succÃ¨s.");
             }
             else
             {
-                Debug.LogError("Le sprite Circle n'a pas été trouvé dans les ressources.");
+                Debug.LogError("Le sprite Circle n'a pas Ã©tÃ© trouvÃ© dans les ressources.");
             }
         }
 

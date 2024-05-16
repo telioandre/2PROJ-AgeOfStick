@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Collisions : MonoBehaviour
 {
@@ -19,7 +17,7 @@ public class Collisions : MonoBehaviour
         if (collision.gameObject.CompareTag("Special") && gameObject.CompareTag("Player"))
         {
             SpecialCollision special = collision.gameObject.GetComponent<SpecialCollision>();
-            int SpecialID = collision.gameObject.GetComponent<SpecialCollision>().ID;
+            int specialID = collision.gameObject.GetComponent<SpecialCollision>().id;
             Player player1 = special.player1;
             Player player2 = special.player2;
             if (player1.baseName == "ally")
@@ -31,9 +29,9 @@ public class Collisions : MonoBehaviour
                 otherPlayer = player2;
             }
 
-            if (SpecialID != currentMovement.ID)
+            if (specialID != currentMovement.id)
             {
-                StartCoroutine(currentMovement.troopUnderSpecial(currentMovement, special, otherPlayer));
+                StartCoroutine(currentMovement.TroopUnderSpecial(currentMovement, special, otherPlayer));
             }
             else
             {
@@ -42,20 +40,21 @@ public class Collisions : MonoBehaviour
         }
 
         // Si une collision concerne un chateau
-        if ((collision.gameObject.CompareTag("player 1") && currentMovement.ID == 2 || (collision.gameObject.CompareTag("player 2") && currentMovement.ID == 1)))
+        if ((collision.gameObject.CompareTag("player 1") && currentMovement.id == 2 || (collision.gameObject.CompareTag("player 2") && currentMovement.id == 1)))
         {
             if (castle != null)
             {
                 //Commence une coroutine qui va faire des dégâts au chateau
                 //Debug.Log("envoie " + castle.ID + "recoit : " + currentMovement.ID);
-                StartCoroutine(castle.DeleteLifePoint(currentMovement.attack, currentMovement.ID, castle));
+                myRb.constraints = RigidbodyConstraints2D.FreezeAll;
+                StartCoroutine(castle.DeleteLifePoint(currentMovement.attack, currentMovement.id, castle));
             }
         }
 
         // Si une collision concerne un autre joueur
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
         {
-            if (otherMovement != null && currentMovement.ID != otherMovement.ID)
+            if (otherMovement != null && currentMovement.id != otherMovement.id)
             {
                 Player enemy = otherMovement.player;
                 //Permet de stop le mouvement 
@@ -64,13 +63,13 @@ public class Collisions : MonoBehaviour
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                     enemyRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }
-                if (otherMovement.ID != currentMovement.ID)
+                if (otherMovement.id != currentMovement.id)
                 {
 
                     if (ally != null && enemy != null)
                     {
                         //Commence une coroutine qui diminue les pv des 2 joueurs en contact
-                        StartCoroutine(currentMovement.attackPlayer(otherMovement, myRb, ally, enemy));
+                        StartCoroutine(currentMovement.AttackPlayer(otherMovement, myRb, ally, enemy));
                     }
                 }
                 else

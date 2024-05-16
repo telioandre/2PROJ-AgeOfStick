@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Clicked : MonoBehaviour
 {
-    private Archi archiClass;
+    private Archi _archiClass;
 
 
     private void Start()
     {
-        archiClass = FindObjectOfType<Archi>();
+        _archiClass = FindObjectOfType<Archi>();
 
     }
     void OnMouseDown()
     {
-        // Fonction à exécuter lorsque la case est cliquée
+        // Fonction Ã  exÃ©cuter lorsque la case est cliquÃ©e
         StartFunction();
     }
 
@@ -24,26 +24,26 @@ public class Clicked : MonoBehaviour
         if (spriteScript != null)
         {
             bool isSpriteEnabled = spriteScript.IsSpriteEnabled();
-            Debug.Log("SpriteRenderer est activé : " + isSpriteEnabled);
+            Debug.Log("SpriteRenderer est activÃ© : " + isSpriteEnabled);
             if (isSpriteEnabled)
             {
-                // Personnalisez le comportement que vous souhaitez exécuter lors du clic sur la case
+                // Personnalisez le comportement que vous souhaitez exÃ©cuter lors du clic sur la case
                 if (gameObject.CompareTag("Turret1"))
                 {
-                    Debug.Log("Turret1 cliquée");
-                    archiClass.placeTurret(1);
+                    Debug.Log("Turret1 cliquÃ©e");
+                    _archiClass.PlaceTurret(1);
                 }
                 else if (gameObject.CompareTag("Turret2"))
                 {
-                    Debug.Log("Turret2 cliquée");
-                    archiClass.placeTurret(2);
+                    Debug.Log("Turret2 cliquÃ©e");
+                    _archiClass.PlaceTurret(2);
                 }
                 else if (gameObject.CompareTag("Turret3"))
                 {
-                    Debug.Log("Turret3 cliquée");
-                    archiClass.placeTurret(3);
+                    Debug.Log("Turret3 cliquÃ©e");
+                    _archiClass.PlaceTurret(3);
                 }
-                archiClass.switchToEnabled();
+                _archiClass.SwitchToEnabled();
             }
         }
     }

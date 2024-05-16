@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PositionTurret : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
     void Start()
     {
-        spriteRenderer.enabled = !spriteRenderer.enabled;
+        _spriteRenderer.enabled = !_spriteRenderer.enabled;
     }
 }

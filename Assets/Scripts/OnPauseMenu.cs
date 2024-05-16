@@ -1,9 +1,9 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.Serialization;
 
 public class OnPauseMenu : MonoBehaviour
 {
-    public GameObject ObjectToActiveAndDeactivate;
+    [FormerlySerializedAs("ObjectToActiveAndDeactivate")] public GameObject objectToActiveAndDeactivate;
 
     private void Start()
     {
@@ -14,10 +14,10 @@ public class OnPauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (ObjectToActiveAndDeactivate != null)
+            if (objectToActiveAndDeactivate != null)
             {
-                bool isActive = ObjectToActiveAndDeactivate.activeSelf;
-                ObjectToActiveAndDeactivate.SetActive(!isActive);
+                bool isActive = objectToActiveAndDeactivate.activeSelf;
+                objectToActiveAndDeactivate.SetActive(!isActive);
 
                 if (!isActive)
                 {

@@ -2,30 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IA : MonoBehaviour
+public class Ia : MonoBehaviour
 {
     public Player player;
     public Player opponent;
     public Castle castle;
     public Casern casern;
-    private DifficultyManager selectedDifficulty;
-    private string difficulty;
-    private int previousLifePoint; 
-    private int frameCounter = 0;
-    private int updateInterval = 360;
-    private float cooldown = -2f;
-    private float lastCombo;
+    private DifficultyManager _selectedDifficulty;
+    private string _difficulty;
+    private int _previousLifePoint; 
+    private int _frameCounter;
+    private const int UpdateInterval = 360;
+    private const float Cooldown = -2f;
+    private float _lastCombo;
 
     private void Start()
     {
-        selectedDifficulty = DifficultyManager.difficulty;
-        difficulty = "Easy";
-        //difficulty = selectedDifficulty.ToString().Split(' ')[0];
-        Debug.Log(difficulty);
-        previousLifePoint = castle.maxLifePoint;
-        lastCombo = -cooldown;
-        switch (difficulty)
+        _selectedDifficulty = DifficultyManager.difficulty;
+        _difficulty = "Easy";
+        //_difficulty = _selectedDifficulty.ToString().Split(' ')[0];
+        Debug.Log(_difficulty);
+        _previousLifePoint = castle.maxLifePoint;
+        _lastCombo = -Cooldown;
+        switch (_difficulty)
         {
+            case "Easy":
+                //player.AddXp(6400);
+                //player.AgeUp();
+                break;
             case "Normal":
                 player.AddMoney(20);
                 break;
@@ -40,17 +44,17 @@ public class IA : MonoBehaviour
 
     void Update()
     {
-        frameCounter++;
-        if(frameCounter % updateInterval == 0 )
+        _frameCounter++;
+        if(_frameCounter % UpdateInterval == 0 )
         {
             int randomNumber = Random.Range(1, 21);
             //Debug.Log(randomNumber);
 
             if (player.xp >= player.ageCosts[player.age - 1])
             {
-                IAgeUp();
+                AgeUp();
             }
-            switch (difficulty)
+            switch (_difficulty)
             {
                 case "Easy":
                     /*if (randomNumber <= 3)
@@ -79,13 +83,13 @@ public class IA : MonoBehaviour
                     }*/
                     break;
                 case "Normal":
-                    if ((castle.lifePoint < previousLifePoint || randomNumber >= 15) && player.numberOfTroop == 0)
+                    if ((castle.lifePoint < _previousLifePoint || randomNumber >= 15) && player.numberOfTroop == 0)
                     {
                         IaGenerateEffectiveTroop(); // sur le premier
                     }
                     if (randomNumber <= 2)
                     {
-                        if (castle.numberOfTower + castle.TowerSpotAvailable < 4)
+                        if (castle.numberOfTower + castle.towerSpotAvailable < 4)
                         {
                             IaBuildTowerSpot();
                         }
@@ -115,19 +119,19 @@ public class IA : MonoBehaviour
                             IaGenerateEffectiveTroop(); // sur le premier
                         }
                         List<int> possibleTroop = new List<int>() { 1, 2, 3, 4 };
-                        int troopToAvoid = countTroops();
+                        int troopToAvoid = CountTroops();
                         possibleTroop.Remove((troopToAvoid % 4) + 1);
                         int randomIndex = Random.Range(0, possibleTroop.Count);
                         int troopToInstantiate = possibleTroop[randomIndex];
                         int value = int.Parse("2" + troopToInstantiate);
                         casern.InstantiateTroop(value);
                     }
-                    previousLifePoint = castle.lifePoint;
+                    _previousLifePoint = castle.lifePoint;
                     break;
                 case "Hard":
                     if (randomNumber <= 3)
                     {
-                        if (castle.numberOfTower + castle.TowerSpotAvailable < 4)
+                        if (castle.numberOfTower + castle.towerSpotAvailable < 4)
                         {
                             IaBuildTowerSpot();
                         }
@@ -151,21 +155,21 @@ public class IA : MonoBehaviour
                     {
                         IaGenerateEffectiveTroop(); // sur celle équivalent
                     }
-                    if (randomNumber >= 18 && Time.time - lastCombo > -cooldown)
+                    if (randomNumber >= 18 && Time.time - _lastCombo > -Cooldown)
                     {
                         StartCoroutine(IaGenerateCombos());
-                        lastCombo = Time.time;
+                        _lastCombo = Time.time;
                     }
-                    previousLifePoint = castle.lifePoint;
+                    _previousLifePoint = castle.lifePoint;
                     break;
                 case "Impossible":
                     IaGenerateEffectiveTroop();
                     break;
             }
-            frameCounter = 0;
+            _frameCounter = 0;
         }
     }
-    public int countTroops()
+    public int CountTroops()
     {
         int[] numberTroops = new int[4];
 
@@ -187,17 +191,17 @@ public class IA : MonoBehaviour
                     break;
             }
         }
-        int max_index = 0;
+        int maxIndex = 0;
         for (int i = 1; i < 4; i++)
         {
-            if (numberTroops[i] > numberTroops[max_index])
+            if (numberTroops[i] > numberTroops[maxIndex])
             {
-                max_index = i;
+                maxIndex = i;
             }
 
         }
-        Debug.Log(max_index + 1);
-        return max_index + 1;
+        Debug.Log(maxIndex + 1);
+        return maxIndex + 1;
     }
     void IaGenerateTroop()
     {
@@ -303,7 +307,7 @@ public class IA : MonoBehaviour
 
     void IaUpgradeTroop(int troop)
     {
-        player.upgradeTroopLevel(troop);
+        player.UpgradeTroopLevel(troop);
     }
 
     void IaUpgradeTower()
@@ -311,7 +315,7 @@ public class IA : MonoBehaviour
 
     }
 
-    void IAgeUp()
+    void AgeUp()
     {
         //Debug.Log(" IAge Up");
         player.AgeUp();

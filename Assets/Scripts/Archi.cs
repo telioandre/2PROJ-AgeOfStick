@@ -10,23 +10,23 @@ public class Archi : MonoBehaviour
     public SpriteRenderer spriteRenderer2;
     public SpriteRenderer spriteRenderer3;
     public GameObject objectToInstantiate;
-    private int typeChoice;
+    private int _typeChoice;
 
-    public void switchToEnabled()
+    public void SwitchToEnabled()
     {
         spriteRenderer1.enabled = !spriteRenderer1.enabled;
         spriteRenderer2.enabled = !spriteRenderer2.enabled;
         spriteRenderer3.enabled = !spriteRenderer3.enabled;
     }
 
-    public int ChoiceType(int type) => typeChoice = type;
+    public int ChoiceType(int type) => _typeChoice = type;
 
-    public void placeTurret(int placement)
+    public void PlaceTurret(int placement)
     {
         Debug.Log(placement);
         GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
         Turret script = newObject.GetComponent<Turret>();
-        script.Initialize("test", "test", typeChoice, placement);
+        script.Initialize("test", "test", _typeChoice, placement);
         script.SetPosition();
         script.SetSprite();
         if (listTurret[placement - 1] != newObject)
