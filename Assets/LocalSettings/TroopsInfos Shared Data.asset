@@ -55,6 +55,30 @@ MonoBehaviour:
     m_Key: stop
     m_Metadata:
       m_Items: []
+  - m_Id: 4901852497186816
+    m_Key: special_troop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4907286280933376
+    m_Key: turrets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4907302349312000
+    m_Key: slow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4907326793715712
+    m_Key: av
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4907672383393792
+    m_Key: quick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4908337558065152
+    m_Key: speed
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

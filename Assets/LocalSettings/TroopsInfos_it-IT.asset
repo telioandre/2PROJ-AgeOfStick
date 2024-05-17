@@ -58,6 +58,30 @@ MonoBehaviour:
     m_Localized: Lasciare
     m_Metadata:
       m_Items: []
+  - m_Id: 4901852497186816
+    m_Localized: Elite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4907302349312000
+    m_Localized: Bassa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4907326793715712
+    m_Localized: Media
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4907286280933376
+    m_Localized: Torretta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4907672383393792
+    m_Localized: Veloce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4908337558065152
+    m_Localized: "Velocit\xE0 :"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
