@@ -1,49 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Clicked : MonoBehaviour
 {
-    private Archi _archiClass;
+    private Archi archiClass;
 
 
     private void Start()
     {
-        _archiClass = FindObjectOfType<Archi>();
+        archiClass = FindObjectOfType<Archi>();
 
     }
     void OnMouseDown()
     {
-        // Fonction Ã  exÃ©cuter lorsque la case est cliquÃ©e
+        // Fonction à exécuter lorsque la case est cliquée
         StartFunction();
     }
 
     void StartFunction()
     {
         
-        TourelleLente spriteScript = FindObjectOfType<TourelleLente>();
+        ShopTurret spriteScript = FindObjectOfType<ShopTurret>();
 
         if (spriteScript != null)
         {
             bool isSpriteEnabled = spriteScript.IsSpriteEnabled();
-            Debug.Log("SpriteRenderer est activÃ© : " + isSpriteEnabled);
+            Debug.Log("SpriteRenderer est activé : " + isSpriteEnabled);
             if (isSpriteEnabled)
             {
-                // Personnalisez le comportement que vous souhaitez exÃ©cuter lors du clic sur la case
+                Debug.Log("pass 1");
+                // Personnalisez le comportement que vous souhaitez exécuter lors du clic sur la case
                 if (gameObject.CompareTag("Turret1"))
                 {
-                    Debug.Log("Turret1 cliquÃ©e");
-                    _archiClass.PlaceTurret(1);
+                    Debug.Log("Turret1 cliquée");
+                    archiClass.placeTurret(1);
                 }
                 else if (gameObject.CompareTag("Turret2"))
                 {
-                    Debug.Log("Turret2 cliquÃ©e");
-                    _archiClass.PlaceTurret(2);
+                    Debug.Log("Turret2 cliquée");
+                    archiClass.placeTurret(2);
                 }
                 else if (gameObject.CompareTag("Turret3"))
                 {
-                    Debug.Log("Turret3 cliquÃ©e");
-                    _archiClass.PlaceTurret(3);
+                    Debug.Log("Turret3 cliquée");
+                    archiClass.placeTurret(3);
                 }
-                _archiClass.SwitchToEnabled();
+                else if (gameObject.CompareTag("Turret4"))
+                {
+                    Debug.Log("Turret4 cliquée");
+                    archiClass.placeTurret(4);
+                }
+                archiClass.switchToEnabled();
             }
         }
     }

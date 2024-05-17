@@ -14,11 +14,12 @@ TagManager:
   - player 1
   - Turret1
   - Special
+  - Turret4
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
