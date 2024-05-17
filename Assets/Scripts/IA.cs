@@ -19,7 +19,7 @@ public class Ia : MonoBehaviour
     private void Start()
     {
         _selectedDifficulty = DifficultyManager.difficulty;
-        _difficulty = "Easy";
+        _difficulty = "Impossible";
         //_difficulty = _selectedDifficulty.ToString().Split(' ')[0];
         Debug.Log(_difficulty);
         _previousLifePoint = castle.maxLifePoint;
@@ -27,17 +27,18 @@ public class Ia : MonoBehaviour
         switch (_difficulty)
         {
             case "Easy":
-                //player.AddXp(6400);
-                //player.AgeUp();
                 break;
             case "Normal":
                 player.AddMoney(20);
+                player.AddXp(200);
                 break;
             case "Hard":
                 player.AddMoney(30);
+                player.AddXp(300);
                 break;
             case "Impossible":
                 player.AddMoney(40);
+                player.AddXp(1500);
                 break;
         }
     }
@@ -50,14 +51,14 @@ public class Ia : MonoBehaviour
             int randomNumber = Random.Range(1, 21);
             //Debug.Log(randomNumber);
 
-            if (player.xp >= player.ageCosts[player.age - 1])
+            if (player.xp >= player.ageCosts[player.age - 1] && _difficulty != "Impossible")
             {
-                AgeUp();
+                IAgeUp();
             }
             switch (_difficulty)
             {
                 case "Easy":
-                    /*if (randomNumber <= 3)
+                    if (randomNumber <= 3)
                     {
                         IaSpecialAttack();
                     }
@@ -68,7 +69,7 @@ public class Ia : MonoBehaviour
                     }
                     if (randomNumber > 5 && randomNumber <= 7)
                     {
-                        if (castle.numberOfTower + castle.TowerSpotAvailable < 4)
+                        if (castle.numberOfTower + castle.towerSpotAvailable < 4)
                         {
                             IaBuildTowerSpot();
                         }
@@ -79,8 +80,8 @@ public class Ia : MonoBehaviour
                     }
                     if(randomNumber >= 15)
                     {
-                        IaGenerateTroop();
-                    }*/
+                        IaGenerateTroop(0);
+                    }
                     break;
                 case "Normal":
                     if ((castle.lifePoint < _previousLifePoint || randomNumber >= 15) && player.numberOfTroop == 0)
@@ -106,13 +107,13 @@ public class Ia : MonoBehaviour
                     if (player.numberOfTroop + 7 <= opponent.numberOfTroop)
                     {
                         IaSpecialAttack();
-                        IaGenerateTroop();
+                        IaGenerateTroop(0);
                     }
                     if (randomNumber >= 15)
                     {
                         if(opponent.numberOfTroop == 0)
                         {
-                            IaGenerateTroop();
+                            IaGenerateTroop(0);
                         }
                         if(player.numberOfTroop == 0 && opponent.numberOfTroop > player.numberOfTroop)
                         {
@@ -143,7 +144,6 @@ public class Ia : MonoBehaviour
                     if (randomNumber > 3 && randomNumber <= 8)
                     {
                         int randomTroop = Random.Range(1, 5);
-                        Debug.Log("troupe à up : " + randomTroop);
                         IaUpgradeTroop(randomTroop);
                     }
                     if (player.numberOfTroop + 5 <= opponent.numberOfTroop)
@@ -163,7 +163,41 @@ public class Ia : MonoBehaviour
                     _previousLifePoint = castle.lifePoint;
                     break;
                 case "Impossible":
+                    bool step1 = false;
                     IaGenerateEffectiveTroop();
+                    while (!step1)
+                    {
+                        if (opponent.numberOfTroop > 4)
+                        {
+                            IaSpecialAttack();
+                        }
+
+                        if (castle.towerSpotAvailable == 4)
+                        {
+                            IaBuildTowerSpot();
+                        }
+
+                        if (castle.numberOfTower == 0)
+                        {
+                            IaBuildTower();
+                            step1 = true;
+                        }
+                    }
+
+                    if (castle.towerSpotAvailable != 0)
+                    {
+                        IaBuildTowerSpot();
+                    }
+
+                    if (castle.numberOfTower < 4)
+                    {
+                        IaBuildTower();
+                    }
+                    IaGenerateTroop(2);
+                    if (opponent.numberOfTroop > player.numberOfTroop + 5)
+                    {
+                        IaSpecialAttack();
+                    }
                     break;
             }
             _frameCounter = 0;
@@ -203,10 +237,13 @@ public class Ia : MonoBehaviour
         Debug.Log(maxIndex + 1);
         return maxIndex + 1;
     }
-    void IaGenerateTroop()
+    void IaGenerateTroop(int troop)
     {
-        int randomTroop = Random.Range(1, 5);
-        switch (randomTroop)
+        if (troop == 0)
+        {
+            troop = Random.Range(1, 5);
+        }
+        switch (troop)
         {
             case 1:
                 casern.InstantiateTroop(21);
@@ -315,10 +352,15 @@ public class Ia : MonoBehaviour
 
     }
 
-    void AgeUp()
+    void IAgeUp()
     {
         //Debug.Log(" IAge Up");
         player.AgeUp();
+    }
+
+    void IaSell()
+    {
+        
     }
     void IaSpecialAttack()
     {
