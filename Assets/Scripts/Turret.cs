@@ -1,47 +1,91 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Turret : MonoBehaviour
 {
-    private SpriteRenderer _spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
     public string name1 = "none";
     public string age = "none";
-    public int type;
-    public int placement;
+    public int type = 0;
+    public int placement = 0;
+    public int IdTurret = 0;
 
 
     // Constructeur de la classe
-    public void Initialize(string nameTurret, string ageTurret, int typeTurret, int placementTurret)
+    public void Initialize(string nameTurret, string ageTurret, int typeTurret, int placementTurret, int ID)
     {
         name1 = nameTurret;
         age = ageTurret;
         type = typeTurret;
         placement = placementTurret;
+        IdTurret = ID;
         // Obtenez le composant SpriteRenderer
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         // Assurez-vous que le composant SpriteRenderer existe
-        if (_spriteRenderer == null)
+        if (spriteRenderer == null)
         {
-            // Si le SpriteRenderer n'est pas trouvÃ© sur cet objet, ajoutez-le
-            _spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            // Si le SpriteRenderer n'est pas trouvé sur cet objet, ajoutez-le
+            spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         }
     }
 
-    public void SetPosition()
+    public int getIdTurret()
     {
-        if (placement == 1)
-        {
-            transform.position = new Vector3(118, 757, 244);
-        }
-        else if(placement == 2){
-            transform.position = new Vector3(118, 882, 244);
-        }
-        else if (placement == 3)
-        {
-            transform.position = new Vector3(118, 1005, 244);
-        }
+        return IdTurret;
     }
 
+    public void SetPosition(int ID)
+    {
+        if (ID == 1)
+        {
+            if (placement == 1)
+            {
+                transform.position = new Vector3(138, 690, 239);
+                transform.localScale = new Vector3(60, 60, 5);
+            }
+            else if(placement == 2){
+                transform.position = new Vector3(138, 775, 239);
+                transform.localScale = new Vector3(60, 60, 5);
+            }
+            else if (placement == 3)
+            {
+                transform.position = new Vector3(138, 861, 239);
+                transform.localScale = new Vector3(60, 60, 5);
+            }
+            else if (placement == 4)
+            {
+                transform.position = new Vector3(138, 948, 239);
+                transform.localScale = new Vector3(60, 60, 5);
+            }
+        }else if (ID == 2)
+        {
+            if (placement == 1)
+            {
+                transform.position = new Vector3(6218, 630, 238);
+                transform.localScale = new Vector3(60, 60, 5);
+            }
+            else if (placement == 2)
+            {
+                transform.position = new Vector3(6218, 715, 238);
+                transform.localScale = new Vector3(60, 60, 5);
+            }
+            else if (placement == 3)
+            {
+                transform.position = new Vector3(6218, 801, 238);
+                transform.localScale = new Vector3(60, 60, 5);
+            }
+            else if (placement == 4)
+            {
+                transform.position = new Vector3(6218, 888, 238);
+                transform.localScale = new Vector3(60, 60, 5);
+            }
+        }
+        
+    }
     public void SetSprite()
     {
         if (type == 1)
@@ -49,12 +93,12 @@ public class Turret : MonoBehaviour
             Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
             if (newSprite != null)
             {
-                _spriteRenderer.sprite = newSprite;
-                Debug.Log("Sprite HexagonFlat chargÃ© avec succÃ¨s.");
+                spriteRenderer.sprite = newSprite;
+                Debug.Log("Sprite HexagonFlat chargé avec succès.");
             }
             else
             {
-                Debug.LogError("Le sprite HexagonFlat n'a pas Ã©tÃ© trouvÃ© dans les ressources.");
+                Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
             }
         }
         else if (type == 2)
@@ -62,12 +106,12 @@ public class Turret : MonoBehaviour
             Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
             if (newSprite != null)
             {
-                _spriteRenderer.sprite = newSprite;
-                Debug.Log("Sprite IsometricDiamond chargÃ© avec succÃ¨s.");
+                spriteRenderer.sprite = newSprite;
+                Debug.Log("Sprite IsometricDiamond chargé avec succès.");
             }
             else
             {
-                Debug.LogError("Le sprite IsometricDiamond n'a pas Ã©tÃ© trouvÃ© dans les ressources.");
+                Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
             }
         }
         else if (type == 3)
@@ -75,12 +119,12 @@ public class Turret : MonoBehaviour
             Sprite newSprite = Resources.Load<Sprite>("Circle");
             if (newSprite != null)
             {
-                _spriteRenderer.sprite = newSprite;
-                Debug.Log("Sprite Circle chargÃ© avec succÃ¨s.");
+                spriteRenderer.sprite = newSprite;
+                Debug.Log("Sprite Circle chargé avec succès.");
             }
             else
             {
-                Debug.LogError("Le sprite Circle n'a pas Ã©tÃ© trouvÃ© dans les ressources.");
+                Debug.LogError("Le sprite Circle n'a pas été trouvé dans les ressources.");
             }
         }
 

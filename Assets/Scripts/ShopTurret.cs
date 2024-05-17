@@ -1,52 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TourelleLente : MonoBehaviour
+public class ShopTurret : MonoBehaviour
 {
-    private Archi _archiClass;
+    private Archi archiClass;
 
-    public SpriteRenderer spriteRenderer1;
-    public SpriteRenderer spriteRenderer2;
-    public SpriteRenderer spriteRenderer3;// R√©f√©rence au SpriteRenderer du sprite que vous voulez afficher
-    public Button button;  // R√©f√©rence au bouton
+    public SpriteRenderer spriteRenderer1_Id1;
+    public SpriteRenderer spriteRenderer2_Id1;
+    public SpriteRenderer spriteRenderer3_Id1; 
+    public SpriteRenderer spriteRenderer4_Id1;
 
-    // Fonction appel√©e lors du clic sur le bouton
+    public SpriteRenderer spriteRenderer1_Id2;
+    public SpriteRenderer spriteRenderer2_Id2;
+    public SpriteRenderer spriteRenderer3_Id2;
+    public SpriteRenderer spriteRenderer4_Id2;// RÈfÈrence au SpriteRenderer du sprite que vous voulez afficher
+    public Button button;  // RÈfÈrence au bouton1
+
+    // Fonction appelÈe lors du clic sur le bouton
     void OnButtonClick()
     {
         Debug.Log("clique");
-        spriteRenderer1.enabled = !spriteRenderer1.enabled;
-        spriteRenderer2.enabled = !spriteRenderer2.enabled;
-        spriteRenderer3.enabled = !spriteRenderer3.enabled;// Inverser la visibilit√© du sprite lors du clic sur le bouton
+        archiClass.switchToEnabled();// Inverser la visibilitÈ du sprite lors du clic sur le bouton
 
         if (gameObject.CompareTag("Turret Slow"))
         {
-            Debug.Log("Turret Slow cliqu√©e");
-            _archiClass.ChoiceType(1);
+            archiClass.ChoiceType(1);
+            Debug.Log("Turret Slow cliquÈe");
         }
         else if (gameObject.CompareTag("Turret Medium"))
         {
-            Debug.Log("Turret Medium cliqu√©e");
-            _archiClass.ChoiceType(2);
+            archiClass.ChoiceType(2);
+            Debug.Log("Turret Medium cliquÈe");
         }
         else if (gameObject.CompareTag("Turret Fast"))
         {
-            Debug.Log("Turret Fast cliqu√©e");
-            _archiClass.ChoiceType(3);
+            archiClass.ChoiceType(3);
+            Debug.Log("Turret Fast cliquÈe");
         }
     }
 
     public bool IsSpriteEnabled()
     {
-        return spriteRenderer1.enabled; // Retourne l'√©tat actuel du SpriteRenderer
+        return spriteRenderer1_Id1.enabled || spriteRenderer2_Id2.enabled; // Retourne l'Ètat actuel du SpriteRenderer
     }
 
     void Start()
     {
-        _archiClass = FindObjectOfType<Archi>();
+        archiClass = FindObjectOfType<Archi>();
         // Assurez-vous que le bouton est non null
         if (button != null)
         {
-            // Ajoutez un √©couteur d'√©v√©nements pour d√©tecter le clic sur le bouton
+            // Ajoutez un Ècouteur d'ÈvÈnements pour dÈtecter le clic sur le bouton
             button.onClick.AddListener(OnButtonClick);
         }
         else
@@ -55,16 +61,9 @@ public class TourelleLente : MonoBehaviour
         }
 
         // Assurez-vous que le spriteRenderer est non null
-        if (spriteRenderer1 == null && spriteRenderer2 == null && spriteRenderer3 == null)
+        if (spriteRenderer1_Id1 == null && spriteRenderer2_Id1 == null && spriteRenderer3_Id1 == null && spriteRenderer4_Id1 == null && spriteRenderer1_Id2 == null && spriteRenderer2_Id2 == null && spriteRenderer3_Id2 == null && spriteRenderer4_Id2 == null)
         {
             Debug.LogError("Veuillez attacher un SpriteRenderer au script dans l'inspecteur Unity.");
-        }
-        else
-        {            
-            // D√©sactivez le sprite au d√©marrage
-            spriteRenderer1.enabled = false;
-            spriteRenderer2.enabled = false;
-            spriteRenderer3.enabled = false;
         }
     }
 }
