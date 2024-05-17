@@ -116,7 +116,6 @@ public class Player : MonoBehaviour
             {
                 xp -= ageCosts[age - 1];
                 age += 1;
-                //casern = GetNewCasern();
                 castle.AddLifePoint(Mathf.RoundToInt(castle.lifePoint * 1.35f));
                 castle.AddMaxLifePoint(Mathf.RoundToInt(castle.maxLifePoint * 1.35f));
                 SpriteRenderer spriteColor = GetComponent<SpriteRenderer>();
@@ -145,7 +144,7 @@ public class Player : MonoBehaviour
             _lastPlayer2Special = Time.time;
             return true;
         }
-        return false;            
+        return false;
     }
 
     public void SpecialAttack(int id)
@@ -165,7 +164,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     public IEnumerator SpecialAttackCoroutine(int id)
     {
         List<float> positions = new();
@@ -190,19 +188,6 @@ public class Player : MonoBehaviour
                         positions.Add(script.transform.position.x - 50f);
                     }
                 }
-                /*foreach (GameObject gameobject in casern.troopsPlayer2)
-                {
-                    //Debug.Log(gameobject.transform.position.x + " position X");
-                    Rigidbody2D script = gameobject.GetComponent<Rigidbody2D>();
-                    if (script.constraints != RigidbodyConstraints2D.FreezeAll)
-                    {
-                        positions.Add(gameobject.transform.position.x - 400f * i);
-                    }
-                    else
-                    {
-                        positions.Add(gameobject.transform.position.x - 50f);
-                    }
-                }*/
             }
             int range = 10 - positions.Count;
             for (int i = 0; i < range; i++)
@@ -219,21 +204,21 @@ public class Player : MonoBehaviour
         {
             if (casern.troopsPlayer1.Count > 0)
             {
-                foreach (GameObject gameobject in casern.troopsPlayer1)
+                start = Mathf.RoundToInt(casern.troopsPlayer1[0].transform.position.x);
+                end = Mathf.RoundToInt(casern.troopsPlayer1[casern.troopsPlayer1.Count - 1].transform.position.x);
+                for (int i = 0; i < casern.troopsPlayer1.Count; i++)
                 {
-                    //Debug.Log(gameobject.transform.position.x + " position X");
-                    Rigidbody2D script = gameobject.GetComponent<Rigidbody2D>();
+                    Rigidbody2D script = casern.troopsPlayer1[i].GetComponent<Rigidbody2D>();
                     if (script.constraints != RigidbodyConstraints2D.FreezeAll)
                     {
-                        positions.Add(gameobject.transform.position.x + 400f);
+                        positions.Add(script.transform.position.x - 420f - i * 190);
                     }
                     else
                     {
-                        positions.Add(gameobject.transform.position.x - 50f);
+                        positions.Add(script.transform.position.x - 50f);
                     }
                 }
             }
-
             int range = 10 - positions.Count;
             for(int i=0; i < range; i++)
             {
