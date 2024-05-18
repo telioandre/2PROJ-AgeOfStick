@@ -184,7 +184,7 @@ public class Ia : MonoBehaviour
                 case "Impossible":
                     if (player.numberOfTroop == 0)
                     {
-                        //IaGenerateTroop(4);
+                        IaGenerateTroop(4);
                     }
 
                     if (!IsStep1Completed())

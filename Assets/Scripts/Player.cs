@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
      public int troop4Level;
     public int numberOfTroop;
     public float precision;
-    private float _specialCooldown = /*2*/0f;
+    private float _specialCooldown = 20f;
     private float _lastPlayer1Special;
     private float _lastPlayer2Special;
     List<List<int>> _troops1UpgradeCosts = new()
