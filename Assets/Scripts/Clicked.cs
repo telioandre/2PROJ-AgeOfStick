@@ -34,22 +34,22 @@ public class Clicked : MonoBehaviour
                 if (gameObject.CompareTag("Turret1"))
                 {
                     Debug.Log("Turret1 cliquée");
-                    archiClass.placeTurret(1, 1, 0);
+                    archiClass.PlaceTurret(1, 1, 0);
                 }
                 else if (gameObject.CompareTag("Turret2"))
                 {
                     Debug.Log("Turret2 cliquée");
-                    archiClass.placeTurret(2, 1, 0);
+                    archiClass.PlaceTurret(2, 1, 0);
                 }
                 else if (gameObject.CompareTag("Turret3"))
                 {
                     Debug.Log("Turret3 cliquée");
-                    archiClass.placeTurret(3, 1, 0);
+                    archiClass.PlaceTurret(3, 1, 0);
                 }
                 else if (gameObject.CompareTag("Turret4"))
                 {
                     Debug.Log("Turret4 cliquée");
-                    archiClass.placeTurret(4, 1, 0);
+                    archiClass.PlaceTurret(4, 1, 0);
                 }
                 archiClass.switchToEnabled(1);
             }

@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
     }
     public bool CheckCooldown(int id)
     {
-        if (id == 1 /*&& Time.time - lastPlayer1Special > specialCooldown + ((age - 1) * 5)*/)
+        if (id == 1 && Time.time - _lastPlayer1Special > _specialCooldown + ((age - 1) * 5))
         {
             _lastPlayer1Special = Time.time;
             return true;
@@ -243,8 +243,6 @@ public class Player : MonoBehaviour
             {
                 precisionShot = 6280f;
             }
-            //print(precisionShot + " precision shot");
-            //print(positions[i] + precisionShot + " actual  shot");
             if (id == 1)
             {
                 Vector2 newPosition = transform.position + new Vector3(positions[i] + precisionShot, 400f, 0f);
@@ -265,7 +263,6 @@ public class Player : MonoBehaviour
         switch (troop)
         {
             case 1:
-                Debug.Log(money + " money " + _troops1UpgradeCosts[troop1Level][0] + " cout " + (money - _troops1UpgradeCosts[troop1Level][0]) + " resultat");
                 if(troop1Level < 3 && money >= _troops1UpgradeCosts[troop1Level][0] && age >= _troops1UpgradeCosts[troop1Level][1])
                 {
                     AddMoney(-_troops1UpgradeCosts[troop1Level][0]);
@@ -274,7 +271,6 @@ public class Player : MonoBehaviour
                 break;
 
             case 2:
-                Debug.Log(money + " money " + _troops2UpgradeCosts[troop2Level][0] + " cout " + (money - _troops2UpgradeCosts[troop2Level][0]) + " resultat");
                 if (troop2Level < 3 && money >= _troops2UpgradeCosts[troop2Level][0] && age >= _troops2UpgradeCosts[troop2Level][1])
                 {
                     AddMoney(-_troops2UpgradeCosts[troop2Level][0]);
@@ -283,7 +279,6 @@ public class Player : MonoBehaviour
                 break;
 
             case 3:
-                Debug.Log(money + " money " + _troops3UpgradeCosts[troop3Level][0] + " cout " + (money - _troops3UpgradeCosts[troop3Level][0]) + " resultat");
                 if (troop3Level < 3 && money >= _troops3UpgradeCosts[troop3Level][0] && age >= _troops3UpgradeCosts[troop3Level][1])
                 {
                     AddMoney(-_troops3UpgradeCosts[troop3Level][0]);
@@ -292,7 +287,6 @@ public class Player : MonoBehaviour
                 break;
 
             case 4:
-                Debug.Log(money + " money " + _troops4UpgradeCosts[troop4Level][0] + " cout " + (money - _troops4UpgradeCosts[troop4Level][0]) + " resultat");
                 if (troop4Level < 3 && money >= _troops4UpgradeCosts[troop4Level][0] && age >= _troops4UpgradeCosts[troop4Level][1])
                 {
                     AddMoney(-_troops4UpgradeCosts[troop4Level][0]);
