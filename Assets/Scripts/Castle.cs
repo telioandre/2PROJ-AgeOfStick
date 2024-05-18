@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -19,6 +20,7 @@ public class Castle : MonoBehaviour
             Debug.LogError("Player reference is not set in Castle.");
         }
     }
+    
     public void AddTower() {
         if (numberOfTower == 4)
         {

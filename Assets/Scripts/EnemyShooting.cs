@@ -7,8 +7,8 @@ public class EnemyShooting : MonoBehaviour
     public GameObject bullet;
   
     public Transform bulletPos;
-    public float detectionRadius = 10f;  // Rayon de détection
-    public LayerMask targetLayer;  // Layer des cibles à détecter
+    public float detectionRadius = 10f;  // Rayon de dÃ©tection
+    public LayerMask targetLayer;  // Layer des cibles Ã  dÃ©tecter
     public int damage = 100;
     public float delay = 1f;
 
@@ -21,8 +21,8 @@ public class EnemyShooting : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > delay)
         {
-            DetectTargets();  // Détecte les cibles à chaque seconde
-            ShootAtTargets(); // Tire sur les cibles détectées
+            DetectTargets();  // DÃ©tecte les cibles Ã  chaque seconde
+            ShootAtTargets(); // Tire sur les cibles dÃ©tectÃ©es
             timer = 0;
         }
     }
@@ -63,9 +63,9 @@ public class EnemyShooting : MonoBehaviour
         {
             if (targets[0] != null && bullet != null && bulletPos != null)
             {
-                Debug.Log("Tir à la cible: " + targets[0].name); // Vérifiez si la cible est correctement définie
-                //Debug.Log("Balle: " + bullet.name); // Vérifiez si la référence bullet est correctement définie
-                //Debug.Log("Position de la balle: " + bulletPos.position); // Vérifiez si la position de la balle est correctement définie
+                Debug.Log("Tir Ã  la cible: " + targets[0].name); // VÃ©rifiez si la cible est correctement dÃ©finie
+                //Debug.Log("Balle: " + bullet.name); // VÃ©rifiez si la rÃ©fÃ©rence bullet est correctement dÃ©finie
+                //Debug.Log("Position de la balle: " + bulletPos.position); // VÃ©rifiez si la position de la balle est correctement dÃ©finie
 
                 var newBullet = Instantiate(bullet, bulletPos.position, Quaternion.identity);
                 var enemyBulletScript = newBullet.GetComponent<EnemyBulletScript>();
@@ -81,12 +81,12 @@ public class EnemyShooting : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("Le composant EnemyBulletScript n'a pas été trouvé sur le GameObject du projectile.");
+                    Debug.LogError("Le composant EnemyBulletScript n'a pas Ã©tÃ© trouvÃ© sur le GameObject du projectile.");
                 }
             }
             else
             {
-                Debug.LogError("Une des références requises (bullet, bulletPos ou target) est null.");
+                Debug.LogError("Une des rÃ©fÃ©rences requises (bullet, bulletPos ou target) est null.");
             }
         }
     }

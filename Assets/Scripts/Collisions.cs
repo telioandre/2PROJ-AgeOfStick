@@ -18,15 +18,15 @@ public class Collisions : MonoBehaviour
         {
             SpecialCollision special = collision.gameObject.GetComponent<SpecialCollision>();
             int specialID = collision.gameObject.GetComponent<SpecialCollision>().id;
-            Player player1 = special.player1;
-            Player player2 = special.player2;
-            if (player1.baseName == "ally")
+            Castle castle1 = special.castle1;
+            Castle castle2 = special.castle2;
+            if (castle1.id == 1)
             {
-                otherPlayer = player1;
+                otherPlayer = castle1.player;
             }
             else
             {
-                otherPlayer = player2;
+                otherPlayer = castle2.player;
             }
 
             if (specialID != currentMovement.id)
@@ -63,17 +63,17 @@ public class Collisions : MonoBehaviour
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                     enemyRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }
-                if (otherMovement.id != currentMovement.id)
+                if (ally != null && enemy != null)
                 {
-
-                    if (ally != null && enemy != null)
-                    {
-                        //Commence une coroutine qui diminue les pv des 2 joueurs en contact
-                        StartCoroutine(currentMovement.AttackPlayer(otherMovement, myRb, ally, enemy));
-                    }
+                    print("collision bonne");
+                    //Commence une coroutine qui diminue les pv des 2 joueurs en contact
+                    StartCoroutine(currentMovement.AttackPlayer(otherMovement, myRb, ally, enemy));
+                        
                 }
+            
                 else
                 {
+                    print("collision pas bonne");
                     // Si les 2 objets en contact ont le même ID ils ne se font pas de dégâts
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }

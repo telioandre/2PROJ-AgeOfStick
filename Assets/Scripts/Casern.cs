@@ -4,9 +4,9 @@ using UnityEngine.Serialization;
 
 public class Casern : MonoBehaviour
 {
-    public Player player;
-    public Player opponent;
-
+    public Castle castle1;
+    public Castle castle2;
+    
     public GameObject currentTroop1;
     public GameObject currentTroop2;
     public GameObject currentTroop3;
@@ -72,7 +72,7 @@ public class Casern : MonoBehaviour
     //public int numberOfTroop2 = 0;
     public List<GameObject> troopsPlayer1 = new();
     public List<GameObject> troopsPlayer2 = new();
-    [FormerlySerializedAs("IA")] public Ia ia;
+    public Ia ia;
 
     private List<int> _troop1Costs;
     private List<int> _troop2Costs;
@@ -92,7 +92,7 @@ public class Casern : MonoBehaviour
 
     private void Update()
     {
-        switch (player.age)
+        switch (castle1.player.age)
         {
             case 2:
                 currentTroop1 = age2Troop1;
@@ -125,7 +125,7 @@ public class Casern : MonoBehaviour
                 currentTroop4 = age6Troop4;
                 break;
         }
-        switch (opponent.age)
+        switch (castle2.player.age)
         {
             case 2:
                 currentTroop5 = age2Troop5;
@@ -172,14 +172,14 @@ public class Casern : MonoBehaviour
         switch (id)
         {
             case 1:
-                if (player.numberOfTroop < 10 && Time.time - _lastPlayer1Invoque > _cooldown)
+                if (castle1.player.numberOfTroop < 10 && Time.time - _lastPlayer1Invoque > _cooldown)
                 {
                     _lastPlayer1Invoque = Time.time;
                     switch (troop)
                     {
                         case 1:
-                            _cost = _troop1Costs[player.age - 1];
-                            if (player.GetMoney() >= _cost)
+                            _cost = _troop1Costs[castle1.player.age - 1];
+                            if (castle1.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop1;
                                 _troopId = 1;
@@ -188,8 +188,8 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 2:
-                            _cost = _troop2Costs[player.age - 1];
-                            if (player.GetMoney() >= _cost)
+                            _cost = _troop2Costs[castle1.player.age - 1];
+                            if (castle1.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop2;
                                 _troopId = 2;
@@ -198,8 +198,8 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 3:
-                            _cost = _troop3Costs[player.age - 1];
-                            if (player.GetMoney() >= _cost)
+                            _cost = _troop3Costs[castle1.player.age - 1];
+                            if (castle1.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop3;
                                 _troopId = 3;
@@ -208,8 +208,8 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 4:
-                            _cost = _troop4Costs[player.age - 1];
-                            if (player.GetMoney() >= _cost)
+                            _cost = _troop4Costs[castle1.player.age - 1];
+                            if (castle1.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop4;
                                 _troopId = 4;
@@ -221,15 +221,15 @@ public class Casern : MonoBehaviour
 
                 break;
             case 2:
-                if (opponent.numberOfTroop < 10 && Time.time - _lastPlayer2Invoque > _cooldown)
+                if (castle2.player.numberOfTroop < 10 && Time.time - _lastPlayer2Invoque > _cooldown)
                 {
                     _lastPlayer2Invoque = Time.time;
                     switch (troop)
                     {
 
                         case 1:
-                            _cost = _troop1Costs[opponent.age - 1];
-                            if (opponent.GetMoney() >= _cost)
+                            _cost = _troop1Costs[castle2.player.age - 1];
+                            if (castle2.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop5;
                                 _troopId = 1;
@@ -238,8 +238,8 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 2:
-                            _cost = _troop2Costs[opponent.age - 1];
-                            if (opponent.GetMoney() >= _cost)
+                            _cost = _troop2Costs[castle2.player.age - 1];
+                            if (castle2.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop6;
                                 _troopId = 2;
@@ -248,8 +248,8 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 3:
-                            _cost = _troop3Costs[opponent.age - 1];
-                            if (opponent.GetMoney() >= _cost)
+                            _cost = _troop3Costs[castle2.player.age - 1];
+                            if (castle2.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop7;
                                 _troopId = 3;
@@ -258,8 +258,8 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 4:
-                            _cost = _troop4Costs[opponent.age - 1];
-                            if (opponent.GetMoney() >= _cost)
+                            _cost = _troop4Costs[castle2.player.age - 1];
+                            if (castle2.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop8;
                                 _troopId = 4;
@@ -280,28 +280,36 @@ public class Casern : MonoBehaviour
         }
     }
 
-    public void CreateTroop(int id, int troopId, GameObject troopToCreate)
+    private void CreateTroop(int id, int troopId, GameObject troopToCreate)
     {
-        GameObject newObject = Instantiate(troopToCreate, transform.position, Quaternion.identity);
+        Player currentPlayer;
+        List<GameObject> currentTroops;
+
         if (id == 1)
         {
-            player.numberOfTroop += 1;
-            troopsPlayer1.Add(newObject);
-            player.AddMoney(-_cost);
+            currentPlayer = castle1.player;
+            currentTroops = troopsPlayer1;
         }
         else
         {
-            opponent.numberOfTroop += 1;
-            troopsPlayer2.Add(newObject);
-            opponent.AddMoney(-_cost);
+            currentPlayer = castle2.player;
+            currentTroops = troopsPlayer2;
         }
+
+        GameObject newObject = Instantiate(troopToCreate, transform.position, Quaternion.identity);
+
+        currentPlayer.numberOfTroop += 1;
+        currentTroops.Add(newObject);
+        currentPlayer.AddMoney(-_cost);
+
         Movement script = newObject.GetComponent<Movement>();
         script.SetPlayer(id, troopId);
     }
 
+
     public void DestroyTroop(int id, string uniqueTroopId)
     {
-        //Debug.Log(uniqueTroopId + " unique ID");
+        Debug.Log(uniqueTroopId + " unique ID" + id + " id pas unique");
         if (id == 1)
         {
             for(int i = troopsPlayer1.Count-1; i>=0; i--)
@@ -313,21 +321,30 @@ public class Casern : MonoBehaviour
                     troopsPlayer1.Remove(troop);
                 }
             }
-            player.numberOfTroop -= 1;
+            //castle1.player.numberOfTroop -= 1;
             //troopsPlayer1.Remove(troop);
         }
-        else
+        if(id == 2)
         {
+            print(troopsPlayer2.Count + " gon't " + castle2.player.numberOfTroop );
             for (int i = troopsPlayer2.Count-1; i >= 0; i--)
             {
+                print(troopsPlayer2.Count + " go");
+                print(troopsPlayer2[i]);
                 GameObject troop = troopsPlayer2[i];
+                print(troop);
                 Movement movement = troop.GetComponent<Movement>();
                 if (movement.uniqueId == uniqueTroopId)
                 {
+                    print("tfdskfjdslf");
                     troopsPlayer2.Remove(troop);
                 }
+                else
+                {
+                    print("aaaaaa");
+                }
             }
-            opponent.numberOfTroop -= 1;
+            castle2.player.numberOfTroop -= 1;
             //troopsPlayer2.Remove(troop);
         }
     }

@@ -161,4 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8baeb451cf24846b94d9e6c6459819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  id: 1
+  castle1: {fileID: 1589456293638231603, guid: 587df6b2700bfc34ea5e68f58249e744, type: 3}
+  castle2: {fileID: 2376352701654870663, guid: e54322c4dc833f8428fd4fecd0a6d197, type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3154008870128738235}
   - component: {fileID: 4221831893533704409}
   m_Layer: 0
-  m_Name: Casern
+  m_Name: CasernPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c20e932d321a745bc3fac42e030d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2626550414893674105, guid: 587df6b2700bfc34ea5e68f58249e744, type: 3}
-  opponent: {fileID: 0}
+  castle1: {fileID: 1589456293638231603, guid: 587df6b2700bfc34ea5e68f58249e744, type: 3}
+  castle2: {fileID: 2376352701654870663, guid: e54322c4dc833f8428fd4fecd0a6d197, type: 3}
+  casern: {fileID: 4221831893533704409}
   currentTroop1: {fileID: 6476711794664461902, guid: 06c5c720cd0609c45b961815a06ae63a, type: 3}
   currentTroop2: {fileID: 7608237374541817669, guid: 606addca94f017540952e5ee1a371980, type: 3}
   currentTroop3: {fileID: 4511963069979149491, guid: e5ba9043c41da854d8dbf1b9590d425a, type: 3}
@@ -95,15 +96,5 @@ MonoBehaviour:
   age6Troop7: {fileID: 5234234610001927511, guid: 6bf860a5073248a4588a962e6510cc05, type: 3}
   age6Troop8: {fileID: 2302889016173214762, guid: db43ddd8b89ae244487741363113de7a, type: 3}
   troopsPlayer1: []
-  troopsPlayer2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  troopsPlayer2: []
   ia: {fileID: 1020084069857690590, guid: 0c1dcb82d91471745ad226618e0c166e, type: 3}
