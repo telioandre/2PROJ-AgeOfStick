@@ -22,7 +22,7 @@ public class ShopTurret : MonoBehaviour
     void OnButtonClick()
     {
         Debug.Log("clique");
-        archiClass.switchToEnabled();// Inverser la visibilité du sprite lors du clic sur le bouton
+        archiClass.switchToEnabled(1);// Inverser la visibilité du sprite lors du clic sur le bouton
 
         if (gameObject.CompareTag("Turret Slow"))
         {

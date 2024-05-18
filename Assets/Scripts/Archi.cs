@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class Archi : MonoBehaviour
 {
-    public int nbPlacement_Id1 = 1;
+    public int nbPlacement_Id1;
+    public int nbTowerId1;
+    public Castle castle1;
     [SerializeField]
-    public List<GameObject> listTurret_Id1 = new List<GameObject>();
+    public List<GameObject> listTurret_Id1 = new();
     public SpriteRenderer spriteRenderer1_Id1;
     public SpriteRenderer spriteRenderer2_Id1;
     public SpriteRenderer spriteRenderer3_Id1;
@@ -18,8 +20,10 @@ public class Archi : MonoBehaviour
     public Collider2D collider2D_3_Id1;
     public Collider2D collider2D_4_Id1;
 
-    public int nbPlacement_Id2 = 1;
-    public List<GameObject> listTurret_Id2 = new List<GameObject>();
+    public int nbPlacement_Id2;
+    public int nbTowerId2;
+    public Castle castle2;
+    public List<GameObject> listTurret_Id2 = new();
     public SpriteRenderer spriteRenderer1_Id2;
     public SpriteRenderer spriteRenderer2_Id2;
     public SpriteRenderer spriteRenderer3_Id2;
@@ -31,10 +35,15 @@ public class Archi : MonoBehaviour
 
     public GameObject objectToInstantiate;
     private int typeChoice;
-    public int ID = 1;
-    public void switchToEnabled()
+    //public int ID = 1;
+
+    private List<int> _spotCosts = new()
     {
-        if(ID == 1)
+        20, 50, 120, 200
+    };
+    public void switchToEnabled(int id)
+    {
+        if(id == 1)
         {
             if (nbPlacement_Id1 == 1)
             {
@@ -72,7 +81,7 @@ public class Archi : MonoBehaviour
                 collider2D_3_Id1.enabled = !collider2D_3_Id1.enabled;
                 collider2D_4_Id1.enabled = !collider2D_4_Id1.enabled;
             }
-        }else if(ID == 2)
+        }else if(id == 2)
         {
             if (nbPlacement_Id2 == 1)
             {
@@ -114,27 +123,62 @@ public class Archi : MonoBehaviour
         
     }
 
+    public void BuySpot(int id)
+    {
+        if (id == 1 && nbPlacement_Id1 < 4 && castle1.player.money >= _spotCosts[nbPlacement_Id1])
+        {
+            castle1.player.AddMoney(-_spotCosts[nbPlacement_Id1]);
+            nbPlacement_Id1 += 1;
+        }
+        else if(id == 2 && nbPlacement_Id2 < 4 && castle2.player.money >= _spotCosts[nbPlacement_Id2])
+        {
+            castle2.player.AddMoney(-_spotCosts[nbPlacement_Id2]);
+            nbPlacement_Id2 += 1;
+        }
+    }
+    public void SellSpot(int value)
+    {
+        int id = value / 10;
+        int spot = value % 10;
+    }
+
     public int ChoiceType(int type) => typeChoice = type;
 
-    public void placeTurret(int placement)
+    public void placeTurret(int placement, int id, int type)
     {
-        Debug.Log(placement);
+        Castle castle;
+        //Debug.Log(placement);
         GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
         Turret script = newObject.GetComponent<Turret>();
-        script.Initialize("test", "test", typeChoice, placement, ID);
-        script.SetPosition(ID);
+        if (id == 1)
+        {
+            castle = castle1;
+        }
+        else
+        {
+            castle = castle2;
+        }
+        if (type == 0)
+        {
+            type = typeChoice;
+        }
+        script.Initialize("test", "test", type, placement, castle.id, castle);
+        script.SetPosition(castle.id);
         script.SetSprite();
-        if (listTurret_Id1[placement - 1] != newObject)
+        if (listTurret_Id1[placement - 1] != newObject && castle.id == 1)
         {
             Destroy(listTurret_Id1[placement - 1]);
-            Debug.Log(placement);
+            //Debug.Log(placement);
             listTurret_Id1[placement-1] = newObject;
+            nbTowerId1 += 1;
 
-        }else if (listTurret_Id2[placement - 1] != newObject)
+        }else if (listTurret_Id2[placement - 1] != newObject && castle.id == 2)
         {
             Destroy(listTurret_Id2[placement - 1]);
-            Debug.Log(placement);
+            //Debug.Log(placement);
             listTurret_Id2[placement - 1] = newObject;
+            nbTowerId2 += 1;
+
         }
     }
 }

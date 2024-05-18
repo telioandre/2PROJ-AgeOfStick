@@ -131,7 +131,14 @@ public class Movement : MonoBehaviour
             attack = Mathf.RoundToInt(attack * 1.2f);
         }
         maxLife = life;
-        transform.position = new Vector2(3500, 0);
+        if (id == 1)
+        {
+            transform.position = new Vector2(1500, 0);
+        }
+        else
+        { 
+            transform.position = new Vector2(3500, 0);
+        }
         Invoke("Endbuild", buildTime);
     }
     private void Endbuild()
@@ -143,14 +150,13 @@ public class Movement : MonoBehaviour
         }
         else if (id == 2)
         {
-            transform.position = new Vector2(3000, 600);
             transform.position = new Vector2(5500, 600);
         }
     }
 
     public bool SuperEffective(int ally, int enemy)
     {
-        if (ally == enemy - 1 || (ally == 1 && enemy == 4))
+        if (ally == enemy + 1 || (ally == 4 && enemy == 1))
         {
             return true;
         }
@@ -200,11 +206,12 @@ public class Movement : MonoBehaviour
 
     public IEnumerator AttackPlayer(Movement enemyMovement, Rigidbody2D myRb, Player ally, Player enemy)
     {
-        yield return new WaitForSeconds(attackTime);
-        while (life > 0 && enemyMovement && enemyMovement.life > 0)
+        while (enemyMovement.life > 0)
         {
+            yield return new WaitForSeconds(attackTime);
             //On divise par 2 car la coroutine se lance 2 fois (1 par objet en contact)
-            int damage = enemyMovement.attack / 2 /*+ random.Next(0, 10)*/;
+            int damage = attack /*+ random.Next(0, 10)*/;
+            //Debug.Log(damage + " damage");
             char allyChar = name[6];
             char enemyChar = enemyMovement.name[6];
             int allyNumber = int.Parse(allyChar.ToString());
@@ -212,12 +219,13 @@ public class Movement : MonoBehaviour
             
             if (SuperEffective(allyNumber, enemyNumber))
             {
-                Debug.Log("DEGAT AVANT : " + damage);
+                //Debug.Log("DEGAT AVANT : " + damage);
                 damage = Mathf.RoundToInt(damage * 1.5f);
-                Debug.Log("DEGAT APRES : " + damage);
+                //Debug.Log("DEGAT APRES : " + damage);
             }
-            life -= damage;
-            enemyMovement.life -= attack / 2 + Random.Range(0, 10);
+            enemyMovement.life -= damage;
+            //life -= damage;
+            //enemyMovement.life -= attack / 2 + Random.Range(0, 10);
             if (enemyMovement.life <= 0)
             {
                 DropRewards(enemyNumber, ally, enemy);
@@ -225,13 +233,13 @@ public class Movement : MonoBehaviour
                 casern.DestroyTroop(enemyMovement.id, enemyMovement.uniqueId);
                 Destroy(enemyMovement.gameObject);
             }
-            if (life <= 0)
+            /*if (life <= 0)
             {
                 DropRewards(allyNumber, ally, enemy);
                 life = 0;
                 casern.DestroyTroop(id, uniqueId);
                 Destroy(gameObject);      
-            }
+            }*/
             myRb.constraints = RigidbodyConstraints2D.None;
         }
     }

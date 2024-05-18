@@ -19,34 +19,34 @@ public class Player : MonoBehaviour
     public GameObject specialAttack;
     public List<int> specialCosts;
     public List<int> ageCosts;
-    [FormerlySerializedAs("troop1level")] public int troop1Level;
-    [FormerlySerializedAs("troop2level")] public int troop2Level;
-    [FormerlySerializedAs("troop3level")] public int troop3Level;
-    [FormerlySerializedAs("troop4level")] public int troop4Level;
+    public int troop1Level;
+    public int troop2Level;
+    public int troop3Level;
+     public int troop4Level;
     public int numberOfTroop;
     public float precision;
     private float _specialCooldown = /*2*/0f;
     private float _lastPlayer1Special;
     private float _lastPlayer2Special;
-    List<List<int>> _troops1UpgradeCosts = new List<List<int>>()
+    List<List<int>> _troops1UpgradeCosts = new()
     {
         new() { 30, 1 },
         new() { 80, 2 },
         new() { 190, 4 },
     };
-    List<List<int>> _troops2UpgradeCosts = new List<List<int>>()
+    List<List<int>> _troops2UpgradeCosts = new()
     {
         new() { 20, 1 },
         new() { 50, 1 },
         new() { 110, 3 },
     };
-    List<List<int>> _troops3UpgradeCosts = new List<List<int>>()
+    List<List<int>> _troops3UpgradeCosts = new()
     {
         new() { 80, 2 },
         new() { 120, 3 },
         new() { 210, 5 },
     };
-    List<List<int>> _troops4UpgradeCosts = new List<List<int>>()
+    List<List<int>> _troops4UpgradeCosts = new()
     {
         new() { 100, 2 },
         new() { 210, 4 },
@@ -55,8 +55,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        specialCosts = new List<int>() { 2300, 2900, 3000, 3800, 4200, 5800 };
-        ageCosts = new List<int>() { 6500, 8000, 9500, 11000, 12500 };
+        specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
+        ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
 
         _lastPlayer1Special = -_specialCooldown;
         _lastPlayer2Special = -_specialCooldown;
@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
     {
         return baseName;
     }
+    
     public void AddXp(int newXp)
     {
         xp += newXp;
@@ -233,7 +234,7 @@ public class Player : MonoBehaviour
         for (int i = 0; i < positions.Count; i++)
         {
             float precisionShot = Random.Range(-precision, precision) * Random.Range(-500f, 500f);
-            print(precisionShot);
+            //print(precisionShot);
             if (precisionShot < 150f)
             {
                 precisionShot = 150f;

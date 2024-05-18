@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 4636375966719398499}
   - component: {fileID: 9048925890086162507}
   - component: {fileID: 2376352701654870663}
-  - component: {fileID: 5734432267359400946}
   m_Layer: 0
-  m_Name: Castle 2
+  m_Name: Castle 2 Prefab
   m_TagString: player 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bed287539e3ee7429888e2231f79ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: 1000
-  money: 10
+  xp: 1190
+  money: 0
   age: 1
   castle: {fileID: 2376352701654870663}
   casern: {fileID: 4221831893533704409, guid: 0958f1b3c9d00e54fb9188566027eff1, type: 3}
@@ -161,7 +160,7 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  specialAttack: {fileID: 4095840521692740208, guid: c1dae906bc77e564593cfc32efa7f4e4, type: 3}
+  specialAttack: {fileID: 3155294315424664827, guid: bb58bee2cd6e5e34d8d74e3666f615ba, type: 3}
   specialCosts: 
   ageCosts: 
   troop1Level: 0
@@ -189,18 +188,3 @@ MonoBehaviour:
   id: 2
   bar: {fileID: 4602410606509946428, guid: 74626b13d789fc84280e415c643b9327, type: 3}
   player: {fileID: 9048925890086162507}
---- !u!114 &5734432267359400946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849167647479963905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da8baeb451cf24846b94d9e6c6459819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  player1: {fileID: 9048925890086162507}
-  player2: {fileID: 2626550414893674105, guid: 587df6b2700bfc34ea5e68f58249e744, type: 3}

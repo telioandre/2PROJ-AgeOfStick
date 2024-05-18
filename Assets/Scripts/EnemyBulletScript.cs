@@ -25,19 +25,19 @@ public class EnemyBulletScript : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("La cible est nulle. Impossible de définir la direction de la balle.");
+            Debug.LogWarning("La cible est nulle. Impossible de dÃ©finir la direction de la balle.");
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Vérifiez si la collision est avec un objet ayant le tag "Target"
+        // VÃ©rifiez si la collision est avec un objet ayant le tag "Target"
         if (collision.CompareTag("Player"))
         {
-            // Accédez au composant de script de l'objet touché (peut-être votre ennemi)
+            // AccÃ©dez au composant de script de l'objet touchÃ© (peut-Ãªtre votre ennemi)
             var targetScript = collision.GetComponent<Movement>(); // Remplacez "YourTargetScript" par le nom de votre script de cible
 
-            // Vérifiez si le composant de script a été trouvé
+            // VÃ©rifiez si le composant de script a Ã©tÃ© trouvÃ©
             if (targetScript != null)
             {
 
@@ -50,7 +50,7 @@ public class EnemyBulletScript : MonoBehaviour
                     Destroy(targetScript.gameObject);
                 }
 
-                // Détruisez la balle
+                // DÃ©truisez la balle
                 Destroy(gameObject);
             }
         }

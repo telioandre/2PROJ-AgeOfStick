@@ -4,8 +4,8 @@ using UnityEngine.Serialization;
 public class SpecialCollision : MonoBehaviour
 {
     public int id;
-    public Player player1;
-    public Player player2;
+    public Castle castle1;
+    public Castle castle2;
 
     public void OnCollisionEnter2D(Collision2D collision)
     {

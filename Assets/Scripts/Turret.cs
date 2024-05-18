@@ -10,19 +10,33 @@ public class Turret : MonoBehaviour
 
     public string name1 = "none";
     public string age = "none";
-    public int type = 0;
-    public int placement = 0;
-    public int IdTurret = 0;
+    public int type;
+    public int placement;
+    public int IdTurret;
+    public Castle _castle;
 
+    private List<int> _turret1Costs = new()
+    {
+        100, 150, 300, 400, 500, 600
+    };
+    private List<int> _turret2Costs = new()
+    {
+        100, 200, 300, 400, 500, 600
+    };
+    private List<int> _turret3Costs = new()
+    {
+        100, 200, 300, 400, 500, 600
+    };
 
     // Constructeur de la classe
-    public void Initialize(string nameTurret, string ageTurret, int typeTurret, int placementTurret, int ID)
+    public void Initialize(string nameTurret, string ageTurret, int typeTurret, int placementTurret, int ID, Castle castle)
     {
         name1 = nameTurret;
         age = ageTurret;
         type = typeTurret;
         placement = placementTurret;
         IdTurret = ID;
+        _castle = castle;
         // Obtenez le composant SpriteRenderer
         spriteRenderer = GetComponent<SpriteRenderer>();
         // Assurez-vous que le composant SpriteRenderer existe
@@ -88,8 +102,9 @@ public class Turret : MonoBehaviour
     }
     public void SetSprite()
     {
-        if (type == 1)
+        if (type == 1 && _castle.player.money >= _turret1Costs[_castle.player.age-1])
         {
+            _castle.player.AddMoney(-_turret1Costs[_castle.player.age-1]);
             Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
             if (newSprite != null)
             {
@@ -101,8 +116,9 @@ public class Turret : MonoBehaviour
                 Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
             }
         }
-        else if (type == 2)
+        else if (type == 2 && _castle.player.money >= _turret2Costs[_castle.player.age-1])
         {
+            _castle.player.AddMoney(-_turret2Costs[_castle.player.age-1]);
             Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
             if (newSprite != null)
             {
@@ -114,8 +130,9 @@ public class Turret : MonoBehaviour
                 Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
             }
         }
-        else if (type == 3)
+        else if (type == 3 && _castle.player.money >= _turret3Costs[_castle.player.age-1])
         {
+            _castle.player.AddMoney(-_turret3Costs[_castle.player.age-1]);
             Sprite newSprite = Resources.Load<Sprite>("Circle");
             if (newSprite != null)
             {
