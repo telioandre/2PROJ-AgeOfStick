@@ -20,8 +20,8 @@ public class Ia : MonoBehaviour
     private void Start()
     {
         _selectedDifficulty = DifficultyManager.difficulty;
-        _difficulty = "Impossible";
-        //_difficulty = _selectedDifficulty.ToString().Split(' ')[0];
+        //_difficulty = "Impossible";
+        _difficulty = _selectedDifficulty.ToString().Split(' ')[0];
         Debug.Log(_difficulty);
         _previousLifePoint = castle.maxLifePoint;
         _lastCombo = -Cooldown;
@@ -60,18 +60,18 @@ public class Ia : MonoBehaviour
             switch (_difficulty)
             {
                 case "Easy":
-                    if (randomNumber <= 3)
+                    if (randomNumber == 1)
                     {
                         IaSpecialAttack();
                     }
 
-                    if (randomNumber > 3 && randomNumber <= 5)
+                    if (randomNumber == 2)
                     {
                         int randomTroop = Random.Range(1, 5);
                         IaUpgradeTroop(randomTroop);
                     }
 
-                    if (randomNumber > 5 && randomNumber <= 7)
+                    if (randomNumber == 3)
                     {
                         if (castle.numberOfTower + castle.towerSpotAvailable < 4)
                         {
@@ -289,7 +289,7 @@ public class Ia : MonoBehaviour
     }
     void IaGenerateTroop(int troop)
     {
-        print(casern.troopsPlayer2.Count);
+        //print(casern.troopsPlayer2.Count);
         if (troop == 0)
         {
             troop = Random.Range(1, 5);
@@ -390,7 +390,7 @@ public class Ia : MonoBehaviour
     }
     void IaBuildTurret(int turret)
     {
-        archi.placeTurret(1, 2, turret);
+        archi.PlaceTurret(1, 2, turret);
     }
 
     void IaUpgradeTroop(int troop)

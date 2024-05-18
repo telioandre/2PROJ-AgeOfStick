@@ -65,7 +65,6 @@ public class Collisions : MonoBehaviour
                 }
                 if (ally != null && enemy != null)
                 {
-                    print("collision bonne");
                     //Commence une coroutine qui diminue les pv des 2 joueurs en contact
                     StartCoroutine(currentMovement.AttackPlayer(otherMovement, myRb, ally, enemy));
                         
@@ -73,7 +72,6 @@ public class Collisions : MonoBehaviour
             
                 else
                 {
-                    print("collision pas bonne");
                     // Si les 2 objets en contact ont le même ID ils ne se font pas de dégâts
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }

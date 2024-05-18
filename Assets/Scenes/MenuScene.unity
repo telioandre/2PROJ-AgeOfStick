@@ -174,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &10988072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2206,7 +2206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &178064375
 Transform:
   m_ObjectHideFlags: 0
@@ -2388,6 +2388,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1090807649}
     m_Modifications:
+    - target: {fileID: 1253705949065917578, guid: 260958e4fcd511143a68046a7c6b47b9, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1253705949065917578, guid: 260958e4fcd511143a68046a7c6b47b9, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 1661792196212268181, guid: 260958e4fcd511143a68046a7c6b47b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 647
@@ -2997,6 +3005,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 865357690}
     m_Modifications:
+    - target: {fileID: 4663961521440137408, guid: 6191c14e3270edc47830a1b0d67e514e, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 4663961521440137408, guid: 6191c14e3270edc47830a1b0d67e514e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 4814620474512269377, guid: 6191c14e3270edc47830a1b0d67e514e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 890
@@ -3807,6 +3823,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 782692254}
     m_Modifications:
+    - target: {fileID: 1030269264435958911, guid: dac190c92f339d5449ec79c0ffd092fe, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1030269264435958911, guid: dac190c92f339d5449ec79c0ffd092fe, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 1241304439243844571, guid: dac190c92f339d5449ec79c0ffd092fe, type: 3}
       propertyPath: m_Name
       value: Troop 4 ally 6
@@ -4188,6 +4212,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 137948486}
     m_Modifications:
+    - target: {fileID: 170707479555977597, guid: 2462a4044efb4c84486f129afd0b5dfa, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 170707479555977597, guid: 2462a4044efb4c84486f129afd0b5dfa, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 2425455126393751625, guid: 2462a4044efb4c84486f129afd0b5dfa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -658
@@ -4735,6 +4767,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7199885040508656439, guid: b50f6db26e6540a47a6e08a33a45c0f5, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 7199885040508656439, guid: b50f6db26e6540a47a6e08a33a45c0f5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 7232792541374409594, guid: b50f6db26e6540a47a6e08a33a45c0f5, type: 3}
       propertyPath: m_Name
       value: Troop 1 enemy 3
@@ -5030,6 +5070,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571288406850802832, guid: bf322e9cb95db6341b9b8ee24afe9082, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 5571288406850802832, guid: bf322e9cb95db6341b9b8ee24afe9082, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5384,6 +5432,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 293286641}
     m_Modifications:
+    - target: {fileID: 3487070342847969634, guid: c4681be97590c184693538794b028981, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 3487070342847969634, guid: c4681be97590c184693538794b028981, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 4508342976532409374, guid: c4681be97590c184693538794b028981, type: 3}
       propertyPath: m_Name
       value: Troop 2 ally 3
@@ -5658,6 +5714,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 137948486}
     m_Modifications:
+    - target: {fileID: 122666875279213960, guid: a2ea1665018e48d4d90dc9d08440456d, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 122666875279213960, guid: a2ea1665018e48d4d90dc9d08440456d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 2202588076396321175, guid: a2ea1665018e48d4d90dc9d08440456d, type: 3}
       propertyPath: m_Name
       value: Troop 1 enemy 2
@@ -5911,7 +5975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &446559959
 Transform:
   m_ObjectHideFlags: 0
@@ -6594,6 +6658,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1090807649}
     m_Modifications:
+    - target: {fileID: 1016587867997323327, guid: 65a5639e51355754aa3443f4d78356ef, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1016587867997323327, guid: 65a5639e51355754aa3443f4d78356ef, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 6375635631777352137, guid: 65a5639e51355754aa3443f4d78356ef, type: 3}
       propertyPath: m_Name
       value: Troop 1 enemy 5
@@ -7070,6 +7142,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8903019012132816433, guid: e3bad8760d50584418d016c1926b058a, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 8903019012132816433, guid: e3bad8760d50584418d016c1926b058a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7177,6 +7257,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 782692254}
     m_Modifications:
+    - target: {fileID: 116463056002730603, guid: db43ddd8b89ae244487741363113de7a, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 116463056002730603, guid: db43ddd8b89ae244487741363113de7a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 2302889016173214762, guid: db43ddd8b89ae244487741363113de7a, type: 3}
       propertyPath: m_Name
       value: Troop 4 enemy 6
@@ -7593,6 +7681,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4070212277890150399, guid: 2c0946d10c447cb46bdd1ca29536a985, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 4070212277890150399, guid: 2c0946d10c447cb46bdd1ca29536a985, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 6427813486702277512, guid: 2c0946d10c447cb46bdd1ca29536a985, type: 3}
       propertyPath: m_LocalPosition.x
       value: -420
@@ -8134,6 +8230,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3224215464277879049, guid: 0fc231b38b1cf3e43bd9bac5b4589915, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 3224215464277879049, guid: 0fc231b38b1cf3e43bd9bac5b4589915, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 5184365976780445862, guid: 0fc231b38b1cf3e43bd9bac5b4589915, type: 3}
       propertyPath: m_LocalPosition.x
       value: 243
@@ -8278,6 +8382,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 293286641}
     m_Modifications:
+    - target: {fileID: 801850755586483381, guid: afaf2ac50b3cf314fbc67be3e1ea967b, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 801850755586483381, guid: afaf2ac50b3cf314fbc67be3e1ea967b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 3023097482003429551, guid: afaf2ac50b3cf314fbc67be3e1ea967b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 268
@@ -8492,6 +8604,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3994339637507286491, guid: 17de8dda8930c514d8509d20237afb76, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 3994339637507286491, guid: 17de8dda8930c514d8509d20237afb76, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 4488503518783441435, guid: 17de8dda8930c514d8509d20237afb76, type: 3}
       propertyPath: m_LocalPosition.x
       value: 445
@@ -9958,6 +10078,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8056540884186527325, guid: f9c63c06886907b4cabb8f09340412f0, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 8056540884186527325, guid: f9c63c06886907b4cabb8f09340412f0, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10362,6 +10490,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3336865244004785551, guid: cb1c33aeb8d25c54e8fc6419456683f7, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 3336865244004785551, guid: cb1c33aeb8d25c54e8fc6419456683f7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10694,6 +10830,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 137948486}
     m_Modifications:
+    - target: {fileID: 1856512865852666612, guid: a6f6746a9f63fe44ebca6142d7592f90, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1856512865852666612, guid: a6f6746a9f63fe44ebca6142d7592f90, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 4211885312604816183, guid: a6f6746a9f63fe44ebca6142d7592f90, type: 3}
       propertyPath: m_Name
       value: Troop 2 ally 2
@@ -11906,6 +12050,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6190968971146344779, guid: f10a6b13995e2884c9753ebc15ac2ec8, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 6190968971146344779, guid: f10a6b13995e2884c9753ebc15ac2ec8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12295,6 +12447,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7351482946782135332, guid: 79ff6b0a5ee705e4380888c28fa28f4c, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 7351482946782135332, guid: 79ff6b0a5ee705e4380888c28fa28f4c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 9154628322671484595, guid: 79ff6b0a5ee705e4380888c28fa28f4c, type: 3}
       propertyPath: m_Name
       value: Troop 4 enemy 4
@@ -12366,6 +12526,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4155015829911823421, guid: 5a4d7ed23f42f284ca844c9c11b58222, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 4155015829911823421, guid: 5a4d7ed23f42f284ca844c9c11b58222, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 4940562826278460614, guid: 5a4d7ed23f42f284ca844c9c11b58222, type: 3}
       propertyPath: m_Name
       value: Troop 1 enemy 4
@@ -12962,6 +13130,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1785046086}
     m_Modifications:
+    - target: {fileID: 477716979967976364, guid: e5ba9043c41da854d8dbf1b9590d425a, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 477716979967976364, guid: e5ba9043c41da854d8dbf1b9590d425a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 4511963069979149491, guid: e5ba9043c41da854d8dbf1b9590d425a, type: 3}
       propertyPath: m_Name
       value: Troop 3 ally
@@ -13806,6 +13982,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1090807649}
     m_Modifications:
+    - target: {fileID: 1600305256424685608, guid: e4b58500432b59046a59361ab15389c4, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1600305256424685608, guid: e4b58500432b59046a59361ab15389c4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 4540778089944337010, guid: e4b58500432b59046a59361ab15389c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -687
@@ -15496,7 +15680,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 1e075a7a05aa32d47b119940c498deb9, type: 2}
   m_audioClip: {fileID: 8300000, guid: c23a6824269325f4c840750415a87c83, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.221
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -15588,6 +15772,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1785046086}
     m_Modifications:
+    - target: {fileID: 1007981068692221443, guid: 7f638005827ffa344b39a1655fe0d72b, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1007981068692221443, guid: 7f638005827ffa344b39a1655fe0d72b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 3290095676722817375, guid: 7f638005827ffa344b39a1655fe0d72b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -658
@@ -17065,6 +17257,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 782692254}
     m_Modifications:
+    - target: {fileID: 1595633279718852080, guid: f2eff584684a7cd4daeb2de6862230fb, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1595633279718852080, guid: f2eff584684a7cd4daeb2de6862230fb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 2222843300274357097, guid: f2eff584684a7cd4daeb2de6862230fb, type: 3}
       propertyPath: m_Name
       value: Troop 2 ally 6
@@ -17522,6 +17722,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966652237}
   m_CullTransparentMesh: 1
+--- !u!1 &970337996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 970337998}
+  - component: {fileID: 970337997}
+  m_Layer: 0
+  m_Name: PUNManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &970337997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970337996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464538e641000ab4888b530eae46af16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &970337998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970337996}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1068.3816, y: 315.13843, z: -29.6342}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980214848
 GameObject:
   m_ObjectHideFlags: 0
@@ -17664,6 +17908,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 865357690}
     m_Modifications:
+    - target: {fileID: 3268580174069808435, guid: 4e68e99dc0d4a6d45868c7f491b8b8ad, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 3268580174069808435, guid: 4e68e99dc0d4a6d45868c7f491b8b8ad, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 4138086912477795803, guid: 4e68e99dc0d4a6d45868c7f491b8b8ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: -175
@@ -18109,8 +18361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bed287539e3ee7429888e2231f79ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: 100380
-  money: 81
+  xp: 1000
+  money: 10
   age: 1
   castle: {fileID: 992134509}
   casern: {fileID: 2090991922}
@@ -19304,6 +19556,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7792013080546581006, guid: a51b979b0761a1d4689824227e7e8eba, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 7792013080546581006, guid: a51b979b0761a1d4689824227e7e8eba, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 8839878940781485337, guid: a51b979b0761a1d4689824227e7e8eba, type: 3}
       propertyPath: m_Name
       value: Troop 3 ally 6
@@ -20009,6 +20269,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7066742697149702862, guid: 06c5c720cd0609c45b961815a06ae63a, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 7066742697149702862, guid: 06c5c720cd0609c45b961815a06ae63a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20235,6 +20503,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3650603156609545502, guid: 53c027d7bcc72994383d3ca911a69473, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 3650603156609545502, guid: 53c027d7bcc72994383d3ca911a69473, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 6959012426788983225, guid: 53c027d7bcc72994383d3ca911a69473, type: 3}
       propertyPath: m_Name
       value: Troop 1 ally 2
@@ -20585,6 +20861,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1775410522377496985, guid: 284d1a0888a263144b6a76fcb7d4bf23, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1775410522377496985, guid: 284d1a0888a263144b6a76fcb7d4bf23, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 4343672552211623057, guid: 284d1a0888a263144b6a76fcb7d4bf23, type: 3}
       propertyPath: m_LocalPosition.x
       value: -428
@@ -20732,6 +21016,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1785046086}
     m_Modifications:
+    - target: {fileID: 131394943988309871, guid: 606addca94f017540952e5ee1a371980, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 131394943988309871, guid: 606addca94f017540952e5ee1a371980, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 5809695229075083117, guid: 606addca94f017540952e5ee1a371980, type: 3}
       propertyPath: m_LocalPosition.x
       value: 474
@@ -21338,6 +21630,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 293286641}
     m_Modifications:
+    - target: {fileID: 2512651266027674892, guid: 1a1ce4bbe6b708845b3a8bfb19cfd542, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 2512651266027674892, guid: 1a1ce4bbe6b708845b3a8bfb19cfd542, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 4988387996806123641, guid: 1a1ce4bbe6b708845b3a8bfb19cfd542, type: 3}
       propertyPath: m_LocalPosition.x
       value: 672
@@ -21625,6 +21925,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 373237904054157619, guid: e6eb2b9c66eb0c54988a381527e880c5, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 373237904054157619, guid: e6eb2b9c66eb0c54988a381527e880c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 1825425857637212817, guid: e6eb2b9c66eb0c54988a381527e880c5, type: 3}
       propertyPath: m_Name
       value: Troop 2 enemy 6
@@ -21696,6 +22004,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5740087779069850311, guid: 94bf5fa904b37cb42a79511b442c1227, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 5740087779069850311, guid: 94bf5fa904b37cb42a79511b442c1227, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 8531719245164533164, guid: 94bf5fa904b37cb42a79511b442c1227, type: 3}
       propertyPath: m_Name
       value: Troop 1 ally 4
@@ -22411,7 +22727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1152427224
 Transform:
   m_ObjectHideFlags: 0
@@ -22581,6 +22897,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9080965898705741114, guid: 8495d4d3dc6bce540b0cb7af93ce71f7, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 9080965898705741114, guid: 8495d4d3dc6bce540b0cb7af93ce71f7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24313,6 +24637,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1785046086}
     m_Modifications:
+    - target: {fileID: 4942259443626636424, guid: d66ff86fa52b71644ad00ef2a6830577, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 4942259443626636424, guid: d66ff86fa52b71644ad00ef2a6830577, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 5591249974077934767, guid: d66ff86fa52b71644ad00ef2a6830577, type: 3}
       propertyPath: m_Name
       value: Troop 1 enemy
@@ -24932,6 +25264,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1090807649}
     m_Modifications:
+    - target: {fileID: 1368254515188944605, guid: 8377ad718d0f989498556d728ccda9f9, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1368254515188944605, guid: 8377ad718d0f989498556d728ccda9f9, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 2345553273923475735, guid: 8377ad718d0f989498556d728ccda9f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -453
@@ -25145,6 +25485,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2202088259718976541, guid: f83df1800d6657949858b6dbdde626d9, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 2202088259718976541, guid: f83df1800d6657949858b6dbdde626d9, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 6939953402830980194, guid: f83df1800d6657949858b6dbdde626d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -183
@@ -25993,7 +26341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1342584524
 AudioListener:
   m_ObjectHideFlags: 0
@@ -27218,6 +27566,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 293286641}
     m_Modifications:
+    - target: {fileID: 5172492283900412284, guid: 49143c1ec39391549955101a28182eec, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 5172492283900412284, guid: 49143c1ec39391549955101a28182eec, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     - target: {fileID: 7762845943492038918, guid: 49143c1ec39391549955101a28182eec, type: 3}
       propertyPath: m_LocalPosition.x
       value: -662
@@ -27337,6 +27693,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9032085017495625867, guid: c26625c5c26152045a43e8eb4993b0dd, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 9032085017495625867, guid: c26625c5c26152045a43e8eb4993b0dd, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27653,6 +28017,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4256693454109327027, guid: 4ceec382347624a4eb826253c65d9649, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 4256693454109327027, guid: 4ceec382347624a4eb826253c65d9649, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 5757586326965033153, guid: 4ceec382347624a4eb826253c65d9649, type: 3}
       propertyPath: m_Name
       value: Troop 4 ally
@@ -28589,6 +28961,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9110981790683209271, guid: 6bf860a5073248a4588a962e6510cc05, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 9110981790683209271, guid: 6bf860a5073248a4588a962e6510cc05, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29940,7 +30320,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: db27320bba8e5a24b98727af5f0405c4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -30206,6 +30586,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 865357690}
     m_Modifications:
+    - target: {fileID: 1158396517119799290, guid: 043325991cae2ac4eba1b4baa0726bd5, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1158396517119799290, guid: 043325991cae2ac4eba1b4baa0726bd5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 2646247362649441852, guid: 043325991cae2ac4eba1b4baa0726bd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 478
@@ -30325,6 +30713,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4114767892695832175, guid: 6ed5e90f68b716e41a91f7443a194225, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 4114767892695832175, guid: 6ed5e90f68b716e41a91f7443a194225, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34490,6 +34886,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1972081314190709775, guid: f9c199828df20f14091fadb00a831b90, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1972081314190709775, guid: f9c199828df20f14091fadb00a831b90, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2073809400}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37246,6 +37650,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5683034368402558242, guid: ad26dd3011d439f49b8e1cdc0ff2f635, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 5683034368402558242, guid: ad26dd3011d439f49b8e1cdc0ff2f635, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 8767538929525748377, guid: ad26dd3011d439f49b8e1cdc0ff2f635, type: 3}
       propertyPath: m_Name
       value: Troop 1 ally 5
@@ -37411,6 +37823,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 137948486}
     m_Modifications:
+    - target: {fileID: 1382604190268408408, guid: 3cc87a0852277f445be0d50bb5c815fc, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 1382604190268408408, guid: 3cc87a0852277f445be0d50bb5c815fc, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 1737665921984413245, guid: 3cc87a0852277f445be0d50bb5c815fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 676
@@ -38837,8 +39257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bed287539e3ee7429888e2231f79ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: 100380
-  money: 81
+  xp: 1000
+  money: 10
   age: 1
   castle: {fileID: 2073809404}
   casern: {fileID: 2090991922}
@@ -39911,6 +40331,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 137948486}
     m_Modifications:
+    - target: {fileID: 2473464587004844774, guid: d9175fd350046a641bb976e58e90e175, type: 3}
+      propertyPath: casern
+      value: 
+      objectReference: {fileID: 2090991922}
+    - target: {fileID: 2473464587004844774, guid: d9175fd350046a641bb976e58e90e175, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 992134510}
     - target: {fileID: 5690458157400054708, guid: d9175fd350046a641bb976e58e90e175, type: 3}
       propertyPath: m_LocalPosition.x
       value: 886
@@ -41261,6 +41689,7 @@ SceneRoots:
   - {fileID: 1342584526}
   - {fileID: 1919259537}
   - {fileID: 571301039}
+  - {fileID: 970337998}
   - {fileID: 10988075}
   - {fileID: 178064375}
   - {fileID: 7789637064115067384}

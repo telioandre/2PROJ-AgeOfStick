@@ -309,7 +309,7 @@ public class Casern : MonoBehaviour
 
     public void DestroyTroop(int id, string uniqueTroopId)
     {
-        Debug.Log(uniqueTroopId + " unique ID" + id + " id pas unique");
+        //Debug.Log(uniqueTroopId + " unique ID" + id + " id pas unique");
         if (id == 1)
         {
             for(int i = troopsPlayer1.Count-1; i>=0; i--)
@@ -326,22 +326,16 @@ public class Casern : MonoBehaviour
         }
         if(id == 2)
         {
-            print(troopsPlayer2.Count + " gon't " + castle2.player.numberOfTroop );
+            //print(troopsPlayer2.Count + " gon't " + castle2.player.numberOfTroop );
             for (int i = troopsPlayer2.Count-1; i >= 0; i--)
             {
-                print(troopsPlayer2.Count + " go");
                 print(troopsPlayer2[i]);
                 GameObject troop = troopsPlayer2[i];
                 print(troop);
                 Movement movement = troop.GetComponent<Movement>();
                 if (movement.uniqueId == uniqueTroopId)
                 {
-                    print("tfdskfjdslf");
                     troopsPlayer2.Remove(troop);
-                }
-                else
-                {
-                    print("aaaaaa");
                 }
             }
             castle2.player.numberOfTroop -= 1;

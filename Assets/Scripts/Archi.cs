@@ -144,7 +144,43 @@ public class Archi : MonoBehaviour
 
     public int ChoiceType(int type) => typeChoice = type;
 
-    public void placeTurret(int placement, int id, int type)
+    public void PlaceTurret(int placement, int id, int type)
+    {
+        if (type == 0)
+        {
+            type = typeChoice;
+        }
+        if (id == 1 && nbPlacement_Id1 > nbTowerId1)
+        {
+            GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+            Turret script = newObject.GetComponent<Turret>();
+            script.Initialize("test", castle1.player.age.ToString(), type, placement, castle1.id, castle1);
+            script.SetPosition(castle1.id);
+            script.SetSprite();
+            if (listTurret_Id1[placement - 1] != newObject)
+            {
+                Destroy(listTurret_Id1[placement - 1]);
+                listTurret_Id1[placement-1] = newObject;
+                nbTowerId1 += 1;
+            }
+        }
+        else if (id == 2 && nbPlacement_Id2 > nbTowerId2)
+        {
+            GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+            Turret script = newObject.GetComponent<Turret>();
+            script.Initialize("test", castle2.player.age.ToString(), type, placement, castle2.id, castle2);
+            script.SetPosition(castle2.id);
+            script.SetSprite();
+            if (listTurret_Id2[placement - 1] != newObject)
+            {
+                Destroy(listTurret_Id2[placement - 1]);
+                listTurret_Id2[placement-1] = newObject;
+                nbTowerId2 += 1;
+            }
+        }
+    }
+
+    /*public void placeTurret(int placement, int id, int type)
     {
         Castle castle;
         //Debug.Log(placement);
@@ -165,14 +201,14 @@ public class Archi : MonoBehaviour
         script.Initialize("test", "test", type, placement, castle.id, castle);
         script.SetPosition(castle.id);
         script.SetSprite();
-        if (listTurret_Id1[placement - 1] != newObject && castle.id == 1)
+        if (listTurret_Id1[placement - 1] != newObject && castle.id == 1 && nbPlacement_Id1 > nbTowerId1)
         {
             Destroy(listTurret_Id1[placement - 1]);
             //Debug.Log(placement);
             listTurret_Id1[placement-1] = newObject;
             nbTowerId1 += 1;
 
-        }else if (listTurret_Id2[placement - 1] != newObject && castle.id == 2)
+        }else if (listTurret_Id2[placement - 1] != newObject && castle.id == 2 && nbPlacement_Id2 > nbTowerId2)
         {
             Destroy(listTurret_Id2[placement - 1]);
             //Debug.Log(placement);
@@ -180,5 +216,5 @@ public class Archi : MonoBehaviour
             nbTowerId2 += 1;
 
         }
-    }
+    }*/
 }

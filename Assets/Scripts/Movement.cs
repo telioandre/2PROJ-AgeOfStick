@@ -61,7 +61,6 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         //health.fillAmount = (float)life / maxLife;
-        //health.transform.localPosition = rb2d.transform.position;
     }
 
     //Permet de lancer le mouvement de chaque unité en fonction de leur ID
@@ -99,7 +98,6 @@ public class Movement : MonoBehaviour
         uniqueId = System.Guid.NewGuid().ToString();
         char troopName = name[6];
         int troopNumber = int.Parse(troopName.ToString());
-        //Debug.Log(name);
         switch (troopNumber)
         {
             case 1:
@@ -165,8 +163,6 @@ public class Movement : MonoBehaviour
 
     public void DropRewards(int troop, Player ally, Player enemy)
     {
-        //Debug.Log(troop + " troop name");
-
         switch (troop)
         {
             case 1:
@@ -209,9 +205,7 @@ public class Movement : MonoBehaviour
         while (enemyMovement.life > 0)
         {
             yield return new WaitForSeconds(attackTime);
-            //On divise par 2 car la coroutine se lance 2 fois (1 par objet en contact)
-            int damage = attack /*+ random.Next(0, 10)*/;
-            //Debug.Log(damage + " damage");
+            int damage = attack + Random.Range(0, 10);
             char allyChar = name[6];
             char enemyChar = enemyMovement.name[6];
             int allyNumber = int.Parse(allyChar.ToString());
@@ -219,13 +213,9 @@ public class Movement : MonoBehaviour
             
             if (SuperEffective(allyNumber, enemyNumber))
             {
-                //Debug.Log("DEGAT AVANT : " + damage);
                 damage = Mathf.RoundToInt(damage * 1.5f);
-                //Debug.Log("DEGAT APRES : " + damage);
             }
             enemyMovement.life -= damage;
-            //life -= damage;
-            //enemyMovement.life -= attack / 2 + Random.Range(0, 10);
             if (enemyMovement.life <= 0)
             {
                 DropRewards(enemyNumber, ally, enemy);
@@ -233,13 +223,6 @@ public class Movement : MonoBehaviour
                 casern.DestroyTroop(enemyMovement.id, enemyMovement.uniqueId);
                 Destroy(enemyMovement.gameObject);
             }
-            /*if (life <= 0)
-            {
-                DropRewards(allyNumber, ally, enemy);
-                life = 0;
-                casern.DestroyTroop(id, uniqueId);
-                Destroy(gameObject);      
-            }*/
             myRb.constraints = RigidbodyConstraints2D.None;
         }
     }
@@ -250,7 +233,6 @@ public class Movement : MonoBehaviour
             char troopChar = troop.name[6];
             int troopNumber = int.Parse(troopChar.ToString());
             int damage;
-            //Debug.Log(troop.player.age + " enemy age " + otherPlayer.age + " ally age");
             if (otherPlayer.age == troop.player.age)
             {
                 if (troopNumber == 4)
@@ -278,8 +260,6 @@ public class Movement : MonoBehaviour
             {
                 damage = troop.maxLife;
             }
-
-            //Debug.Log(damage + " damage done by special");
             troop.life -= damage;
             Destroy(special.gameObject);
             if (troop.life <= 0)
