@@ -144,11 +144,13 @@ public class Movement : MonoBehaviour
         if (id == 1)
         {
             transform.position = new Vector2(50, 600);
+            casern.isForming1 = false;
 
         }
         else if (id == 2)
         {
             transform.position = new Vector2(5500, 600);
+            casern.isForming2 = false;
         }
     }
 
@@ -222,8 +224,8 @@ public class Movement : MonoBehaviour
                 enemyMovement.life = 0;
                 casern.DestroyTroop(enemyMovement.id, enemyMovement.uniqueId);
                 Destroy(enemyMovement.gameObject);
+                myRb.constraints = RigidbodyConstraints2D.None;
             }
-            myRb.constraints = RigidbodyConstraints2D.None;
         }
     }
 

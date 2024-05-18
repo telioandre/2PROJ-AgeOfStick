@@ -79,7 +79,7 @@ public class Collisions : MonoBehaviour
         }
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
+    /*public void OnCollisionStay2D(Collision2D collision)
     {
         Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();
         Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
@@ -90,7 +90,7 @@ public class Collisions : MonoBehaviour
                 enemyRb.constraints = RigidbodyConstraints2D.FreezeAll;
             }
         }
-    }
+    }*/
 
     public void OnCollisionExit2D(Collision2D collision)
     {
