@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 321222217728
-    m_Localized: anti-armatura
+    m_Localized: Anti-Armatura
     m_Metadata:
       m_Items: []
   - m_Id: 511077388288
@@ -80,6 +80,46 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4908337558065152
     m_Localized: "Velocit\xE0 :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245002541142016
+    m_Localized: Aggiornamento - Torre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245520558657536
+    m_Localized: Aggiornamento - Danno alla Torretta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245988965945344
+    m_Localized: Aggiornamento - Distanza di tiro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6249491406917632
+    m_Localized: Evolvi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6252343269396480
+    m_Localized: Aggiornamento - Fanteria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253058415005696
+    m_Localized: Aggiornamento - Supporto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253273733795840
+    m_Localized: Aggiornamento - Anti-Armatura
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253723132497920
+    m_Localized: Aggiornamento - Serbatoio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6255185560473600
+    m_Localized: Sblocca Truppa Speciale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6266385555918848
+    m_Localized: Torna al Menu di Pausa
     m_Metadata:
       m_Items: []
   references:

@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 321222217728
-    m_Localized: Anti-armure
+    m_Localized: Anti-Armure
     m_Metadata:
       m_Items: []
   - m_Id: 511077388288
@@ -80,6 +80,46 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4908337558065152
     m_Localized: 'Vitesse :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245002541142016
+    m_Localized: "Am\xE9lioration - Tour"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245520558657536
+    m_Localized: "Am\xE9lioration - D\xE9gat des Tourelles"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245988965945344
+    m_Localized: "Am\xE9lioration - Distance des Tourelles"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6249491406917632
+    m_Localized: "\xC9voluer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6252343269396480
+    m_Localized: "Am\xE9lioration - Infanterie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253058415005696
+    m_Localized: "Am\xE9lioration - Support"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253273733795840
+    m_Localized: "Am\xE9lioration - Anti-Armure"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253723132497920
+    m_Localized: "Am\xE9lioration - Tank"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6255185560473600
+    m_Localized: "D\xE9bloquer la Troupe Sp\xE9ciale"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6266385555918848
+    m_Localized: Retourner au Menu Pause
     m_Metadata:
       m_Items: []
   references:

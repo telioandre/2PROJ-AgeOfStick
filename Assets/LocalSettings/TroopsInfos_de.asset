@@ -82,6 +82,46 @@ MonoBehaviour:
     m_Localized: 'Geschwindigkeit :'
     m_Metadata:
       m_Items: []
+  - m_Id: 6245002541142016
+    m_Localized: "Upgrade \u2013 Turm"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245520558657536
+    m_Localized: "Upgrade \u2013 Turmschaden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245988965945344
+    m_Localized: " Upgrade \u2013 Schussentfernung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6249491406917632
+    m_Localized: Evolve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6252343269396480
+    m_Localized: "Upgrade \u2013 Infanterie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253058415005696
+    m_Localized: "Upgrade \u2013 Unterst\xFCtzung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253273733795840
+    m_Localized: "Upgrade \u2013 Anti-R\xFCstung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253723132497920
+    m_Localized: "Upgrade \u2013 Panzer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6255185560473600
+    m_Localized: Schalte Spezialtruppe Frei
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6266385555918848
+    m_Localized: "Zur\xFCck zum Pausenmen\xFC"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

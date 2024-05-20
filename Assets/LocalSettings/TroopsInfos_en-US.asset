@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 321222217728
-    m_Localized: anti-armor
+    m_Localized: Anti-Armor
     m_Metadata:
       m_Items: []
   - m_Id: 511077388288
@@ -80,6 +80,46 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4908337558065152
     m_Localized: 'Speed :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245002541142016
+    m_Localized: Upgrade - Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245520558657536
+    m_Localized: Upgrade - Turrets Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245988965945344
+    m_Localized: Upgrade - Turrets Shooting Distance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6249491406917632
+    m_Localized: Evolve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6252343269396480
+    m_Localized: "Upgrade \u2013 Infantry"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253058415005696
+    m_Localized: "Upgrade \u2013 Support"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253273733795840
+    m_Localized: "Upgrade \u2013 Anti-Armor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253723132497920
+    m_Localized: "Upgrade \u2013 Tank"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6255185560473600
+    m_Localized: Unlock Special Troop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6266385555918848
+    m_Localized: Return to Pause Menu
     m_Metadata:
       m_Items: []
   references:

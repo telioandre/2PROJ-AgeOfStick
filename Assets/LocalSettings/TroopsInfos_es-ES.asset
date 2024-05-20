@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 321222217728
-    m_Localized: antiblindaje
+    m_Localized: Antiblindaje
     m_Metadata:
       m_Items: []
   - m_Id: 511077388288
@@ -80,6 +80,46 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4908337558065152
     m_Localized: 'Velocidad :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245002541142016
+    m_Localized: "\rMejora - Torre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245520558657536
+    m_Localized: "\rMejora - Da\xF1o a la Torreta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245988965945344
+    m_Localized: 'Mejora - Distancia de Disparo '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6249491406917632
+    m_Localized: Evolucionar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6252343269396480
+    m_Localized: "Mejora - Infanter\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253058415005696
+    m_Localized: Mejora - Apoyo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253273733795840
+    m_Localized: Mejora - Antiblindaje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253723132497920
+    m_Localized: Mejora - Tanque
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6255185560473600
+    m_Localized: Desbloquear Tropa Especial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6266385555918848
+    m_Localized: "Volver al Men\xFA de Pausa"
     m_Metadata:
       m_Items: []
   references:

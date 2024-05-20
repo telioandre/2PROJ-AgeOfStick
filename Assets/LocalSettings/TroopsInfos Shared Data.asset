@@ -79,6 +79,46 @@ MonoBehaviour:
     m_Key: speed
     m_Metadata:
       m_Items: []
+  - m_Id: 6245002541142016
+    m_Key: upgrade_tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245520558657536
+    m_Key: upgrade_turret_dmg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6245988965945344
+    m_Key: upgrade_turret_len
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6249491406917632
+    m_Key: evolve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6252343269396480
+    m_Key: upgrade_troop1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253058415005696
+    m_Key: upgrade_troop2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253273733795840
+    m_Key: upgrade_troop3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6253723132497920
+    m_Key: upgrade_troop4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6255185560473600
+    m_Key: unlock_troop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6266385555918848
+    m_Key: return_pause
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
