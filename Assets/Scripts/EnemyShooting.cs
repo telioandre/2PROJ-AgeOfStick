@@ -12,6 +12,7 @@ public class EnemyShooting : MonoBehaviour
     public int damage = 100;
     public float delay = 1f;
 
+    private int turretId;
     private float timer;
     public List<Transform> targets = new List<Transform>();
 
@@ -42,6 +43,7 @@ public class EnemyShooting : MonoBehaviour
             {
                 int id = enemyScript.GetId();
                 int idTurret = turretScript.getIdTurret();
+                turretId = idTurret;
 
                 if (id == 2 && idTurret == 1)
                 {
@@ -77,7 +79,7 @@ public class EnemyShooting : MonoBehaviour
                         Debug.Log("liste des cibles: " + targets[i].name);
                         i++;
                     }
-                    enemyBulletScript.SetTarget(targets[0], damage);
+                    enemyBulletScript.SetTarget(targets[0], damage, turretId);
                 }
                 else
                 {

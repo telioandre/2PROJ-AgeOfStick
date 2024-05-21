@@ -131,7 +131,13 @@ public class Movement : MonoBehaviour
             attack = Mathf.RoundToInt(attack * 1.2f);
         }
         maxLife = life;
-        transform.position = new Vector2(3500, 0);
+        if (id == 1) {
+            transform.position = new Vector2(3500, 0);
+        }
+        else if (id == 2)
+        {
+            transform.position = new Vector2(9400, -1000);
+        }
         Invoke("Endbuild", buildTime);
     }
     private void Endbuild()
@@ -212,9 +218,9 @@ public class Movement : MonoBehaviour
             
             if (SuperEffective(allyNumber, enemyNumber))
             {
-                Debug.Log("DEGAT AVANT : " + damage);
+                //Debug.Log("DEGAT AVANT : " + damage);
                 damage = Mathf.RoundToInt(damage * 1.5f);
-                Debug.Log("DEGAT APRES : " + damage);
+                //Debug.Log("DEGAT APRES : " + damage);
             }
             life -= damage;
             enemyMovement.life -= attack / 2 + Random.Range(0, 10);

@@ -8,6 +8,7 @@ public class EnemyBulletScript : MonoBehaviour
     public Rigidbody2D rb;
     public float force;
     private int damage;
+    private int idBullet;
 
     // Start is called before the first frame update
     void Start()
@@ -15,13 +16,14 @@ public class EnemyBulletScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetTarget(Transform target, int bulletDamage)
+    public void SetTarget(Transform target, int bulletDamage, int id)
     {
         if (target != null)
         {
             Vector2 direction = (target.position - transform.position).normalized;
             rb.velocity = direction * force;
             damage = bulletDamage;
+            idBullet = id;
         }
         else
         {
@@ -31,11 +33,12 @@ public class EnemyBulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        var targetScript = collision.GetComponent<Movement>(); 
         // Vérifiez si la collision est avec un objet ayant le tag "Target"
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && targetScript.GetId() != idBullet)
         {
             // Accédez au composant de script de l'objet touché (peut-être votre ennemi)
-            var targetScript = collision.GetComponent<Movement>(); // Remplacez "YourTargetScript" par le nom de votre script de cible
+            
 
             // Vérifiez si le composant de script a été trouvé
             if (targetScript != null)

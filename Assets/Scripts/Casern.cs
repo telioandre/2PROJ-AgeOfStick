@@ -70,8 +70,8 @@ public class Casern : MonoBehaviour
 
     //public int numberOfTroop1 = 0;
     //public int numberOfTroop2 = 0;
-    public List<GameObject> troopsPlayer1 = new();
-    public List<GameObject> troopsPlayer2 = new();
+    public List<GameObject> troopsPlayer1 = new List<GameObject>();
+    public List<GameObject> troopsPlayer2 = new List<GameObject>();
     [FormerlySerializedAs("IA")] public Ia ia;
 
     private List<int> _troop1Costs;
@@ -92,6 +92,10 @@ public class Casern : MonoBehaviour
 
     private void Update()
     {
+        if(troopsPlayer1.Count > 0 && troopsPlayer2.Count > 0)
+        {
+        GetFirstTroop();
+        }
         switch (player.age)
         {
             case 2:
@@ -163,6 +167,7 @@ public class Casern : MonoBehaviour
     public void GetFirstTroop()
     {
         Debug.Log(troopsPlayer1[0].name);
+        Debug.Log(troopsPlayer2[0].name);
     }
     public void InstantiateTroop(int value)
     {
@@ -287,12 +292,14 @@ public class Casern : MonoBehaviour
         {
             player.numberOfTroop += 1;
             troopsPlayer1.Add(newObject);
+            Debug.Log("Troop player 1 count: " + troopsPlayer1.Count);
             player.AddMoney(-_cost);
         }
         else
         {
             opponent.numberOfTroop += 1;
             troopsPlayer2.Add(newObject);
+            Debug.Log("Troop player 2 count: " + troopsPlayer2.Count);
             opponent.AddMoney(-_cost);
         }
         Movement script = newObject.GetComponent<Movement>();
@@ -302,13 +309,21 @@ public class Casern : MonoBehaviour
     public void DestroyTroop(int id, string uniqueTroopId)
     {
         //Debug.Log(uniqueTroopId + " unique ID");
+
+        Debug.Log("Troop player 1 count: " + troopsPlayer1.Count);
+        Debug.Log("Troop player 2 count: " + troopsPlayer2.Count);
         if (id == 1)
         {
+            Debug.Log("id 1");
             for(int i = troopsPlayer1.Count-1; i>=0; i--)
             {
                 GameObject troop = troopsPlayer1[i];
                 Movement movement = troop.GetComponent<Movement>();
-                if(movement.uniqueId == uniqueTroopId)
+
+                Debug.Log("troopsPlayer1");
+                Debug.Log(uniqueTroopId + " unique ID");
+                Debug.Log(movement.id + " movement ID");
+                if (movement.uniqueId == uniqueTroopId)
                 {
                     troopsPlayer1.Remove(troop);
                 }
@@ -316,12 +331,19 @@ public class Casern : MonoBehaviour
             player.numberOfTroop -= 1;
             //troopsPlayer1.Remove(troop);
         }
-        else
+        else if (id == 2)
         {
+            Debug.Log("id 2");
+            Debug.Log("Troop player count: " + troopsPlayer2.Count);
             for (int i = troopsPlayer2.Count-1; i >= 0; i--)
             {
                 GameObject troop = troopsPlayer2[i];
                 Movement movement = troop.GetComponent<Movement>();
+
+
+                Debug.Log("troopsPlayer2");
+                Debug.Log(uniqueTroopId + " unique ID");
+                Debug.Log(movement.id + " movement ID");
                 if (movement.uniqueId == uniqueTroopId)
                 {
                     troopsPlayer2.Remove(troop);
@@ -329,6 +351,10 @@ public class Casern : MonoBehaviour
             }
             opponent.numberOfTroop -= 1;
             //troopsPlayer2.Remove(troop);
+        }
+        else
+        {
+            Debug.Log("id inconnu");
         }
     }
 }

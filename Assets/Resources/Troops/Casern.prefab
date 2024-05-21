@@ -95,15 +95,5 @@ MonoBehaviour:
   age6Troop7: {fileID: 5234234610001927511, guid: 6bf860a5073248a4588a962e6510cc05, type: 3}
   age6Troop8: {fileID: 2302889016173214762, guid: db43ddd8b89ae244487741363113de7a, type: 3}
   troopsPlayer1: []
-  troopsPlayer2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  troopsPlayer2: []
   ia: {fileID: 1020084069857690590, guid: 0c1dcb82d91471745ad226618e0c166e, type: 3}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8452040062653214704}
   - component: {fileID: 7066742697149702862}
   - component: {fileID: 2179468623300297778}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Troop 1 ally
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 0}
-  speed: 300
-  id: 0
+  speed: 200
+  id: 1
   movementAllowed: 1
   life: 100
   attack: 20
