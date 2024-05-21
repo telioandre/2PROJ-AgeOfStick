@@ -178,7 +178,6 @@ public class Casern : MonoBehaviour
             case 1:
                 if (castle1.player.numberOfTroop < 10 && !isForming1)
                 {
-                    isForming1 = true;
                     switch (troop)
                     {
                         case 1:
@@ -231,6 +230,7 @@ public class Casern : MonoBehaviour
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 queue1.Add(value);
+                                castle1.player.AddMoney(-_cost);
                             }
                             break;
                         case 2:
@@ -238,6 +238,7 @@ public class Casern : MonoBehaviour
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 queue1.Add(value);
+                                castle1.player.AddMoney(-_cost);
                             }
                             break;
                         case 3:
@@ -245,6 +246,7 @@ public class Casern : MonoBehaviour
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 queue1.Add(value);
+                                castle1.player.AddMoney(-_cost);
                             }
                             break;
                         case 4:
@@ -252,6 +254,7 @@ public class Casern : MonoBehaviour
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 queue1.Add(value);
+                                castle1.player.AddMoney(-_cost);
                             }
                             break;
                     }
@@ -261,7 +264,6 @@ public class Casern : MonoBehaviour
             case 2:
                 if (castle2.player.numberOfTroop < 10 && !isForming2)
                 {
-                    isForming2 = true;
                     switch (troop)
                     {
 
@@ -315,6 +317,7 @@ public class Casern : MonoBehaviour
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 queue2.Add(value);
+                                castle2.player.AddMoney(-_cost);
                             }
                             break;
                         case 2:
@@ -322,6 +325,7 @@ public class Casern : MonoBehaviour
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 queue2.Add(value);
+                                castle2.player.AddMoney(-_cost);
                             }
                             break;
                         case 3:
@@ -329,6 +333,7 @@ public class Casern : MonoBehaviour
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 queue2.Add(value);
+                                castle2.player.AddMoney(-_cost);
                             }
                             break;
                         case 4:
@@ -336,6 +341,7 @@ public class Casern : MonoBehaviour
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 queue2.Add(value);
+                                castle2.player.AddMoney(-_cost);
                             }
                             break;
                     }
@@ -359,11 +365,13 @@ public class Casern : MonoBehaviour
 
         if (id == 1)
         {
+            isForming1 = true;
             currentPlayer = castle1.player;
             currentTroops = troopsPlayer1;
         }
         else
         {
+            isForming2 = true;
             currentPlayer = castle2.player;
             currentTroops = troopsPlayer2;
         }

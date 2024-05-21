@@ -10,11 +10,11 @@ public class Movement : MonoBehaviour
     public bool movementAllowed = true;
     public int life;
     public int attack;
-    public Player player;
+    private Player player;
     public int troopLevel;
     public float buildTime;
     public float attackTime;
-    public Casern casern;
+    private Casern casern;
     public int maxLife;
     public int troopId;
     public string uniqueId;
@@ -90,12 +90,28 @@ public class Movement : MonoBehaviour
         return uniqueId;
     }
 
+    public Player getPlayer()
+    {
+        return player;
+    }
+
     //Initialise les paramètres de l'objet prefab
     public void SetPlayer(int playerId, int newTroopId)
     {
         id = playerId;
         troopId = newTroopId;
         uniqueId = System.Guid.NewGuid().ToString();
+        casern = GameObject.Find("Casern").GetComponent<Casern>();
+        if (id == 1)
+        {
+            player = GameObject.Find("Castle 1").GetComponent<Player>();
+            transform.position = new Vector2(1500, 0);
+        }
+        else
+        { 
+            player = GameObject.Find("Castle 2").GetComponent<Player>();
+            transform.position = new Vector2(3500, 0);
+        }
         char troopName = name[6];
         int troopNumber = int.Parse(troopName.ToString());
         switch (troopNumber)
@@ -129,14 +145,6 @@ public class Movement : MonoBehaviour
             attack = Mathf.RoundToInt(attack * 1.2f);
         }
         maxLife = life;
-        if (id == 1)
-        {
-            transform.position = new Vector2(1500, 0);
-        }
-        else
-        { 
-            transform.position = new Vector2(3500, 0);
-        }
         Invoke("Endbuild", buildTime);
     }
     private void Endbuild()

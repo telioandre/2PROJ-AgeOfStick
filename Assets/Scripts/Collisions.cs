@@ -11,7 +11,7 @@ public class Collisions : MonoBehaviour
         Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();
         Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
         Castle castle = collision.gameObject.GetComponent<Castle>();
-        Player ally = currentMovement.player;
+        Player ally = currentMovement.getPlayer();
         Player otherPlayer;
 
         if (collision.gameObject.CompareTag("Special") && gameObject.CompareTag("Player"))
@@ -56,7 +56,7 @@ public class Collisions : MonoBehaviour
         {
             if (otherMovement != null && currentMovement.id != otherMovement.id)
             {
-                Player enemy = otherMovement.player;
+                Player enemy = otherMovement.getPlayer();
                 //Permet de stop le mouvement 
                 if (currentMovement != null && otherMovement != null && myRb != null && enemyRb != null)
                 {
