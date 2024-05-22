@@ -71,21 +71,26 @@ public class Casern : MonoBehaviour
 
     public List<GameObject> troopsPlayer1 = new();
     public List<GameObject> troopsPlayer2 = new();
-    public Ia ia;
 
     private List<int> _troop1Costs;
     private List<int> _troop2Costs;
     private List<int> _troop3Costs;
     private List<int> _troop4Costs;
 
+    private bool _isOnline;
     void Start()
     {
         _troop1Costs = new List<int>() { 2, 7, 12, 25, 60, 150 };
         _troop2Costs = new List<int>() { 1, 5, 9, 20, 55, 110 };
         _troop3Costs = new List<int>() { 7, 11, 22, 49, 95, 172 };
         _troop4Costs = new List<int>() { 9, 20, 41, 100, 200, 300 };
+        print(_isOnline);
     }
 
+    public void setOnline(bool online)
+    {
+        _isOnline = online;
+    }
     private void Update()
     {
         if (!isForming1 && queue1.Count > 0)
@@ -376,14 +381,24 @@ public class Casern : MonoBehaviour
             currentTroops = troopsPlayer2;
         }
 
-        GameObject newObject = Instantiate(troopToCreate, transform.position, Quaternion.identity);
-
-        currentPlayer.numberOfTroop += 1;
-        currentTroops.Add(newObject);
-        currentPlayer.AddMoney(-_cost);
-
-        Movement script = newObject.GetComponent<Movement>();
-        script.SetPlayer(id, troopId);
+        if (_isOnline)
+        {
+            GameObject newObject = PhotonNetwork.Instantiate(troopToCreate.name, transform.position, Quaternion.identity, 0);
+            currentPlayer.numberOfTroop += 1;
+            currentPlayer.AddMoney(-_cost);
+            currentTroops.Add(newObject);
+            Movement script = newObject.GetComponent<Movement>();
+            script.SetPlayer(id, troopId);
+        }
+        else
+        {
+            GameObject newObject = Instantiate(troopToCreate, transform.position, Quaternion.identity);
+            currentPlayer.numberOfTroop += 1;
+            currentPlayer.AddMoney(-_cost);
+            Movement script = newObject.GetComponent<Movement>();
+            currentTroops.Add(newObject);
+            script.SetPlayer(id, troopId);
+        }
     }
 
 

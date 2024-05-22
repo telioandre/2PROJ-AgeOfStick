@@ -81,9 +81,12 @@ public class PunManager : MonoBehaviour
             Infos.text = "Connected to : " + PhotonNetwork.room.name + " Player(s) online : " +
                          PhotonNetwork.room.playerCount + " Master ? " + PhotonNetwork.isMasterClient;
         }
-        if (PhotonNetwork.room.PlayerCount == 2)
+        if (PhotonNetwork.room != null)
         {
-            ActivateGameObjects();
+            if (PhotonNetwork.room.PlayerCount == 2)
+            {
+                ActivateGameObjects();
+            }
         }
     }
 }
