@@ -82,6 +82,54 @@ MonoBehaviour:
     m_Localized: 'Geschwindigkeit :'
     m_Metadata:
       m_Items: []
+  - m_Id: 6938313601978368
+    m_Localized: Entwickeln Sie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6940166523850752
+    m_Localized: LVL UP - Infanterie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6941575319261184
+    m_Localized: "LVL UP - Unterst\xFCtzung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6941765031825408
+    m_Localized: "LVL UP - Anti-R\xFCstung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6942267442335744
+    m_Localized: LVL UP - Panzer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6946477881823232
+    m_Localized: Freischalten - Spezielle Truppe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6950940474478592
+    m_Localized: "UPGRADE - Gesch\xFCtzt\xFCrme Schaden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6951336148340736
+    m_Localized: UPGRADE - Schussentfernung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6951638624768000
+    m_Localized: "HINZUF\xDCGEN - Runde"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6960388618194944
+    m_Localized: Endspiel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6961120541020160
+    m_Localized: ' hat das Spiel gewonnen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6963205747642368
+    m_Localized: wieder spielen
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -119,6 +119,34 @@ MonoBehaviour:
     m_Key: volume
     m_Metadata:
       m_Items: []
+  - m_Id: 7323279796080640
+    m_Key: backtopause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7336787300454400
+    m_Key: enter_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337015697084416
+    m_Key: login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337173184811008
+    m_Key: create_acc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337501640757248
+    m_Key: username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337587523325952
+    m_Key: password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7339369175584768
+    m_Key: validate
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
