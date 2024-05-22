@@ -174,7 +174,6 @@ public class Casern : MonoBehaviour
 
     public void InstantiateTroop(int value)
     {
-        // faire un booléen isForming pour chaque player, qui quand true ajoute à une liste, sinon il crée la troupe, la fonction update doit l'appeler à chaque fois.
         bool isValid = false;
         int id = value / 10;
         int troop = value % 10;
