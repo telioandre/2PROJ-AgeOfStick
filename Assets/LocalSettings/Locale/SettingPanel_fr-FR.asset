@@ -118,6 +118,34 @@ MonoBehaviour:
     m_Localized: Volume
     m_Metadata:
       m_Items: []
+  - m_Id: 7323279796080640
+    m_Localized: Retour au Menu Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7336787300454400
+    m_Localized: Saisir le texte ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337015697084416
+    m_Localized: Connexion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337173184811008
+    m_Localized: "Cr\xE9er un compte"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337501640757248
+    m_Localized: nom d'utilisateur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337587523325952
+    m_Localized: Mot de passe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7339369175584768
+    m_Localized: confirmer
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

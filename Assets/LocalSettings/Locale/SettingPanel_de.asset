@@ -118,6 +118,34 @@ MonoBehaviour:
     m_Localized: Volumen
     m_Metadata:
       m_Items: []
+  - m_Id: 7323279796080640
+    m_Localized: "Zur\xFCck zum Men\xFC Pause"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7336787300454400
+    m_Localized: Text eingeben ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337015697084416
+    m_Localized: Anmeldung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337173184811008
+    m_Localized: Ein Konto erstellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337501640757248
+    m_Localized: Nutzername
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337587523325952
+    m_Localized: Passwort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7339369175584768
+    m_Localized: "best\xE4tigen"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

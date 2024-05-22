@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 321222217728
-    m_Localized: antiblindaje
+    m_Localized: Antiblindaje
     m_Metadata:
       m_Items: []
   - m_Id: 511077388288
@@ -80,6 +80,54 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4908337558065152
     m_Localized: 'Velocidad :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6938313601978368
+    m_Localized: Evolucionar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6940166523850752
+    m_Localized: "LVL UP - Infanter\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6941575319261184
+    m_Localized: LVL UP - Apoyo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6941765031825408
+    m_Localized: LVL UP - Antiblindaje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6942267442335744
+    m_Localized: LVL UP - Tanque
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6946477881823232
+    m_Localized: Desbloquear - Tropa especial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6950940474478592
+    m_Localized: "MEJORA - Da\xF1o de Torretas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6951336148340736
+    m_Localized: MEJORA - Distancia de tiro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6951638624768000
+    m_Localized: "A\xD1ADIDO - Torre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6960388618194944
+    m_Localized: fin del juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6961120541020160
+    m_Localized: ' ha ganado la partida.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6963205747642368
+    m_Localized: reproducir
     m_Metadata:
       m_Items: []
   references:

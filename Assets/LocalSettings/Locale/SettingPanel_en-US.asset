@@ -118,6 +118,34 @@ MonoBehaviour:
     m_Localized: Volume
     m_Metadata:
       m_Items: []
+  - m_Id: 7323279796080640
+    m_Localized: Back to Pause Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7336787300454400
+    m_Localized: Enter text ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337015697084416
+    m_Localized: Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337173184811008
+    m_Localized: Create Account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337501640757248
+    m_Localized: username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7337587523325952
+    m_Localized: password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7339369175584768
+    m_Localized: confirm
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
