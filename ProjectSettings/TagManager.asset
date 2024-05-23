@@ -15,6 +15,7 @@ TagManager:
   - Turret1
   - Special
   - Turret4
+  - Delete Turret
   layers:
   - Default
   - TransparentFX
