@@ -1,4 +1,7 @@
+using PlayFab.DataModels;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Archi : MonoBehaviour
@@ -43,7 +46,8 @@ public class Archi : MonoBehaviour
         if(id == 1)
         {
             if (nbPlacement_Id1 == 1)
-            {
+            { 
+                Debug.Log("id: " + id);
                 spriteRenderer1_Id1.enabled = !spriteRenderer1_Id1.enabled;
 
                 collider2D_1_Id1.enabled = !collider2D_1_Id1.enabled;
@@ -117,6 +121,7 @@ public class Archi : MonoBehaviour
                 collider2D_4_Id2.enabled = !collider2D_4_Id2.enabled;
             }
         }
+        
     }
 
     public void BuySpot(int id)
@@ -132,10 +137,26 @@ public class Archi : MonoBehaviour
             nbPlacement_Id2 += 1;
         }
     }
-    public void SellSpot(int value)
+    public void SellSpot(int placement, int ID)
     {
-        int id = value / 10;
-        int spot = value % 10;
+        if (ID == 1)
+        {
+            if (listTurret_Id1[placement - 1] != null)
+            {
+                Destroy(listTurret_Id1[placement - 1]);
+                listTurret_Id1[placement - 1] = null;
+                nbTowerId1 -= 1;
+            }
+        }
+        else
+        {
+            if (listTurret_Id2[placement - 1] != null)
+            {
+                Destroy(listTurret_Id2[placement - 1]);
+                listTurret_Id2[placement - 1] = null;
+                nbTowerId2 -= 1;
+            }
+        }
     }
 
     public int ChoiceType(int type) => typeChoice = type;
@@ -146,7 +167,7 @@ public class Archi : MonoBehaviour
         {
             type = typeChoice;
         }
-        if (id == 1 && nbPlacement_Id1 > nbTowerId1)
+        if (id == 1 && nbPlacement_Id1 >= nbTowerId1)
         {
             GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
             Turret script = newObject.GetComponent<Turret>();
@@ -157,10 +178,9 @@ public class Archi : MonoBehaviour
             {
                 Destroy(listTurret_Id1[placement - 1]);
                 listTurret_Id1[placement-1] = newObject;
-                nbTowerId1 += 1;
             }
         }
-        else if (id == 2 && nbPlacement_Id2 > nbTowerId2)
+        else if (id == 2 && nbPlacement_Id2 >= nbTowerId2)
         {
             GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
             Turret script = newObject.GetComponent<Turret>();
@@ -171,46 +191,9 @@ public class Archi : MonoBehaviour
             {
                 Destroy(listTurret_Id2[placement - 1]);
                 listTurret_Id2[placement-1] = newObject;
-                nbTowerId2 += 1;
             }
         }
     }
 
-    /*public void placeTurret(int placement, int id, int type)
-    {
-        Castle castle;
-        //Debug.Log(placement);
-        GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
-        Turret script = newObject.GetComponent<Turret>();
-        if (id == 1)
-        {
-            castle = castle1;
-        }
-        else
-        {
-            castle = castle2;
-        }
-        if (type == 0)
-        {
-            type = typeChoice;
-        }
-        script.Initialize("test", "test", type, placement, castle.id, castle);
-        script.SetPosition(castle.id);
-        script.SetSprite();
-        if (listTurret_Id1[placement - 1] != newObject && castle.id == 1 && nbPlacement_Id1 > nbTowerId1)
-        {
-            Destroy(listTurret_Id1[placement - 1]);
-            //Debug.Log(placement);
-            listTurret_Id1[placement-1] = newObject;
-            nbTowerId1 += 1;
-
-        }else if (listTurret_Id2[placement - 1] != newObject && castle.id == 2 && nbPlacement_Id2 > nbTowerId2)
-        {
-            Destroy(listTurret_Id2[placement - 1]);
-            //Debug.Log(placement);
-            listTurret_Id2[placement - 1] = newObject;
-            nbTowerId2 += 1;
-
-        }
-    }*/
+    
 }
