@@ -117,7 +117,6 @@ public class Archi : MonoBehaviour
                 collider2D_4_Id2.enabled = !collider2D_4_Id2.enabled;
             }
         }
-        
     }
 
     public void BuySpot(int id)
