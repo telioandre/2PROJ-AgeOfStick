@@ -20,15 +20,15 @@ public class Clicked : MonoBehaviour
     {
         
         ShopTurret spriteScript = FindObjectOfType<ShopTurret>();
-
         if (spriteScript != null)
         {
             bool isSpriteEnabled = spriteScript.IsSpriteEnabled();
             Debug.Log("SpriteRenderer est activé : " + isSpriteEnabled);
             if (isSpriteEnabled)
-            {
-                if (spriteScript.delete == 1)
+            { 
+                if (archiClass.delete == 1)
                 {
+                    Debug.Log("Del pass = 1");
                     if (gameObject.CompareTag("Turret1"))
                     {
                         Debug.Log("Turret1 Del");
@@ -50,7 +50,7 @@ public class Clicked : MonoBehaviour
                         archiClass.SellSpot(4, 1);
                     }
                     archiClass.switchToEnabled(1);
-                    spriteScript.delete = 0;
+                    archiClass.delete = 0;
                 }
                 else
                 {
