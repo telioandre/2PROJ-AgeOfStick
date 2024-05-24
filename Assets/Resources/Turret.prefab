@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name1: 
-  age: 
+  age: 0
   type: 0
   placement: 0
   IdTurret: 0
