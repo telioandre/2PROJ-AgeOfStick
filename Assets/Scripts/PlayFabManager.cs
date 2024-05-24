@@ -10,6 +10,13 @@ public class PlayFabManager : MonoBehaviour
     public TMP_InputField  passwordLoginInput;
     public TMP_InputField  usernameRegisterInput;
     public TMP_InputField  passwordRegisterInput;
+    public TMP_InputField  addFriendField;
+
+    public GameObject loginMenu;
+
+    public GameObject registerMenu;
+
+    public GameObject mainMenu;
 
     // Méthode appelée lorsque l'utilisateur appuie sur le bouton de connexion
     public void OnLoginButtonClicked()
@@ -51,10 +58,12 @@ public class PlayFabManager : MonoBehaviour
         {
             Password = password,
             Username = username,
+            DisplayName = username,
             RequireBothUsernameAndEmail = false
         };
 
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnRegisterFailure);
+        Login(username, password);
     }
 
     private void OnLoginSuccess(LoginResult result)
@@ -63,6 +72,9 @@ public class PlayFabManager : MonoBehaviour
         string name = null;
         name = result.InfoResultPayload.PlayerProfile.DisplayName;
         Debug.Log(name);
+        loginMenu.SetActive(false);
+        registerMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     private void OnLoginFailure(PlayFabError error)
@@ -78,5 +90,11 @@ public class PlayFabManager : MonoBehaviour
     private void OnRegisterFailure(PlayFabError error)
     {
         Debug.LogError("Registration failed: " + error.ErrorMessage);
+    }
+
+    private void addFriend()
+    {
+        string friendName = addFriendField.text;
+        var request = new GetAccountInfoRequest
     }
 }
