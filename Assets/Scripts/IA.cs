@@ -20,8 +20,8 @@ public class Ia : MonoBehaviour
     private void Start()
     {
         _selectedDifficulty = DifficultyManager.difficulty;
-        //_difficulty = "Impossible";
-        _difficulty = _selectedDifficulty.ToString().Split(' ')[0];
+        _difficulty = "Impossible";
+        //_difficulty = _selectedDifficulty.ToString().Split(' ')[0];
         Debug.Log(_difficulty);
         _previousLifePoint = castle.maxLifePoint;
         _lastCombo = -Cooldown;
@@ -79,7 +79,7 @@ public class Ia : MonoBehaviour
                         }
                         else
                         {
-                            IaBuildTurret(1);
+                            IaBuildTurret(2);
                         }
                     }
 
@@ -103,7 +103,7 @@ public class Ia : MonoBehaviour
                         }
                         else
                         {
-                            IaBuildTurret(1);
+                            IaBuildTurret(2);
                         }
                     }
 
