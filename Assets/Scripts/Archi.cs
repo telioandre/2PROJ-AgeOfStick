@@ -194,10 +194,12 @@ public class Archi : MonoBehaviour
                 script.Initialize("Tourelle 1", castle1.player.age, type, placement, castle1.id);
                 script.SetPosition(castle1.id);
                 script.Setup();
+                nbTowerId1++;
                 if (listTurret_Id1[placement - 1] != newObject)
                 {
-                    Destroy(listTurret_Id1[placement - 1]);
+                    SellSpot(placement, id);
                     listTurret_Id1[placement - 1] = newObject;
+                    castle1.player.AddMoney(200);
                 }
             }
             else if (type == 2 && castle1.player.money >= _turret2Costs[castle1.player.age - 1])
@@ -210,8 +212,9 @@ public class Archi : MonoBehaviour
                 script.Setup();
                 if (listTurret_Id1[placement - 1] != newObject)
                 {
-                    Destroy(listTurret_Id1[placement - 1]);
+                    SellSpot(placement, id);
                     listTurret_Id1[placement - 1] = newObject;
+                    castle1.player.AddMoney(200);
                 }
             }
             else if (type == 3 && castle1.player.money >= _turret3Costs[castle1.player.age - 1])
@@ -224,8 +227,9 @@ public class Archi : MonoBehaviour
                 script.Setup();
                 if (listTurret_Id1[placement - 1] != newObject)
                 {
-                    Destroy(listTurret_Id1[placement - 1]);
+                    SellSpot(placement, id);
                     listTurret_Id1[placement - 1] = newObject;
+                    castle1.player.AddMoney(200);
                 }
             }
         }
@@ -241,10 +245,12 @@ public class Archi : MonoBehaviour
                 script.Setup();
                 if (listTurret_Id2[placement - 1] != newObject)
                 {
-                    Destroy(listTurret_Id2[placement - 1]);
+                    SellSpot(placement, id);
                     listTurret_Id2[placement - 1] = newObject;
+                    castle2.player.AddMoney(200);
                 }
-            }else if(type == 2 && castle2.player.money >= _turret2Costs[castle2.player.age - 1])
+            }
+            else if(type == 2 && castle2.player.money >= _turret2Costs[castle2.player.age - 1])
             {
                 castle2.player.AddMoney(-_turret2Costs[castle2.player.age - 1]);
                 GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
@@ -254,8 +260,9 @@ public class Archi : MonoBehaviour
                 script.Setup();
                 if (listTurret_Id2[placement - 1] != newObject)
                 {
-                    Destroy(listTurret_Id2[placement - 1]);
+                    SellSpot(placement, id);
                     listTurret_Id2[placement - 1] = newObject;
+                    castle2.player.AddMoney(200);
                 }
             }
             else if (type == 3 && castle2.player.money >= _turret3Costs[castle2.player.age - 1])
@@ -268,8 +275,9 @@ public class Archi : MonoBehaviour
                 script.Setup();
                 if (listTurret_Id2[placement - 1] != newObject)
                 {
-                    Destroy(listTurret_Id2[placement - 1]);
+                    SellSpot(placement, id);
                     listTurret_Id2[placement - 1] = newObject;
+                    castle2.player.AddMoney(200);
                 }
             }
         }

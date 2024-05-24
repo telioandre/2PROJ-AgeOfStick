@@ -3,12 +3,21 @@ using UnityEngine;
 public class Clicked : MonoBehaviour
 {
     private Archi archiClass;
+    private Castle castle1;
 
 
     private void Start()
     {
         archiClass = FindObjectOfType<Archi>();
+        Castle[] castles = FindObjectsOfType<Castle>();
 
+        foreach (Castle castle in castles)
+        {
+            if (castle.CompareTag("player 1"))
+            {
+                castle1 = castle;
+            }
+        }
     }
     void OnMouseDown()
     {
@@ -33,21 +42,25 @@ public class Clicked : MonoBehaviour
                     {
                         Debug.Log("Turret1 Del");
                         archiClass.SellSpot(1, 1);
+                        castle1.player.AddMoney(200);
                     }
                     else if (gameObject.CompareTag("Turret2"))
                     {
                         Debug.Log("Turret2 Del");
                         archiClass.SellSpot(2, 1);
+                        castle1.player.AddMoney(200);
                     }
                     else if (gameObject.CompareTag("Turret3"))
                     {
                         Debug.Log("Turret3 Del");
                         archiClass.SellSpot(3, 1);
+                        castle1.player.AddMoney(200);
                     }
                     else if (gameObject.CompareTag("Turret4"))
                     {
                         Debug.Log("Turret4 Del");
                         archiClass.SellSpot(4, 1);
+                        castle1.player.AddMoney(200);
                     }
                     archiClass.switchToEnabled(1);
                     archiClass.delete = 0;

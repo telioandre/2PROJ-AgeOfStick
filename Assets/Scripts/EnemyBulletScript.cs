@@ -8,6 +8,9 @@ public class EnemyBulletScript : MonoBehaviour
     public Rigidbody2D rb;
     public float force;
     private int damage;
+    public Castle castle1;
+    public Castle castle2;
+    public int ID;
 
     // Start is called before the first frame update
     void Start()
@@ -15,13 +18,14 @@ public class EnemyBulletScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetTarget(Transform target, int bulletDamage)
+    public void SetTarget(Transform target, int bulletDamage, int id)
     {
         if (target != null)
         {
             Vector2 direction = (target.position - transform.position).normalized;
             rb.velocity = direction * force;
             damage = bulletDamage;
+            ID = id;
         }
         else
         {
@@ -31,29 +35,48 @@ public class EnemyBulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Vérifiez si la collision est avec un objet ayant le tag "Target"
         if (collision.CompareTag("Player"))
         {
-            // Accédez au composant de script de l'objet touché (peut-être votre ennemi)
-            var targetScript = collision.GetComponent<Movement>(); // Remplacez "YourTargetScript" par le nom de votre script de cible
+            var targetScript = collision.GetComponent<Movement>();
 
-            // Vérifiez si le composant de script a été trouvé
             if (targetScript != null)
             {
-
-                // Appelez la fonction AddDegats() de votre script de cible
                 targetScript.life -= damage;
                 Debug.Log(targetScript.life);
                 if (targetScript.life <= 0)
                 {
-                    //Movement.DropRewards(targetScript.name[6], otherPlayer, targetScript.player);
+                    Player enemy = FindPlayerByCastleId(targetScript.id);
+                    Player player = FindPlayerByCastleId(ID);
+
+                    // Obtenir une référence à l'instance de Movement
+                    Movement movementInstance = collision.GetComponent<Movement>();
+
+                    if (movementInstance != null)
+                    {
+                        movementInstance.DropRewards(targetScript.name[6], enemy, player);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Movement instance not found on the collided object.");
+                    }
                     Destroy(targetScript.gameObject);
                 }
-
                 // Détruisez la balle
                 Destroy(gameObject);
             }
         }
     }
 
+    Player FindPlayerByCastleId(int id)
+    {
+        Castle[] castles = GameObject.FindObjectsOfType<Castle>();
+        foreach (Castle castle in castles)
+        {
+            if (castle.id == id)
+            {
+                return castle.GetComponent<Player>();
+            }
+        }
+        return null; // Retourne null si aucun Castle avec l'ID spécifié n'est trouvé
+    }
 }
