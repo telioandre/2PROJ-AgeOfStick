@@ -11,7 +11,8 @@ public class PlayFabManager : MonoBehaviour
     public TMP_InputField  usernameRegisterInput;
     public TMP_InputField  passwordRegisterInput;
     public TMP_InputField  addFriendField;
-
+    public GameObject friendListPanel;
+    public GameObject friendButtonPrefab;
     public GameObject loginMenu;
 
     public GameObject registerMenu;
@@ -75,6 +76,7 @@ public class PlayFabManager : MonoBehaviour
         loginMenu.SetActive(false);
         registerMenu.SetActive(false);
         mainMenu.SetActive(true);
+        GetFriendList();
     }
 
     private void OnLoginFailure(PlayFabError error)
@@ -92,9 +94,97 @@ public class PlayFabManager : MonoBehaviour
         Debug.LogError("Registration failed: " + error.ErrorMessage);
     }
 
-    private void addFriend()
+    public void addFriend()
     {
         string friendName = addFriendField.text;
         var request = new GetAccountInfoRequest
+        {
+            TitleDisplayName = friendName
+        };
+        PlayFabClientAPI.GetAccountInfo(request, OnGetAccountInfoSuccess, OnGetAccountInfoFailure);
     }
+    
+    private void OnGetAccountInfoSuccess(GetAccountInfoResult result)
+    {
+        if (result.AccountInfo != null)
+        {
+            string friendPlayFabId = result.AccountInfo.PlayFabId;
+            SendFriendRequest(friendPlayFabId);
+        }
+        else
+        {
+            Debug.LogError("AccountInfo is null");
+        }
+    }
+
+    private void OnGetAccountInfoFailure(PlayFabError error)
+    {
+        Debug.LogError("Failed to get account info: " + error.ErrorMessage);
+    }
+    
+    private void SendFriendRequest(string friendPlayFabId)
+    {
+        var request = new AddFriendRequest
+        {
+            FriendPlayFabId = friendPlayFabId
+        };
+
+        PlayFabClientAPI.AddFriend(request, OnAddFriendSuccess, OnAddFriendFailure);
+    }
+
+    private void OnAddFriendSuccess(AddFriendResult result)
+    {
+        Debug.Log("Friend request sent successfully!");
+    }
+
+    private void OnAddFriendFailure(PlayFabError error)
+    {
+        Debug.LogError("Failed to send friend request: " + error.ErrorMessage);
+    }
+    
+    public void GetFriendList()
+    {
+        var request = new GetFriendsListRequest();
+
+        PlayFabClientAPI.GetFriendsList(request, OnGetFriendListSuccess, OnGetFriendListFailure);
+    }
+
+    private void OnGetFriendListSuccess(GetFriendsListResult result)
+    {
+        Debug.Log("Nombre d'amis " + result.Friends.Count);
+
+        /*foreach (Transform child in friendListPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }*/
+
+        foreach (var friend in result.Friends)
+        {
+            GameObject friendButton = Instantiate(friendButtonPrefab, friendListPanel.transform);
+
+            Text buttonText = friendButton.GetComponentInChildren<Text>();
+            if (buttonText != null)
+            {
+                buttonText.text = friend.TitleDisplayName;
+            }
+            Button buttonComponent = friendButton.GetComponent<Button>();
+            if (buttonComponent != null)
+            {
+            }
+        }
+
+        Debug.Log("success");
+    }
+
+    private void OnGetFriendListFailure(PlayFabError error)
+    {
+        Debug.LogError("Failed to get friend list: " + error.ErrorMessage);
+    }
+
+    public void Logout()
+    {
+        PlayFabClientAPI.ForgetAllCredentials();
+        Debug.Log("Logged out successfully!");
+    }
+
 }
