@@ -10705,7 +10705,6 @@ MonoBehaviour:
   Position2_Id2: {fileID: 1426227111}
   Position3_Id2: {fileID: 428432619}
   Position4_Id2: {fileID: 2118447550}
-  delete: 0
   button: {fileID: 471715285}
 --- !u!114 &471715289
 MonoBehaviour:
@@ -22569,7 +22568,6 @@ MonoBehaviour:
   Position2_Id2: {fileID: 1426227111}
   Position3_Id2: {fileID: 428432619}
   Position4_Id2: {fileID: 2118447550}
-  delete: 0
   button: {fileID: 921246048}
 --- !u!114 &921246052
 MonoBehaviour:
@@ -26161,7 +26159,6 @@ MonoBehaviour:
   Position2_Id2: {fileID: 1426227111}
   Position3_Id2: {fileID: 428432619}
   Position4_Id2: {fileID: 2118447550}
-  delete: 0
   button: {fileID: 1023732539}
 --- !u!114 &1023732543
 MonoBehaviour:
@@ -52149,6 +52146,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 762449499662877393, guid: 674969bed6ac11841879771ec9b97d9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 212
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319277935563500055, guid: 674969bed6ac11841879771ec9b97d9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 212
+      objectReference: {fileID: 0}
     - target: {fileID: 2085208141503215229, guid: 674969bed6ac11841879771ec9b97d9f, type: 3}
       propertyPath: m_Name
       value: Position Turret Id2
@@ -52196,6 +52201,14 @@ PrefabInstance:
     - target: {fileID: 5419241024838424473, guid: 674969bed6ac11841879771ec9b97d9f, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928634434530353785, guid: 674969bed6ac11841879771ec9b97d9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 212
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339339858046535900, guid: 674969bed6ac11841879771ec9b97d9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 212
       objectReference: {fileID: 0}
     - target: {fileID: 8858796734691551051, guid: 674969bed6ac11841879771ec9b97d9f, type: 3}
       propertyPath: m_Enabled
@@ -54235,7 +54248,6 @@ MonoBehaviour:
   Position2_Id2: {fileID: 1426227111}
   Position3_Id2: {fileID: 428432619}
   Position4_Id2: {fileID: 2118447550}
-  delete: 0
   button: {fileID: 2028109078}
 --- !u!1 &2030660114
 GameObject:

@@ -16,7 +16,6 @@ public class ShopTurret : MonoBehaviour
     public GameObject Position2_Id2;
     public GameObject Position3_Id2;
     public GameObject Position4_Id2;
-    public int delete = 0;
 
     public Button button;  // Référence au bouton
 
@@ -31,22 +30,25 @@ public class ShopTurret : MonoBehaviour
         if (gameObject.CompareTag("Turret Slow"))
         {
             archiClass.ChoiceType(1);
+            archiClass.delete = 0;
             Debug.Log("Turret Slow cliquée");
         }
         else if (gameObject.CompareTag("Turret Medium"))
         {
             archiClass.ChoiceType(2);
+            archiClass.delete = 0;
             Debug.Log("Turret Medium cliquée");
         }
         else if (gameObject.CompareTag("Turret Fast"))
         {
             archiClass.ChoiceType(3);
+            archiClass.delete = 0;
             Debug.Log("Turret Fast cliquée");
         }
         else if (gameObject.CompareTag("Delete Turret"))
         {
             Debug.Log("Delete Turret cliquée");
-            delete = 1;
+            archiClass.delete = 1;
         }
     }
 

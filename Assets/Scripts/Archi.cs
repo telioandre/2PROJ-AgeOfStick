@@ -35,11 +35,24 @@ public class Archi : MonoBehaviour
 
     public GameObject objectToInstantiate;
     private int typeChoice;
-    //public int ID = 1;
+    public int delete;
 
     private List<int> _spotCosts = new()
     {
         20, 50, 120, 200
+    };
+
+    private List<int> _turret1Costs = new()
+    {
+        100, 150, 300, 400, 500, 600
+    };
+    private List<int> _turret2Costs = new()
+    {
+        100, 200, 300, 400, 500, 600
+    };
+    private List<int> _turret3Costs = new()
+    {
+        100, 200, 300, 400, 500, 600
     };
     public void switchToEnabled(int id)
     {
@@ -167,30 +180,97 @@ public class Archi : MonoBehaviour
         {
             type = typeChoice;
         }
+        else
+        {
+            Debug.Log("Type Turret: " + type);
+        }
         if (id == 1 && nbPlacement_Id1 >= nbTowerId1)
         {
-            GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
-            Turret script = newObject.GetComponent<Turret>();
-            script.Initialize("test", castle1.player.age.ToString(), type, placement, castle1.id, castle1);
-            script.SetPosition(castle1.id);
-            script.SetSprite();
-            if (listTurret_Id1[placement - 1] != newObject)
+            if (type == 1 && castle1.player.money >= _turret1Costs[castle1.player.age - 1])
             {
-                Destroy(listTurret_Id1[placement - 1]);
-                listTurret_Id1[placement-1] = newObject;
+                castle1.player.AddMoney(-_turret1Costs[castle1.player.age - 1]);
+                GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+                Turret script = newObject.GetComponent<Turret>();
+                script.Initialize("test", castle1.player.age.ToString(), type, placement, castle1.id);
+                script.SetPosition(castle1.id);
+                script.SetSprite();
+                if (listTurret_Id1[placement - 1] != newObject)
+                {
+                    Destroy(listTurret_Id1[placement - 1]);
+                    listTurret_Id1[placement - 1] = newObject;
+                }
+            }
+            else if (type == 2 && castle1.player.money >= _turret2Costs[castle1.player.age - 1])
+            {
+                castle2.player.AddMoney(-_turret2Costs[castle1.player.age - 1]);
+                GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+                Turret script = newObject.GetComponent<Turret>();
+                script.Initialize("test", castle1.player.age.ToString(), type, placement, castle1.id);
+                script.SetPosition(castle1.id);
+                script.SetSprite();
+                if (listTurret_Id1[placement - 1] != newObject)
+                {
+                    Destroy(listTurret_Id1[placement - 1]);
+                    listTurret_Id1[placement - 1] = newObject;
+                }
+            }
+            else if (type == 3 && castle1.player.money >= _turret3Costs[castle1.player.age - 1])
+            {
+                castle1.player.AddMoney(-_turret3Costs[castle1.player.age - 1]);
+                GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+                Turret script = newObject.GetComponent<Turret>();
+                script.Initialize("test", castle1.player.age.ToString(), type, placement, castle1.id);
+                script.SetPosition(castle1.id);
+                script.SetSprite();
+                if (listTurret_Id1[placement - 1] != newObject)
+                {
+                    Destroy(listTurret_Id1[placement - 1]);
+                    listTurret_Id1[placement - 1] = newObject;
+                }
             }
         }
         else if (id == 2 && nbPlacement_Id2 >= nbTowerId2)
         {
-            GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
-            Turret script = newObject.GetComponent<Turret>();
-            script.Initialize("test", castle2.player.age.ToString(), type, placement, castle2.id, castle2);
-            script.SetPosition(castle2.id);
-            script.SetSprite();
-            if (listTurret_Id2[placement - 1] != newObject)
+            if (type == 1 && castle2.player.money >= _turret1Costs[castle2.player.age - 1])
             {
-                Destroy(listTurret_Id2[placement - 1]);
-                listTurret_Id2[placement-1] = newObject;
+                castle2.player.AddMoney(-_turret1Costs[castle2.player.age - 1]);
+                GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+                Turret script = newObject.GetComponent<Turret>();
+                script.Initialize("test", castle2.player.age.ToString(), type, placement, castle2.id);
+                script.SetPosition(castle2.id);
+                script.SetSprite();
+                if (listTurret_Id2[placement - 1] != newObject)
+                {
+                    Destroy(listTurret_Id2[placement - 1]);
+                    listTurret_Id2[placement - 1] = newObject;
+                }
+            }else if(type == 2 && castle2.player.money >= _turret2Costs[castle2.player.age - 1])
+            {
+                castle2.player.AddMoney(-_turret2Costs[castle2.player.age - 1]);
+                GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+                Turret script = newObject.GetComponent<Turret>();
+                script.Initialize("test", castle2.player.age.ToString(), type, placement, castle2.id);
+                script.SetPosition(castle2.id);
+                script.SetSprite();
+                if (listTurret_Id2[placement - 1] != newObject)
+                {
+                    Destroy(listTurret_Id2[placement - 1]);
+                    listTurret_Id2[placement - 1] = newObject;
+                }
+            }
+            else if (type == 3 && castle2.player.money >= _turret3Costs[castle2.player.age - 1])
+            {
+                castle2.player.AddMoney(-_turret3Costs[castle2.player.age - 1]);
+                GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+                Turret script = newObject.GetComponent<Turret>();
+                script.Initialize("test", castle2.player.age.ToString(), type, placement, castle2.id);
+                script.SetPosition(castle2.id);
+                script.SetSprite();
+                if (listTurret_Id2[placement - 1] != newObject)
+                {
+                    Destroy(listTurret_Id2[placement - 1]);
+                    listTurret_Id2[placement - 1] = newObject;
+                }
             }
         }
     }
