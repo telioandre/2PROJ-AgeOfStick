@@ -43,15 +43,15 @@ public class Archi : MonoBehaviour
 
     private List<int> _turret1Costs = new()
     {
-        100, 150, 300, 400, 500, 600
+        25, 150, 300, 400, 500, 600
     };
     private List<int> _turret2Costs = new()
     {
-        100, 200, 300, 400, 500, 600
+        50, 200, 300, 400, 500, 600
     };
     private List<int> _turret3Costs = new()
     {
-        100, 200, 300, 400, 500, 600
+        75, 200, 300, 400, 500, 600
     };
     public void switchToEnabled(int id)
     {
@@ -187,6 +187,7 @@ public class Archi : MonoBehaviour
         {
             if (type == 1 && castle1.player.money >= _turret1Costs[castle1.player.age - 1])
             {
+                nbTowerId1 += 1;
                 castle1.player.AddMoney(-_turret1Costs[castle1.player.age - 1]);
                 GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
                 Turret script = newObject.GetComponent<Turret>();
@@ -201,7 +202,8 @@ public class Archi : MonoBehaviour
             }
             else if (type == 2 && castle1.player.money >= _turret2Costs[castle1.player.age - 1])
             {
-                castle2.player.AddMoney(-_turret2Costs[castle1.player.age - 1]);
+                nbTowerId1 += 1;
+                castle1.player.AddMoney(-_turret2Costs[castle1.player.age - 1]);
                 GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
                 Turret script = newObject.GetComponent<Turret>();
                 script.Initialize("Tourelle 2", castle1.player.age, type, placement, castle1.id);
@@ -215,6 +217,7 @@ public class Archi : MonoBehaviour
             }
             else if (type == 3 && castle1.player.money >= _turret3Costs[castle1.player.age - 1])
             {
+                nbTowerId1 += 1;
                 castle1.player.AddMoney(-_turret3Costs[castle1.player.age - 1]);
                 GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
                 Turret script = newObject.GetComponent<Turret>();
@@ -232,6 +235,7 @@ public class Archi : MonoBehaviour
         {
             if (type == 1 && castle2.player.money >= _turret1Costs[castle2.player.age - 1])
             {
+                nbTowerId2 += 1;
                 castle2.player.AddMoney(-_turret1Costs[castle2.player.age - 1]);
                 GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
                 Turret script = newObject.GetComponent<Turret>();
@@ -243,8 +247,10 @@ public class Archi : MonoBehaviour
                     Destroy(listTurret_Id2[placement - 1]);
                     listTurret_Id2[placement - 1] = newObject;
                 }
-            }else if(type == 2 && castle2.player.money >= _turret2Costs[castle2.player.age - 1])
+            }
+            else if(type == 2 && castle2.player.money >= _turret2Costs[castle2.player.age - 1])
             {
+                nbTowerId2 += 1;
                 castle2.player.AddMoney(-_turret2Costs[castle2.player.age - 1]);
                 GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
                 Turret script = newObject.GetComponent<Turret>();
@@ -259,6 +265,7 @@ public class Archi : MonoBehaviour
             }
             else if (type == 3 && castle2.player.money >= _turret3Costs[castle2.player.age - 1])
             {
+                nbTowerId2 += 1;
                 castle2.player.AddMoney(-_turret3Costs[castle2.player.age - 1]);
                 GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
                 Turret script = newObject.GetComponent<Turret>();
@@ -273,6 +280,4 @@ public class Archi : MonoBehaviour
             }
         }
     }
-
-    
 }
