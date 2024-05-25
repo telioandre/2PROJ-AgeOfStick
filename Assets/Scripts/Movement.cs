@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     public int maxLife;
     public int troopId;
     public string uniqueId;
+    public bool start;
     /*public Image health;
     public Image background;
     public Image fill;*/
@@ -66,16 +67,87 @@ public class Movement : MonoBehaviour
     //Permet de lancer le mouvement de chaque unité en fonction de leur ID
     void FixedUpdate()
     {
-        if (movementAllowed)
-        {
-            if (id == 1)
-            {
+        RaycastHit2D[] hits;
+        RaycastHit2D hitCastle;
 
+        if (id == 1)
+        {
+            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 200);
+            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * 200, Color.red);
+
+            // Vérifier s'il y a eu des collisions
+            if (hits.Length > 0)
+            {
+                // Obtenir le premier élément touché
+                RaycastHit2D firstHit = default;
+
+
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit.collider != null)
+                    {
+                        // Obtenir le premier élément touché
+                        firstHit = hits[i];
+                        // Faire quelque chose avec le premier élément touché, par exemple :
+                        GameObject objectHit = firstHit.collider.gameObject;
+                        objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
+
+                    }
+
+                }
+
+            }
+
+            // Cretation du raycast pour la rencontre avec le chateau 
+            hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 200);
+            // Vérifier si l'objet touché a le tag "Castle"
+            if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
+            {
+                rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+            }
+            if (movementAllowed)
+            {
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+
             }
             else if (id == 2)
             {
-                rb2d.velocity = new Vector2(-(speed), rb2d.velocity.y);
+                hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
+                Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * 200, Color.red);
+
+                // Vérifier s'il y a eu des collisions
+                if (hits.Length > 0)
+                {
+                    // Obtenir le premier élément touché
+                    RaycastHit2D firstHit = default;
+
+                    for (int i = 0; i < hits.Length; i++)
+                    {
+                        if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit.collider != null)
+                        {
+                            // Obtenir le premier élément touché
+                            firstHit = hits[i];
+                            // Faire quelque chose avec le premier élément touché, par exemple :
+                            GameObject objectHit = firstHit.collider.gameObject;
+                            objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
+
+                        }
+
+                    }
+                }
+                hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
+                // Vérifier si l'objet touché a le tag "Castle"
+                if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
+                {
+                    //rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+                }
+
+
+                if (movementAllowed)
+                {
+                    rb2d.velocity = new Vector2(-(speed + 100), rb2d.velocity.y);
+                    rb2d.velocity = new Vector2(-(speed), rb2d.velocity.y);
+                }
             }
         }
     }
@@ -98,6 +170,7 @@ public class Movement : MonoBehaviour
     //Initialise les paramètres de l'objet prefab
     public void SetPlayer(int playerId, int newTroopId)
     {
+        start = false;
         id = playerId;
         troopId = newTroopId;
         uniqueId = System.Guid.NewGuid().ToString();
@@ -105,12 +178,10 @@ public class Movement : MonoBehaviour
         if (id == 1)
         {
             player = GameObject.Find("Castle 1").GetComponent<Player>();
-            transform.position = new Vector2(1500, 0);
         }
         else
-        { 
+        {
             player = GameObject.Find("Castle 2").GetComponent<Player>();
-            transform.position = new Vector2(3500, 0);
         }
         char troopName = name[6];
         int troopNumber = int.Parse(troopName.ToString());
@@ -151,15 +222,33 @@ public class Movement : MonoBehaviour
     {
         if (id == 1)
         {
-            transform.position = new Vector2(50, 600);
+            RaycastHit2D[] hitsHauteur;
+
+            hitsHauteur = Physics2D.RaycastAll(new Vector2(0, 380), new Vector2(0, 1), 2000000);
+            Debug.DrawRay(new Vector2(0, 380), new Vector2(0, 1) * 2000000, Color.red);
+
+
+            transform.position = new Vector2(0, 1000 + 500 * hitsHauteur.Length);
+
             casern.isForming1 = false;
+
+
 
         }
         else if (id == 2)
         {
-            transform.position = new Vector2(5500, 600);
+            RaycastHit2D[] hitsHauteur;
+
+            hitsHauteur = Physics2D.RaycastAll(new Vector2(6500, 380), new Vector2(0, 1), 2000000);
+            Debug.DrawRay(new Vector2(6500, 380), new Vector2(0, 1) * 2000000, Color.red);
+
+            transform.position = new Vector2(5500, 1000 + 500 *hitsHauteur.Length);
+
             casern.isForming2 = false;
+
         }
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+
     }
 
     public bool SuperEffective(int ally, int enemy)

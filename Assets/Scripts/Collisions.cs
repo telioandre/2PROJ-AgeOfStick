@@ -1,9 +1,16 @@
 
 using UnityEngine;
 
+
 public class Collisions : MonoBehaviour
 {
 
+    private Collider2D unitCollider;
+
+    private void Start()
+    {
+        unitCollider = GetComponent<Collider2D>();
+    }
     public void OnCollisionEnter2D(Collision2D collision)
     {
         Movement currentMovement = GetComponent<Movement>();
@@ -13,6 +20,13 @@ public class Collisions : MonoBehaviour
         Castle castle = collision.gameObject.GetComponent<Castle>();
         Player ally = currentMovement.getPlayer();
         Player otherPlayer;
+
+
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
 
         if (collision.gameObject.CompareTag("Special") && gameObject.CompareTag("Player"))
         {
@@ -67,15 +81,20 @@ public class Collisions : MonoBehaviour
                 {
                     //Commence une coroutine qui diminue les pv des 2 joueurs en contact
                     StartCoroutine(currentMovement.AttackPlayer(otherMovement, myRb, ally, enemy));
-                        
+
                 }
-            
+
                 else
                 {
                     // Si les 2 objets en contact ont le même ID ils ne se font pas de dégâts
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }
             }
+        }
+        if (collision.gameObject.CompareTag("player " + currentMovement.id))
+        {
+            Collider2D wallCollider = collision.collider;
+            Physics2D.IgnoreCollision(wallCollider, unitCollider, true);
         }
     }
 
@@ -102,5 +121,22 @@ public class Collisions : MonoBehaviour
             myRb.constraints = RigidbodyConstraints2D.None;
             enemyRb.constraints = RigidbodyConstraints2D.None;
         }
+
+
+        if (collision.gameObject.CompareTag("player " + gameObject.GetComponent<Movement>().id))
+        {
+            Collider2D wallCollider = collision.collider;
+            Physics2D.IgnoreCollision(wallCollider, unitCollider, false);
+        }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("player " + gameObject.GetComponent<Movement>().id))
+        {
+            Physics2D.IgnoreCollision(other, unitCollider, true);
+            Debug.Log("Ignoring trigger collision with wall: " + other.gameObject.name);
+        }
+    }
+
 }
