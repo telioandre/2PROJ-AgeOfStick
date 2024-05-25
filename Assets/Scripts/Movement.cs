@@ -110,44 +110,43 @@ public class Movement : MonoBehaviour
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
 
             }
-            else if (id == 2)
+        }
+        else if (id == 2)
+        {
+            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
+            Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * 200, Color.red);
+
+            // Vérifier s'il y a eu des collisions
+            if (hits.Length > 0)
             {
-                hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
-                Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * 200, Color.red);
+                // Obtenir le premier élément touché
+                RaycastHit2D firstHit = default;
 
-                // Vérifier s'il y a eu des collisions
-                if (hits.Length > 0)
+                for (int i = 0; i < hits.Length; i++)
                 {
-                    // Obtenir le premier élément touché
-                    RaycastHit2D firstHit = default;
-
-                    for (int i = 0; i < hits.Length; i++)
+                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit.collider != null)
                     {
-                        if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit.collider != null)
-                        {
-                            // Obtenir le premier élément touché
-                            firstHit = hits[i];
-                            // Faire quelque chose avec le premier élément touché, par exemple :
-                            GameObject objectHit = firstHit.collider.gameObject;
-                            objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
-
-                        }
+                        // Obtenir le premier élément touché
+                        firstHit = hits[i];
+                        // Faire quelque chose avec le premier élément touché, par exemple :
+                        GameObject objectHit = firstHit.collider.gameObject;
+                        objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
 
                     }
+
                 }
-                hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
-                // Vérifier si l'objet touché a le tag "Castle"
-                if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
-                {
-                    //rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
-                }
+            }
+            hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
+            // Vérifier si l'objet touché a le tag "Castle"
+            if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
+            {
+                //rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+            }
 
 
-                if (movementAllowed)
-                {
-                    rb2d.velocity = new Vector2(-(speed + 100), rb2d.velocity.y);
-                    rb2d.velocity = new Vector2(-(speed), rb2d.velocity.y);
-                }
+            if (movementAllowed)
+            {
+                rb2d.velocity = new Vector2(-(speed), rb2d.velocity.y);
             }
         }
     }
@@ -224,11 +223,11 @@ public class Movement : MonoBehaviour
         {
             RaycastHit2D[] hitsHauteur;
 
-            hitsHauteur = Physics2D.RaycastAll(new Vector2(0, 380), new Vector2(0, 1), 2000000);
-            Debug.DrawRay(new Vector2(0, 380), new Vector2(0, 1) * 2000000, Color.red);
+            hitsHauteur = Physics2D.RaycastAll(new Vector2(-150, 380), new Vector2(0, 1), 2000000);
+            Debug.DrawRay(new Vector2(-150, 380), new Vector2(0, 1) * 2000000, Color.red);
 
 
-            transform.position = new Vector2(0, 1000 + 500 * hitsHauteur.Length);
+            transform.position = new Vector2(-150, 1000 + 500 * hitsHauteur.Length);
 
             casern.isForming1 = false;
 
@@ -242,7 +241,7 @@ public class Movement : MonoBehaviour
             hitsHauteur = Physics2D.RaycastAll(new Vector2(6500, 380), new Vector2(0, 1), 2000000);
             Debug.DrawRay(new Vector2(6500, 380), new Vector2(0, 1) * 2000000, Color.red);
 
-            transform.position = new Vector2(5500, 1000 + 500 *hitsHauteur.Length);
+            transform.position = new Vector2(6000, 1000 + 500 *hitsHauteur.Length);
 
             casern.isForming2 = false;
 
