@@ -19,8 +19,9 @@ public class Castle : MonoBehaviour
             Debug.LogError("Player reference is not set in Castle.");
         }
     }
-    
-    public void AddTower() {
+
+    public void AddTower()
+    {
         if (numberOfTower == 4)
         {
             Debug.Log("Maximum of Tower built.");
@@ -37,19 +38,6 @@ public class Castle : MonoBehaviour
             {
                 Debug.Log("Not enough money)");
             }
-        }
-    }
-    public void DeleteTower()
-    {
-        if (numberOfTower <= 0)
-        {
-            Debug.Log("No tower to delete.");
-        }
-        else
-        {
-            numberOfTower--;
-            player.AddMoney(200);
-            Debug.Log("tower = " + numberOfTower);
         }
     }
 

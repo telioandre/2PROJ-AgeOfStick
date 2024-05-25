@@ -7,48 +7,75 @@ public class ShopTurret : MonoBehaviour
 {
     private Archi archiClass;
 
-    public SpriteRenderer spriteRenderer1_Id1;
-    public SpriteRenderer spriteRenderer2_Id1;
-    public SpriteRenderer spriteRenderer3_Id1; 
-    public SpriteRenderer spriteRenderer4_Id1;
+    public GameObject Position1_Id1;
+    public GameObject Position2_Id1;
+    public GameObject Position3_Id1;
+    public GameObject Position4_Id1;
 
-    public SpriteRenderer spriteRenderer1_Id2;
-    public SpriteRenderer spriteRenderer2_Id2;
-    public SpriteRenderer spriteRenderer3_Id2;
-    public SpriteRenderer spriteRenderer4_Id2;// Référence au SpriteRenderer du sprite que vous voulez afficher
-    public Button button;  // Référence au bouton1
+    public GameObject Position1_Id2;
+    public GameObject Position2_Id2;
+    public GameObject Position3_Id2;
+    public GameObject Position4_Id2;
+
+    public Button button;  // Référence au bouton
+
 
     // Fonction appelée lors du clic sur le bouton
     void OnButtonClick()
     {
-        Debug.Log("clique");
-        archiClass.switchToEnabled(1);// Inverser la visibilité du sprite lors du clic sur le bouton
+        Debug.Log("Clic sur le bouton");
+
+        archiClass.switchToEnabled(1); // Inverser la visibilité du sprite lors du clic sur le bouton
 
         if (gameObject.CompareTag("Turret Slow"))
         {
             archiClass.ChoiceType(1);
+            archiClass.delete = 0;
             Debug.Log("Turret Slow cliquée");
         }
         else if (gameObject.CompareTag("Turret Medium"))
         {
             archiClass.ChoiceType(2);
+            archiClass.delete = 0;
             Debug.Log("Turret Medium cliquée");
         }
         else if (gameObject.CompareTag("Turret Fast"))
         {
             archiClass.ChoiceType(3);
+            archiClass.delete = 0;
             Debug.Log("Turret Fast cliquée");
+        }
+        else if (gameObject.CompareTag("Delete Turret"))
+        {
+            Debug.Log("Delete Turret cliquée");
+            archiClass.delete = 1;
         }
     }
 
+    // Vérifie si l'un des SpriteRenderers est activé
     public bool IsSpriteEnabled()
     {
-        return spriteRenderer1_Id1.enabled || spriteRenderer2_Id2.enabled; // Retourne l'état actuel du SpriteRenderer
+        return IsSpriteRendererEnabled(Position1_Id1) || IsSpriteRendererEnabled(Position2_Id2);
+    }
+
+    // Fonction auxiliaire pour vérifier si un SpriteRenderer est activé
+    private bool IsSpriteRendererEnabled(GameObject obj)
+    {
+        if (obj != null)
+        {
+            SpriteRenderer sr = obj.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                return sr.enabled;
+            }
+        }
+        return false;
     }
 
     void Start()
     {
         archiClass = FindObjectOfType<Archi>();
+
         // Assurez-vous que le bouton est non null
         if (button != null)
         {
@@ -60,10 +87,11 @@ public class ShopTurret : MonoBehaviour
             Debug.LogError("Veuillez attacher un bouton au script dans l'inspecteur Unity.");
         }
 
-        // Assurez-vous que le spriteRenderer est non null
-        if (spriteRenderer1_Id1 == null && spriteRenderer2_Id1 == null && spriteRenderer3_Id1 == null && spriteRenderer4_Id1 == null && spriteRenderer1_Id2 == null && spriteRenderer2_Id2 == null && spriteRenderer3_Id2 == null && spriteRenderer4_Id2 == null)
+        // Vérifiez que les GameObjects nécessaires sont attachés
+        if (Position1_Id1 == null || Position2_Id1 == null || Position3_Id1 == null || Position4_Id1 == null ||
+            Position1_Id2 == null || Position2_Id2 == null || Position3_Id2 == null || Position4_Id2 == null)
         {
-            Debug.LogError("Veuillez attacher un SpriteRenderer au script dans l'inspecteur Unity.");
+            Debug.LogError("Veuillez attacher tous les GameObjects nécessaires au script dans l'inspecteur Unity.");
         }
     }
 }

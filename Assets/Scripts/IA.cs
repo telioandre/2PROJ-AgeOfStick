@@ -20,8 +20,8 @@ public class Ia : MonoBehaviour
     private void Start()
     {
         _selectedDifficulty = DifficultyManager.difficulty;
-        //_difficulty = "Impossible";
-        _difficulty = _selectedDifficulty.ToString().Split(' ')[0];
+        _difficulty = "Easy";
+        //_difficulty = _selectedDifficulty.ToString().Split(' ')[0];
         Debug.Log(_difficulty);
         _previousLifePoint = castle.maxLifePoint;
         _lastCombo = -Cooldown;
@@ -79,7 +79,7 @@ public class Ia : MonoBehaviour
                         }
                         else
                         {
-                            IaBuildTurret(1);
+                            IaBuildTurret(1, 2);
                         }
                     }
 
@@ -103,7 +103,7 @@ public class Ia : MonoBehaviour
                         }
                         else
                         {
-                            IaBuildTurret(1);
+                            IaBuildTurret(1, 2);
                         }
                     }
 
@@ -151,7 +151,7 @@ public class Ia : MonoBehaviour
                         }
                         else
                         {
-                            IaBuildTurret(2);
+                            IaBuildTurret(1, 2);
                         }
                     }
 
@@ -174,7 +174,7 @@ public class Ia : MonoBehaviour
 
                     if (randomNumber >= 18 && Time.time - _lastCombo > -Cooldown)
                     {
-                        StartCoroutine(IaGenerateCombos());
+                        StartCoroutine(IaGenerateCombos(0));
                         _lastCombo = Time.time;
                     }
 
@@ -184,55 +184,61 @@ public class Ia : MonoBehaviour
                 case "Impossible":
                     if (player.numberOfTroop == 0)
                     {
-                        IaGenerateTroop(4);
+                        StartCoroutine(IaGenerateCombos(3));
                     }
 
                     if (!IsStep1Completed())
                     {
-                        //IaGenerateEffectiveTroop();
-                        if (opponent.numberOfTroop > 4)
+                        print("step 1");
+                        if (opponent.numberOfTroop > 3)
                         {
                             IaSpecialAttack();
                         }
 
-                        if (castle.towerSpotAvailable == 4)
+                        if (archi.nbPlacement_Id2 == 0)
                         {
                             IaBuildTowerSpot();
                         }
 
-                        if (castle.numberOfTower == 0)
+                        if (archi.nbTowerId2 == 0)
                         {
-                            IaBuildTurret(2);
+                            IaBuildTurret(1, 2);
                         }
                     }
                     else if (IsStep1Completed() && !IsStep2Completed())
                     {
-                        if (castle.towerSpotAvailable != 0)
+                        print("step 2");
+                        if (archi.nbPlacement_Id2 < 4 && archi.nbPlacement_Id2 == archi.nbTowerId2)
                         {
                             IaBuildTowerSpot();
                         }
 
-                        /*if (castle.numberOfTower < 4)
+                        if (archi.nbTowerId2 < archi.nbPlacement_Id2)
                         {
-                            IaBuildTower();
-                        }*/
+                            int placement = archi.nbPlacement_Id2;
+                            IaBuildTurret(placement, 2);
+                        }
 
-                        //IaGenerateTroop(2);
-                        if (opponent.numberOfTroop > player.numberOfTroop + 5)
+                        if (randomNumber >= 15)
+                        {
+                            IaGenerateTroop(2);
+                        }
+                        if (opponent.numberOfTroop > player.numberOfTroop + 4)
                         {
                             IaSpecialAttack();
                         }
                     }
                     else
                     {
+                        print("step 3");
                         if (player.age != 6)
                         {
                             IAgeUp();
+                            /*IaSell();
                             IaSell();
-                            IaSell();
-                            IaBuildTurret(3);
-                            IaBuildTurret(3);
-                            IaGenerateTroop(5);
+                            IaBuildTurret(1, 3);
+                            IaBuildTurret(2, 3);
+                            IaGenerateTroop(5);*/
                         } 
                     }
 
@@ -245,7 +251,7 @@ public class Ia : MonoBehaviour
 
     private bool IsStep1Completed()
     {
-        return archi.nbTowerId2 == 1;
+        return archi.nbTowerId2 >= 1;
     }
     
     private bool IsStep2Completed()
@@ -314,11 +320,14 @@ public class Ia : MonoBehaviour
         }
     }
 
-    IEnumerator IaGenerateCombos()
+    IEnumerator IaGenerateCombos(int combo)
     {
-        int randomCombo = Random.Range(1, 5);
-        Debug.Log(randomCombo + " random combo");
-        switch(randomCombo)
+        if (combo == 0)
+        {
+            combo = Random.Range(1, 5);
+            
+        }
+        switch(combo)
         {
             case 1:
                 yield return new WaitForSeconds(1);
@@ -336,9 +345,9 @@ public class Ia : MonoBehaviour
                 break;
             case 3:
                 yield return new WaitForSeconds(1);
-                casern.InstantiateTroop(21);
-                yield return new WaitForSeconds(1);
                 casern.InstantiateTroop(22);
+                yield return new WaitForSeconds(1);
+                casern.InstantiateTroop(23);
                 yield return new WaitForSeconds(1);
                 casern.InstantiateTroop(22);
                 break;
@@ -388,9 +397,9 @@ public class Ia : MonoBehaviour
     {
         archi.BuySpot(2);
     }
-    void IaBuildTurret(int turret)
+    void IaBuildTurret(int placement, int turret)
     {
-        archi.PlaceTurret(1, 2, turret);
+        archi.PlaceTurret(placement, 2, turret);
     }
 
     void IaUpgradeTroop(int troop)

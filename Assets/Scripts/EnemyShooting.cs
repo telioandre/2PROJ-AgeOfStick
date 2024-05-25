@@ -11,6 +11,7 @@ public class EnemyShooting : MonoBehaviour
     public LayerMask targetLayer;  // Layer des cibles à détecter
     public int damage = 100;
     public float delay = 1f;
+    public int ID;
 
     private float timer;
     public List<Transform> targets = new List<Transform>();
@@ -37,6 +38,7 @@ public class EnemyShooting : MonoBehaviour
             Debug.Log(hits.Length);
             var enemyScript = hit.GetComponent<Movement>();
             var turretScript = GetComponent<Turret>();
+            ID = turretScript.IdTurret;
 
             if (enemyScript != null)
             {
@@ -77,7 +79,7 @@ public class EnemyShooting : MonoBehaviour
                         Debug.Log("liste des cibles: " + targets[i].name);
                         i++;
                     }
-                    enemyBulletScript.SetTarget(targets[0], damage);
+                    enemyBulletScript.SetTarget(targets[0], damage, ID);
                 }
                 else
                 {

@@ -1,41 +1,30 @@
+using PlayFab.DataModels;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private EnemyShooting enemyShooting;
 
     public string name1 = "none";
-    public string age = "none";
+    public int age = 1;
     public int type;
     public int placement;
     public int IdTurret;
-    public Castle _castle;
 
-    private List<int> _turret1Costs = new()
-    {
-        100, 150, 300, 400, 500, 600
-    };
-    private List<int> _turret2Costs = new()
-    {
-        100, 200, 300, 400, 500, 600
-    };
-    private List<int> _turret3Costs = new()
-    {
-        100, 200, 300, 400, 500, 600
-    };
 
     // Constructeur de la classe
-    public void Initialize(string nameTurret, string ageTurret, int typeTurret, int placementTurret, int ID, Castle castle)
+    public void Initialize(string nameTurret, int ageTurret, int typeTurret, int placementTurret, int ID)
     {
         name1 = nameTurret;
         age = ageTurret;
         type = typeTurret;
         placement = placementTurret;
         IdTurret = ID;
-        _castle = castle;
         // Obtenez le composant SpriteRenderer
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyShooting = GetComponent<EnemyShooting>();
         // Assurez-vous que le composant SpriteRenderer existe
         if (spriteRenderer == null)
         {
@@ -76,71 +65,369 @@ public class Turret : MonoBehaviour
         {
             if (placement == 1)
             {
-                transform.position = new Vector3(6218, 630, 238);
+                transform.position = new Vector3(6195, 690, 238);
                 transform.localScale = new Vector3(60, 60, 5);
             }
             else if (placement == 2)
             {
-                transform.position = new Vector3(6218, 715, 238);
+                transform.position = new Vector3(6195, 773, 238);
                 transform.localScale = new Vector3(60, 60, 5);
             }
             else if (placement == 3)
             {
-                transform.position = new Vector3(6218, 801, 238);
+                transform.position = new Vector3(6195, 860, 238);
                 transform.localScale = new Vector3(60, 60, 5);
             }
             else if (placement == 4)
             {
-                transform.position = new Vector3(6218, 888, 238);
+                transform.position = new Vector3(6195, 946, 238);
                 transform.localScale = new Vector3(60, 60, 5);
             }
         }
         
     }
-    public void SetSprite()
+    public void Setup()
     {
-        if (type == 1 && _castle.player.money >= _turret1Costs[_castle.player.age-1])
+        if (age == 1)
         {
-            _castle.player.AddMoney(-_turret1Costs[_castle.player.age-1]);
-            Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
-            if (newSprite != null)
+            if (type == 1)
             {
-                spriteRenderer.sprite = newSprite;
-                Debug.Log("Sprite HexagonFlat chargé avec succès.");
+                Debug.Log("SetSprite 1");
+                Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    enemyShooting.damage = 40;
+                    enemyShooting.delay = 1.2f;
+                    Debug.Log("Sprite HexagonFlat chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 2)
+            {
+                Debug.Log("SetSprite 2");
+                Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    enemyShooting.damage = 30;
+                    enemyShooting.delay = 0.3f;
+                    Debug.Log("Sprite IsometricDiamond chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 3)
+            {
+                Debug.Log("SetSprite 3");
+                Sprite newSprite = Resources.Load<Sprite>("Circle");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    enemyShooting.damage = 20;
+                    enemyShooting.delay = 0.8f;
+                    Debug.Log("Sprite Circle chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite Circle n'a pas été trouvé dans les ressources.");
+                }
             }
             else
             {
-                Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
+                Debug.Log("Pas de SetSprite");
             }
         }
-        else if (type == 2 && _castle.player.money >= _turret2Costs[_castle.player.age-1])
+        else if (age == 2)
         {
-            _castle.player.AddMoney(-_turret2Costs[_castle.player.age-1]);
-            Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
-            if (newSprite != null)
+            if (type == 1)
             {
-                spriteRenderer.sprite = newSprite;
-                Debug.Log("Sprite IsometricDiamond chargé avec succès.");
+                Debug.Log("SetSprite 1");
+                Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.red;
+                    enemyShooting.damage = 60;
+                    enemyShooting.delay = 1.2f;
+                    Debug.Log("Sprite HexagonFlat chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 2)
+            {
+                Debug.Log("SetSprite 2");
+                Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.red;
+                    enemyShooting.damage = 45;
+                    enemyShooting.delay = 0.3f;
+                    Debug.Log("Sprite IsometricDiamond chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 3)
+            {
+                Debug.Log("SetSprite 3");
+                Sprite newSprite = Resources.Load<Sprite>("Circle");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.red;
+                    enemyShooting.damage = 30;
+                    enemyShooting.delay = 0.8f;
+                    Debug.Log("Sprite Circle chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite Circle n'a pas été trouvé dans les ressources.");
+                }
             }
             else
             {
-                Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
+                Debug.Log("Pas de SetSprite");
             }
-        }
-        else if (type == 3 && _castle.player.money >= _turret3Costs[_castle.player.age-1])
+        }else if (age == 3)
         {
-            _castle.player.AddMoney(-_turret3Costs[_castle.player.age-1]);
-            Sprite newSprite = Resources.Load<Sprite>("Circle");
-            if (newSprite != null)
+            if (type == 1)
             {
-                spriteRenderer.sprite = newSprite;
-                Debug.Log("Sprite Circle chargé avec succès.");
+                Debug.Log("SetSprite 1");
+                Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.blue;
+                    enemyShooting.damage = 85;
+                    enemyShooting.delay = 1.2f;
+                    Debug.Log("Sprite HexagonFlat chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 2)
+            {
+                Debug.Log("SetSprite 2");
+                Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.blue;
+                    enemyShooting.damage = 67;
+                    enemyShooting.delay = 0.3f;
+                    Debug.Log("Sprite IsometricDiamond chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 3)
+            {
+                Debug.Log("SetSprite 3");
+                Sprite newSprite = Resources.Load<Sprite>("Circle");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.blue;
+                    enemyShooting.damage = 48;
+                    enemyShooting.delay = 0.8f;
+                    Debug.Log("Sprite Circle chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite Circle n'a pas été trouvé dans les ressources.");
+                }
             }
             else
             {
-                Debug.LogError("Le sprite Circle n'a pas été trouvé dans les ressources.");
+                Debug.Log("Pas de SetSprite");
+            }
+        }else if (age == 4)
+        {
+            if (type == 1)
+            {
+                Debug.Log("SetSprite 1");
+                Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.yellow;
+                    enemyShooting.damage = 135;
+                    enemyShooting.delay = 1.2f;
+                    Debug.Log("Sprite HexagonFlat chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 2)
+            {
+                Debug.Log("SetSprite 2");
+                Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.yellow;
+                    enemyShooting.damage = 100;
+                    enemyShooting.delay = 0.3f;
+                    Debug.Log("Sprite IsometricDiamond chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 3)
+            {
+                Debug.Log("SetSprite 3");
+                Sprite newSprite = Resources.Load<Sprite>("Circle");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.yellow;
+                    enemyShooting.damage = 75;
+                    enemyShooting.delay = 0.8f;
+                    Debug.Log("Sprite Circle chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite Circle n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else
+            {
+                Debug.Log("Pas de SetSprite");
+            }
+        }else if (age == 5)
+        {
+            if (type == 1)
+            {
+                Debug.Log("SetSprite 1");
+                Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.green;
+                    enemyShooting.damage = 200;
+                    enemyShooting.delay = 1.2f;
+                    Debug.Log("Sprite HexagonFlat chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 2)
+            {
+                Debug.Log("SetSprite 2");
+                Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.green;
+                    enemyShooting.damage = 150;
+                    enemyShooting.delay = 0.3f;
+                    Debug.Log("Sprite IsometricDiamond chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 3)
+            {
+                Debug.Log("SetSprite 3");
+                Sprite newSprite = Resources.Load<Sprite>("Circle");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.green;
+                    enemyShooting.damage = 100;
+                    enemyShooting.delay = 0.8f;
+                    Debug.Log("Sprite Circle chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite Circle n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else
+            {
+                Debug.Log("Pas de SetSprite");
+            }
+        }else if (age == 6)
+        {
+            if (type == 1)
+            {
+                Debug.Log("SetSprite 1");
+                Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.cyan;
+                    enemyShooting.damage = 300;
+                    enemyShooting.delay = 1.2f;
+                    Debug.Log("Sprite HexagonFlat chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite HexagonFlat n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 2)
+            {
+                Debug.Log("SetSprite 2");
+                Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.cyan;
+                    enemyShooting.damage = 225;
+                    enemyShooting.delay = 0.3f;
+                    Debug.Log("Sprite IsometricDiamond chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite IsometricDiamond n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else if (type == 3)
+            {
+                Debug.Log("SetSprite 3");
+                Sprite newSprite = Resources.Load<Sprite>("Circle");
+                if (newSprite != null)
+                {
+                    spriteRenderer.sprite = newSprite;
+                    spriteRenderer.color = Color.cyan;
+                    enemyShooting.damage = 155;
+                    enemyShooting.delay = 0.8f;
+                    Debug.Log("Sprite Circle chargé avec succès.");
+                }
+                else
+                {
+                    Debug.LogError("Le sprite Circle n'a pas été trouvé dans les ressources.");
+                }
+            }
+            else
+            {
+                Debug.Log("Pas de SetSprite");
             }
         }
-
     }
 }
