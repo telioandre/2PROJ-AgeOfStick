@@ -37,7 +37,7 @@ public class EnemyBulletScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            var targetScript = collision.GetComponent<Movement>();
+            var targetScript = collision.GetComponent<GameManager>();
 
             if (targetScript != null)
             {
@@ -49,7 +49,7 @@ public class EnemyBulletScript : MonoBehaviour
                     Player player = FindPlayerByCastleId(ID);
 
                     // Obtenir une référence à l'instance de Movement
-                    Movement movementInstance = collision.GetComponent<Movement>();
+                    var movementInstance = collision.GetComponent<GameManager>();
 
                     if (movementInstance != null)
                     {

@@ -9,7 +9,7 @@ namespace Nobi.UiRoundedCorners {
 		private static readonly int Props = Shader.PropertyToID("_WidthHeightRadius");
 
         public float radius = 40f;          
-        private Material material;
+        private Material _material;
 
 		[HideInInspector, SerializeField] private MaskableGraphic image;
 
@@ -21,9 +21,9 @@ namespace Nobi.UiRoundedCorners {
 		private void OnDestroy() {
             image.material = null;      //This makes so that when the component is removed, the UI material returns to null
 
-            DestroyHelper.Destroy(material);
+            DestroyHelper.Destroy(_material);
 			image = null;
-			material = null;
+			_material = null;
 		}
 
 		private void OnEnable() {
@@ -41,14 +41,14 @@ namespace Nobi.UiRoundedCorners {
 		}
 
 		private void OnRectTransformDimensionsChange() {
-			if (enabled && material != null) {
+			if (enabled && _material != null) {
 				Refresh();
 			}
 		}
 
 		public void Validate() {
-			if (material == null) {
-				material = new Material(Shader.Find("UI/RoundedCorners/RoundedCorners"));
+			if (_material == null) {
+				_material = new Material(Shader.Find("UI/RoundedCorners/RoundedCorners"));
 			}
 
 			if (image == null) {
@@ -56,7 +56,7 @@ namespace Nobi.UiRoundedCorners {
 			}
 
 			if (image != null) {
-				image.material = material;
+				image.material = _material;
 			}
 		}
 
@@ -65,7 +65,7 @@ namespace Nobi.UiRoundedCorners {
 
             //Multiply radius value by 2 to make the radius value appear consistent with ImageWithIndependentRoundedCorners script.
             //Right now, the ImageWithIndependentRoundedCorners appears to have double the radius than this.
-            material.SetVector(Props, new Vector4(rect.width, rect.height, radius * 2, 0));   
+            _material.SetVector(Props, new Vector4(rect.width, rect.height, radius * 2, 0));   
         }
 	}
 }

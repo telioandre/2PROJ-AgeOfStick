@@ -8,27 +8,48 @@ using Button = UnityEngine.UI.Button;
 
 public class Player : MonoBehaviour
 {
-    public int xp;
-    public int money;
-    public int age = 1;
+    private int _xp;
+    private int _money;
+    private int _age = 1;
     public Castle castle;
     public Casern casern;
-    public Player opponent;
     public string baseName;
     public TextMeshProUGUI textMoney;
     public TextMeshProUGUI textXp;
     public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white };
     public List<Sprite> attackSpecialSprite = new();
     public Button specialAttackButton;
+    public List<Sprite> troop1Sprite = new();
+    public Button troop1Button;
+    public List<Sprite> troop2Sprite = new();
+    public Button troop2Button;
+    public List<Sprite> troop3Sprite = new();
+    public Button troop3Button;
+    public List<Sprite> troop4Sprite = new();
+    public Button troop4Button;
+    public List<Sprite> troop1UpgradeSprite = new();
+    public Button troop1UpgradeButton;
+    public List<Sprite> troop2UpgradeSprite = new();
+    public Button troop2UpgradeButton;
+    public List<Sprite> troop3UpgradeSprite = new();
+    public Button troop3UpgradeButton;
+    public List<Sprite> troop4UpgradeSprite = new();
+    public Button troop4UpgradeButton;
+    public List<Sprite> turret1Sprite = new();
+    public Button turret1Button;
+    public List<Sprite> turret2Sprite = new();
+    public Button turret2Button;
+    public List<Sprite> turret3Sprite = new();
+    public Button turret3Button;
     public GameObject specialAttack;
     public List<int> specialCosts;
     public List<int> ageCosts;
     public int troop1Level;
     public int troop2Level;
     public int troop3Level;
-     public int troop4Level;
+    public int troop4Level;
     public int numberOfTroop;
-    public float precision;
+    private float _precision;
     private float _specialCooldown = 20f;
     private float _lastPlayer1Special;
     private float _lastPlayer2Special;
@@ -59,94 +80,108 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        SetAge(1);
+        AddMoney(10);
+        AddXp(1000);
+        
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
 
         _lastPlayer1Special = -_specialCooldown;
         _lastPlayer2Special = -_specialCooldown;
     }
-
-    public string GetName()
-    {
-        return baseName;
-    }
-    
     public void AddXp(int newXp)
     {
-        xp += newXp;
+        _xp += newXp;
         //Debug.Log("xp = " + xp);
     }
 
     public void SuppXp(int newXp)
     {
-        xp -= newXp;
+        _xp -= newXp;
         //Debug.Log("xp = " + xp);
     }
 
     public int GetXp()
     {
-        return xp;
+        return _xp;
     }
 
     public void AddMoney(int newMoney)
     {
-        money += newMoney;
+        _money += newMoney;
         //Debug.Log("money = " + money);
     }
 
     public void SuppMoney(int newMoney)
     {
-        money -= newMoney;
-        if (money < 0)
+        _money -= newMoney;
+        if (_money < 0)
         {
-            money = 0;
+            _money = 0;
         }
         //Debug.Log("money = " + money);
     }
 
     public int GetMoney()
     {
-        return money;
+        return _money;
+    }
+
+    public void SetAge(int newAge)
+    {
+        _age = newAge;
     }
 
     public void AgeUp()
     {
-        if (age < 6)
+        if (_age < 6)
         {
-            if (xp < ageCosts[age - 1])
+            if (_xp < ageCosts[_age - 1])
             {
                 //Debug.Log("XP insufisant ! Manque : " + (ageCosts[age - 1] - xp));
             }
             else
             {
-                xp -= ageCosts[age - 1];
-                age += 1;
+                _xp -= ageCosts[_age - 1];
+                _age += 1;
                 castle.AddLifePoint(Mathf.RoundToInt(castle.lifePoint * 1.35f));
                 castle.AddMaxLifePoint(Mathf.RoundToInt(castle.maxLifePoint * 1.35f));
                 SpriteRenderer spriteColor = GetComponent<SpriteRenderer>();
-                spriteColor.color = ageColors[age - 1];
-                specialAttackButton.image.sprite = attackSpecialSprite[age - 1];
+                spriteColor.color = ageColors[_age - 1];
+                specialAttackButton.image.sprite = attackSpecialSprite[_age - 1];
+                troop1Button.image.sprite = troop1Sprite[_age - 1];
+                troop2Button.image.sprite = troop2Sprite[_age - 1];
+                troop3Button.image.sprite = troop3Sprite[_age - 1];
+                troop4Button.image.sprite = troop4Sprite[_age - 1];
+                troop1UpgradeButton.image.sprite = troop1UpgradeSprite[_age + troop1Level * 6 - 1];
+                troop2UpgradeButton.image.sprite = troop2UpgradeSprite[_age + troop2Level * 6 - 1];
+                troop3UpgradeButton.image.sprite = troop3UpgradeSprite[_age + troop3Level * 6 - 1];
+                troop4UpgradeButton.image.sprite = troop4UpgradeSprite[_age + troop4Level * 6 - 1];
+                turret1Button.image.sprite = turret1Sprite[_age - 1];
+                turret2Button.image.sprite = turret2Sprite[_age - 1];
+                turret3Button.image.sprite = turret3Sprite[_age - 1];
 
             }
         }
         else
         {
-            //Debug.Log("Max age reached");
+            Debug.Log("Max age reached");
         }
     }
 
     public int GetAge()
     {
-        return age;
+        return _age;
     }
     public bool CheckCooldown(int id)
     {
-        if (id == 1 && Time.time - _lastPlayer1Special > _specialCooldown + ((age - 1) * 5))
+        if (id == 1 && Time.time - _lastPlayer1Special > _specialCooldown + ((_age - 1) * 5))
         {
             _lastPlayer1Special = Time.time;
             return true;
         }
-        if (id == 2 && Time.time - _lastPlayer2Special > _specialCooldown + ((age - 1) * 5))
+        if (id == 2 && Time.time - _lastPlayer2Special > _specialCooldown + ((_age - 1) * 5))
         {
             _lastPlayer2Special = Time.time;
             return true;
@@ -158,7 +193,7 @@ public class Player : MonoBehaviour
     {
         if (CheckCooldown(id))
         {
-            int cost = specialCosts[age - 1];
+            int cost = specialCosts[_age - 1];
             if (GetXp() >= cost)
             {
                 SuppXp(cost);
@@ -239,7 +274,7 @@ public class Player : MonoBehaviour
         }
         for (int i = 0; i < positions.Count; i++)
         {
-            float precisionShot = Random.Range(-precision, precision) * Random.Range(-500f, 500f);
+            float precisionShot = Random.Range(-_precision, _precision) * Random.Range(-500f, 500f);
             //print(precisionShot);
             if (precisionShot < 150f)
             {
@@ -269,34 +304,38 @@ public class Player : MonoBehaviour
         switch (troop)
         {
             case 1:
-                if(troop1Level < 3 && money >= _troops1UpgradeCosts[troop1Level][0] && age >= _troops1UpgradeCosts[troop1Level][1])
+                if(troop1Level < 3 && _money >= _troops1UpgradeCosts[troop1Level][0] && _age >= _troops1UpgradeCosts[troop1Level][1])
                 {
                     AddMoney(-_troops1UpgradeCosts[troop1Level][0]);
                     troop1Level += 1;
+                    troop1UpgradeButton.image.sprite = troop1UpgradeSprite[_age + troop1Level * 6 - 1];
                 }
                 break;
 
             case 2:
-                if (troop2Level < 3 && money >= _troops2UpgradeCosts[troop2Level][0] && age >= _troops2UpgradeCosts[troop2Level][1])
+                if (troop2Level < 3 && _money >= _troops2UpgradeCosts[troop2Level][0] && _age >= _troops2UpgradeCosts[troop2Level][1])
                 {
                     AddMoney(-_troops2UpgradeCosts[troop2Level][0]);
                     troop2Level += 1;
+                    troop2UpgradeButton.image.sprite = troop2UpgradeSprite[_age + troop2Level * 6 - 1];
                 }
                 break;
 
             case 3:
-                if (troop3Level < 3 && money >= _troops3UpgradeCosts[troop3Level][0] && age >= _troops3UpgradeCosts[troop3Level][1])
+                if (troop3Level < 3 && _money >= _troops3UpgradeCosts[troop3Level][0] && _age >= _troops3UpgradeCosts[troop3Level][1])
                 {
                     AddMoney(-_troops3UpgradeCosts[troop3Level][0]);
                     troop3Level += 1;
+                    troop3UpgradeButton.image.sprite = troop3UpgradeSprite[_age + troop3Level * 6 - 1];
                 }
                 break;
 
             case 4:
-                if (troop4Level < 3 && money >= _troops4UpgradeCosts[troop4Level][0] && age >= _troops4UpgradeCosts[troop4Level][1])
+                if (troop4Level < 3 && _money >= _troops4UpgradeCosts[troop4Level][0] && _age >= _troops4UpgradeCosts[troop4Level][1])
                 {
                     AddMoney(-_troops4UpgradeCosts[troop4Level][0]);
                     troop4Level += 1;
+                    troop4UpgradeButton.image.sprite = troop4UpgradeSprite[_age + troop4Level * 6 - 1];
                 }
                 break;
         }
@@ -306,25 +345,25 @@ public class Player : MonoBehaviour
     {
         textMoney.text = "Money : " + castle.player.GetMoney();
         textXp.text = "XP : " + castle.player.GetXp();
-        switch (age)
+        switch (_age)
         {
             case 1:
-                precision = 5f;
+                _precision = 5f;
                 break;
             case 2:
-                precision = 4f;
+                _precision = 4f;
                 break;
             case 3:
-                precision = 3f;
+                _precision = 3f;
                 break;
             case 4:
-                precision = 1f;
+                _precision = 1f;
                 break;
             case 5:
-                precision = 1f;
+                _precision = 1f;
                 break;
             case 6:
-                precision = 0f;
+                _precision = 0f;
                 break;
         }
     }

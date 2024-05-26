@@ -1,46 +1,44 @@
-using PlayFab.DataModels;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-    private EnemyShooting enemyShooting;
+    private SpriteRenderer _spriteRenderer;
+    private EnemyShooting _enemyShooting;
 
     public string name1 = "none";
     public int age = 1;
     public int type;
     public int placement;
-    public int IdTurret;
+    public int idTurret;
 
 
     // Constructeur de la classe
-    public void Initialize(string nameTurret, int ageTurret, int typeTurret, int placementTurret, int ID)
+    public void Initialize(string nameTurret, int ageTurret, int typeTurret, int placementTurret, int id)
     {
         name1 = nameTurret;
         age = ageTurret;
         type = typeTurret;
         placement = placementTurret;
-        IdTurret = ID;
+        idTurret = id;
         // Obtenez le composant SpriteRenderer
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        enemyShooting = GetComponent<EnemyShooting>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _enemyShooting = GetComponent<EnemyShooting>();
         // Assurez-vous que le composant SpriteRenderer existe
-        if (spriteRenderer == null)
+        if (_spriteRenderer == null)
         {
             // Si le SpriteRenderer n'est pas trouvé sur cet objet, ajoutez-le
-            spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            _spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         }
     }
 
-    public int getIdTurret()
+    public int GetIdTurret()
     {
-        return IdTurret;
+        return idTurret;
     }
 
-    public void SetPosition(int ID)
+    public void SetPosition(int id)
     {
-        if (ID == 1)
+        if (id == 1)
         {
             if (placement == 1)
             {
@@ -61,7 +59,7 @@ public class Turret : MonoBehaviour
                 transform.position = new Vector3(138, 948, 239);
                 transform.localScale = new Vector3(60, 60, 5);
             }
-        }else if (ID == 2)
+        }else if (id == 2)
         {
             if (placement == 1)
             {
@@ -96,9 +94,9 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    enemyShooting.damage = 40;
-                    enemyShooting.delay = 1.2f;
+                    _spriteRenderer.sprite = newSprite;
+                    _enemyShooting.damage = 40;
+                    _enemyShooting.delay = 1.2f;
                     Debug.Log("Sprite HexagonFlat chargé avec succès.");
                 }
                 else
@@ -112,9 +110,9 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    enemyShooting.damage = 30;
-                    enemyShooting.delay = 0.3f;
+                    _spriteRenderer.sprite = newSprite;
+                    _enemyShooting.damage = 30;
+                    _enemyShooting.delay = 0.3f;
                     Debug.Log("Sprite IsometricDiamond chargé avec succès.");
                 }
                 else
@@ -128,9 +126,9 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("Circle");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    enemyShooting.damage = 20;
-                    enemyShooting.delay = 0.8f;
+                    _spriteRenderer.sprite = newSprite;
+                    _enemyShooting.damage = 20;
+                    _enemyShooting.delay = 0.8f;
                     Debug.Log("Sprite Circle chargé avec succès.");
                 }
                 else
@@ -151,10 +149,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.red;
-                    enemyShooting.damage = 60;
-                    enemyShooting.delay = 1.2f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.red;
+                    _enemyShooting.damage = 60;
+                    _enemyShooting.delay = 1.2f;
                     Debug.Log("Sprite HexagonFlat chargé avec succès.");
                 }
                 else
@@ -168,10 +166,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.red;
-                    enemyShooting.damage = 45;
-                    enemyShooting.delay = 0.3f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.red;
+                    _enemyShooting.damage = 45;
+                    _enemyShooting.delay = 0.3f;
                     Debug.Log("Sprite IsometricDiamond chargé avec succès.");
                 }
                 else
@@ -185,10 +183,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("Circle");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.red;
-                    enemyShooting.damage = 30;
-                    enemyShooting.delay = 0.8f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.red;
+                    _enemyShooting.damage = 30;
+                    _enemyShooting.delay = 0.8f;
                     Debug.Log("Sprite Circle chargé avec succès.");
                 }
                 else
@@ -208,10 +206,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.blue;
-                    enemyShooting.damage = 85;
-                    enemyShooting.delay = 1.2f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.blue;
+                    _enemyShooting.damage = 85;
+                    _enemyShooting.delay = 1.2f;
                     Debug.Log("Sprite HexagonFlat chargé avec succès.");
                 }
                 else
@@ -225,10 +223,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.blue;
-                    enemyShooting.damage = 67;
-                    enemyShooting.delay = 0.3f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.blue;
+                    _enemyShooting.damage = 67;
+                    _enemyShooting.delay = 0.3f;
                     Debug.Log("Sprite IsometricDiamond chargé avec succès.");
                 }
                 else
@@ -242,10 +240,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("Circle");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.blue;
-                    enemyShooting.damage = 48;
-                    enemyShooting.delay = 0.8f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.blue;
+                    _enemyShooting.damage = 48;
+                    _enemyShooting.delay = 0.8f;
                     Debug.Log("Sprite Circle chargé avec succès.");
                 }
                 else
@@ -265,10 +263,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.yellow;
-                    enemyShooting.damage = 135;
-                    enemyShooting.delay = 1.2f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.yellow;
+                    _enemyShooting.damage = 135;
+                    _enemyShooting.delay = 1.2f;
                     Debug.Log("Sprite HexagonFlat chargé avec succès.");
                 }
                 else
@@ -282,10 +280,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.yellow;
-                    enemyShooting.damage = 100;
-                    enemyShooting.delay = 0.3f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.yellow;
+                    _enemyShooting.damage = 100;
+                    _enemyShooting.delay = 0.3f;
                     Debug.Log("Sprite IsometricDiamond chargé avec succès.");
                 }
                 else
@@ -299,10 +297,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("Circle");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.yellow;
-                    enemyShooting.damage = 75;
-                    enemyShooting.delay = 0.8f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.yellow;
+                    _enemyShooting.damage = 75;
+                    _enemyShooting.delay = 0.8f;
                     Debug.Log("Sprite Circle chargé avec succès.");
                 }
                 else
@@ -322,10 +320,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.green;
-                    enemyShooting.damage = 200;
-                    enemyShooting.delay = 1.2f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.green;
+                    _enemyShooting.damage = 200;
+                    _enemyShooting.delay = 1.2f;
                     Debug.Log("Sprite HexagonFlat chargé avec succès.");
                 }
                 else
@@ -339,10 +337,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.green;
-                    enemyShooting.damage = 150;
-                    enemyShooting.delay = 0.3f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.green;
+                    _enemyShooting.damage = 150;
+                    _enemyShooting.delay = 0.3f;
                     Debug.Log("Sprite IsometricDiamond chargé avec succès.");
                 }
                 else
@@ -356,10 +354,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("Circle");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.green;
-                    enemyShooting.damage = 100;
-                    enemyShooting.delay = 0.8f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.green;
+                    _enemyShooting.damage = 100;
+                    _enemyShooting.delay = 0.8f;
                     Debug.Log("Sprite Circle chargé avec succès.");
                 }
                 else
@@ -379,10 +377,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("HexagonFlat");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.cyan;
-                    enemyShooting.damage = 300;
-                    enemyShooting.delay = 1.2f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.cyan;
+                    _enemyShooting.damage = 300;
+                    _enemyShooting.delay = 1.2f;
                     Debug.Log("Sprite HexagonFlat chargé avec succès.");
                 }
                 else
@@ -396,10 +394,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("IsometricDiamond");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.cyan;
-                    enemyShooting.damage = 225;
-                    enemyShooting.delay = 0.3f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.cyan;
+                    _enemyShooting.damage = 225;
+                    _enemyShooting.delay = 0.3f;
                     Debug.Log("Sprite IsometricDiamond chargé avec succès.");
                 }
                 else
@@ -413,10 +411,10 @@ public class Turret : MonoBehaviour
                 Sprite newSprite = Resources.Load<Sprite>("Circle");
                 if (newSprite != null)
                 {
-                    spriteRenderer.sprite = newSprite;
-                    spriteRenderer.color = Color.cyan;
-                    enemyShooting.damage = 155;
-                    enemyShooting.delay = 0.8f;
+                    _spriteRenderer.sprite = newSprite;
+                    _spriteRenderer.color = Color.cyan;
+                    _enemyShooting.damage = 155;
+                    _enemyShooting.delay = 0.8f;
                     Debug.Log("Sprite Circle chargé avec succès.");
                 }
                 else
