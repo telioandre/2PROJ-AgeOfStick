@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8702980594527690261}
   - component: {fileID: 4448698982495303069}
   m_Layer: 0
-  m_Name: Prehistoire_Special
+  m_Name: Prehistoire_Special Enemy
   m_TagString: Special
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
