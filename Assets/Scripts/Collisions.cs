@@ -30,10 +30,20 @@ public class Collisions : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Special") && gameObject.CompareTag("Player"))
         {
+            Castle castle1;
+            Castle castle2;
             SpecialCollision special = collision.gameObject.GetComponent<SpecialCollision>();
-            int specialID = collision.gameObject.GetComponent<SpecialCollision>().id;
-            Castle castle1 = special.castle1;
-            Castle castle2 = special.castle2;
+            int specialID = special.id;
+            if (specialID == 1)
+            {
+                castle1 = GameObject.Find("Castle 1").GetComponent<Castle>();
+                castle2 = GameObject.Find("Castle 2").GetComponent<Castle>();
+            }
+            else
+            {
+                castle1 = GameObject.Find("Castle 2").GetComponent<Castle>();
+                castle2 = GameObject.Find("Castle 1").GetComponent<Castle>();
+            }
             if (castle1.id == 1)
             {
                 otherPlayer = castle1.player;

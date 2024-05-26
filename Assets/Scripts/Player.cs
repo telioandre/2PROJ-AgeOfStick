@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +18,8 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI textMoney;
     public TextMeshProUGUI textXp;
     public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white };
+    public List<Sprite> attackSpecialSprite = new();
+    public Button specialAttackButton;
     public GameObject specialAttack;
     public List<int> specialCosts;
     public List<int> ageCosts;
@@ -120,6 +125,8 @@ public class Player : MonoBehaviour
                 castle.AddMaxLifePoint(Mathf.RoundToInt(castle.maxLifePoint * 1.35f));
                 SpriteRenderer spriteColor = GetComponent<SpriteRenderer>();
                 spriteColor.color = ageColors[age - 1];
+                specialAttackButton.image.sprite = attackSpecialSprite[age - 1];
+
             }
         }
         else
