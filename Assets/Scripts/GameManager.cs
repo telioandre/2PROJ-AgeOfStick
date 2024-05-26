@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public Rigidbody2D rb2d;
     public float speed;
@@ -10,19 +10,15 @@ public class Movement : MonoBehaviour
     public bool movementAllowed = true;
     public int life;
     public int attack;
-    private Player player;
+    private Player _player;
     public int troopLevel;
     public float buildTime;
     public float attackTime;
-    private Casern casern;
+    private Casern _casern;
     public int maxLife;
     public int troopId;
     public string uniqueId;
-    public bool start;
-    /*public Image health;
-    public Image background;
-    public Image fill;*/
-
+    /*public Image health;*/
 
     private List<int> _troop1dropsXp;
     private List<int> _troop2dropsXp;
@@ -98,7 +94,7 @@ public class Movement : MonoBehaviour
 
             }
 
-            // Cretation du raycast pour la rencontre avec le chateau 
+            // Creation du raycast pour la rencontre avec le chateau 
             hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 200);
             // Vérifier si l'objet touché a le tag "Castle"
             if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
@@ -142,8 +138,6 @@ public class Movement : MonoBehaviour
             {
                 //rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
             }
-
-
             if (movementAllowed)
             {
                 rb2d.velocity = new Vector2(-(speed), rb2d.velocity.y);
@@ -161,48 +155,47 @@ public class Movement : MonoBehaviour
         return uniqueId;
     }
 
-    public Player getPlayer()
+    public Player GetPlayer()
     {
-        return player;
+        return _player;
     }
 
     //Initialise les paramètres de l'objet prefab
     public void SetPlayer(int playerId, int newTroopId)
     {
-        start = false;
         id = playerId;
         troopId = newTroopId;
         uniqueId = System.Guid.NewGuid().ToString();
-        casern = GameObject.Find("Casern").GetComponent<Casern>();
+        _casern = GameObject.Find("Casern").GetComponent<Casern>();
         if (id == 1)
         {
-            player = GameObject.Find("Castle 1").GetComponent<Player>();
+            _player = GameObject.Find("Castle 1").GetComponent<Player>();
         }
         else
         {
-            player = GameObject.Find("Castle 2").GetComponent<Player>();
+            _player = GameObject.Find("Castle 2").GetComponent<Player>();
         }
         char troopName = name[6];
         int troopNumber = int.Parse(troopName.ToString());
         switch (troopNumber)
         {
             case 1:
-                troopLevel = player.troop1Level;
+                troopLevel = _player.troop1Level;
                 break;
 
             case 2:
-                troopLevel = player.troop2Level;
+                troopLevel = _player.troop2Level;
                 break;
 
             case 3:
-                troopLevel = player.troop3Level;
+                troopLevel = _player.troop3Level;
                 break;
 
             case 4:
-                troopLevel = player.troop4Level;
+                troopLevel = _player.troop4Level;
                 break;
         }
-        for (int i = 1; i < player.age; i++)
+        for (int i = 1; i < _player.GetAge(); i++)
         {
             life = Mathf.RoundToInt(life * 1.5f);
             speed = Mathf.RoundToInt(speed * 1.1f);
@@ -213,6 +206,14 @@ public class Movement : MonoBehaviour
         for (int i = 0; i < troopLevel; i++)
         {
             attack = Mathf.RoundToInt(attack * 1.2f);
+        }
+        if (id == 1)
+        {
+            transform.position = new Vector2(1500, 0);
+        }
+        else
+        { 
+            transform.position = new Vector2(3500, 0);
         }
         maxLife = life;
         Invoke("Endbuild", buildTime);
@@ -229,10 +230,7 @@ public class Movement : MonoBehaviour
 
             transform.position = new Vector2(-150, 1000 + 500 * hitsHauteur.Length);
 
-            casern.isForming1 = false;
-
-
-
+            _casern.isForming1 = false;
         }
         else if (id == 2)
         {
@@ -243,11 +241,9 @@ public class Movement : MonoBehaviour
 
             transform.position = new Vector2(6000, 1000 + 500 *hitsHauteur.Length);
 
-            casern.isForming2 = false;
-
+            _casern.isForming2 = false;
         }
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
-
     }
 
     public bool SuperEffective(int ally, int enemy)
@@ -265,47 +261,47 @@ public class Movement : MonoBehaviour
         {
             case 1:
 
-                ally.AddMoney(_troop1drops[player.age - 1] + _troop1dropsRange[player.age - 1]);
-                ally.AddXp(_troop1dropsXp[player.age - 1]);
-                enemy.AddMoney((_troop1drops[player.age - 1] + _troop1dropsRange[player.age - 1]) / 2);
-                enemy.AddXp(_troop1dropsXp[player.age - 1] / 2);
+                ally.AddMoney(_troop1drops[_player.GetAge() - 1] + _troop1dropsRange[_player.GetAge() - 1]);
+                ally.AddXp(_troop1dropsXp[_player.GetAge() - 1]);
+                enemy.AddMoney((_troop1drops[_player.GetAge() - 1] + _troop1dropsRange[_player.GetAge() - 1]) / 2);
+                enemy.AddXp(_troop1dropsXp[_player.GetAge() - 1] / 2);
                 break;
 
             case 2:
 
-                ally.AddMoney(_troop2drops[player.age - 1] + _troop2dropsRange[player.age - 1]);
-                ally.AddXp(_troop2dropsXp[player.age - 1]);
-                enemy.AddMoney((_troop2drops[player.age - 1] + _troop2dropsRange[player.age - 1]) / 2);
-                enemy.AddXp(_troop2dropsXp[player.age - 1] / 2);
+                ally.AddMoney(_troop2drops[_player.GetAge() - 1] + _troop2dropsRange[_player.GetAge() - 1]);
+                ally.AddXp(_troop2dropsXp[_player.GetAge() - 1]);
+                enemy.AddMoney((_troop2drops[_player.GetAge() - 1] + _troop2dropsRange[_player.GetAge() - 1]) / 2);
+                enemy.AddXp(_troop2dropsXp[_player.GetAge() - 1] / 2);
                 break;
 
             case 3:
 
-                ally.AddMoney(_troop3drops[player.age - 1] + _troop3dropsRange[player.age - 1]);
-                ally.AddXp(_troop3dropsXp[player.age - 1]);
-                enemy.AddMoney((_troop3drops[player.age - 1] + _troop3dropsRange[player.age - 1]) / 2);
-                enemy.AddXp(_troop3dropsXp[player.age - 1] / 2);
+                ally.AddMoney(_troop3drops[_player.GetAge() - 1] + _troop3dropsRange[_player.GetAge() - 1]);
+                ally.AddXp(_troop3dropsXp[_player.GetAge() - 1]);
+                enemy.AddMoney((_troop3drops[_player.GetAge() - 1] + _troop3dropsRange[_player.GetAge() - 1]) / 2);
+                enemy.AddXp(_troop3dropsXp[_player.GetAge() - 1] / 2);
                 break;
 
             case 4:
 
-                ally.AddMoney(_troop4drops[player.age - 1] + _troop4dropsRange[player.age - 1]);
-                ally.AddXp(_troop4dropsXp[player.age - 1]);
-                enemy.AddMoney((_troop4drops[player.age - 1] + _troop4dropsRange[player.age - 1]) / 2);
-                enemy.AddXp(_troop4dropsXp[player.age - 1] / 2);
+                ally.AddMoney(_troop4drops[_player.GetAge() - 1] + _troop4dropsRange[_player.GetAge() - 1]);
+                ally.AddXp(_troop4dropsXp[_player.GetAge() - 1]);
+                enemy.AddMoney((_troop4drops[_player.GetAge() - 1] + _troop4dropsRange[_player.GetAge() - 1]) / 2);
+                enemy.AddXp(_troop4dropsXp[_player.GetAge() - 1] / 2);
                 break;
         }
 
     }
 
-    public IEnumerator AttackPlayer(Movement enemyMovement, Rigidbody2D myRb, Player ally, Player enemy)
+    public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy)
     {
-        while (enemyMovement.life > 0)
+        while (enemyGameManager.life > 0)
         {
             yield return new WaitForSeconds(attackTime);
             int damage = attack + Random.Range(0, 10);
             char allyChar = name[6];
-            char enemyChar = enemyMovement.name[6];
+            char enemyChar = enemyGameManager.name[6];
             int allyNumber = int.Parse(allyChar.ToString());
             int enemyNumber = int.Parse(enemyChar.ToString());
             
@@ -313,25 +309,25 @@ public class Movement : MonoBehaviour
             {
                 damage = Mathf.RoundToInt(damage * 1.5f);
             }
-            enemyMovement.life -= damage;
-            if (enemyMovement.life <= 0)
+            enemyGameManager.life -= damage;
+            if (enemyGameManager.life <= 0)
             {
                 DropRewards(enemyNumber, ally, enemy);
-                enemyMovement.life = 0;
-                casern.DestroyTroop(enemyMovement.id, enemyMovement.uniqueId);
-                Destroy(enemyMovement.gameObject);
+                enemyGameManager.life = 0;
+                _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
+                Destroy(enemyGameManager.gameObject);
                 myRb.constraints = RigidbodyConstraints2D.None;
             }
         }
     }
 
-        public IEnumerator TroopUnderSpecial(Movement troop, SpecialCollision special, Player otherPlayer)
+        public IEnumerator TroopUnderSpecial(GameManager troop, SpecialCollision special, Player otherPlayer)
         {
 
             char troopChar = troop.name[6];
             int troopNumber = int.Parse(troopChar.ToString());
             int damage;
-            if (otherPlayer.age == troop.player.age)
+            if (otherPlayer.GetAge() == troop._player.GetAge())
             {
                 if (troopNumber == 4)
                 {
@@ -342,7 +338,7 @@ public class Movement : MonoBehaviour
                     damage = troop.maxLife;
                 }
             }
-            else if (otherPlayer.age < troop.player.age)
+            else if (otherPlayer.GetAge() < troop._player.GetAge())
             {
                 if (troopNumber == 4)
                 {
@@ -363,8 +359,8 @@ public class Movement : MonoBehaviour
             if (troop.life <= 0)
             {
                 life = 0;
-                casern.DestroyTroop(troop.id, troop.uniqueId);
-                DropRewards(troopNumber, otherPlayer, troop.player);
+                _casern.DestroyTroop(troop.id, troop.uniqueId);
+                DropRewards(troopNumber, otherPlayer, troop._player);
                 Destroy(troop.gameObject);
             }
             yield return null;

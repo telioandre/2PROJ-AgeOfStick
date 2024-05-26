@@ -1,24 +1,23 @@
-
 using UnityEngine;
 
 
 public class Collisions : MonoBehaviour
 {
 
-    private Collider2D unitCollider;
+    private Collider2D _unitCollider;
 
     private void Start()
     {
-        unitCollider = GetComponent<Collider2D>();
+        _unitCollider = GetComponent<Collider2D>();
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Movement currentMovement = GetComponent<Movement>();
-        Movement otherMovement = collision.gameObject.GetComponent<Movement>();
+        GameManager currentGameManager = GetComponent<GameManager>();
+        GameManager otherGameManager = collision.gameObject.GetComponent<GameManager>();
         Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();
         Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
         Castle castle = collision.gameObject.GetComponent<Castle>();
-        Player ally = currentMovement.getPlayer();
+        Player ally = currentGameManager.GetPlayer();
         Player otherPlayer;
 
 
@@ -53,9 +52,9 @@ public class Collisions : MonoBehaviour
                 otherPlayer = castle2.player;
             }
 
-            if (specialID != currentMovement.id)
+            if (specialID != currentGameManager.id)
             {
-                StartCoroutine(currentMovement.TroopUnderSpecial(currentMovement, special, otherPlayer));
+                StartCoroutine(currentGameManager.TroopUnderSpecial(currentGameManager, special, otherPlayer));
             }
             else
             {
@@ -64,25 +63,25 @@ public class Collisions : MonoBehaviour
         }
 
         // Si une collision concerne un chateau
-        if ((collision.gameObject.CompareTag("player 1") && currentMovement.id == 2 || (collision.gameObject.CompareTag("player 2") && currentMovement.id == 1)))
+        if ((collision.gameObject.CompareTag("player 1") && currentGameManager.id == 2 || (collision.gameObject.CompareTag("player 2") && currentGameManager.id == 1)))
         {
             if (castle != null)
             {
                 //Commence une coroutine qui va faire des dégâts au chateau
                 //Debug.Log("envoie " + castle.ID + "recoit : " + currentMovement.ID);
                 myRb.constraints = RigidbodyConstraints2D.FreezeAll;
-                StartCoroutine(castle.DeleteLifePoint(currentMovement.attack, currentMovement.id, castle));
+                StartCoroutine(castle.DeleteLifePoint(currentGameManager.attack, currentGameManager.id, castle));
             }
         }
 
         // Si une collision concerne un autre joueur
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
         {
-            if (otherMovement != null && currentMovement.id != otherMovement.id)
+            if (otherGameManager != null && currentGameManager.id != otherGameManager.id)
             {
-                Player enemy = otherMovement.getPlayer();
+                Player enemy = otherGameManager.GetPlayer();
                 //Permet de stop le mouvement 
-                if (currentMovement != null && otherMovement != null && myRb != null && enemyRb != null)
+                if (currentGameManager != null && otherGameManager != null && myRb != null && enemyRb != null)
                 {
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                     enemyRb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -90,7 +89,7 @@ public class Collisions : MonoBehaviour
                 if (ally != null && enemy != null)
                 {
                     //Commence une coroutine qui diminue les pv des 2 joueurs en contact
-                    StartCoroutine(currentMovement.AttackPlayer(otherMovement, myRb, ally, enemy));
+                    StartCoroutine(currentGameManager.AttackPlayer(otherGameManager, myRb, ally, enemy));
 
                 }
 
@@ -101,10 +100,10 @@ public class Collisions : MonoBehaviour
                 }
             }
         }
-        if (collision.gameObject.CompareTag("player " + currentMovement.id))
+        if (collision.gameObject.CompareTag("player " + currentGameManager.id))
         {
             Collider2D wallCollider = collision.collider;
-            Physics2D.IgnoreCollision(wallCollider, unitCollider, true);
+            Physics2D.IgnoreCollision(wallCollider, _unitCollider, true);
         }
     }
 
@@ -133,18 +132,18 @@ public class Collisions : MonoBehaviour
         }
 
 
-        if (collision.gameObject.CompareTag("player " + gameObject.GetComponent<Movement>().id))
+        if (collision.gameObject.CompareTag("player " + gameObject.GetComponent<GameManager>().id))
         {
             Collider2D wallCollider = collision.collider;
-            Physics2D.IgnoreCollision(wallCollider, unitCollider, false);
+            Physics2D.IgnoreCollision(wallCollider, _unitCollider, false);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("player " + gameObject.GetComponent<Movement>().id))
+        if (other.CompareTag("player " + gameObject.GetComponent<GameManager>().id))
         {
-            Physics2D.IgnoreCollision(other, unitCollider, true);
+            Physics2D.IgnoreCollision(other, _unitCollider, true);
             Debug.Log("Ignoring trigger collision with wall: " + other.gameObject.name);
         }
     }

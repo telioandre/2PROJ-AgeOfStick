@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Castle : MonoBehaviour
@@ -8,8 +7,8 @@ public class Castle : MonoBehaviour
     public int maxLifePoint = 1000;
     public int lifePoint = 1000;
     public int numberOfTower;
-    [FormerlySerializedAs("TowerSpotAvailable")] public int towerSpotAvailable = 4;
-    [FormerlySerializedAs("ID")] public int id;
+    public int towerSpotAvailable = 4;
+    public int id;
     public Image bar;
     public Player player;
     void Start()
