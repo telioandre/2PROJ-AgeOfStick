@@ -52,9 +52,12 @@ public class Ia : MonoBehaviour
             int randomNumber = Random.Range(1, 21);
             //Debug.Log(randomNumber);
 
-            if (player.GetXp() >= player.ageCosts[player.GetAge() - 1] && _difficulty != "Impossible")
+            if (player.GetAge() < 6)
             {
-                AgeUp();
+                if (player.GetXp() >= player.ageCosts[player.GetAge() - 1] && _difficulty != "Impossible")
+                {
+                    AgeUp();
+                }
             }
 
             switch (_difficulty)
@@ -73,13 +76,13 @@ public class Ia : MonoBehaviour
 
                     if (randomNumber == 3)
                     {
-                        if (castle.numberOfTower + castle.towerSpotAvailable < 4)
+                        if (archi.nbPlacementId2 < 4 && archi.nbPlacementId2 == archi.nbTowerId2)
                         {
                             IaBuildTowerSpot();
                         }
-                        else
+                        else if(archi.nbPlacementId2 > archi.nbTowerId2)
                         {
-                            IaBuildTurret(1, 2);
+                            IaBuildTurret(archi.nbPlacementId2, 2);
                         }
                     }
 
@@ -97,13 +100,13 @@ public class Ia : MonoBehaviour
 
                     if (randomNumber <= 2)
                     {
-                        if (castle.numberOfTower + castle.towerSpotAvailable < 4)
+                        if (archi.nbPlacementId2 < 4 && archi.nbPlacementId2 == archi.nbTowerId2)
                         {
                             IaBuildTowerSpot();
                         }
-                        else
+                        else if(archi.nbPlacementId2 > archi.nbTowerId2)
                         {
-                            IaBuildTurret(1, 2);
+                            IaBuildTurret(archi.nbPlacementId2, 2);
                         }
                     }
 
@@ -145,13 +148,13 @@ public class Ia : MonoBehaviour
                 case "Hard":
                     if (randomNumber <= 3)
                     {
-                        if (castle.numberOfTower + castle.towerSpotAvailable < 4)
+                        if (archi.nbPlacementId2 < 4 && archi.nbPlacementId2 == archi.nbTowerId2)
                         {
                             IaBuildTowerSpot();
                         }
-                        else
+                        else if(archi.nbPlacementId2 > archi.nbTowerId2)
                         {
-                            IaBuildTurret(1, 2);
+                            IaBuildTurret(archi.nbPlacementId2, 2);
                         }
                     }
 
@@ -213,10 +216,9 @@ public class Ia : MonoBehaviour
                             IaBuildTowerSpot();
                         }
 
-                        if (archi.nbTowerId2 < archi.nbPlacementId2)
+                        if (archi.nbPlacementId2 > archi.nbTowerId2)
                         {
-                            int placement = archi.nbPlacementId2;
-                            IaBuildTurret(placement, 2);
+                            IaBuildTurret(archi.nbPlacementId2, 2);
                         }
 
                         if (randomNumber >= 15)

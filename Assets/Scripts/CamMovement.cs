@@ -8,10 +8,10 @@ public class CamMovement : MonoBehaviour
 
     void Update()
     {
-        float deplacementHorizontal = Input.GetAxis("Horizontal");
+        float horizontalMovement = Input.GetAxis("Horizontal");
 
         // Déplacement horizontal
-        float newXPosition = transform.position.x + deplacementHorizontal * speedMovement * Time.unscaledDeltaTime;
+        float newXPosition = transform.position.x + horizontalMovement * speedMovement * Time.unscaledDeltaTime;
         float newXPositionClamp = Mathf.Clamp(newXPosition, leftLimit, rightLimit);
 
         // Appliquer la nouvelle position

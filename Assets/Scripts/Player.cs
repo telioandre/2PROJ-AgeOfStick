@@ -19,6 +19,28 @@ public class Player : MonoBehaviour
     public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white };
     public List<Sprite> attackSpecialSprite = new();
     public Button specialAttackButton;
+    public List<Sprite> troop1Sprite = new();
+    public Button troop1Button;
+    public List<Sprite> troop2Sprite = new();
+    public Button troop2Button;
+    public List<Sprite> troop3Sprite = new();
+    public Button troop3Button;
+    public List<Sprite> troop4Sprite = new();
+    public Button troop4Button;
+    public List<Sprite> troop1UpgradeSprite = new();
+    public Button troop1UpgradeButton;
+    public List<Sprite> troop2UpgradeSprite = new();
+    public Button troop2UpgradeButton;
+    public List<Sprite> troop3UpgradeSprite = new();
+    public Button troop3UpgradeButton;
+    public List<Sprite> troop4UpgradeSprite = new();
+    public Button troop4UpgradeButton;
+    public List<Sprite> turret1Sprite = new();
+    public Button turret1Button;
+    public List<Sprite> turret2Sprite = new();
+    public Button turret2Button;
+    public List<Sprite> turret3Sprite = new();
+    public Button turret3Button;
     public GameObject specialAttack;
     public List<int> specialCosts;
     public List<int> ageCosts;
@@ -58,6 +80,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        SetAge(1);
         AddMoney(10);
         AddXp(1000);
         
@@ -105,6 +128,11 @@ public class Player : MonoBehaviour
         return _money;
     }
 
+    public void SetAge(int newAge)
+    {
+        _age = newAge;
+    }
+
     public void AgeUp()
     {
         if (_age < 6)
@@ -122,6 +150,17 @@ public class Player : MonoBehaviour
                 SpriteRenderer spriteColor = GetComponent<SpriteRenderer>();
                 spriteColor.color = ageColors[_age - 1];
                 specialAttackButton.image.sprite = attackSpecialSprite[_age - 1];
+                troop1Button.image.sprite = troop1Sprite[_age - 1];
+                troop2Button.image.sprite = troop2Sprite[_age - 1];
+                troop3Button.image.sprite = troop3Sprite[_age - 1];
+                troop4Button.image.sprite = troop4Sprite[_age - 1];
+                troop1UpgradeButton.image.sprite = troop1UpgradeSprite[_age + troop1Level * 6 - 1];
+                troop2UpgradeButton.image.sprite = troop2UpgradeSprite[_age + troop2Level * 6 - 1];
+                troop3UpgradeButton.image.sprite = troop3UpgradeSprite[_age + troop3Level * 6 - 1];
+                troop4UpgradeButton.image.sprite = troop4UpgradeSprite[_age + troop4Level * 6 - 1];
+                turret1Button.image.sprite = turret1Sprite[_age - 1];
+                turret2Button.image.sprite = turret2Sprite[_age - 1];
+                turret3Button.image.sprite = turret3Sprite[_age - 1];
 
             }
         }
@@ -269,6 +308,7 @@ public class Player : MonoBehaviour
                 {
                     AddMoney(-_troops1UpgradeCosts[troop1Level][0]);
                     troop1Level += 1;
+                    troop1UpgradeButton.image.sprite = troop1UpgradeSprite[_age + troop1Level * 6 - 1];
                 }
                 break;
 
@@ -277,6 +317,7 @@ public class Player : MonoBehaviour
                 {
                     AddMoney(-_troops2UpgradeCosts[troop2Level][0]);
                     troop2Level += 1;
+                    troop2UpgradeButton.image.sprite = troop2UpgradeSprite[_age + troop2Level * 6 - 1];
                 }
                 break;
 
@@ -285,6 +326,7 @@ public class Player : MonoBehaviour
                 {
                     AddMoney(-_troops3UpgradeCosts[troop3Level][0]);
                     troop3Level += 1;
+                    troop3UpgradeButton.image.sprite = troop3UpgradeSprite[_age + troop3Level * 6 - 1];
                 }
                 break;
 
@@ -293,6 +335,7 @@ public class Player : MonoBehaviour
                 {
                     AddMoney(-_troops4UpgradeCosts[troop4Level][0]);
                     troop4Level += 1;
+                    troop4UpgradeButton.image.sprite = troop4UpgradeSprite[_age + troop4Level * 6 - 1];
                 }
                 break;
         }
