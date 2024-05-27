@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6311850288705639187}
   - component: {fileID: 5284967704099437714}
+  - component: {fileID: 8697080028374027870}
+  - component: {fileID: 6854534188772289969}
   m_Layer: 0
   m_Name: Prehistoire_Tir_Rapide
   m_TagString: Untagged
@@ -111,7 +113,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 11, y: 11, z: 11}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1041745716247408317}
@@ -189,3 +191,47 @@ PolygonCollider2D:
       - {x: 0.6189036, y: 0.6124265}
       - {x: 0.25970507, y: 0.7153841}
   m_UseDelaunayMesh: 0
+--- !u!50 &8697080028374027870
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395124781412589658}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &6854534188772289969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395124781412589658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60dcec109d2cfcd448e52833584dff61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 8697080028374027870}
+  force: 750
+  castle1: {fileID: 0}
+  castle2: {fileID: 0}
+  ID: 0
