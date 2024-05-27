@@ -1,6 +1,7 @@
+// EnemyBulletScript.cs
+
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class EnemyBulletScript : MonoBehaviour
@@ -18,18 +19,22 @@ public class EnemyBulletScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetTarget(Transform target, int bulletDamage, int id)
+    public void SetTarget(Transform target, Transform bulletPos, int bulletDamage, int id)
     {
-        if (target != null)
+        if (target != null && bulletPos != null)
         {
-            Vector2 direction = (target.position - transform.position).normalized;
-            rb.velocity = direction * force;
+            Vector3 direction = target.GetComponent<Collider2D>().bounds.center - bulletPos.position; // Utilisez le centre du collider de l'ennemi comme point de départ
+            rb.velocity = direction.normalized * force; // Utilisez juste la direction normalisée
             damage = bulletDamage;
             ID = id;
+
+            // Débogage : Afficher la direction de tir de la balle
+            Debug.Log("Direction de tir : " + rb.velocity);
+            Debug.DrawLine(bulletPos.position, target.GetComponent<Collider2D>().bounds.center, Color.red, 1f); // Ligne rouge pour montrer la direction de tir
         }
         else
         {
-            Debug.LogWarning("La cible est nulle. Impossible de définir la direction de la balle.");
+            Debug.LogWarning("La cible ou la position de départ de la balle est nulle. Impossible de définir la direction de la balle.");
         }
     }
 
@@ -64,6 +69,10 @@ public class EnemyBulletScript : MonoBehaviour
                 // Détruisez la balle
                 Destroy(gameObject);
             }
+        }
+        else if (collision.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
         }
     }
 
