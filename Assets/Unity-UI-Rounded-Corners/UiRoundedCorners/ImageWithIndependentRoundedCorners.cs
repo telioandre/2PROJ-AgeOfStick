@@ -1,6 +1,7 @@
 ﻿using Nobi.UiRoundedCorners;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Nobi.UiRoundedCorners {
@@ -8,21 +9,21 @@ namespace Nobi.UiRoundedCorners {
     [DisallowMultipleComponent]                     //You can only have one of these in every object
     [RequireComponent(typeof(RectTransform))]
 	public class ImageWithIndependentRoundedCorners : MonoBehaviour {
-		private static readonly int prop_halfSize = Shader.PropertyToID("_halfSize");
-		private static readonly int prop_radiuses = Shader.PropertyToID("_r");
-		private static readonly int prop_rect2props = Shader.PropertyToID("_rect2props");
+		private static readonly int PropHalfSize = Shader.PropertyToID("_halfSize");
+		private static readonly int PropRadiuses = Shader.PropertyToID("_r");
+		private static readonly int PropRect2Props = Shader.PropertyToID("_rect2props");
 
 		// Vector2.right rotated clockwise by 45 degrees
-		private static readonly Vector2 wNorm = new Vector2(.7071068f, -.7071068f);
+		private static readonly Vector2 WNorm = new Vector2(.7071068f, -.7071068f);
 		// Vector2.right rotated counter-clockwise by 45 degrees
-		private static readonly Vector2 hNorm = new Vector2(.7071068f, .7071068f);
+		private static readonly Vector2 HNorm = new Vector2(.7071068f, .7071068f);
 
         public Vector4 r = new Vector4(40f, 40f, 40f, 40f);
-        private Material material;
+        private Material _material;
 
 		// xy - position,
 		// zw - halfSize
-		[HideInInspector, SerializeField] private Vector4 rect2props;
+		[FormerlySerializedAs("rect2props")] [HideInInspector, SerializeField] private Vector4 rect2Props;
 		[HideInInspector, SerializeField] private MaskableGraphic image;
 
 		private void OnValidate() {
@@ -45,7 +46,7 @@ namespace Nobi.UiRoundedCorners {
 		}
 
 		private void OnRectTransformDimensionsChange() {
-			if (enabled && material != null) {
+			if (enabled && _material != null) {
 				Refresh();
 			}
 		}
@@ -53,14 +54,14 @@ namespace Nobi.UiRoundedCorners {
 		private void OnDestroy() {
             image.material = null;      //This makes so that when the component is removed, the UI material returns to null
 
-            DestroyHelper.Destroy(material);
+            DestroyHelper.Destroy(_material);
 			image = null;
-			material = null;
+			_material = null;
 		}
 
 		public void Validate() {
-			if (material == null) {
-				material = new Material(Shader.Find("UI/RoundedCorners/IndependentRoundedCorners"));
+			if (_material == null) {
+				_material = new Material(Shader.Find("UI/RoundedCorners/IndependentRoundedCorners"));
 			}
 
 			if (image == null) {
@@ -68,16 +69,16 @@ namespace Nobi.UiRoundedCorners {
 			}
 
 			if (image != null) {
-				image.material = material;
+				image.material = _material;
 			}
 		}
 
 		public void Refresh() {
 			var rect = ((RectTransform)transform).rect;
 			RecalculateProps(rect.size);
-			material.SetVector(prop_rect2props, rect2props);
-			material.SetVector(prop_halfSize, rect.size * .5f);
-			material.SetVector(prop_radiuses, r);
+			_material.SetVector(PropRect2Props, rect2Props);
+			_material.SetVector(PropHalfSize, rect.size * .5f);
+			_material.SetVector(PropRadiuses, r);
 		}
 
 		private void RecalculateProps(Vector2 size) {
@@ -85,23 +86,23 @@ namespace Nobi.UiRoundedCorners {
 			var aVec = new Vector2(size.x, -size.y + r.x + r.z);
 
 			// Project vector aVec to wNorm to get magnitude of rect2 width vector
-			var halfWidth = Vector2.Dot(aVec, wNorm) * .5f;
-			rect2props.z = halfWidth;
+			var halfWidth = Vector2.Dot(aVec, WNorm) * .5f;
+			rect2Props.z = halfWidth;
 
 
 			// Vector that goes from bottom to top sides of rect2
 			var bVec = new Vector2(size.x, size.y - r.w - r.y);
 
 			// Project vector bVec to hNorm to get magnitude of rect2 height vector
-			var halfHeight = Vector2.Dot(bVec, hNorm) * .5f;
-			rect2props.w = halfHeight;
+			var halfHeight = Vector2.Dot(bVec, HNorm) * .5f;
+			rect2Props.w = halfHeight;
 
 
 			// Vector that goes from left to top sides of rect2
 			var efVec = new Vector2(size.x - r.x - r.y, 0);
 
 			// Vector that goes from point E to point G, which is top-left of rect2
-			var egVec = hNorm * Vector2.Dot(efVec, hNorm);
+			var egVec = HNorm * Vector2.Dot(efVec, HNorm);
 
 			// Position of point E relative to center of coord system
 			var ePoint = new Vector2(r.x - (size.x / 2), size.y / 2);
@@ -109,9 +110,9 @@ namespace Nobi.UiRoundedCorners {
 			// Origin of rect2 relative to center of coord system
 			// ePoint + egVec == vector to top-left corner of rect2
 			// wNorm * halfWidth + hNorm * -halfHeight == vector from top-left corner to center
-			var origin = ePoint + egVec + wNorm * halfWidth + hNorm * -halfHeight;
-			rect2props.x = origin.x;
-			rect2props.y = origin.y;
+			var origin = ePoint + egVec + WNorm * halfWidth + HNorm * -halfHeight;
+			rect2Props.x = origin.x;
+			rect2Props.y = origin.y;
 		}
 	}
 }

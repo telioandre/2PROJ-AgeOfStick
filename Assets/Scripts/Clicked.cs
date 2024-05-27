@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class Clicked : MonoBehaviour
 {
-    private Archi archiClass;
-    private Castle castle1;
+    private Archi _archiClass;
+    private Castle _castle1;
 
 
     private void Start()
     {
-        archiClass = FindObjectOfType<Archi>();
+        _archiClass = FindObjectOfType<Archi>();
         Castle[] castles = FindObjectsOfType<Castle>();
 
         foreach (Castle castle in castles)
         {
             if (castle.CompareTag("player 1"))
             {
-                castle1 = castle;
+                _castle1 = castle;
             }
         }
     }
@@ -35,35 +35,35 @@ public class Clicked : MonoBehaviour
             Debug.Log("SpriteRenderer est activé : " + isSpriteEnabled);
             if (isSpriteEnabled)
             { 
-                if (archiClass.delete == 1)
+                if (_archiClass.delete == 1)
                 {
                     Debug.Log("Del pass = 1");
                     if (gameObject.CompareTag("Turret1"))
                     {
                         Debug.Log("Turret1 Del");
-                        archiClass.SellSpot(1, 1);
-                        castle1.player.AddMoney(200);
+                        _archiClass.SellSpot(1, 1);
+                        _castle1.player.AddMoney(200);
                     }
                     else if (gameObject.CompareTag("Turret2"))
                     {
                         Debug.Log("Turret2 Del");
-                        archiClass.SellSpot(2, 1);
-                        castle1.player.AddMoney(200);
+                        _archiClass.SellSpot(2, 1);
+                        _castle1.player.AddMoney(200);
                     }
                     else if (gameObject.CompareTag("Turret3"))
                     {
                         Debug.Log("Turret3 Del");
-                        archiClass.SellSpot(3, 1);
-                        castle1.player.AddMoney(200);
+                        _archiClass.SellSpot(3, 1);
+                        _castle1.player.AddMoney(200);
                     }
                     else if (gameObject.CompareTag("Turret4"))
                     {
                         Debug.Log("Turret4 Del");
-                        archiClass.SellSpot(4, 1);
-                        castle1.player.AddMoney(200);
+                        _archiClass.SellSpot(4, 1);
+                        _castle1.player.AddMoney(200);
                     }
-                    archiClass.switchToEnabled(1);
-                    archiClass.delete = 0;
+                    _archiClass.SwitchToEnabled(1);
+                    _archiClass.delete = 0;
                 }
                 else
                 {
@@ -72,24 +72,24 @@ public class Clicked : MonoBehaviour
                     if (gameObject.CompareTag("Turret1"))
                     {
                         Debug.Log("Turret1 cliquée");
-                        archiClass.PlaceTurret(1, 1, 0);
+                        _archiClass.PlaceTurret(1, 1, 0);
                     }
                     else if (gameObject.CompareTag("Turret2"))
                     {
                         Debug.Log("Turret2 cliquée");
-                        archiClass.PlaceTurret(2, 1, 0);
+                        _archiClass.PlaceTurret(2, 1, 0);
                     }
                     else if (gameObject.CompareTag("Turret3"))
                     {
                         Debug.Log("Turret3 cliquée");
-                        archiClass.PlaceTurret(3, 1, 0);
+                        _archiClass.PlaceTurret(3, 1, 0);
                     }
                     else if (gameObject.CompareTag("Turret4"))
                     {
                         Debug.Log("Turret4 cliquée");
-                        archiClass.PlaceTurret(4, 1, 0);
+                        _archiClass.PlaceTurret(4, 1, 0);
                     }
-                    archiClass.switchToEnabled(1);
+                    _archiClass.SwitchToEnabled(1);
                 }
             }
         }

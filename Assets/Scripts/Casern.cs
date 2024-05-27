@@ -104,7 +104,7 @@ public class Casern : MonoBehaviour
             queue2.Remove(queue2[0]);
         }
         
-        switch (castle1.player.age)
+        switch (castle1.player.GetAge())
         {
             case 2:
                 currentTroop1 = age2Troop1;
@@ -137,7 +137,7 @@ public class Casern : MonoBehaviour
                 currentTroop4 = age6Troop4;
                 break;
         }
-        switch (castle2.player.age)
+        switch (castle2.player.GetAge())
         {
             case 2:
                 currentTroop5 = age2Troop5;
@@ -185,7 +185,7 @@ public class Casern : MonoBehaviour
                     switch (troop)
                     {
                         case 1:
-                            _cost = _troop1Costs[castle1.player.age - 1];
+                            _cost = _troop1Costs[castle1.player.GetAge() - 1];
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop1;
@@ -195,7 +195,7 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 2:
-                            _cost = _troop2Costs[castle1.player.age - 1];
+                            _cost = _troop2Costs[castle1.player.GetAge() - 1];
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop2;
@@ -205,7 +205,7 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 3:
-                            _cost = _troop3Costs[castle1.player.age - 1];
+                            _cost = _troop3Costs[castle1.player.GetAge() - 1];
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop3;
@@ -215,7 +215,7 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 4:
-                            _cost = _troop4Costs[castle1.player.age - 1];
+                            _cost = _troop4Costs[castle1.player.GetAge() - 1];
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop4;
@@ -230,7 +230,7 @@ public class Casern : MonoBehaviour
                     switch (troop)
                     {
                         case 1:
-                            _cost = _troop1Costs[castle1.player.age - 1];
+                            _cost = _troop1Costs[castle1.player.GetAge() - 1];
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 queue1.Add(value);
@@ -238,7 +238,7 @@ public class Casern : MonoBehaviour
                             }
                             break;
                         case 2:
-                            _cost = _troop2Costs[castle1.player.age - 1];
+                            _cost = _troop2Costs[castle1.player.GetAge() - 1];
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 queue1.Add(value);
@@ -246,7 +246,7 @@ public class Casern : MonoBehaviour
                             }
                             break;
                         case 3:
-                            _cost = _troop3Costs[castle1.player.age - 1];
+                            _cost = _troop3Costs[castle1.player.GetAge() - 1];
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 queue1.Add(value);
@@ -254,7 +254,7 @@ public class Casern : MonoBehaviour
                             }
                             break;
                         case 4:
-                            _cost = _troop4Costs[castle1.player.age - 1];
+                            _cost = _troop4Costs[castle1.player.GetAge() - 1];
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 queue1.Add(value);
@@ -272,7 +272,7 @@ public class Casern : MonoBehaviour
                     {
 
                         case 1:
-                            _cost = _troop1Costs[castle2.player.age - 1];
+                            _cost = _troop1Costs[castle2.player.GetAge() - 1];
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop5;
@@ -282,7 +282,7 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 2:
-                            _cost = _troop2Costs[castle2.player.age - 1];
+                            _cost = _troop2Costs[castle2.player.GetAge() - 1];
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop6;
@@ -292,7 +292,7 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 3:
-                            _cost = _troop3Costs[castle2.player.age - 1];
+                            _cost = _troop3Costs[castle2.player.GetAge() - 1];
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop7;
@@ -302,7 +302,7 @@ public class Casern : MonoBehaviour
                             break;
 
                         case 4:
-                            _cost = _troop4Costs[castle2.player.age - 1];
+                            _cost = _troop4Costs[castle2.player.GetAge() - 1];
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = currentTroop8;
@@ -317,7 +317,7 @@ public class Casern : MonoBehaviour
                     switch (troop)
                     {
                         case 1:
-                            _cost = _troop1Costs[castle2.player.age - 1];
+                            _cost = _troop1Costs[castle2.player.GetAge() - 1];
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 queue2.Add(value);
@@ -325,7 +325,7 @@ public class Casern : MonoBehaviour
                             }
                             break;
                         case 2:
-                            _cost = _troop2Costs[castle2.player.age - 1];
+                            _cost = _troop2Costs[castle2.player.GetAge() - 1];
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 queue2.Add(value);
@@ -333,7 +333,7 @@ public class Casern : MonoBehaviour
                             }
                             break;
                         case 3:
-                            _cost = _troop3Costs[castle2.player.age - 1];
+                            _cost = _troop3Costs[castle2.player.GetAge() - 1];
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 queue2.Add(value);
@@ -341,7 +341,7 @@ public class Casern : MonoBehaviour
                             }
                             break;
                         case 4:
-                            _cost = _troop4Costs[castle2.player.age - 1];
+                            _cost = _troop4Costs[castle2.player.GetAge() - 1];
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 queue2.Add(value);
@@ -386,7 +386,7 @@ public class Casern : MonoBehaviour
             currentPlayer.numberOfTroop += 1;
             currentPlayer.AddMoney(-_cost);
             currentTroops.Add(newObject);
-            Movement script = newObject.GetComponent<Movement>();
+            GameManager script = newObject.GetComponent<GameManager>();
             script.SetPlayer(id, troopId);
         }
         else
@@ -394,7 +394,7 @@ public class Casern : MonoBehaviour
             GameObject newObject = Instantiate(troopToCreate, transform.position, Quaternion.identity);
             currentPlayer.numberOfTroop += 1;
             currentPlayer.AddMoney(-_cost);
-            Movement script = newObject.GetComponent<Movement>();
+            GameManager script = newObject.GetComponent<GameManager>();
             currentTroops.Add(newObject);
             script.SetPlayer(id, troopId);
         }
@@ -411,8 +411,8 @@ public class Casern : MonoBehaviour
                 GameObject troop = troopsPlayer1[i];
                 if (troop != null)
                 {
-                    Movement movement = troop.GetComponent<Movement>();
-                    if(movement.uniqueId == uniqueTroopId)
+                    GameManager gameManager = troop.GetComponent<GameManager>();
+                    if(gameManager.uniqueId == uniqueTroopId)
                     {
                         troopsPlayer1.Remove(troop);
                     }
@@ -429,8 +429,8 @@ public class Casern : MonoBehaviour
                 GameObject troop = troopsPlayer2[i];
                 if (troop != null)
                 {
-                    Movement movement = troop.GetComponent<Movement>();
-                    if (movement.uniqueId == uniqueTroopId)
+                    GameManager gameManager = troop.GetComponent<GameManager>();
+                    if (gameManager.uniqueId == uniqueTroopId)
                     {
                         troopsPlayer2.Remove(troop);
                     }

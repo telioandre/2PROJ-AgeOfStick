@@ -36,14 +36,14 @@ public class EnemyShooting : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             Debug.Log(hits.Length);
-            var enemyScript = hit.GetComponent<Movement>();
+            var enemyScript = hit.GetComponent<GameManager>();
             var turretScript = GetComponent<Turret>();
-            ID = turretScript.IdTurret;
+            ID = turretScript.GetIdTurret();
 
             if (enemyScript != null)
             {
                 int id = enemyScript.GetId();
-                int idTurret = turretScript.getIdTurret();
+                int idTurret = turretScript.GetIdTurret();
 
                 if (id == 2 && idTurret == 1)
                 {

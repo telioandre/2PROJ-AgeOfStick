@@ -1,15 +1,12 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Castle : MonoBehaviour
 {
     public int maxLifePoint = 1000;
     public int lifePoint = 1000;
-    public int numberOfTower;
-    [FormerlySerializedAs("TowerSpotAvailable")] public int towerSpotAvailable = 4;
-    [FormerlySerializedAs("ID")] public int id;
+    public int id;
     public Image bar;
     public Player player;
     void Start()
@@ -17,27 +14,6 @@ public class Castle : MonoBehaviour
         if (player == null)
         {
             Debug.LogError("Player reference is not set in Castle.");
-        }
-    }
-
-    public void AddTower()
-    {
-        if (numberOfTower == 4)
-        {
-            Debug.Log("Maximum of Tower built.");
-        }
-        else
-        {
-            if (player.GetMoney() >= 400)
-            {
-                numberOfTower++;
-                player.SuppMoney(400);
-                Debug.Log("tower = " + numberOfTower);
-            }
-            else
-            {
-                Debug.Log("Not enough money)");
-            }
         }
     }
 
