@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60dcec109d2cfcd448e52833584dff61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 1740220154052055895}
   force: 7
   castle1: {fileID: 0}
   castle2: {fileID: 0}
