@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public Button troop3Button;
     public List<Sprite> troop4Sprite = new();
     public Button troop4Button;
+    public GameObject troop5Button;
     public List<Sprite> troop1UpgradeSprite = new();
     public Button troop1UpgradeButton;
     public List<Sprite> troop2UpgradeSprite = new();
@@ -81,8 +82,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         SetAge(1);
-        AddMoney(10);
-        AddXp(1000);
+        AddMoney(1000);
+        AddXp(100000);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
@@ -162,6 +163,10 @@ public class Player : MonoBehaviour
                 turret2Button.image.sprite = turret2Sprite[_age - 1];
                 turret3Button.image.sprite = turret3Sprite[_age - 1];
 
+                if (_age == 6)
+                {
+                    troop5Button.SetActive(true);
+                }
             }
         }
         else

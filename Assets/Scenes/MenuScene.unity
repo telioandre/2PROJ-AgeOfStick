@@ -13648,7 +13648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &446559959
 Transform:
   m_ObjectHideFlags: 0
@@ -21185,8 +21185,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c0a0eba40e2518b43b1500e46b62adab, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -34183,6 +34183,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: abb6b676b43856f45b7cfc2695cbaaf4, type: 3}
   - {fileID: 21300000, guid: 96e0c476a857e7c4da665f0f14db3205, type: 3}
   troop4Button: {fileID: 1717215651}
+  troop5Button: {fileID: 1731432025}
   troop1UpgradeSprite:
   - {fileID: 21300000, guid: 0c5be534e2b5b6d448b55e7cd129f9f2, type: 3}
   - {fileID: 21300000, guid: 2f10788ce7302944cbda1c8851c68add, type: 3}
@@ -41820,7 +41821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1152427224
 Transform:
   m_ObjectHideFlags: 0
@@ -70792,7 +70793,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1927401181}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2090991922}
+        m_TargetAssemblyTypeName: Casern, Assembly-CSharp
+        m_MethodName: InstantiateTroop
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 51
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1927401181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70813,8 +70826,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c0a0eba40e2518b43b1500e46b62adab, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -75719,6 +75732,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: abb6b676b43856f45b7cfc2695cbaaf4, type: 3}
   - {fileID: 21300000, guid: 96e0c476a857e7c4da665f0f14db3205, type: 3}
   troop4Button: {fileID: 780985197}
+  troop5Button: {fileID: 813391244}
   troop1UpgradeSprite:
   - {fileID: 21300000, guid: 0c5be534e2b5b6d448b55e7cd129f9f2, type: 3}
   - {fileID: 21300000, guid: 2f10788ce7302944cbda1c8851c68add, type: 3}
@@ -76305,6 +76319,7 @@ MonoBehaviour:
   age6Troop6: {fileID: 7911656744071856532, guid: a426c8b1e9b851a4b82ae60f6f50c84e, type: 3}
   age6Troop7: {fileID: 1646663784074943539, guid: 414f2250807b4c041a37a5c8a348bb36, type: 3}
   age6Troop8: {fileID: 1648427034151411020, guid: 859fecccfc92f2e43821f72ecbbfd79b, type: 3}
+  ultimateTroop: {fileID: 3144714755967986157, guid: 1254013957479914d8154df463b56f19, type: 3}
   isForming1: 0
   isForming2: 0
   queue1: 

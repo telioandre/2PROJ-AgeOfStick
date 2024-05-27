@@ -59,6 +59,7 @@ public class Casern : MonoBehaviour
     public GameObject age6Troop6;
     public GameObject age6Troop7;
     public GameObject age6Troop8;
+    public GameObject ultimateTroop;
 
     private GameObject _troopToInstantiate;
     private int _troopId;
@@ -84,7 +85,6 @@ public class Casern : MonoBehaviour
         _troop2Costs = new List<int>() { 1, 5, 9, 20, 55, 110 };
         _troop3Costs = new List<int>() { 7, 11, 22, 49, 95, 172 };
         _troop4Costs = new List<int>() { 9, 20, 41, 100, 200, 300 };
-        print(_isOnline);
     }
 
     public void setOnline(bool online)
@@ -223,6 +223,15 @@ public class Casern : MonoBehaviour
                                 isValid = true;
                             }
                             break;
+                        case 5:
+                            _cost = 750;
+                            if (castle1.player.GetMoney() >= _cost)
+                            {
+                                _troopToInstantiate = ultimateTroop;
+                                _troopId = 5;
+                                isValid = true;
+                            }
+                            break;
                     }
                 }
                 else
@@ -255,6 +264,14 @@ public class Casern : MonoBehaviour
                             break;
                         case 4:
                             _cost = _troop4Costs[castle1.player.GetAge() - 1];
+                            if (castle1.player.GetMoney() >= _cost)
+                            {
+                                queue1.Add(value);
+                                castle1.player.AddMoney(-_cost);
+                            }
+                            break;
+                        case 5:
+                            _cost = 750;
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 queue1.Add(value);
@@ -310,6 +327,15 @@ public class Casern : MonoBehaviour
                                 isValid = true;
                             }
                             break;
+                        case 5:
+                            _cost = 750;
+                            if (castle2.player.GetMoney() >= _cost)
+                            {
+                                _troopToInstantiate = ultimateTroop;
+                                _troopId = 5;
+                                isValid = true;
+                            }
+                            break;
                     }
                 }
                 else
@@ -342,6 +368,14 @@ public class Casern : MonoBehaviour
                             break;
                         case 4:
                             _cost = _troop4Costs[castle2.player.GetAge() - 1];
+                            if (castle2.player.GetMoney() >= _cost)
+                            {
+                                queue2.Add(value);
+                                castle2.player.AddMoney(-_cost);
+                            }
+                            break;
+                        case 5:
+                            _cost = 750;
                             if (castle2.player.GetMoney() >= _cost)
                             {
                                 queue2.Add(value);
