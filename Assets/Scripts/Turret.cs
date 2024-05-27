@@ -56,19 +56,19 @@ public class Turret : MonoBehaviour
         {
             if (placement == 1)
             {
-                transform.position = new Vector3(6195, 690, 238);
+                transform.position = new Vector3(4751, 690, 238);
             }
             else if (placement == 2)
             {
-                transform.position = new Vector3(6195, 773, 238);
+                transform.position = new Vector3(4751, 773, 238);
             }
             else if (placement == 3)
             {
-                transform.position = new Vector3(6195, 860, 238);
+                transform.position = new Vector3(4751, 860, 238);
             }
             else if (placement == 4)
             {
-                transform.position = new Vector3(6195, 946, 238);
+                transform.position = new Vector3(4751, 946, 238);
             }
         }
         

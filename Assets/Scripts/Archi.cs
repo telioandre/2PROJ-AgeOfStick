@@ -198,26 +198,72 @@ public class Archi : MonoBehaviour
 
     public void PlaceTurret(int placement, int id, int turret)
     {
-        if(turret != 0)
+        if (turret != 0)
         {
             _typeChoice = turret;
         }
-        if (id == 1 && nbPlacementId1 >= nbTowerId1)
+        if (id == 1)
         {
-            HandleTurretPlacement(_typeChoice, placement, castle1, ref nbTowerId1, listTurretId1, id);
+            if (castle1 == null)
+            {
+                Debug.LogError("castle1 is null in PlaceTurret");
+                return;
+            }
+            if (nbPlacementId1 >= nbTowerId1)
+            {
+                HandleTurretPlacement(_typeChoice, placement, castle1, ref nbTowerId1, listTurretId1, id);
+            }
+            else
+            {
+                Debug.LogError("Invalid placement or max placements reached for ID 1");
+            }
         }
-        else if (id == 2 && nbPlacementId2 >= nbTowerId2)
+        else if (id == 2)
         {
-            HandleTurretPlacement(_typeChoice, placement, castle2, ref nbTowerId2, listTurretId2, id);
+            if (castle2 == null)
+            {
+                Debug.LogError("castle2 is null in PlaceTurret");
+                return;
+            }
+            if (nbPlacementId2 >= nbTowerId2)
+            {
+                HandleTurretPlacement(_typeChoice, placement, castle2, ref nbTowerId2, listTurretId2, id);
+            }
+            else
+            {
+                Debug.LogError("Invalid placement or max placements reached for ID 2");
+            }
         }
         else
         {
-            Debug.LogError("Invalid id or max placements reached");
+            Debug.LogError("Invalid id");
         }
     }
 
+
     private void HandleTurretPlacement(int type, int placement, Castle castle, ref int nbTowerId, List<GameObject> listTurretId, int id)
     {
+        if (castle == null)
+        {
+            Debug.LogError("Castle is null in HandleTurretPlacement");
+            return;
+        }
+        if (castle.player == null)
+        {
+            Debug.LogError("Player is null in HandleTurretPlacement");
+            return;
+        }
+        if (listTurretId == null)
+        {
+            Debug.LogError("listTurretId is null in HandleTurretPlacement");
+            return;
+        }
+        if (listTurretId.Count <= placement - 1)
+        {
+            Debug.LogError("listTurretId does not have enough elements");
+            return;
+        }
+
         int age = castle.player.GetAge();
         int cost = 0;
 
@@ -267,8 +313,19 @@ public class Archi : MonoBehaviour
                     return;
             }
 
+            if (objectToInstantiate == null)
+            {
+                Debug.LogError("objectToInstantiate is null");
+                return;
+            }
+
             GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
             Turret script = newObject.GetComponent<Turret>();
+            if (script == null)
+            {
+                Debug.LogError("Turret script is missing on instantiated object");
+                return;
+            }
             script.Initialize(placement, castle.id);
             script.SetPosition(castle.id);
 
@@ -284,4 +341,5 @@ public class Archi : MonoBehaviour
             Debug.Log("Not enough money to place turret");
         }
     }
+
 }
