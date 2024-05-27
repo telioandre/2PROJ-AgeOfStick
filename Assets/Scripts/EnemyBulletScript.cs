@@ -12,11 +12,13 @@ public class EnemyBulletScript : MonoBehaviour
     public Castle castle1;
     public Castle castle2;
     public int ID;
+    private Casern casern;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        casern = FindObjectOfType<Casern>();
     }
 
     public void SetTarget(Transform target, Transform bulletPos, int bulletDamage, int id)
@@ -44,6 +46,7 @@ public class EnemyBulletScript : MonoBehaviour
 
         if (collision.CompareTag("Player") && targetScript.id != ID)
         {
+            Debug.Log("teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest");
             if (targetScript != null)
             {
                 targetScript.life -= damage;
@@ -65,6 +68,7 @@ public class EnemyBulletScript : MonoBehaviour
                         Debug.LogWarning("Movement instance not found on the collided object.");
                     }
                     Destroy(targetScript.gameObject);
+                    casern.DestroyTroop(targetScript.id, targetScript.uniqueId);
                 }
                 // Détruisez la balle
                 Destroy(gameObject);
