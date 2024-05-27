@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1667153954939922709}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 698087930841137942}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bottomleg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3380891546245412545}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2643135494112816595}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2671824583283222688}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7604745665561472779}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: hand1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5663156243911155443}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: hand2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6437333924979632022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: feet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8777075912280368076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8721768760128892943}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bottomleg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 8511049895257120916}
   - component: {fileID: 3597218558616828377}
   - component: {fileID: 4709608194896495244}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ANTIARMURE AGE1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 2545978535055832187}
   - component: {fileID: 7497086427267488136}
   - component: {fileID: 8322558921297421812}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Troop 3 enemy
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -587,7 +587,6 @@ MonoBehaviour:
   maxLife: 0
   troopId: 0
   uniqueId: 
-  start: 0
 --- !u!1 &5544257803663022857
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3794602648961984787}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: feet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5625496172911878721}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5198387627296835085}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8400449634195977438}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -723,7 +722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2235404950902935614}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: frontarm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4459097656655194415}
   - component: {fileID: 1897791541778078361}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ANTIARMURE_WEAPON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7815162956268579161}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: frontarm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
