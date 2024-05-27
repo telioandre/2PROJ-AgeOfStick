@@ -152,24 +152,29 @@ public class PlayFabManager : MonoBehaviour
     private void OnGetFriendListSuccess(GetFriendsListResult result)
     {
         Debug.Log("Nombre d'amis " + result.Friends.Count);
-
-        /*foreach (Transform child in friendListPanel.transform)
+        for (int i = 0; i < result.Friends.Count; i++)
         {
-            Destroy(child.gameObject);
-        }*/
+            print(result.Friends[i].TitleDisplayName + " friendName");
+            float buttonYPosition = -i * 20f + 70f;
 
-        foreach (var friend in result.Friends)
-        {
             GameObject friendButton = Instantiate(friendButtonPrefab, friendListPanel.transform);
+            RectTransform buttonTransform = friendButton.GetComponent<RectTransform>();
 
-            Text buttonText = friendButton.GetComponentInChildren<Text>();
+            buttonTransform.anchoredPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonYPosition);
+
+            TMP_Text buttonText = friendButton.GetComponentInChildren<TMP_Text>();
             if (buttonText != null)
             {
-                buttonText.text = friend.TitleDisplayName;
+                buttonText.text = result.Friends[i].TitleDisplayName;
             }
+
             Button buttonComponent = friendButton.GetComponent<Button>();
             if (buttonComponent != null)
             {
+                // Vous pouvez attacher une fonction à ce gestionnaire d'événements pour traiter le clic
+                // Par exemple, si vous avez une fonction nommée "OnClickFriendButton", vous pouvez la lier comme ceci :
+                var friend = result.Friends[i];
+                buttonComponent.onClick.AddListener(() => OnClickFriendButton(friend));
             }
         }
 
@@ -179,6 +184,11 @@ public class PlayFabManager : MonoBehaviour
     private void OnGetFriendListFailure(PlayFabError error)
     {
         Debug.LogError("Failed to get friend list: " + error.ErrorMessage);
+    }
+
+    private void OnClickFriendButton(PlayFab.ClientModels.FriendInfo friend)
+    {
+        print(friend.TitleDisplayName);
     }
 
     public void Logout()

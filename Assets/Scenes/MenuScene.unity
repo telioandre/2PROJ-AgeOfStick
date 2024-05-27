@@ -21987,7 +21987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4bd78ce97ac6fa44cad19c0fe9cad2a6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23665,7 +23665,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4bd78ce97ac6fa44cad19c0fe9cad2a6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29742,7 +29742,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0cacab92daa1b104da54b1e0d6d4b751, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33835,6 +33835,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f80dfe60539f1f0449b4240e967686f5, type: 3}
   - {fileID: 21300000, guid: 89afded13ed59654eb4ab8ef5007869e, type: 3}
   troop1Button: {fileID: 110404472}
+  troop1Image: {fileID: 1299408735}
   troop2Sprite:
   - {fileID: 21300000, guid: fb059aeae448f3647bba857aec991aea, type: 3}
   - {fileID: 21300000, guid: f4a82f98872568f4c8028fba97fcd428, type: 3}
@@ -33843,6 +33844,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8370c712c239b15469eac248160397ff, type: 3}
   - {fileID: 21300000, guid: 5657ae3f8c85a4c45b6a60013c70db40, type: 3}
   troop2Button: {fileID: 910919114}
+  troop2Image: {fileID: 1456589979}
   troop3Sprite:
   - {fileID: 21300000, guid: e2ded603533b07c4aa739b5c959bcf84, type: 3}
   - {fileID: 21300000, guid: 3236e37a2e51c4440b0b6ca575b9c008, type: 3}
@@ -33851,6 +33853,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 25c9b050e08fc1f40ac68e8e7e62bc5a, type: 3}
   - {fileID: 21300000, guid: 895b13db51b706c489b6eea5dcac1288, type: 3}
   troop3Button: {fileID: 1690069420}
+  troop3Image: {fileID: 1458578428}
   troop4Sprite:
   - {fileID: 21300000, guid: c01c971dd4836c949bf6af40fbb3b1fb, type: 3}
   - {fileID: 21300000, guid: 3e829a331611b1c499f04f5e9f2b7e7e, type: 3}
@@ -33859,6 +33862,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: abb6b676b43856f45b7cfc2695cbaaf4, type: 3}
   - {fileID: 21300000, guid: 96e0c476a857e7c4da665f0f14db3205, type: 3}
   troop4Button: {fileID: 1717215651}
+  troop4Image: {fileID: 1602991542}
   troop5Button: {fileID: 1731432025}
   troop1UpgradeSprite:
   - {fileID: 21300000, guid: 0c5be534e2b5b6d448b55e7cd129f9f2, type: 3}
@@ -33948,6 +33952,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f4680419dd9875145a9d01d0e5d38d3b, type: 3}
   - {fileID: 21300000, guid: ca7eb5c7789718d4f91dd2700a9cc732, type: 3}
   turret1Button: {fileID: 1023732539}
+  turret1Image: {fileID: 897307728}
   turret2Sprite:
   - {fileID: 21300000, guid: 4bd78ce97ac6fa44cad19c0fe9cad2a6, type: 3}
   - {fileID: 21300000, guid: ce8b5b1a2ffc5724ca6c93a1c0dd4630, type: 3}
@@ -33956,6 +33961,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5210b11edc7cf664584defc62c4b1185, type: 3}
   - {fileID: 21300000, guid: 63300f2dbb162064c9587af5741ef75d, type: 3}
   turret2Button: {fileID: 471715285}
+  turret2Image: {fileID: 673568598}
   turret3Sprite:
   - {fileID: 21300000, guid: a588001b58e954540a82f90864d68a79, type: 3}
   - {fileID: 21300000, guid: 1f9566b6c808104458c1f24033c44ce8, type: 3}
@@ -33964,6 +33970,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 19be658797d01904aac38b8ab50969fe, type: 3}
   - {fileID: 21300000, guid: acde277e3736ee54fa11d9b0f38f9500, type: 3}
   turret3Button: {fileID: 921246048}
+  turret3Image: {fileID: 1762736415}
   specialAttack: {fileID: 922170554763523580, guid: 82c6daea845da734f8b999a51fee4613, type: 3}
   specialCosts: 
   ageCosts: 
@@ -35696,7 +35703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c0a0eba40e2518b43b1500e46b62adab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -41624,7 +41631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c0a0eba40e2518b43b1500e46b62adab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -44125,7 +44132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c01c971dd4836c949bf6af40fbb3b1fb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -47493,7 +47500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bd1814d3975490541b17bb61a69e29f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -51637,7 +51644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb059aeae448f3647bba857aec991aea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -52088,7 +52095,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a588001b58e954540a82f90864d68a79, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -52883,7 +52890,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb059aeae448f3647bba857aec991aea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -53115,7 +53122,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e2ded603533b07c4aa739b5c959bcf84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -57155,7 +57162,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c01c971dd4836c949bf6af40fbb3b1fb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -64429,7 +64436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a588001b58e954540a82f90864d68a79, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -65149,7 +65156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bd1814d3975490541b17bb61a69e29f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -65978,7 +65985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Friend List
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -70100,7 +70107,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 51
+          m_IntArgument: 15
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -72350,7 +72357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0cacab92daa1b104da54b1e0d6d4b751, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -74491,7 +74498,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e2ded603533b07c4aa739b5c959bcf84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -74921,6 +74928,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f80dfe60539f1f0449b4240e967686f5, type: 3}
   - {fileID: 21300000, guid: 89afded13ed59654eb4ab8ef5007869e, type: 3}
   troop1Button: {fileID: 894631893}
+  troop1Image: {fileID: 1778597005}
   troop2Sprite:
   - {fileID: 21300000, guid: fb059aeae448f3647bba857aec991aea, type: 3}
   - {fileID: 21300000, guid: f4a82f98872568f4c8028fba97fcd428, type: 3}
@@ -74929,6 +74937,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8370c712c239b15469eac248160397ff, type: 3}
   - {fileID: 21300000, guid: 5657ae3f8c85a4c45b6a60013c70db40, type: 3}
   troop2Button: {fileID: 2074034019}
+  troop2Image: {fileID: 1422278150}
   troop3Sprite:
   - {fileID: 21300000, guid: e2ded603533b07c4aa739b5c959bcf84, type: 3}
   - {fileID: 21300000, guid: 3236e37a2e51c4440b0b6ca575b9c008, type: 3}
@@ -74937,6 +74946,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 25c9b050e08fc1f40ac68e8e7e62bc5a, type: 3}
   - {fileID: 21300000, guid: 895b13db51b706c489b6eea5dcac1288, type: 3}
   troop3Button: {fileID: 842351489}
+  troop3Image: {fileID: 2053031092}
   troop4Sprite:
   - {fileID: 21300000, guid: c01c971dd4836c949bf6af40fbb3b1fb, type: 3}
   - {fileID: 21300000, guid: 3e829a331611b1c499f04f5e9f2b7e7e, type: 3}
@@ -74945,6 +74955,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: abb6b676b43856f45b7cfc2695cbaaf4, type: 3}
   - {fileID: 21300000, guid: 96e0c476a857e7c4da665f0f14db3205, type: 3}
   troop4Button: {fileID: 780985197}
+  troop4Image: {fileID: 1224869293}
   troop5Button: {fileID: 813391244}
   troop1UpgradeSprite:
   - {fileID: 21300000, guid: 0c5be534e2b5b6d448b55e7cd129f9f2, type: 3}
@@ -75034,6 +75045,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f4680419dd9875145a9d01d0e5d38d3b, type: 3}
   - {fileID: 21300000, guid: ca7eb5c7789718d4f91dd2700a9cc732, type: 3}
   turret1Button: {fileID: 886745968}
+  turret1Image: {fileID: 1989364141}
   turret2Sprite:
   - {fileID: 21300000, guid: 4bd78ce97ac6fa44cad19c0fe9cad2a6, type: 3}
   - {fileID: 21300000, guid: ce8b5b1a2ffc5724ca6c93a1c0dd4630, type: 3}
@@ -75042,6 +75054,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5210b11edc7cf664584defc62c4b1185, type: 3}
   - {fileID: 21300000, guid: 63300f2dbb162064c9587af5741ef75d, type: 3}
   turret2Button: {fileID: 1061721987}
+  turret2Image: {fileID: 733210261}
   turret3Sprite:
   - {fileID: 21300000, guid: a588001b58e954540a82f90864d68a79, type: 3}
   - {fileID: 21300000, guid: 1f9566b6c808104458c1f24033c44ce8, type: 3}
@@ -75050,6 +75063,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 19be658797d01904aac38b8ab50969fe, type: 3}
   - {fileID: 21300000, guid: acde277e3736ee54fa11d9b0f38f9500, type: 3}
   turret3Button: {fileID: 1692714971}
+  turret3Image: {fileID: 1434801288}
   specialAttack: {fileID: 922170554763523580, guid: 35de6371198df414d9b773032f0870b5, type: 3}
   specialCosts: 
   ageCosts: 

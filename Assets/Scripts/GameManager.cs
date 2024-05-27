@@ -195,13 +195,17 @@ public class GameManager : MonoBehaviour
                 troopLevel = _player.troop4Level;
                 break;
         }
-        for (int i = 1; i < _player.GetAge(); i++)
+
+        if (troopId != 5)
         {
-            life = Mathf.RoundToInt(life * 1.5f);
-            speed = Mathf.RoundToInt(speed * 1.1f);
-            attack = Mathf.RoundToInt(attack * 1.5f);
-            buildTime = Mathf.RoundToInt(buildTime * 1.25f);
-            attackTime *= (float)0.9;
+            for (int i = 1; i < _player.GetAge(); i++)
+            {
+                life = Mathf.RoundToInt(life * 1.5f);
+                speed = Mathf.RoundToInt(speed * 1.05f);
+                attack = Mathf.RoundToInt(attack * 1.5f);
+                buildTime = Mathf.RoundToInt(buildTime * 1.25f);
+                attackTime *= (float)0.9;
+            }
         }
         for (int i = 0; i < troopLevel; i++)
         {
@@ -289,6 +293,13 @@ public class GameManager : MonoBehaviour
                 ally.AddXp(_troop4dropsXp[_player.GetAge() - 1]);
                 enemy.AddMoney((_troop4drops[_player.GetAge() - 1] + _troop4dropsRange[_player.GetAge() - 1]) / 2);
                 enemy.AddXp(_troop4dropsXp[_player.GetAge() - 1] / 2);
+                break;
+            
+            case 5:
+                ally.AddMoney(1000);
+                ally.AddXp(5000);
+                enemy.AddMoney(350);
+                enemy.AddXp(2000);
                 break;
         }
 
