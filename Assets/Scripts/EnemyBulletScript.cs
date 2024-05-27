@@ -46,7 +46,6 @@ public class EnemyBulletScript : MonoBehaviour
 
         if (collision.CompareTag("Player") && targetScript.id != ID)
         {
-            Debug.Log("teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest");
             if (targetScript != null)
             {
                 targetScript.life -= damage;

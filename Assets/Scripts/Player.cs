@@ -22,16 +22,16 @@ public class Player : MonoBehaviour
     public Button specialAttackButton;
     public List<Sprite> troop1Sprite = new();
     public Button troop1Button;
-    public Image troop1Image;
+    //public Image troop1Image;
     public List<Sprite> troop2Sprite = new();
     public Button troop2Button;
-    public Image troop2Image;
+    //public Image troop2Image;
     public List<Sprite> troop3Sprite = new();
     public Button troop3Button;
-    public Image troop3Image;
+    //public Image troop3Image;
     public List<Sprite> troop4Sprite = new();
     public Button troop4Button;
-    public Image troop4Image;
+    //public Image troop4Image;
     public GameObject troop5Button;
     public List<Sprite> troop1UpgradeSprite = new();
     public Button troop1UpgradeButton;
@@ -43,13 +43,13 @@ public class Player : MonoBehaviour
     public Button troop4UpgradeButton;
     public List<Sprite> turret1Sprite = new();
     public Button turret1Button;
-    public Image turret1Image;
+    //public Image turret1Image;
     public List<Sprite> turret2Sprite = new();
     public Button turret2Button;
-    public Image turret2Image;
+    //public Image turret2Image;
     public List<Sprite> turret3Sprite = new();
     public Button turret3Button;
-    public Image turret3Image;
+    //public Image turret3Image;
     public GameObject specialAttack;
     public List<int> specialCosts;
     public List<int> ageCosts;
@@ -160,23 +160,23 @@ public class Player : MonoBehaviour
                 spriteColor.color = ageColors[_age - 1];
                 specialAttackButton.image.sprite = attackSpecialSprite[_age - 1];
                 troop1Button.image.sprite = troop1Sprite[_age - 1];
-                troop1Image.sprite = troop1Sprite[_age - 1];
+                //troop1Image.sprite = troop1Sprite[_age - 1];
                 troop2Button.image.sprite = troop2Sprite[_age - 1];
-                troop2Image.sprite = troop2Sprite[_age - 1];
+                //troop2Image.sprite = troop2Sprite[_age - 1];
                 troop3Button.image.sprite = troop3Sprite[_age - 1];
-                troop3Image.sprite = troop3Sprite[_age - 1];
+                //troop3Image.sprite = troop3Sprite[_age - 1];
                 troop4Button.image.sprite = troop4Sprite[_age - 1];
-                troop4Image.sprite = troop4Sprite[_age - 1];
+                //troop4Image.sprite = troop4Sprite[_age - 1];
                 troop1UpgradeButton.image.sprite = troop1UpgradeSprite[_age + troop1Level * 6 - 1];
                 troop2UpgradeButton.image.sprite = troop2UpgradeSprite[_age + troop2Level * 6 - 1];
                 troop3UpgradeButton.image.sprite = troop3UpgradeSprite[_age + troop3Level * 6 - 1];
                 troop4UpgradeButton.image.sprite = troop4UpgradeSprite[_age + troop4Level * 6 - 1];
                 turret1Button.image.sprite = turret1Sprite[_age - 1];
-                turret1Image.sprite = turret1Sprite[_age - 1];
+                //turret1Image.sprite = turret1Sprite[_age - 1];
                 turret2Button.image.sprite = turret2Sprite[_age - 1];
-                turret2Image.sprite = turret2Sprite[_age - 1];
+                //turret2Image.sprite = turret2Sprite[_age - 1];
                 turret3Button.image.sprite = turret3Sprite[_age - 1];
-                turret3Image.sprite = turret3Sprite[_age - 1];
+                //turret3Image.sprite = turret3Sprite[_age - 1];
 
                 if (_age == 6)
                 {
