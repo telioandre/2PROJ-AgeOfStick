@@ -72,8 +72,8 @@ public class Movement : MonoBehaviour
 
         if (id == 1)
         {
-            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 200);
-            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * 200, Color.red);
+            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 2000);
+            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * 2000, Color.red);
 
             // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
@@ -84,14 +84,15 @@ public class Movement : MonoBehaviour
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit.collider != null)
+                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit == default && hits[i].collider.gameObject.GetComponent<Movement>().id != id) //&& hits[i].collider.gameObject.GetComponent<Movement>().id != id
                     {
                         // Obtenir le premier élément touché
                         firstHit = hits[i];
                         // Faire quelque chose avec le premier élément touché, par exemple :
                         GameObject objectHit = firstHit.collider.gameObject;
                         objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
-
+                        Debug.Log("coudhfflkjshkjfhsldkjfhslkjhflskjdhflksjhd");
+                        Debug.Log(i);
                     }
 
                 }
@@ -176,10 +177,12 @@ public class Movement : MonoBehaviour
         casern = GameObject.Find("Casern").GetComponent<Casern>();
         if (id == 1)
         {
+            transform.position = new Vector2(1500, 0);
             player = GameObject.Find("Castle 1").GetComponent<Player>();
         }
         else
         {
+            transform.position = new Vector2(3500, 0);
             player = GameObject.Find("Castle 2").GetComponent<Player>();
         }
         char troopName = name[6];
