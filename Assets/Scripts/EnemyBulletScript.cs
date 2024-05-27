@@ -40,10 +40,10 @@ public class EnemyBulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            var targetScript = collision.GetComponent<GameManager>();
+        var targetScript = collision.GetComponent<GameManager>();
 
+        if (collision.CompareTag("Player") && targetScript.id != ID)
+        {
             if (targetScript != null)
             {
                 targetScript.life -= damage;
