@@ -30,4 +30,9 @@ public class OnPauseMenu : MonoBehaviour
             }
         }
     }
+
+    public void pauseStop()
+    {
+        Time.timeScale = 1f;
+    }
 }
