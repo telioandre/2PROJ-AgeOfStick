@@ -84,6 +84,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1846671019406214096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966330887299662997}
+  m_Layer: 0
+  m_Name: Position Turret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &966330887299662997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846671019406214096}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.88, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9145989831784730131}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2518851119548543216
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +124,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9145989831784730131}
+  - component: {fileID: 5548052909936947894}
+  - component: {fileID: -7751428226265702689}
   m_Layer: 0
   m_Name: Prehistoire_Tourelle_Moyen
   m_TagString: Untagged
@@ -110,9 +143,49 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4820498189394980574}
+  - {fileID: 966330887299662997}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5548052909936947894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518851119548543216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb39676d83d4fed4a8bf8d7453101846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 134613629043813525, guid: e104032b2d5ac1e418f4a779fef14878, type: 3}
+  bulletPos: {fileID: 966330887299662997}
+  detectionRadius: 1000
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  damage: 30
+  delay: 1
+  ID: 0
+  targets: []
+--- !u!114 &-7751428226265702689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518851119548543216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0397d4e5654392d418e109e71b9b4c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name1: none
+  age: 1
+  type: 3
+  placement: 0
+  IdTurret: 0

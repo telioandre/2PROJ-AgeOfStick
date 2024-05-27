@@ -93,6 +93,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8752258835614911458}
+  - component: {fileID: 5929492780291284293}
+  - component: {fileID: 3696184498812576299}
   m_Layer: 0
   m_Name: Moderne_Tourelle_Rapide
   m_TagString: Untagged
@@ -110,9 +112,80 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1760369407915812640}
+  - {fileID: 1679901941922918545}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5929492780291284293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125914196505909959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb39676d83d4fed4a8bf8d7453101846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 9191071231821705083, guid: 0df339bc7378b3648b39538e40aae27f, type: 3}
+  bulletPos: {fileID: 1679901941922918545}
+  detectionRadius: 1000
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  damage: 101
+  delay: 0.5
+  ID: 0
+  targets: []
+--- !u!114 &3696184498812576299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125914196505909959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0397d4e5654392d418e109e71b9b4c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name1: none
+  age: 4
+  type: 2
+  placement: 0
+  IdTurret: 0
+--- !u!1 &6743230936647250607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1679901941922918545}
+  m_Layer: 0
+  m_Name: Position Bullet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1679901941922918545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743230936647250607}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8752258835614911458}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

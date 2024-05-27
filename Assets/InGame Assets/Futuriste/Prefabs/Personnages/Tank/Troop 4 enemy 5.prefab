@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7457058321558642161}
   - component: {fileID: -6794165476788914980}
   - component: {fileID: -800503879178442486}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Troop 4 enemy 5
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -144,7 +144,6 @@ MonoBehaviour:
   maxLife: 0
   troopId: 0
   uniqueId: 
-  start: 0
 --- !u!1 &5961730479735865411
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 422720615495742044}
   - component: {fileID: 5568016757846066382}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TANK
   m_TagString: Untagged
   m_Icon: {fileID: 0}

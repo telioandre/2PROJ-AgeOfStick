@@ -93,6 +93,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2431363492031747601}
+  - component: {fileID: 2709723818395018882}
+  - component: {fileID: 3694926361585687729}
   m_Layer: 0
   m_Name: Egypt_Tourelle_Moyenne
   m_TagString: Untagged
@@ -110,9 +112,80 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6389996814306484272}
+  - {fileID: 7109261455325131344}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2709723818395018882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2489373312502374294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb39676d83d4fed4a8bf8d7453101846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 6903865696903363980, guid: 27cd3c21fbf4cc84dabbf1165977f6cd, type: 3}
+  bulletPos: {fileID: 7109261455325131344}
+  detectionRadius: 1000
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  damage: 30
+  delay: 1
+  ID: 0
+  targets: []
+--- !u!114 &3694926361585687729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2489373312502374294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0397d4e5654392d418e109e71b9b4c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name1: none
+  age: 2
+  type: 3
+  placement: 0
+  IdTurret: 0
+--- !u!1 &4815500325006079383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7109261455325131344}
+  m_Layer: 0
+  m_Name: Position Bullet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7109261455325131344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815500325006079383}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.07, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2431363492031747601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
