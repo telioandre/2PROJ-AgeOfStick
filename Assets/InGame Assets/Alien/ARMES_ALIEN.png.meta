@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0e55b47bbd9a6674f84216042688ca65
+guid: 6b8597b1b85c78e429b84dbefc3573bb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Arme Infanterie
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1475
+        width: 996
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a30fa66c2393b3f47886127d9b10324e
+      internalID: 1946331810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arme Anti Armure
+      rect:
+        serializedVersion: 2
+        x: 1402
+        y: 1364
+        width: 671
+        height: 784
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf3486632fd66d4ab994533e039b795
+      internalID: 94592654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arme Support
+      rect:
+        serializedVersion: 2
+        x: 2337
+        y: 1509
+        width: 1008
+        height: 534
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84f8efc64b1745343a81f4363ca86361
+      internalID: -1339209280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tourelle Lente
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 412
+        width: 718
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a3546e05e12de4084963d854976737
+      internalID: -2096357131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tourelle Moyenne
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 342
+        width: 483
+        height: 810
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dd37b26e46988f4db8374bb994378bb
+      internalID: -1074698673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tir Rapide
+      rect:
+        serializedVersion: 2
+        x: 1802
+        y: 377
+        width: 497
+        height: 730
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ad2e6032c512f4fa2b31aa2cc0e33e
+      internalID: -2133319636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack Spe
+      rect:
+        serializedVersion: 2
+        x: 2593
+        y: 666
+        width: 744
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9779064b1d64fef40b7270ff35c618fe
+      internalID: 1103202839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +279,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Arme Anti Armure: 94592654
+      Arme Infanterie: 1946331810
+      Arme Support: -1339209280
+      Attack Spe: 1103202839
+      Tir Rapide: -2133319636
+      Tourelle Lente: -2096357131
+      Tourelle Moyenne: -1074698673
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

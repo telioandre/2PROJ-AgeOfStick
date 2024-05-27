@@ -56470,53 +56470,53 @@ MonoBehaviour:
   castle1: {fileID: 992134509}
   castle2: {fileID: 2073809404}
   currentTroop1: {fileID: 8236370213975002289, guid: 22c5043eeded8194e851dcd138c3caf3, type: 3}
-  currentTroop2: {fileID: 7578461246616471250, guid: f0145b32c1ec0b348b724b09d0a39cda, type: 3}
-  currentTroop3: {fileID: 4904651138162316815, guid: 78c065cc176e26b46875610d4f602712, type: 3}
-  currentTroop4: {fileID: 1680576775949561883, guid: 94348d91c694c6e4e9fb72bf5ac57187, type: 3}
-  currentTroop5: {fileID: 6958173444033722906, guid: c2cff2ba41e6ab2459461aba232cee3a, type: 3}
-  currentTroop6: {fileID: 3687242318677756591, guid: 432072b82db51724195195e8d0564033, type: 3}
-  currentTroop7: {fileID: 5779447787294470872, guid: 6a53fc15d98354145a8609c47b047e94, type: 3}
-  currentTroop8: {fileID: 8745339307767780797, guid: 2c4cf1955b93d084bb4fe0aba63e142b, type: 3}
-  age2Troop1: {fileID: 0}
-  age2Troop2: {fileID: 0}
-  age2Troop3: {fileID: 0}
-  age2Troop4: {fileID: 0}
-  age2Troop5: {fileID: 0}
-  age2Troop6: {fileID: 0}
-  age2Troop7: {fileID: 0}
-  age2Troop8: {fileID: 0}
-  age3Troop1: {fileID: 0}
-  age3Troop2: {fileID: 0}
-  age3Troop3: {fileID: 0}
-  age3Troop4: {fileID: 0}
-  age3Troop5: {fileID: 0}
-  age3Troop6: {fileID: 0}
-  age3Troop7: {fileID: 0}
-  age3Troop8: {fileID: 0}
-  age4Troop1: {fileID: 0}
-  age4Troop2: {fileID: 0}
-  age4Troop3: {fileID: 0}
-  age4Troop4: {fileID: 0}
-  age4Troop5: {fileID: 0}
-  age4Troop6: {fileID: 0}
-  age4Troop7: {fileID: 0}
-  age4Troop8: {fileID: 0}
-  age5Troop1: {fileID: 0}
-  age5Troop2: {fileID: 0}
-  age5Troop3: {fileID: 0}
-  age5Troop4: {fileID: 0}
-  age5Troop5: {fileID: 0}
-  age5Troop6: {fileID: 0}
-  age5Troop7: {fileID: 0}
-  age5Troop8: {fileID: 0}
-  age6Troop1: {fileID: 0}
-  age6Troop2: {fileID: 0}
-  age6Troop3: {fileID: 0}
-  age6Troop4: {fileID: 0}
-  age6Troop5: {fileID: 0}
-  age6Troop6: {fileID: 0}
-  age6Troop7: {fileID: 0}
-  age6Troop8: {fileID: 0}
+  currentTroop2: {fileID: 828593304692205538, guid: 01ed04dc899adb4478562f8ce19e5bee, type: 3}
+  currentTroop3: {fileID: 4827834268331182906, guid: 0b34c8094b6be2a46ba26687cec53aeb, type: 3}
+  currentTroop4: {fileID: 1032783257559137101, guid: 04020de92290be149a519caffd56bcc6, type: 3}
+  currentTroop5: {fileID: 8236370213975002289, guid: b46472d39c1b39a49a8c4d4f00ea2095, type: 3}
+  currentTroop6: {fileID: 828593304692205538, guid: bb84bab8c68dbe640a40f702b652028c, type: 3}
+  currentTroop7: {fileID: 4827834268331182906, guid: 9feab21abf80b4f4db0f523cf4331220, type: 3}
+  currentTroop8: {fileID: 1032783257559137101, guid: 2e060b400e706da4a87f556b39b59779, type: 3}
+  age2Troop1: {fileID: 8344972373912921815, guid: 90e683b6f1745d14fa9b404d369a2278, type: 3}
+  age2Troop2: {fileID: 8344972373912921815, guid: 0743e4bf1731dc544a64372d487d0455, type: 3}
+  age2Troop3: {fileID: 8344972373912921815, guid: 6c823703ec5b9dc449ffb2432b134ab6, type: 3}
+  age2Troop4: {fileID: 8344972373912921815, guid: 29a663e1b58496b4b9c3520922e2464c, type: 3}
+  age2Troop5: {fileID: 8344972373912921815, guid: 09d26e2cba7a2af40b6f72cf6e4d2463, type: 3}
+  age2Troop6: {fileID: 8344972373912921815, guid: 70603f6e9d051cc4084000262572017f, type: 3}
+  age2Troop7: {fileID: 8344972373912921815, guid: acf561a30924acc4db5c9d1db432be6d, type: 3}
+  age2Troop8: {fileID: 8344972373912921815, guid: 7daaae863e2459d41aa8274c50b3f922, type: 3}
+  age3Troop1: {fileID: 1857388308801485288, guid: 2a70968baa0be1f4e8fd891c9f7c1f87, type: 3}
+  age3Troop2: {fileID: 1857388308801485288, guid: 1d3bbbad2f41f1444a289fed7047c2f4, type: 3}
+  age3Troop3: {fileID: 1857388308801485288, guid: b274c113c1a36f547a5f3b9b7a230126, type: 3}
+  age3Troop4: {fileID: 1857388308801485288, guid: b84d34a780a560f418783f3c35c5a055, type: 3}
+  age3Troop5: {fileID: 1857388308801485288, guid: dd35d7a078444d343bbb7292472d2819, type: 3}
+  age3Troop6: {fileID: 1857388308801485288, guid: e69155ed1f7112d4aa1acf1b28841070, type: 3}
+  age3Troop7: {fileID: 1857388308801485288, guid: 6ca10e7331f9f504587e0fe7ca32d220, type: 3}
+  age3Troop8: {fileID: 1857388308801485288, guid: ccb6c58050b0d5843bb2d28a1983cd7f, type: 3}
+  age4Troop1: {fileID: 2790310357236150685, guid: 8b428b65a2b8e24479245663c65ebc4b, type: 3}
+  age4Troop2: {fileID: 4726248514714749645, guid: 7213aafece7f75044941ceacdeda1718, type: 3}
+  age4Troop3: {fileID: 1175997002060042277, guid: e456c1a475ef90040b8ab14be878e300, type: 3}
+  age4Troop4: {fileID: 6306037643678903102, guid: 98cec1340bdbe954c9a9cc8ea7dbddb3, type: 3}
+  age4Troop5: {fileID: 2790310357236150685, guid: 4b4784f2f85ebc344858142bf87be64b, type: 3}
+  age4Troop6: {fileID: 4726248514714749645, guid: 3729b110b646c514eb63c1f3f6b45bd8, type: 3}
+  age4Troop7: {fileID: 1175997002060042277, guid: ac70fa2662f7355428c0f0c982a6ecc2, type: 3}
+  age4Troop8: {fileID: 6306037643678903102, guid: 58321461e22cb9348acce631e8b5941a, type: 3}
+  age5Troop1: {fileID: 4179982421774791595, guid: cce3cbbbdccaf484e92e1ba5410447ef, type: 3}
+  age5Troop2: {fileID: 185336122514106165, guid: 5793c684a5fe1a147a812a444fa58647, type: 3}
+  age5Troop3: {fileID: 6729813071022909304, guid: 49ee92309bcf2fa44aae83b4322384aa, type: 3}
+  age5Troop4: {fileID: 4190435050697722820, guid: c3ad15aafcd9b3b4fb55d72e1c727852, type: 3}
+  age5Troop5: {fileID: 4179982421774791595, guid: 47386a9245f12c54786c6592b1254ef9, type: 3}
+  age5Troop6: {fileID: 185336122514106165, guid: 08d603e52ec991f4a8fdef1a946f2c0f, type: 3}
+  age5Troop7: {fileID: 6729813071022909304, guid: c4decae671f5e1d4da96b7b9f0067d1d, type: 3}
+  age5Troop8: {fileID: 4190435050697722820, guid: 255fa95e6deccd24a9bd610e892cc377, type: 3}
+  age6Troop1: {fileID: 1749894523066913183, guid: 0244d11e46d747e4e9fe4f945005ff61, type: 3}
+  age6Troop2: {fileID: 7911656744071856532, guid: 79f44f737cb9bf74d8de8d755d3604a4, type: 3}
+  age6Troop3: {fileID: 1646663784074943539, guid: 407e95f8a0f72ff4fbef107d66c6b682, type: 3}
+  age6Troop4: {fileID: 1648427034151411020, guid: 163e92e42931cd747953e7d9d6509546, type: 3}
+  age6Troop5: {fileID: 1749894523066913183, guid: b763b1601eef131498020729b85c71c3, type: 3}
+  age6Troop6: {fileID: 7911656744071856532, guid: a426c8b1e9b851a4b82ae60f6f50c84e, type: 3}
+  age6Troop7: {fileID: 1646663784074943539, guid: 414f2250807b4c041a37a5c8a348bb36, type: 3}
+  age6Troop8: {fileID: 1648427034151411020, guid: 859fecccfc92f2e43821f72ecbbfd79b, type: 3}
   isForming1: 0
   isForming2: 0
   queue1: 
