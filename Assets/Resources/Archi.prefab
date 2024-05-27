@@ -44,12 +44,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a3c77f7e482b84a809c0e6eaa87233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listTurret:
+  nbPlacementId1: 1
+  nbTowerId1: 0
+  castle1: {fileID: 0}
+  listTurretId1:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spriteRenderer1: {fileID: 0}
-  spriteRenderer2: {fileID: 0}
-  spriteRenderer3: {fileID: 0}
-  objectToInstantiate: {fileID: 0}
+  spriteRenderer1Id1: {fileID: 0}
+  spriteRenderer2Id1: {fileID: 0}
+  spriteRenderer3Id1: {fileID: 0}
+  spriteRenderer4Id1: {fileID: 0}
+  collider2D1Id1: {fileID: 0}
+  collider2D2Id1: {fileID: 0}
+  collider2D3Id1: {fileID: 0}
+  collider2D4Id1: {fileID: 0}
+  nbPlacementId2: 1
+  nbTowerId2: 0
+  castle2: {fileID: 0}
+  listTurretId2:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spriteRenderer1Id2: {fileID: 0}
+  spriteRenderer2Id2: {fileID: 0}
+  spriteRenderer3Id2: {fileID: 0}
+  spriteRenderer4Id2: {fileID: 0}
+  collider2D1Id2: {fileID: 0}
+  collider2D2Id2: {fileID: 0}
+  collider2D3Id2: {fileID: 0}
+  collider2D4Id2: {fileID: 0}
+  TurretType1Age1: {fileID: 3957089950859836770, guid: 40b317c0537397343a1039801f913d7f, type: 3}
+  TurretType2Age1: {fileID: 4461128620826046671, guid: 43177ce1b3d812c4698a6fc5ff585f85, type: 3}
+  TurretType3Age1: {fileID: 2518851119548543216, guid: cb0686ba8b3648b4588a29be53f7b3fb, type: 3}
+  TurretType1Age2: {fileID: 3171855950252097129, guid: 2763939332d63534e9ef31992d1d6b5e, type: 3}
+  TurretType2Age2: {fileID: 8193471102480826005, guid: 84b94668442ac624c919f86f8fb1d5d3, type: 3}
+  TurretType3Age2: {fileID: 2489373312502374294, guid: 4c11453d3f269b34d93cc0037830b7f7, type: 3}
+  TurretType1Age3: {fileID: 1823355824714236616, guid: 902df2350824c6145a23d8249bc66192, type: 3}
+  TurretType2Age3: {fileID: 6482999760009731109, guid: 742af1ef6046ed94cba95e1bd60f3db6, type: 3}
+  TurretType3Age3: {fileID: 7887412104685204420, guid: 90fbe2e804dcd1f4983f9a6db9ba6447, type: 3}
+  TurretType1Age4: {fileID: 1871957623520690985, guid: 2f9ec7cef674c5c45914649a1dbfe368, type: 3}
+  TurretType2Age4: {fileID: 1125914196505909959, guid: 4cf5d189cc871694d98c677d5c715317, type: 3}
+  TurretType3Age4: {fileID: 6800044544260082045, guid: bf35dd1d4a3a47041a2d207108adae8f, type: 3}
+  TurretType1Age5: {fileID: 3453518575988657205, guid: dea77eb88f3b39b4d9c903b11eab3888, type: 3}
+  TurretType2Age5: {fileID: 6452057064398915007, guid: 2a954b3650b2c784caa48d732906349a, type: 3}
+  TurretType3Age5: {fileID: 4251884955342080787, guid: f7ee6d05ae2f9fb4c8f5005a3c31a0a4, type: 3}
+  TurretType1Age6: {fileID: 9160148380744466170, guid: 1112d4a0c4584c840b04e463bfcd7cf1, type: 3}
+  TurretType2Age6: {fileID: 7624555495584430477, guid: ec3ca82154192d04eabb5ac0e8cdc83b, type: 3}
+  TurretType3Age6: {fileID: 4025735160830608795, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
+  delete: 0
