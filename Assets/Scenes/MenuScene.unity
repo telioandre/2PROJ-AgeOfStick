@@ -19496,8 +19496,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMovement: 2000
-  leftLimit: -8.5
-  rightLimit: 3910
+  leftLimit: -75
+  rightLimit: 2930
 --- !u!1 &604466087
 GameObject:
   m_ObjectHideFlags: 0
@@ -51769,68 +51769,6 @@ Transform:
   - {fileID: 1233432644}
   m_Father: {fileID: 992000567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1396237346
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 140
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 727
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3402791914054078259, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4025735160830608795, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-      propertyPath: m_Name
-      value: Alien_Tourelle_Moyenne
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1589152726840964518, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 924179daa37709147bdd17f53f0993ed, type: 3}
 --- !u!1 &1399686302
 GameObject:
   m_ObjectHideFlags: 0
@@ -79012,4 +78950,3 @@ SceneRoots:
   - {fileID: 178064375}
   - {fileID: 7789637064115067384}
   - {fileID: 2845742484983630305}
-  - {fileID: 1396237346}
