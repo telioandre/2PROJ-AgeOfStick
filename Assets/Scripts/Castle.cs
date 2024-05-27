@@ -9,6 +9,7 @@ public class Castle : MonoBehaviour
     public int id;
     public Image bar;
     public Player player;
+    public GameObject gameOverUI;
     void Start()
     {
         if (player == null)
@@ -44,7 +45,8 @@ public class Castle : MonoBehaviour
                     string opponentBaseName = (player.baseName == "ally") ? "enemy" : "ally";
                     Debug.Log(opponentBaseName + " win !");
                     // Ferme l'appli et la preview
-                    Application.Quit();
+                    gameOverUI.SetActive(true);
+                    Time.timeScale = 0f;
                 }
                 // 1 seconde de délai entre chaque attaque
                 yield return new WaitForSeconds(1f);
