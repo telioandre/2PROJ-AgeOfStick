@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     public string baseName;
     public TextMeshProUGUI textMoney;
     public TextMeshProUGUI textXp;
-    public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white };
+    public Sprite[] ageSprites = {};
+    public Scale[] ageScale = {};
     public List<Sprite> attackSpecialSprite = new();
     public Button specialAttackButton;
     public List<Sprite> troop1Sprite = new();
@@ -157,7 +158,7 @@ public class Player : MonoBehaviour
                 castle.AddLifePoint(Mathf.RoundToInt(castle.lifePoint * 1.35f));
                 castle.AddMaxLifePoint(Mathf.RoundToInt(castle.maxLifePoint * 1.35f));
                 SpriteRenderer spriteColor = GetComponent<SpriteRenderer>();
-                spriteColor.color = ageColors[_age - 1];
+                spriteColor.sprite = ageSprites[_age - 1];
                 specialAttackButton.image.sprite = attackSpecialSprite[_age - 1];
                 troop1Button.image.sprite = troop1Sprite[_age - 1];
                 //troop1Image.sprite = troop1Sprite[_age - 1];

@@ -52,11 +52,7 @@ public class Collisions : MonoBehaviour
                 otherPlayer = castle2.player;
             }
 
-            if (specialID != currentGameManager.id)
-            {
-                StartCoroutine(currentGameManager.TroopUnderSpecial(currentGameManager, special, otherPlayer));
-            }
-            else
+            if (specialID == currentGameManager.id)
             {
                 Destroy(collision.gameObject);
             }
