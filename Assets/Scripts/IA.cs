@@ -56,14 +56,14 @@ public class Ia : MonoBehaviour
             {
                 if (player.GetXp() >= player.ageCosts[player.GetAge() - 1] && _difficulty != "Impossible")
                 {
-                    AgeUp();
+                    //AgeUp();
                 }
             }
 
             switch (_difficulty)
             {
                 case "Easy":
-                    if (randomNumber == 1)
+                    if (randomNumber <= 10)
                     {
                         IaSpecialAttack();
                     }
@@ -88,7 +88,7 @@ public class Ia : MonoBehaviour
 
                     if (randomNumber >= 15)
                     {
-                        IaGenerateTroop(0);
+                        //IaGenerateTroop(0);
                     }
 
                     break;
