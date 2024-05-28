@@ -50,7 +50,6 @@ public class Ia : MonoBehaviour
         if (_frameCounter % UpdateInterval == 0)
         {
             int randomNumber = Random.Range(1, 21);
-            //Debug.Log(randomNumber);
 
             if (player.GetAge() < 6)
             {
@@ -63,7 +62,7 @@ public class Ia : MonoBehaviour
             switch (_difficulty)
             {
                 case "Easy":
-                    if (randomNumber <= 10)
+                    if (randomNumber == 1)
                     {
                         IaSpecialAttack();
                     }
@@ -88,7 +87,7 @@ public class Ia : MonoBehaviour
 
                     if (randomNumber >= 15)
                     {
-                        //IaGenerateTroop(0);
+                        IaGenerateTroop(0);
                     }
 
                     break;

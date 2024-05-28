@@ -225,10 +225,6 @@ public class Player : MonoBehaviour
                 Debug.Log("Not enough XP");
             }
         }
-        else
-        {
-            print("attente : " + (Time.time - _lastPlayer1Special) + " cooldown de : " + _specialCooldown);
-        }
     }
 
     public IEnumerator SpecialAttackCoroutine(int id)
@@ -261,7 +257,6 @@ public class Player : MonoBehaviour
             {
                 do
                 {
-                    print(" start :" + start + " end " + end);
                     randomNumber = Random.Range(start, end);
                 }
                 while (positions.Contains(randomNumber));
@@ -272,8 +267,6 @@ public class Player : MonoBehaviour
         {
             if (casern.troopsPlayer1.Count > 0)
             {
-                start = Mathf.RoundToInt(casern.troopsPlayer1[0].transform.position.x);
-                end = Mathf.RoundToInt(casern.troopsPlayer1[casern.troopsPlayer1.Count - 1].transform.position.x);
                 for (int i = 0; i < casern.troopsPlayer1.Count; i++)
                 {
                     Rigidbody2D script = casern.troopsPlayer1[i].GetComponent<Rigidbody2D>();
@@ -290,7 +283,6 @@ public class Player : MonoBehaviour
             int range = 10 - positions.Count;
             for(int i=0; i < range; i++)
             {
-                print(" start :" + start + " end " + end);
                 do
                 {
                     randomNumber = Random.Range(start, end);
@@ -301,10 +293,7 @@ public class Player : MonoBehaviour
         }
         for (int i = 0; i < positions.Count; i++)
         {
-            //print(positions[i] + " position ");
             float precisionShot = Random.Range(-_precision, _precision) * Random.Range(-500, 500);
-            //print(precisionShot);
-            //print(precisionShot + " precision ");
             if (id == 1)
             {
                 float realShot = positions[i] + precisionShot;
@@ -316,7 +305,6 @@ public class Player : MonoBehaviour
                 {
                     realShot = start;
                 }
-                print(realShot + " real shot");
                 Vector2 newPosition = transform.position + new Vector3(realShot, 400f, 0f);
                 Instantiate(specialAttack[_age-1], newPosition, Quaternion.identity);
             }
@@ -331,7 +319,6 @@ public class Player : MonoBehaviour
                 {
                     realShot = start;
                 }
-                print(realShot + " real shot");
                 Vector2 newPosition = transform.position + new Vector3(-realShot, 400f, 0f);
                 Instantiate(specialAttack[_age-1], newPosition, Quaternion.identity);
             }
