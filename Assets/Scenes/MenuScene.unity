@@ -33527,7 +33527,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 19be658797d01904aac38b8ab50969fe, type: 3}
   - {fileID: 21300000, guid: acde277e3736ee54fa11d9b0f38f9500, type: 3}
   turret3Button: {fileID: 921246048}
-  specialAttack: {fileID: 922170554763523580, guid: 82c6daea845da734f8b999a51fee4613, type: 3}
+  turret3Image: {fileID: 1762736415}
+  specialAttack:
+  - {fileID: 922170554763523580, guid: 82c6daea845da734f8b999a51fee4613, type: 3}
+  - {fileID: 1116061920095385270, guid: cedc68f29e977cf43a3654b5dad91f68, type: 3}
+  - {fileID: 1380594356105836271, guid: 1b40629206b6b5b4eaea2dd553bd4df2, type: 3}
+  - {fileID: 3422553261861367424, guid: d22256c554f07b64e90db6bccce3d767, type: 3}
+  - {fileID: 7846039208424138936, guid: 5178320391d820c4abd526935ca9c1fb, type: 3}
+  - {fileID: 8881613701403671297, guid: 3dfff0f0aeae3d94a81139022632624e, type: 3}
   specialCosts: 
   ageCosts: 
   troop1Level: 0
@@ -48984,7 +48991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1342584524
 AudioListener:
   m_ObjectHideFlags: 0
@@ -74214,7 +74221,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 19be658797d01904aac38b8ab50969fe, type: 3}
   - {fileID: 21300000, guid: acde277e3736ee54fa11d9b0f38f9500, type: 3}
   turret3Button: {fileID: 1692714971}
-  specialAttack: {fileID: 922170554763523580, guid: 35de6371198df414d9b773032f0870b5, type: 3}
+  turret3Image: {fileID: 1434801288}
+  specialAttack:
+  - {fileID: 922170554763523580, guid: 35de6371198df414d9b773032f0870b5, type: 3}
+  - {fileID: 1116061920095385270, guid: 9b940fc4026ef554084ba2ff0e41beb2, type: 3}
+  - {fileID: 1380594356105836271, guid: 7ee7989617fd4ce4f9fd07fb1f018c6d, type: 3}
+  - {fileID: 3422553261861367424, guid: 342a02707f5f4994691f69bb9be46c39, type: 3}
+  - {fileID: 7846039208424138936, guid: 9260294078213dc49ac7d43637113b6d, type: 3}
+  - {fileID: 8881613701403671297, guid: cf9041961d2885c468b93df480ebab65, type: 3}
   specialCosts: 
   ageCosts: 
   troop1Level: 0
@@ -74649,6 +74663,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castle1: {fileID: 992134509}
   castle2: {fileID: 2073809404}
+  background: {fileID: 1521295096}
+  backgroundImages:
+  - {fileID: 21300000, guid: 3d89d0ad64ce84f42aed32ede3f8cb27, type: 3}
+  - {fileID: 21300000, guid: 10089c7fbfe63484a8b29774c6a602f1, type: 3}
+  - {fileID: 21300000, guid: 267ca0edbc2f48e44b75b30e8aa347da, type: 3}
+  - {fileID: 21300000, guid: 6926d74081b06544b9306b68d900f29a, type: 3}
+  - {fileID: 21300000, guid: 23db0026612698741bbabb8151d454d2, type: 3}
+  - {fileID: 21300000, guid: 45ab9275093dd4a4c89a1a632b121dd5, type: 3}
   currentTroop1: {fileID: 8236370213975002289, guid: 22c5043eeded8194e851dcd138c3caf3, type: 3}
   currentTroop2: {fileID: 828593304692205538, guid: 01ed04dc899adb4478562f8ce19e5bee, type: 3}
   currentTroop3: {fileID: 4827834268331182906, guid: 0b34c8094b6be2a46ba26687cec53aeb, type: 3}
