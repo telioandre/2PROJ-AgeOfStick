@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7e66ff05c038ad46ac87d9fe4b9df89
+guid: 6271d6d807ae4ac44b9bc8ce4fed8924
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,19 +81,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,43 +110,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ShopBackground_Top
+      name: age1castle_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 994
-        width: 1920
-        height: 86
+        x: 1007
+        y: 13070
+        width: 2518
+        height: 1157
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 521f4a27fff6d234cac0b488ac884e69
-      internalID: -1561506456
+      spriteID: 91a741f5009329b46b33b3865d11ca0d
+      internalID: 1020366750
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShopBackground_Bottom
+      name: age1castle_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 247
+        x: 554
+        y: 8756
+        width: 3344
+        height: 2065
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0c74cdf860235340aa93fe975f33adb
-      internalID: -2038001388
+      spriteID: 0f2deba2f5b2717498431add350566d6
+      internalID: 1361906929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: age1castle_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 5248
+        width: 3725
+        height: 2534
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889f19eeed664a547beeded5a198e606
+      internalID: 2033179375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: age1castle_1
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 245
+        width: 4114
+        height: 3282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cca9b5edfc4d6647a5904bce0c698e6
+      internalID: -1528989150
       vertices: []
       indices: 
       edges: []
@@ -175,8 +204,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ShopBackground_Bottom: -2038001388
-      ShopBackground_Top: -1561506456
+      age1castle_1: -1528989150
+      age1castle_2: 2033179375
+      age1castle_3: 1361906929
+      age1castle_4: 1020366750
+      age1castle_5: -1400819803
+      age1castle_6: -2030138304
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

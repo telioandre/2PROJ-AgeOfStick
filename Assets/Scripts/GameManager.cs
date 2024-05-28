@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public int maxLife;
     public int troopId;
     public string uniqueId;
-    /*public Image health;*/
+
 
     private List<int> _troop1dropsXp;
     private List<int> _troop2dropsXp;
@@ -68,8 +68,8 @@ public class GameManager : MonoBehaviour
 
         if (id == 1)
         {
-            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 200);
-            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * 200, Color.red);
+            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 2000);
+            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * 2000, Color.red);
 
             // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit.collider != null)
+                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
                     {
                         // Obtenir le premier élément touché
                         firstHit = hits[i];
@@ -90,6 +90,10 @@ public class GameManager : MonoBehaviour
 
                     }
 
+                }
+                if (firstHit != default)
+                {
+                    StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer())); 
                 }
 
             }
@@ -120,7 +124,7 @@ public class GameManager : MonoBehaviour
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit.collider != null)
+                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
                     {
                         // Obtenir le premier élément touché
                         firstHit = hits[i];
@@ -130,6 +134,10 @@ public class GameManager : MonoBehaviour
 
                     }
 
+                }
+                if (firstHit != default)
+                {
+                    StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer()));
                 }
             }
             hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
@@ -169,10 +177,12 @@ public class GameManager : MonoBehaviour
         _casern = GameObject.Find("Casern").GetComponent<Casern>();
         if (id == 1)
         {
+            transform.position = new Vector2(1500, 0);
             _player = GameObject.Find("Castle 1").GetComponent<Player>();
         }
         else
         {
+            transform.position = new Vector2(3500, 0);
             _player = GameObject.Find("Castle 2").GetComponent<Player>();
         }
         char troopName = name[6];
@@ -228,11 +238,11 @@ public class GameManager : MonoBehaviour
         {
             RaycastHit2D[] hitsHauteur;
 
-            hitsHauteur = Physics2D.RaycastAll(new Vector2(-250, 380), new Vector2(0, 1), 2000000);
-            Debug.DrawRay(new Vector2(-250, 380), new Vector2(0, 1) * 2000000, Color.red);
+            hitsHauteur = Physics2D.RaycastAll(new Vector2(-150, 380), new Vector2(0, 1), 2000000);
+            Debug.DrawRay(new Vector2(-150, 380), new Vector2(0, 1) * 2000000, Color.red);
 
 
-            transform.position = new Vector2(-250, 1000 + 500 * hitsHauteur.Length);
+            transform.position = new Vector2(-150, 1000 + 500 * hitsHauteur.Length);
 
             _casern.isForming1 = false;
         }
@@ -240,10 +250,10 @@ public class GameManager : MonoBehaviour
         {
             RaycastHit2D[] hitsHauteur;
 
-            hitsHauteur = Physics2D.RaycastAll(new Vector2(5040, 380), new Vector2(0, 1), 2000000);
-            Debug.DrawRay(new Vector2(5040, 380), new Vector2(0, 1) * 2000000, Color.red);
+            hitsHauteur = Physics2D.RaycastAll(new Vector2(6500, 380), new Vector2(0, 1), 2000000);
+            Debug.DrawRay(new Vector2(6500, 380), new Vector2(0, 1) * 2000000, Color.red);
 
-            transform.position = new Vector2(5040, 1000 + 500 *hitsHauteur.Length);
+            transform.position = new Vector2(6000, 1000 + 500 *hitsHauteur.Length);
 
             _casern.isForming2 = false;
         }
@@ -307,8 +317,11 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy)
     {
-        while (enemyGameManager.life > 0)
+        bool canAttack = true;
+        while (canAttack)
         {
+            Debug.Log(enemyGameManager.life);
+            Debug.Log("is life ");
             yield return new WaitForSeconds(attackTime);
             int damage = attack + Random.Range(0, 10);
             char allyChar = name[6];
@@ -328,6 +341,8 @@ public class GameManager : MonoBehaviour
                 _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
                 Destroy(enemyGameManager.gameObject);
                 myRb.constraints = RigidbodyConstraints2D.None;
+                canAttack = false;
+                StopAllCoroutines();
             }
         }
     }
