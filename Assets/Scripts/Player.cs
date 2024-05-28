@@ -23,16 +23,16 @@ public class Player : MonoBehaviour
     public Button specialAttackButton;
     public List<Sprite> troop1Sprite = new();
     public Button troop1Button;
-    //public Image troop1Image;
+    public Image troop1Image;
     public List<Sprite> troop2Sprite = new();
     public Button troop2Button;
-    //public Image troop2Image;
+    public Image troop2Image;
     public List<Sprite> troop3Sprite = new();
     public Button troop3Button;
-    //public Image troop3Image;
+    public Image troop3Image;
     public List<Sprite> troop4Sprite = new();
     public Button troop4Button;
-    //public Image troop4Image;
+    public Image troop4Image;
     public GameObject troop5Button;
     public List<Sprite> troop1UpgradeSprite = new();
     public Button troop1UpgradeButton;
@@ -44,14 +44,14 @@ public class Player : MonoBehaviour
     public Button troop4UpgradeButton;
     public List<Sprite> turret1Sprite = new();
     public Button turret1Button;
-    //public Image turret1Image;
+    public Image turret1Image;
     public List<Sprite> turret2Sprite = new();
     public Button turret2Button;
-    //public Image turret2Image;
+    public Image turret2Image;
     public List<Sprite> turret3Sprite = new();
     public Button turret3Button;
-    //public Image turret3Image;
-    public GameObject specialAttack;
+    public Image turret3Image;
+    public List<GameObject> specialAttack;
     public List<int> specialCosts;
     public List<int> ageCosts;
     public int troop1Level;
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
     {
         SetAge(1);
         AddMoney(1000);
-        AddXp(100000);
+        AddXp(1000000000);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
@@ -157,27 +157,28 @@ public class Player : MonoBehaviour
                 _age += 1;
                 castle.AddLifePoint(Mathf.RoundToInt(castle.lifePoint * 1.35f));
                 castle.AddMaxLifePoint(Mathf.RoundToInt(castle.maxLifePoint * 1.35f));
+                
                 SpriteRenderer spriteColor = GetComponent<SpriteRenderer>();
                 spriteColor.sprite = ageSprites[_age - 1];
                 specialAttackButton.image.sprite = attackSpecialSprite[_age - 1];
                 troop1Button.image.sprite = troop1Sprite[_age - 1];
-                //troop1Image.sprite = troop1Sprite[_age - 1];
+                troop1Image.sprite = troop1Sprite[_age - 1];
                 troop2Button.image.sprite = troop2Sprite[_age - 1];
-                //troop2Image.sprite = troop2Sprite[_age - 1];
+                troop2Image.sprite = troop2Sprite[_age - 1];
                 troop3Button.image.sprite = troop3Sprite[_age - 1];
-                //troop3Image.sprite = troop3Sprite[_age - 1];
+                troop3Image.sprite = troop3Sprite[_age - 1];
                 troop4Button.image.sprite = troop4Sprite[_age - 1];
-                //troop4Image.sprite = troop4Sprite[_age - 1];
+                troop4Image.sprite = troop4Sprite[_age - 1];
                 troop1UpgradeButton.image.sprite = troop1UpgradeSprite[_age + troop1Level * 6 - 1];
                 troop2UpgradeButton.image.sprite = troop2UpgradeSprite[_age + troop2Level * 6 - 1];
                 troop3UpgradeButton.image.sprite = troop3UpgradeSprite[_age + troop3Level * 6 - 1];
                 troop4UpgradeButton.image.sprite = troop4UpgradeSprite[_age + troop4Level * 6 - 1];
                 turret1Button.image.sprite = turret1Sprite[_age - 1];
-                //turret1Image.sprite = turret1Sprite[_age - 1];
+                turret1Image.sprite = turret1Sprite[_age - 1];
                 turret2Button.image.sprite = turret2Sprite[_age - 1];
-                //turret2Image.sprite = turret2Sprite[_age - 1];
+                turret2Image.sprite = turret2Sprite[_age - 1];
                 turret3Button.image.sprite = turret3Sprite[_age - 1];
-                //turret3Image.sprite = turret3Sprite[_age - 1];
+                turret3Image.sprite = turret3Sprite[_age - 1];
 
                 if (_age == 6)
                 {
@@ -197,12 +198,12 @@ public class Player : MonoBehaviour
     }
     public bool CheckCooldown(int id)
     {
-        if (id == 1 && Time.time - _lastPlayer1Special > _specialCooldown + ((_age - 1) * 5))
+        if (id == 1 && Time.time - _lastPlayer1Special > _specialCooldown + (_age - 1) * 5)
         {
             _lastPlayer1Special = Time.time;
             return true;
         }
-        if (id == 2 && Time.time - _lastPlayer2Special > _specialCooldown + ((_age - 1) * 5))
+        if (id == 2 && Time.time - _lastPlayer2Special > _specialCooldown + (_age - 1) * 5)
         {
             _lastPlayer2Special = Time.time;
             return true;
@@ -231,8 +232,8 @@ public class Player : MonoBehaviour
     {
         List<float> positions = new();
         int randomNumber;
-        int start = Mathf.RoundToInt(150f);
-        int end = Mathf.RoundToInt(6280f);
+        int start = Mathf.RoundToInt(300f);
+        int end = Mathf.RoundToInt(4300f);
         if (id == 1)
         {
             if (casern.troopsPlayer2.Count > 0)
@@ -267,8 +268,6 @@ public class Player : MonoBehaviour
         {
             if (casern.troopsPlayer1.Count > 0)
             {
-                start = Mathf.RoundToInt(casern.troopsPlayer1[0].transform.position.x);
-                end = Mathf.RoundToInt(casern.troopsPlayer1[casern.troopsPlayer1.Count - 1].transform.position.x);
                 for (int i = 0; i < casern.troopsPlayer1.Count; i++)
                 {
                     Rigidbody2D script = casern.troopsPlayer1[i].GetComponent<Rigidbody2D>();
@@ -295,25 +294,34 @@ public class Player : MonoBehaviour
         }
         for (int i = 0; i < positions.Count; i++)
         {
-            float precisionShot = Random.Range(-_precision, _precision) * Random.Range(-500f, 500f);
-            //print(precisionShot);
-            if (precisionShot < 150f)
-            {
-                precisionShot = 150f;
-            }
-            else if (precisionShot > 6280f)
-            {
-                precisionShot = 6280f;
-            }
+            float precisionShot = Random.Range(-_precision, _precision) * Random.Range(-500, 500);
             if (id == 1)
             {
-                Vector2 newPosition = transform.position + new Vector3(positions[i] + precisionShot, 400f, 0f);
-                Instantiate(specialAttack, newPosition, Quaternion.identity);
+                float realShot = positions[i] + precisionShot;
+                if (realShot > end)
+                {
+                    realShot = end;
+                }
+                else if (realShot < start)
+                {
+                    realShot = start;
+                }
+                Vector2 newPosition = transform.position + new Vector3(realShot, 400f, 0f);
+                Instantiate(specialAttack[_age-1], newPosition, Quaternion.identity);
             }
             else if (id == 2)
             {
-                Vector2 newPosition = transform.position + new Vector3(positions[i] + precisionShot, 400f, 0f);
-                Instantiate(specialAttack, newPosition, Quaternion.identity);
+                float realShot = positions[i] + precisionShot;
+                if (realShot > end)
+                {
+                    realShot = end;
+                }
+                else if (realShot < start)
+                {
+                    realShot = start;
+                }
+                Vector2 newPosition = transform.position + new Vector3(-realShot, 400f, 0f);
+                Instantiate(specialAttack[_age-1], newPosition, Quaternion.identity);
             }
             yield return new WaitForSeconds(0.6f);
         }

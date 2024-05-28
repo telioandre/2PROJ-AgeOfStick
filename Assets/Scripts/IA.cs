@@ -50,13 +50,12 @@ public class Ia : MonoBehaviour
         if (_frameCounter % UpdateInterval == 0)
         {
             int randomNumber = Random.Range(1, 21);
-            //Debug.Log(randomNumber);
 
             if (player.GetAge() < 6)
             {
                 if (player.GetXp() >= player.ageCosts[player.GetAge() - 1] && _difficulty != "Impossible")
                 {
-                    AgeUp();
+                    //AgeUp();
                 }
             }
 
