@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2293187826243374900}
   - component: {fileID: 7235705139803786832}
   m_Layer: 0
-  m_Name: Alien_ATK_Special
+  m_Name: Alien_ATK_Special enemy
   m_TagString: Special
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,4 +311,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8baeb451cf24846b94d9e6c6459819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
+  id: 2

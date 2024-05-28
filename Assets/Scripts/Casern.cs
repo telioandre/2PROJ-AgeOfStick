@@ -1,10 +1,16 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Casern : MonoBehaviour
 {
     public Castle castle1;
     public Castle castle2;
+
+    public GameObject background;
+    public Sprite[] backgroundImages;
     
     public GameObject currentTroop1;
     public GameObject currentTroop2;
@@ -81,10 +87,10 @@ public class Casern : MonoBehaviour
     private bool _isOnline;
     void Start()
     {
-        _troop1Costs = new List<int>() { 2, 7, 12, 25, 60, 150 };
-        _troop2Costs = new List<int>() { 1, 5, 9, 20, 55, 110 };
-        _troop3Costs = new List<int>() { 7, 11, 22, 49, 95, 172 };
-        _troop4Costs = new List<int>() { 9, 20, 41, 100, 200, 300 };
+        _troop1Costs = new List<int> { 2, 7, 12, 25, 60, 150 };
+        _troop2Costs = new List<int> { 1, 5, 9, 20, 55, 110 };
+        _troop3Costs = new List<int> { 7, 11, 22, 49, 95, 172 };
+        _troop4Costs = new List<int> { 9, 20, 41, 100, 200, 300 };
     }
 
     public void setOnline(bool online)
@@ -93,6 +99,8 @@ public class Casern : MonoBehaviour
     }
     private void Update()
     {
+        SpriteRenderer spriteRenderer = background.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = backgroundImages[Mathf.Max(castle1.player.GetAge(), castle2.player.GetAge())-1];
         if (!isForming1 && queue1.Count > 0)
         {
             InstantiateTroop(queue1[0]);
