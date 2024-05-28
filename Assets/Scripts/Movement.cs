@@ -91,14 +91,15 @@ public class Movement : MonoBehaviour
                         // Faire quelque chose avec le premier élément touché, par exemple :
                         GameObject objectHit = firstHit.collider.gameObject;
                         objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
-                        Debug.Log("coudhfflkjshkjfhsldkjfhslkjhflskjdhflksjhd");
-                        Debug.Log(i);
                     }
 
                 }
+                if (firstHit != default)
+                {
+                    StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<Movement>(), rb2d, player, firstHit.collider.gameObject.GetComponent<Movement>().getPlayer())); 
+                }
 
             }
-
             // Cretation du raycast pour la rencontre avec le chateau 
             hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 200);
             // Vérifier si l'objet touché a le tag "Castle"
@@ -125,16 +126,19 @@ public class Movement : MonoBehaviour
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit.collider != null)
+                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit == default && hits[i].collider.gameObject.GetComponent<Movement>().id != id) //&& hits[i].collider.gameObject.GetComponent<Movement>().id != id
                     {
                         // Obtenir le premier élément touché
                         firstHit = hits[i];
                         // Faire quelque chose avec le premier élément touché, par exemple :
                         GameObject objectHit = firstHit.collider.gameObject;
                         objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
-
                     }
 
+                }
+                if (firstHit != default)
+                {
+                    StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<Movement>(), rb2d, player, firstHit.collider.gameObject.GetComponent<Movement>().getPlayer()));
                 }
             }
             hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
@@ -303,8 +307,11 @@ public class Movement : MonoBehaviour
 
     public IEnumerator AttackPlayer(Movement enemyMovement, Rigidbody2D myRb, Player ally, Player enemy)
     {
-        while (enemyMovement.life > 0)
+        bool canAttack = true;
+        while (canAttack)
         {
+            Debug.Log(enemyMovement.life);
+            Debug.Log("is life ");
             yield return new WaitForSeconds(attackTime);
             int damage = attack + Random.Range(0, 10);
             char allyChar = name[6];
@@ -324,6 +331,8 @@ public class Movement : MonoBehaviour
                 casern.DestroyTroop(enemyMovement.id, enemyMovement.uniqueId);
                 Destroy(enemyMovement.gameObject);
                 myRb.constraints = RigidbodyConstraints2D.None;
+                canAttack = false;
+                StopAllCoroutines();
             }
         }
     }

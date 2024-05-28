@@ -80,7 +80,7 @@ public class Collisions : MonoBehaviour
                 if (ally != null && enemy != null)
                 {
                     //Commence une coroutine qui diminue les pv des 2 joueurs en contact
-                    StartCoroutine(currentMovement.AttackPlayer(otherMovement, myRb, ally, enemy));
+                    //StartCoroutine(currentMovement.AttackPlayer(otherMovement, myRb, ally, enemy));
 
                 }
 
