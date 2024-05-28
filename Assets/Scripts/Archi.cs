@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Archi : MonoBehaviour
 {
@@ -30,49 +31,49 @@ public class Archi : MonoBehaviour
     public Collider2D collider2D3Id2;
     public Collider2D collider2D4Id2;
 
-    private GameObject objectToInstantiate;
+    private GameObject _objectToInstantiate;
 
-    public GameObject TurretType1Age1;
-    public GameObject TurretType2Age1;
-    public GameObject TurretType3Age1;
+    [FormerlySerializedAs("TurretType1Age1")] public GameObject turretType1Age1;
+    [FormerlySerializedAs("TurretType2Age1")] public GameObject turretType2Age1;
+    [FormerlySerializedAs("TurretType3Age1")] public GameObject turretType3Age1;
 
-    public GameObject TurretType1Age2;
-    public GameObject TurretType2Age2;
-    public GameObject TurretType3Age2;
+    [FormerlySerializedAs("TurretType1Age2")] public GameObject turretType1Age2;
+    [FormerlySerializedAs("TurretType2Age2")] public GameObject turretType2Age2;
+    [FormerlySerializedAs("TurretType3Age2")] public GameObject turretType3Age2;
 
-    public GameObject TurretType1Age3;
-    public GameObject TurretType2Age3;
-    public GameObject TurretType3Age3;
+    [FormerlySerializedAs("TurretType1Age3")] public GameObject turretType1Age3;
+    [FormerlySerializedAs("TurretType2Age3")] public GameObject turretType2Age3;
+    [FormerlySerializedAs("TurretType3Age3")] public GameObject turretType3Age3;
 
-    public GameObject TurretType1Age4;
-    public GameObject TurretType2Age4;
-    public GameObject TurretType3Age4;
+    [FormerlySerializedAs("TurretType1Age4")] public GameObject turretType1Age4;
+    [FormerlySerializedAs("TurretType2Age4")] public GameObject turretType2Age4;
+    [FormerlySerializedAs("TurretType3Age4")] public GameObject turretType3Age4;
 
-    public GameObject TurretType1Age5;
-    public GameObject TurretType2Age5;
-    public GameObject TurretType3Age5;
+    [FormerlySerializedAs("TurretType1Age5")] public GameObject turretType1Age5;
+    [FormerlySerializedAs("TurretType2Age5")] public GameObject turretType2Age5;
+    [FormerlySerializedAs("TurretType3Age5")] public GameObject turretType3Age5;
 
-    public GameObject TurretType1Age6;
-    public GameObject TurretType2Age6;
-    public GameObject TurretType3Age6;
+    [FormerlySerializedAs("TurretType1Age6")] public GameObject turretType1Age6;
+    [FormerlySerializedAs("TurretType2Age6")] public GameObject turretType2Age6;
+    [FormerlySerializedAs("TurretType3Age6")] public GameObject turretType3Age6;
 
     private int _typeChoice;
     public int delete;
 
-    private List<int> _spotCosts = new()
+    public List<int> spotCosts = new()
     {
         20, 50, 120, 200
     };
 
-    private List<int> _turret1Costs = new()
+    public List<int> turret1Costs = new()
     {
         25, 150, 300, 400, 500, 600
     };
-    private List<int> _turret2Costs = new()
+    public List<int> turret2Costs = new()
     {
         50, 200, 300, 400, 500, 600
     };
-    private List<int> _turret3Costs = new()
+    public List<int> turret3Costs = new()
     {
         75, 200, 300, 400, 500, 600
     };
@@ -161,14 +162,14 @@ public class Archi : MonoBehaviour
 
     public void BuySpot(int id)
     {
-        if (id == 1 && nbPlacementId1 < 4 && castle1.player.GetMoney() >= _spotCosts[nbPlacementId1])
+        if (id == 1 && nbPlacementId1 < 4 && castle1.player.GetMoney() >= spotCosts[nbPlacementId1])
         {
-            castle1.player.AddMoney(-_spotCosts[nbPlacementId1]);
+            castle1.player.AddMoney(-spotCosts[nbPlacementId1]);
             nbPlacementId1 += 1;
         }
-        else if(id == 2 && nbPlacementId2 < 4 && castle2.player.GetMoney() >= _spotCosts[nbPlacementId2])
+        else if(id == 2 && nbPlacementId2 < 4 && castle2.player.GetMoney() >= spotCosts[nbPlacementId2])
         {
-            castle2.player.AddMoney(-_spotCosts[nbPlacementId2]);
+            castle2.player.AddMoney(-spotCosts[nbPlacementId2]);
             nbPlacementId2 += 1;
         }
     }
@@ -270,13 +271,13 @@ public class Archi : MonoBehaviour
         switch (type)
         {
             case 1:
-                cost = _turret1Costs[age - 1];
+                cost = turret1Costs[age - 1];
                 break;
             case 2:
-                cost = _turret2Costs[age - 1];
+                cost = turret2Costs[age - 1];
                 break;
             case 3:
-                cost = _turret3Costs[age - 1];
+                cost = turret3Costs[age - 1];
                 break;
             default:
                 Debug.LogError("Invalid turret type");
@@ -291,35 +292,35 @@ public class Archi : MonoBehaviour
             switch (age)
             {
                 case 1:
-                    objectToInstantiate = type == 1 ? TurretType1Age1 : type == 2 ? TurretType2Age1 : TurretType3Age1;
+                    _objectToInstantiate = type == 1 ? turretType1Age1 : type == 2 ? turretType2Age1 : turretType3Age1;
                     break;
                 case 2:
-                    objectToInstantiate = type == 1 ? TurretType1Age2 : type == 2 ? TurretType2Age2 : TurretType3Age2;
+                    _objectToInstantiate = type == 1 ? turretType1Age2 : type == 2 ? turretType2Age2 : turretType3Age2;
                     break;
                 case 3:
-                    objectToInstantiate = type == 1 ? TurretType1Age3 : type == 2 ? TurretType2Age3 : TurretType3Age3;
+                    _objectToInstantiate = type == 1 ? turretType1Age3 : type == 2 ? turretType2Age3 : turretType3Age3;
                     break;
                 case 4:
-                    objectToInstantiate = type == 1 ? TurretType1Age4 : type == 2 ? TurretType2Age4 : TurretType3Age4;
+                    _objectToInstantiate = type == 1 ? turretType1Age4 : type == 2 ? turretType2Age4 : turretType3Age4;
                     break;
                 case 5:
-                    objectToInstantiate = type == 1 ? TurretType1Age5 : type == 2 ? TurretType2Age5 : TurretType3Age5;
+                    _objectToInstantiate = type == 1 ? turretType1Age5 : type == 2 ? turretType2Age5 : turretType3Age5;
                     break;
                 case 6:
-                    objectToInstantiate = type == 1 ? TurretType1Age6 : type == 2 ? TurretType2Age6 : TurretType3Age6;
+                    _objectToInstantiate = type == 1 ? turretType1Age6 : type == 2 ? turretType2Age6 : turretType3Age6;
                     break;
                 default:
                     Debug.LogError("Invalid age");
                     return;
             }
 
-            if (objectToInstantiate == null)
+            if (_objectToInstantiate == null)
             {
                 Debug.LogError("objectToInstantiate is null");
                 return;
             }
 
-            GameObject newObject = Instantiate(objectToInstantiate, transform.position, Quaternion.identity);
+            GameObject newObject = Instantiate(_objectToInstantiate, transform.position, Quaternion.identity);
             Turret script = newObject.GetComponent<Turret>();
             if (script == null)
             {

@@ -31,7 +31,7 @@ public class OnPauseMenu : MonoBehaviour
         }
     }
 
-    public void pauseStop()
+    public void PauseStop()
     {
         Time.timeScale = 1f;
     }
