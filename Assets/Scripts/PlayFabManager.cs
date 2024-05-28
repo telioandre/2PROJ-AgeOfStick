@@ -64,7 +64,8 @@ public class PlayFabManager : MonoBehaviour
         };
 
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnRegisterFailure);
-        Login(username, password);
+		registerMenu.SetActive(false);
+		loginMenu.SetActive(true);
     }
 
     private void OnLoginSuccess(LoginResult result)

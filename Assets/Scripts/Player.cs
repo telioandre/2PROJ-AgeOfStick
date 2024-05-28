@@ -235,8 +235,8 @@ public class Player : MonoBehaviour
     {
         List<float> positions = new();
         int randomNumber;
-        int start = Mathf.RoundToInt(150f);
-        int end = Mathf.RoundToInt(6280f);
+        int start = Mathf.RoundToInt(300f);
+        int end = Mathf.RoundToInt(4300f);
         if (id == 1)
         {
             if (casern.troopsPlayer2.Count > 0)
@@ -261,6 +261,7 @@ public class Player : MonoBehaviour
             {
                 do
                 {
+                    print(" start :" + start + " end " + end);
                     randomNumber = Random.Range(start, end);
                 }
                 while (positions.Contains(randomNumber));
@@ -289,6 +290,7 @@ public class Player : MonoBehaviour
             int range = 10 - positions.Count;
             for(int i=0; i < range; i++)
             {
+                print(" start :" + start + " end " + end);
                 do
                 {
                     randomNumber = Random.Range(start, end);
@@ -299,24 +301,38 @@ public class Player : MonoBehaviour
         }
         for (int i = 0; i < positions.Count; i++)
         {
-            float precisionShot = Random.Range(-_precision, _precision) * Random.Range(-500f, 500f);
+            //print(positions[i] + " position ");
+            float precisionShot = Random.Range(-_precision, _precision) * Random.Range(-500, 500);
             //print(precisionShot);
-            if (precisionShot < 150f)
-            {
-                precisionShot = 150f;
-            }
-            else if (precisionShot > 6280f)
-            {
-                precisionShot = 6280f;
-            }
+            //print(precisionShot + " precision ");
             if (id == 1)
             {
-                Vector2 newPosition = transform.position + new Vector3(positions[i] + precisionShot, 400f, 0f);
+                float realShot = positions[i] + precisionShot;
+                if (realShot > end)
+                {
+                    realShot = end;
+                }
+                else if (realShot < start)
+                {
+                    realShot = start;
+                }
+                print(realShot + " real shot");
+                Vector2 newPosition = transform.position + new Vector3(realShot, 400f, 0f);
                 Instantiate(specialAttack[_age-1], newPosition, Quaternion.identity);
             }
             else if (id == 2)
             {
-                Vector2 newPosition = transform.position + new Vector3(positions[i] + precisionShot, 400f, 0f);
+                float realShot = positions[i] + precisionShot;
+                if (realShot > end)
+                {
+                    realShot = end;
+                }
+                else if (realShot < start)
+                {
+                    realShot = start;
+                }
+                print(realShot + " real shot");
+                Vector2 newPosition = transform.position + new Vector3(-realShot, 400f, 0f);
                 Instantiate(specialAttack[_age-1], newPosition, Quaternion.identity);
             }
             yield return new WaitForSeconds(0.6f);
