@@ -47,11 +47,7 @@ public class GameManager : MonoBehaviour
         _troop3drops = new List<int> { 4, 9, 19, 34, 85, 175 };
         _troop4drops = new List<int> { 6, 11, 20, 40, 100, 195 };
 
-<<<<<<< Updated upstream
-        _troop1dropsRange = new List<int>{ 2, 4, 4, 8, 20, 25 };
-=======
         _troop1dropsRange = new List<int> { 2, 4, 4, 8, 20, 25 };
->>>>>>> Stashed changes
         _troop2dropsRange = new List<int> { 1, 4, 4, 10, 20, 30 };
         _troop3dropsRange = new List<int> { 2, 6, 6, 11, 25, 20 };
         _troop4dropsRange = new List<int> { 6, 6, 15, 20, 30, 45 };
