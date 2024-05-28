@@ -33875,7 +33875,7 @@ MonoBehaviour:
   ageSprites:
   - {fileID: -1528989150, guid: 6271d6d807ae4ac44b9bc8ce4fed8924, type: 3}
   - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
+  - {fileID: -1528989150, guid: 6271d6d807ae4ac44b9bc8ce4fed8924, type: 3}
   - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
   - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
   - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
