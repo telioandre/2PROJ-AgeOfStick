@@ -242,7 +242,7 @@ public class Casern : MonoBehaviour
                             break;
                     }
                 }
-                else if(castle1.player.numberOfTroop < 10)
+                else if(castle1.player.numberOfTroop + queue1.Count < 10)
                 {
                     switch (troop)
                     {
@@ -346,7 +346,7 @@ public class Casern : MonoBehaviour
                             break;
                     }
                 }
-                else if(castle2.player.numberOfTroop < 10)
+                else if(castle2.player.numberOfTroop + queue2.Count < 10)
                 {
                     switch (troop)
                     {
