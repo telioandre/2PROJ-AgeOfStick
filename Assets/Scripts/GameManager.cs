@@ -37,20 +37,20 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _troop1dropsXp = new List<int>() { 190, 200, 210, 220, 230, 240 };
-        _troop2dropsXp = new List<int>() { 200, 210, 220, 230, 240, 250 };
-        _troop3dropsXp = new List<int>() { 220, 230, 240, 250, 260, 270 };
-        _troop4dropsXp = new List<int>() { 250, 260, 270, 280, 290, 300 };
+        _troop1dropsXp = new List<int> { 190, 200, 210, 220, 230, 240 };
+        _troop2dropsXp = new List<int> { 200, 210, 220, 230, 240, 250 };
+        _troop3dropsXp = new List<int> { 220, 230, 240, 250, 260, 270 };
+        _troop4dropsXp = new List<int> { 250, 260, 270, 280, 290, 300 };
 
-        _troop1drops = new List<int>() { 2, 8, 17, 32, 75, 150 };
-        _troop2drops = new List<int>() { 1, 3, 13, 25, 60, 130 };
-        _troop3drops = new List<int>() { 4, 9, 19, 34, 85, 175 };
-        _troop4drops = new List<int>() { 6, 11, 20, 40, 100, 195 };
+        _troop1drops = new List<int> { 2, 8, 17, 32, 75, 150 };
+        _troop2drops = new List<int> { 1, 3, 13, 25, 60, 130 };
+        _troop3drops = new List<int> { 4, 9, 19, 34, 85, 175 };
+        _troop4drops = new List<int> { 6, 11, 20, 40, 100, 195 };
 
-        _troop1dropsRange = new List<int>() { 2, 4, 4, 8, 20, 25 };
-        _troop2dropsRange = new List<int>() { 1, 4, 4, 10, 20, 30 };
-        _troop3dropsRange = new List<int>() { 2, 6, 6, 11, 25, 20 };
-        _troop4dropsRange = new List<int>() { 6, 6, 15, 20, 30, 45 };
+        _troop1dropsRange = new List<int>{ 2, 4, 4, 8, 20, 25 };
+        _troop2dropsRange = new List<int> { 1, 4, 4, 10, 20, 30 };
+        _troop3dropsRange = new List<int> { 2, 6, 6, 11, 25, 20 };
+        _troop4dropsRange = new List<int> { 6, 6, 15, 20, 30, 45 };
 
         rb2d = GetComponent<Rigidbody2D>();
     }
