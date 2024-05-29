@@ -14,11 +14,35 @@ public class Player : MonoBehaviour
     private int _age = 1;
     public Castle castle;
     public Casern casern;
+    public Archi archi;
     public string baseName;
     public TextMeshProUGUI textMoney;
     public TextMeshProUGUI textXp;
-    public Sprite[] ageSprites = {};
-    public Scale[] ageScale = {};
+
+    public TextMeshProUGUI textPriceTroop1;
+    public TextMeshProUGUI textPriceTroop2;
+    public TextMeshProUGUI textPriceTroop3;
+    public TextMeshProUGUI textPriceTroop4;
+    public TextMeshProUGUI textPriceTroop1Info;
+    public TextMeshProUGUI textPriceTroop2Info;
+    public TextMeshProUGUI textPriceTroop3Info;
+    public TextMeshProUGUI textPriceTroop4Info;
+    public TextMeshProUGUI textPriceTurret1;
+    public TextMeshProUGUI textPriceTurret2;
+    public TextMeshProUGUI textPriceTurret3;
+    public TextMeshProUGUI textPriceTurret1Info;
+    public TextMeshProUGUI textPriceTurret2Info;
+    public TextMeshProUGUI textPriceTurret3Info;
+    public TextMeshProUGUI textPriceBuySpot;
+    public TextMeshProUGUI textPriceUpgradeTroop1;
+    public TextMeshProUGUI textPriceUpgradeTroop2;
+    public TextMeshProUGUI textPriceUpgradeTroop3;
+    public TextMeshProUGUI textPriceUpgradeTroop4;
+    public TextMeshProUGUI textPriceUpgradeTurretRange;
+    public TextMeshProUGUI textPriceUpgradeTurretDamage;
+    public TextMeshProUGUI textPriceUpgradeAge;
+    
+    public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white };
     public List<Sprite> attackSpecialSprite = new();
     public Button specialAttackButton;
     public List<Sprite> troop1Sprite = new();
@@ -33,6 +57,8 @@ public class Player : MonoBehaviour
     public List<Sprite> troop4Sprite = new();
     public Button troop4Button;
     public Image troop4Image;
+    public GameObject troop5ButtonUnlock;
+    public GameObject troop5ButtonUnlockInfo;
     public GameObject troop5Button;
     public List<Sprite> troop1UpgradeSprite = new();
     public Button troop1UpgradeButton;
@@ -54,15 +80,19 @@ public class Player : MonoBehaviour
     public List<GameObject> specialAttack;
     public List<int> specialCosts;
     public List<int> ageCosts;
+    
     public int troop1Level;
     public int troop2Level;
     public int troop3Level;
     public int troop4Level;
+    
     public int numberOfTroop;
+    
     private float _precision;
     private float _specialCooldown = 20f;
     private float _lastPlayer1Special;
     private float _lastPlayer2Special;
+    
     List<List<int>> _troops1UpgradeCosts = new()
     {
         new() { 30, 1 },
@@ -159,7 +189,7 @@ public class Player : MonoBehaviour
                 castle.AddMaxLifePoint(Mathf.RoundToInt(castle.maxLifePoint * 1.35f));
                 
                 SpriteRenderer spriteColor = GetComponent<SpriteRenderer>();
-                spriteColor.sprite = ageSprites[_age - 1];
+                spriteColor.color = ageColors[_age - 1];
                 specialAttackButton.image.sprite = attackSpecialSprite[_age - 1];
                 troop1Button.image.sprite = troop1Sprite[_age - 1];
                 troop1Image.sprite = troop1Sprite[_age - 1];
@@ -179,16 +209,29 @@ public class Player : MonoBehaviour
                 turret2Image.sprite = turret2Sprite[_age - 1];
                 turret3Button.image.sprite = turret3Sprite[_age - 1];
                 turret3Image.sprite = turret3Sprite[_age - 1];
+                
 
                 if (_age == 6)
                 {
                     troop5Button.SetActive(true);
+                    troop5ButtonUnlock.SetActive(true);
                 }
             }
         }
         else
         {
             Debug.Log("Max age reached");
+        }
+    }
+
+    public void UnlockTroop5()
+    {
+        if (_money >= 500)
+        {
+            AddMoney(-500);
+            troop5Button.SetActive(true);
+            troop5ButtonUnlock.SetActive(false);
+            troop5ButtonUnlockInfo.SetActive(false);
         }
     }
 
@@ -338,6 +381,13 @@ public class Player : MonoBehaviour
                     AddMoney(-_troops1UpgradeCosts[troop1Level][0]);
                     troop1Level += 1;
                     troop1UpgradeButton.image.sprite = troop1UpgradeSprite[_age + troop1Level * 6 - 1];
+                    int imageIndex = _age + troop1Level * 6 - 1;
+                    print(imageIndex);
+                    if (imageIndex > 18)
+                    {
+                        imageIndex = 18;
+                    }
+                    troop1UpgradeButton.image.sprite = troop1UpgradeSprite[imageIndex];
                 }
                 break;
 
@@ -347,6 +397,13 @@ public class Player : MonoBehaviour
                     AddMoney(-_troops2UpgradeCosts[troop2Level][0]);
                     troop2Level += 1;
                     troop2UpgradeButton.image.sprite = troop2UpgradeSprite[_age + troop2Level * 6 - 1];
+                    int imageIndex = _age + troop2Level * 6 - 1;
+                    print(imageIndex);
+                    if (imageIndex > 18)
+                    {
+                        imageIndex = 18;
+                    }
+                    troop2UpgradeButton.image.sprite = troop2UpgradeSprite[imageIndex];
                 }
                 break;
 
@@ -356,6 +413,13 @@ public class Player : MonoBehaviour
                     AddMoney(-_troops3UpgradeCosts[troop3Level][0]);
                     troop3Level += 1;
                     troop3UpgradeButton.image.sprite = troop3UpgradeSprite[_age + troop3Level * 6 - 1];
+                    int imageIndex = _age + troop3Level * 6 - 1;
+                    print(imageIndex);
+                    if (imageIndex > 18)
+                    {
+                        imageIndex = 18;
+                    }
+                    troop3UpgradeButton.image.sprite = troop3UpgradeSprite[imageIndex];
                 }
                 break;
 
@@ -365,6 +429,13 @@ public class Player : MonoBehaviour
                     AddMoney(-_troops4UpgradeCosts[troop4Level][0]);
                     troop4Level += 1;
                     troop4UpgradeButton.image.sprite = troop4UpgradeSprite[_age + troop4Level * 6 - 1];
+                    int imageIndex = _age + troop4Level * 6 - 1;
+                    print(imageIndex);
+                    if (imageIndex > 18)
+                    {
+                        imageIndex = 18;
+                    }
+                    troop4UpgradeButton.image.sprite = troop4UpgradeSprite[imageIndex];
                 }
                 break;
         }
@@ -374,6 +445,72 @@ public class Player : MonoBehaviour
     {
         textMoney.text = "Money : " + castle.player.GetMoney();
         textXp.text = "XP : " + castle.player.GetXp();
+        textPriceTroop1.text = "" + casern.troop1Costs[_age-1];
+        textPriceTroop2.text = "" + casern.troop2Costs[_age-1];
+        textPriceTroop3.text = "" + casern.troop3Costs[_age-1];
+        textPriceTroop4.text = "" + casern.troop4Costs[_age-1];
+        textPriceTroop1Info.text = "" + casern.troop1Costs[_age-1];
+        textPriceTroop2Info.text = "" + casern.troop2Costs[_age-1];
+        textPriceTroop3Info.text = "" + casern.troop3Costs[_age-1];
+        textPriceTroop4Info.text = "" + casern.troop4Costs[_age-1];
+        textPriceTurret1.text = "" + archi.turret1Costs[_age - 1];
+        textPriceTurret2.text = "" + archi.turret2Costs[_age - 1];
+        textPriceTurret3.text = "" + archi.turret3Costs[_age - 1];
+        textPriceTurret1Info.text = "" + archi.turret1Costs[_age - 1];
+        textPriceTurret2Info.text = "" + archi.turret2Costs[_age - 1];
+        textPriceTurret3Info.text = "" + archi.turret3Costs[_age - 1];
+        if (troop1Level < 3)
+        {
+            textPriceUpgradeTroop1.text = "" + _troops1UpgradeCosts[troop1Level][0];
+        }
+        else
+        {
+            textPriceUpgradeTroop1.text = "MAX";
+        }
+
+        if (troop2Level < 3)
+        {
+            textPriceUpgradeTroop2.text = "" + _troops2UpgradeCosts[troop2Level][0];
+        }
+        else
+        {
+            textPriceUpgradeTroop2.text = "MAX";
+        }
+        if (troop3Level < 3)
+        {
+            textPriceUpgradeTroop3.text = "" + _troops3UpgradeCosts[troop3Level][0];
+        }
+        else
+        {
+            textPriceUpgradeTroop3.text = "MAX";
+        }
+        if (troop4Level < 3)
+        {
+            textPriceUpgradeTroop4.text = "" + _troops4UpgradeCosts[troop4Level][0];
+        }
+        else
+        {
+            textPriceUpgradeTroop4.text = "MAX";
+        }
+        textPriceUpgradeTurretRange.text = " ??? ";
+        textPriceUpgradeTurretDamage.text = " ??? ";
+        if (_age < 6)
+        {
+            textPriceUpgradeAge.text = "" + ageCosts[_age-1];
+        }
+        else
+        {
+            textPriceUpgradeAge.text = "MAX";
+        }
+        if (castle.id == 1)
+        {
+            textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId1];
+        }
+        else
+        {
+            textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId2];
+        }
+        
         switch (_age)
         {
             case 1:
