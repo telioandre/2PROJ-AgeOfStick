@@ -28,6 +28,8 @@ public class PlayFabManager : MonoBehaviour
     {
         string username = usernameLoginInput.text;
         string password = passwordLoginInput.text;
+        usernameLoginInput.text = "";
+        passwordLoginInput.text = "";
         Login(username, password);
     }
 
@@ -36,6 +38,8 @@ public class PlayFabManager : MonoBehaviour
     {
         string username = usernameRegisterInput.text;
         string password = passwordRegisterInput.text;
+        usernameRegisterInput.text = "";
+        passwordRegisterInput.text = "";
         Register(username, password);
     }
     // Méthode pour se connecter à un compte PlayFab
@@ -137,6 +141,8 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnAddFriendSuccess(AddFriendResult result)
     {
+        ClearFriendButtons();
+        GetFriendList();
         //Debug.Log("Friend request sent successfully!");
     }
 
@@ -154,10 +160,8 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnGetFriendListSuccess(GetFriendsListResult result)
     {
-        //Debug.Log("Nombre d'amis " + result.Friends.Count);
         for (int i = 0; i < result.Friends.Count; i++)
         {
-            //print(result.Friends[i].TitleDisplayName + " friendName");
             float buttonYPosition = -i * 20f + 70f;
 
             GameObject friendButton = Instantiate(friendButtonPrefab, friendListPanel.transform);
@@ -176,22 +180,27 @@ public class PlayFabManager : MonoBehaviour
             {
                 var friend = result.Friends[i];
 				string friendName = friend.TitleDisplayName;
-                //buttonComponent.onClick.AddListener(() => OnClickFriendButton(name, friendName));
                 buttonComponent.onClick.AddListener(() => photonChatManager.ChatConnectOnClick(name, friendName));
             }
         }
 
         //Debug.Log("success");
     }
+    
+    public void ClearFriendButtons()
+    {
+        foreach (Transform child in friendListPanel.transform)
+        {
+            if (child.gameObject != friendButtonPrefab)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
 
     private void OnGetFriendListFailure(PlayFabError error)
     {
         Debug.LogError("Failed to get friend list: " + error.ErrorMessage);
-    }
-
-    private void OnClickFriendButton(string username, string friendName)
-    {
-
     }
 
     public void Logout()
