@@ -1095,7 +1095,7 @@ GameObject:
   - component: {fileID: 61884180}
   - component: {fileID: 61884179}
   m_Layer: 0
-  m_Name: InfoTurret2
+  m_Name: InfoTurretRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17443,7 +17443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588210158}
   m_Layer: 0
-  m_Name: Turret2Upgrade
+  m_Name: TurretUpgradeRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18843,7 +18843,7 @@ GameObject:
   - component: {fileID: 631799896}
   - component: {fileID: 631799895}
   m_Layer: 0
-  m_Name: TurretName
+  m_Name: Evolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21472,7 +21472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705003029}
   m_Layer: 0
-  m_Name: Turret2Upgrade
+  m_Name: TurretUpgradeRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21634,7 +21634,7 @@ GameObject:
   - component: {fileID: 716504708}
   - component: {fileID: 716504707}
   m_Layer: 0
-  m_Name: InfoTurret3
+  m_Name: InfoTurretDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27890,7 +27890,7 @@ GameObject:
   - component: {fileID: 910046029}
   - component: {fileID: 910046028}
   m_Layer: 0
-  m_Name: InfoTurret3
+  m_Name: InfoTurretDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30900,16 +30900,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castle: {fileID: 992134509}
   casern: {fileID: 2090991922}
+  archi: {fileID: 366302749}
   baseName: ally
   textMoney: {fileID: 141059014}
   textXp: {fileID: 1324395059}
-  ageSprites:
-  - {fileID: -1528989150, guid: 6271d6d807ae4ac44b9bc8ce4fed8924, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
+  textPriceTroop1: {fileID: 925259213}
+  textPriceTroop2: {fileID: 572307637}
+  textPriceTroop3: {fileID: 1151557343}
+  textPriceTroop4: {fileID: 1949672939}
+  textPriceTroop1Info: {fileID: 677483635}
+  textPriceTroop2Info: {fileID: 1381887119}
+  textPriceTroop3Info: {fileID: 499376560}
+  textPriceTroop4Info: {fileID: 1167107262}
+  textPriceTurret1: {fileID: 771666873}
+  textPriceTurret2: {fileID: 734853543}
+  textPriceTurret3: {fileID: 1928419340}
+  textPriceTurret1Info: {fileID: 982924151}
+  textPriceTurret2Info: {fileID: 1708947904}
+  textPriceTurret3Info: {fileID: 1217685516}
+  textPriceBuySpot: {fileID: 764186499}
+  textPriceUpgradeTroop1: {fileID: 1134589253}
+  textPriceUpgradeTroop2: {fileID: 413850937}
+  textPriceUpgradeTroop3: {fileID: 1093758919}
+  textPriceUpgradeTroop4: {fileID: 2121076270}
+  textPriceUpgradeTurretRange: {fileID: 1267743905}
+  textPriceUpgradeTurretDamage: {fileID: 1571794146}
+  textPriceUpgradeAge: {fileID: 1443587950}
+  ageColors:
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
   attackSpecialSprite:
   - {fileID: 21300000, guid: 0abb5ecd1dfdfe245bfc0e0f689f0f42, type: 3}
   - {fileID: 21300000, guid: 015a908920ffb904c8edfd7c690bed50, type: 3}
@@ -30934,7 +30957,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fd688066a4f8d544eb4a366ed04d0dce, type: 3}
   - {fileID: 21300000, guid: 8370c712c239b15469eac248160397ff, type: 3}
   - {fileID: 21300000, guid: 5657ae3f8c85a4c45b6a60013c70db40, type: 3}
-  troop2Button: {fileID: 0}
+  troop2Button: {fileID: 2057234653}
   troop2Image: {fileID: 1456589979}
   troop3Sprite:
   - {fileID: 21300000, guid: e2ded603533b07c4aa739b5c959bcf84, type: 3}
@@ -30943,7 +30966,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a3e0db49ca77ead448a5369316183438, type: 3}
   - {fileID: 21300000, guid: 25c9b050e08fc1f40ac68e8e7e62bc5a, type: 3}
   - {fileID: 21300000, guid: 895b13db51b706c489b6eea5dcac1288, type: 3}
-  troop3Button: {fileID: 0}
+  troop3Button: {fileID: 1053761649}
   troop3Image: {fileID: 1458578428}
   troop4Sprite:
   - {fileID: 21300000, guid: c01c971dd4836c949bf6af40fbb3b1fb, type: 3}
@@ -30952,9 +30975,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5a715a22504076b4a8f49194e87943dc, type: 3}
   - {fileID: 21300000, guid: abb6b676b43856f45b7cfc2695cbaaf4, type: 3}
   - {fileID: 21300000, guid: 96e0c476a857e7c4da665f0f14db3205, type: 3}
-  troop4Button: {fileID: 0}
+  troop4Button: {fileID: 2057172180}
   troop4Image: {fileID: 1602991542}
-  troop5Button: {fileID: 1731432025}
+  troop5ButtonUnlock: {fileID: 778898842}
+  troop5ButtonUnlockInfo: {fileID: 569065038}
+  troop5Button: {fileID: 1644093867}
   troop1UpgradeSprite:
   - {fileID: 21300000, guid: 0c5be534e2b5b6d448b55e7cd129f9f2, type: 3}
   - {fileID: 21300000, guid: 2f10788ce7302944cbda1c8851c68add, type: 3}
@@ -30974,6 +30999,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: af9024d4fad0ffd428394bff0ec1ab35, type: 3}
   - {fileID: 21300000, guid: 1512fdd7dc38f184b8cb78d1c68bc6aa, type: 3}
   - {fileID: 21300000, guid: e330df9de6e718e49b18020aac23fae1, type: 3}
+  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
   troop1UpgradeButton: {fileID: 2109946924}
   troop2UpgradeSprite:
   - {fileID: 21300000, guid: c5f0921bbeb8b3644bc350b6e3ec4c07, type: 3}
@@ -30994,6 +31020,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f47e6f4b34f3371418c1457399682500, type: 3}
   - {fileID: 21300000, guid: faa571259c5e8524fa6945ebdc248e1f, type: 3}
   - {fileID: 21300000, guid: 45e8fcc45117eed45913113b4803cc51, type: 3}
+  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
   troop2UpgradeButton: {fileID: 1188046594}
   troop3UpgradeSprite:
   - {fileID: 21300000, guid: b63b3d411cb3f0f4f9d9aa41f311b9ac, type: 3}
@@ -31014,6 +31041,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 95f16658f84ebe24e9693794c9b87b75, type: 3}
   - {fileID: 21300000, guid: ef9684e68323fb54a8412e23f9c146bd, type: 3}
   - {fileID: 21300000, guid: eb52e28f62d852b49ad4b7699de0d52e, type: 3}
+  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
   troop3UpgradeButton: {fileID: 689730735}
   troop4UpgradeSprite:
   - {fileID: 21300000, guid: e9f1e596dd3356c4a9f3df0594c79bed, type: 3}
@@ -31034,6 +31062,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f4762f94b56e19a4895049843941f066, type: 3}
   - {fileID: 21300000, guid: 952c49df562dbb840844c26434f556a7, type: 3}
   - {fileID: 21300000, guid: 0e826445ffce4f742bdd715224730d68, type: 3}
+  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
   troop4UpgradeButton: {fileID: 1911558016}
   turret1Sprite:
   - {fileID: 21300000, guid: 0cacab92daa1b104da54b1e0d6d4b751, type: 3}
@@ -37711,7 +37740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1124172405}
   m_Layer: 0
-  m_Name: Turret3Upgrade
+  m_Name: TurretUpgradeDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38538,7 +38567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1154489768}
   m_Layer: 0
-  m_Name: Turret3Upgrade
+  m_Name: TurretUpgradeDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42398,7 +42427,7 @@ GameObject:
   - component: {fileID: 1259694732}
   - component: {fileID: 1259694731}
   m_Layer: 0
-  m_Name: InfoTurret2
+  m_Name: InfoTurretRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53595,6 +53624,184 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
+--- !u!1 &1644093867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1644093872}
+  - component: {fileID: 1644093871}
+  - component: {fileID: 1644093870}
+  - component: {fileID: 1644093869}
+  - component: {fileID: 1644093868}
+  m_Layer: 0
+  m_Name: Troop5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1644093868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644093867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 377868498}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 377868498}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1644093869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644093867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1644093870}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2090991922}
+        m_TargetAssemblyTypeName: Casern, Assembly-CSharp
+        m_MethodName: InstantiateTroop
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 15
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1644093870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644093867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c0a0eba40e2518b43b1500e46b62adab, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1644093871
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644093867}
+  m_CullTransparentMesh: 1
+--- !u!224 &1644093872
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644093867}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1731432026}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -455.75598, y: -44.80002}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1646533263
 GameObject:
   m_ObjectHideFlags: 0
@@ -57533,6 +57740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1644093872}
   - {fileID: 58852085}
   m_Father: {fileID: 1152427224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69304,16 +69512,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castle: {fileID: 2073809404}
   casern: {fileID: 2090991922}
+  archi: {fileID: 366302749}
   baseName: enemy
   textMoney: {fileID: 240292419}
   textXp: {fileID: 2137901845}
-  ageSprites:
-  - {fileID: -1528989150, guid: 6271d6d807ae4ac44b9bc8ce4fed8924, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
-  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
+  textPriceTroop1: {fileID: 423956711}
+  textPriceTroop2: {fileID: 1306704890}
+  textPriceTroop3: {fileID: 901014412}
+  textPriceTroop4: {fileID: 1648260391}
+  textPriceTroop1Info: {fileID: 1198439518}
+  textPriceTroop2Info: {fileID: 1822776997}
+  textPriceTroop3Info: {fileID: 119841613}
+  textPriceTroop4Info: {fileID: 1309745905}
+  textPriceTurret1: {fileID: 865421022}
+  textPriceTurret2: {fileID: 1600821366}
+  textPriceTurret3: {fileID: 1336610296}
+  textPriceTurret1Info: {fileID: 405667258}
+  textPriceTurret2Info: {fileID: 474647224}
+  textPriceTurret3Info: {fileID: 1509302132}
+  textPriceBuySpot: {fileID: 846128273}
+  textPriceUpgradeTroop1: {fileID: 349940146}
+  textPriceUpgradeTroop2: {fileID: 1268202388}
+  textPriceUpgradeTroop3: {fileID: 1841202173}
+  textPriceUpgradeTroop4: {fileID: 797577577}
+  textPriceUpgradeTurretRange: {fileID: 924522873}
+  textPriceUpgradeTurretDamage: {fileID: 397496434}
+  textPriceUpgradeAge: {fileID: 2098642326}
+  ageColors:
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
   attackSpecialSprite:
   - {fileID: 21300000, guid: 0abb5ecd1dfdfe245bfc0e0f689f0f42, type: 3}
   - {fileID: 21300000, guid: 015a908920ffb904c8edfd7c690bed50, type: 3}
@@ -69358,7 +69589,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 96e0c476a857e7c4da665f0f14db3205, type: 3}
   troop4Button: {fileID: 780985197}
   troop4Image: {fileID: 1224869293}
-  troop5Button: {fileID: 813391244}
+  troop5ButtonUnlock: {fileID: 1438265985}
+  troop5ButtonUnlockInfo: {fileID: 1539660744}
+  troop5Button: {fileID: 643702998}
   troop1UpgradeSprite:
   - {fileID: 21300000, guid: 0c5be534e2b5b6d448b55e7cd129f9f2, type: 3}
   - {fileID: 21300000, guid: 2f10788ce7302944cbda1c8851c68add, type: 3}
@@ -69969,6 +70202,10 @@ MonoBehaviour:
   queue2: 
   troopsPlayer1: []
   troopsPlayer2: []
+  troop1Costs: 
+  troop2Costs: 
+  troop3Costs: 
+  troop4Costs: 
 --- !u!4 &2090991923
 Transform:
   m_ObjectHideFlags: 0

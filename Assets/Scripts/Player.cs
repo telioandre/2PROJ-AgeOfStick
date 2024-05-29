@@ -213,7 +213,6 @@ public class Player : MonoBehaviour
 
                 if (_age == 6)
                 {
-                    troop5Button.SetActive(true);
                     troop5ButtonUnlock.SetActive(true);
                 }
             }
