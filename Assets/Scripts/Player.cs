@@ -379,7 +379,6 @@ public class Player : MonoBehaviour
                 {
                     AddMoney(-_troops1UpgradeCosts[troop1Level][0]);
                     troop1Level += 1;
-                    troop1UpgradeButton.image.sprite = troop1UpgradeSprite[_age + troop1Level * 6 - 1];
                     int imageIndex = _age + troop1Level * 6 - 1;
                     print(imageIndex);
                     if (imageIndex > 18)
@@ -395,7 +394,6 @@ public class Player : MonoBehaviour
                 {
                     AddMoney(-_troops2UpgradeCosts[troop2Level][0]);
                     troop2Level += 1;
-                    troop2UpgradeButton.image.sprite = troop2UpgradeSprite[_age + troop2Level * 6 - 1];
                     int imageIndex = _age + troop2Level * 6 - 1;
                     print(imageIndex);
                     if (imageIndex > 18)
@@ -411,7 +409,6 @@ public class Player : MonoBehaviour
                 {
                     AddMoney(-_troops3UpgradeCosts[troop3Level][0]);
                     troop3Level += 1;
-                    troop3UpgradeButton.image.sprite = troop3UpgradeSprite[_age + troop3Level * 6 - 1];
                     int imageIndex = _age + troop3Level * 6 - 1;
                     print(imageIndex);
                     if (imageIndex > 18)
@@ -427,7 +424,6 @@ public class Player : MonoBehaviour
                 {
                     AddMoney(-_troops4UpgradeCosts[troop4Level][0]);
                     troop4Level += 1;
-                    troop4UpgradeButton.image.sprite = troop4UpgradeSprite[_age + troop4Level * 6 - 1];
                     int imageIndex = _age + troop4Level * 6 - 1;
                     print(imageIndex);
                     if (imageIndex > 18)
