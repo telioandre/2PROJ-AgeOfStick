@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 750
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10301,11 +10301,11 @@ PrefabInstance:
       objectReference: {fileID: 1303327399}
     - target: {fileID: 4484561531123593283, guid: 70f5d0b4dcf0ad146b633bc0d06080c5, type: 3}
       propertyPath: nbPlacementId1
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4484561531123593283, guid: 70f5d0b4dcf0ad146b633bc0d06080c5, type: 3}
       propertyPath: nbPlacementId2
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4484561531123593283, guid: 70f5d0b4dcf0ad146b633bc0d06080c5, type: 3}
       propertyPath: TurretType1Age1
@@ -47466,7 +47466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1342584524
 AudioListener:
   m_ObjectHideFlags: 0
