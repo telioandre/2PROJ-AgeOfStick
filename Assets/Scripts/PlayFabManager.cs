@@ -12,6 +12,7 @@ public class PlayFabManager : MonoBehaviour
     public TMP_InputField  passwordRegisterInput;
     public TMP_InputField  addFriendField;
     public GameObject friendListPanel;
+    public GameObject friendList;
     public GameObject friendButtonPrefab;
     public GameObject loginMenu;
 
@@ -141,6 +142,7 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnAddFriendSuccess(AddFriendResult result)
     {
+        addFriendField.text = "";
         ClearFriendButtons();
         GetFriendList();
         //Debug.Log("Friend request sent successfully!");
@@ -164,7 +166,7 @@ public class PlayFabManager : MonoBehaviour
         {
             float buttonYPosition = -i * 20f + 70f;
 
-            GameObject friendButton = Instantiate(friendButtonPrefab, friendListPanel.transform);
+            GameObject friendButton = Instantiate(friendButtonPrefab, friendList.transform);
             RectTransform buttonTransform = friendButton.GetComponent<RectTransform>();
 
             buttonTransform.anchoredPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonYPosition);
@@ -189,7 +191,7 @@ public class PlayFabManager : MonoBehaviour
     
     public void ClearFriendButtons()
     {
-        foreach (Transform child in friendListPanel.transform)
+        foreach (Transform child in friendList.transform)
         {
             if (child.gameObject != friendButtonPrefab)
             {
