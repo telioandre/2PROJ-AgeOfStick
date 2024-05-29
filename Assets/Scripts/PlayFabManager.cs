@@ -19,6 +19,10 @@ public class PlayFabManager : MonoBehaviour
 
     public GameObject mainMenu;
 
+	public PhotonChatManager photonChatManager;
+
+	private string name;
+
     // Méthode appelée lorsque l'utilisateur appuie sur le bouton de connexion
     public void OnLoginButtonClicked()
     {
@@ -70,10 +74,8 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnLoginSuccess(LoginResult result)
     {
-        Debug.Log("Logged in successfully!");
-        string name = null;
+        //Debug.Log("Logged in successfully!");
         name = result.InfoResultPayload.PlayerProfile.DisplayName;
-        Debug.Log(name);
         loginMenu.SetActive(false);
         registerMenu.SetActive(false);
         mainMenu.SetActive(true);
@@ -87,7 +89,7 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        Debug.Log("Registered successfully!");
+        //Debug.Log("Registered successfully!");
     }
 
     private void OnRegisterFailure(PlayFabError error)
@@ -95,7 +97,7 @@ public class PlayFabManager : MonoBehaviour
         Debug.LogError("Registration failed: " + error.ErrorMessage);
     }
 
-    public void addFriend()
+    public void AddFriend()
     {
         string friendName = addFriendField.text;
         var request = new GetAccountInfoRequest
@@ -135,7 +137,7 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnAddFriendSuccess(AddFriendResult result)
     {
-        Debug.Log("Friend request sent successfully!");
+        //Debug.Log("Friend request sent successfully!");
     }
 
     private void OnAddFriendFailure(PlayFabError error)
@@ -152,10 +154,10 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnGetFriendListSuccess(GetFriendsListResult result)
     {
-        Debug.Log("Nombre d'amis " + result.Friends.Count);
+        //Debug.Log("Nombre d'amis " + result.Friends.Count);
         for (int i = 0; i < result.Friends.Count; i++)
         {
-            print(result.Friends[i].TitleDisplayName + " friendName");
+            //print(result.Friends[i].TitleDisplayName + " friendName");
             float buttonYPosition = -i * 20f + 70f;
 
             GameObject friendButton = Instantiate(friendButtonPrefab, friendListPanel.transform);
@@ -172,14 +174,14 @@ public class PlayFabManager : MonoBehaviour
             Button buttonComponent = friendButton.GetComponent<Button>();
             if (buttonComponent != null)
             {
-                // Vous pouvez attacher une fonction à ce gestionnaire d'événements pour traiter le clic
-                // Par exemple, si vous avez une fonction nommée "OnClickFriendButton", vous pouvez la lier comme ceci :
                 var friend = result.Friends[i];
-                buttonComponent.onClick.AddListener(() => OnClickFriendButton(friend));
+				string friendName = friend.TitleDisplayName;
+                //buttonComponent.onClick.AddListener(() => OnClickFriendButton(name, friendName));
+                buttonComponent.onClick.AddListener(() => photonChatManager.ChatConnectOnClick(name, friendName));
             }
         }
 
-        Debug.Log("success");
+        //Debug.Log("success");
     }
 
     private void OnGetFriendListFailure(PlayFabError error)
@@ -187,9 +189,9 @@ public class PlayFabManager : MonoBehaviour
         Debug.LogError("Failed to get friend list: " + error.ErrorMessage);
     }
 
-    private void OnClickFriendButton(PlayFab.ClientModels.FriendInfo friend)
+    private void OnClickFriendButton(string username, string friendName)
     {
-        print(friend.TitleDisplayName);
+
     }
 
     public void Logout()
