@@ -184,6 +184,7 @@ public class GameManager : MonoBehaviour
         {
             transform.position = new Vector2(3500, 0);
             _player = GameObject.Find("Castle 2").GetComponent<Player>();
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
         char troopName = name[6];
         int troopNumber = int.Parse(troopName.ToString());
