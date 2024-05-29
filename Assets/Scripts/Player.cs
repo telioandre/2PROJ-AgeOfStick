@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         SetAge(1);
-        AddMoney(1000);
+        AddMoney(1250);
         AddXp(1000000000);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };

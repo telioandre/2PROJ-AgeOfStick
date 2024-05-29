@@ -250,10 +250,10 @@ public class GameManager : MonoBehaviour
         {
             RaycastHit2D[] hitsHauteur;
 
-            hitsHauteur = Physics2D.RaycastAll(new Vector2(6500, 380), new Vector2(0, 1), 2000000);
-            Debug.DrawRay(new Vector2(6500, 380), new Vector2(0, 1) * 2000000, Color.red);
+            hitsHauteur = Physics2D.RaycastAll(new Vector2(5000, 380), new Vector2(0, 1), 2000000);
+            Debug.DrawRay(new Vector2(5000, 380), new Vector2(0, 1) * 2000000, Color.red);
 
-            transform.position = new Vector2(6000, 1000 + 500 *hitsHauteur.Length);
+            transform.position = new Vector2(5000, 1000 + 500 *hitsHauteur.Length);
 
             _casern.isForming2 = false;
         }
