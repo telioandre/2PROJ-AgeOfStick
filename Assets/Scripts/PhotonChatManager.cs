@@ -9,7 +9,7 @@ public class PhotonChatManager : MonoBehaviour, IChatClientListener
 	private bool isOnline= false;
 	private string currentRoom;
 	public GameObject chatPanel;
-	public TextMeshProUGUI chatText;
+	public TMP_InputField  chatText;
 	public TextMeshProUGUI chatsText;
 
 	void Start()
@@ -20,18 +20,21 @@ public class PhotonChatManager : MonoBehaviour, IChatClientListener
 	void Update()
 	{		
 		print(" N ??  " + PhotonNetwork.connectionStateDetailed.ToString());
-		if(isOnline){
+		if(isOnline)
+		{
 			chatClient.Service();
-			print(" C !"+isOnline+"!  " + chatClient.State.ToString());
 		}
+		print(" C !"+isOnline+"!  " + chatClient.State.ToString());
 	}
 
 	public void ChatConnectOnClick(string username, string friendName)
 	{
-		isOnline = true;
-		currentRoom = string.Compare(username, friendName) < 0 ? username + friendName : friendName + username;
-
-    	chatClient.Connect("75f6333c-07e6-4dd5-b40a-b5d42c5d2b4d", "version2", new Photon.Chat.AuthenticationValues());
+		if (!isOnline)
+    	{
+			currentRoom = string.Compare(username, friendName) < 0 ? username + friendName : friendName + username;
+			isOnline = true;
+    		chatClient.Connect("75f6333c-07e6-4dd5-b40a-b5d42c5d2b4d", "version2", new Photon.Chat.AuthenticationValues());
+		}
 	}
 
 	public void OnConnected(){
@@ -48,17 +51,17 @@ public class PhotonChatManager : MonoBehaviour, IChatClientListener
 
 	public void Close()
 	{
+        chatClient.Disconnect();
 		chatPanel.SetActive(false);
 	}
 
 	public void SendMessages()
 	{
 		string message = chatText.text;
+		chatText.text = "";	
 		if(message != "")
 		{
 			chatClient.PublishMessage(currentRoom, message);
-			chatText.text = "";	
-			message = "";
 		}	
 	}
 
@@ -74,6 +77,7 @@ public class PhotonChatManager : MonoBehaviour, IChatClientListener
 
     public void OnDisconnected()
     {
+		isOnline = false;
         Debug.Log("Disconnected from Photon Chat");
     }
 
