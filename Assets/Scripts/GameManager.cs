@@ -350,7 +350,6 @@ public class GameManager : MonoBehaviour
 
         public IEnumerator TroopUnderSpecial(GameManager troop, SpecialCollision special, Player otherPlayer)
         {
-
             char troopChar = troop.name[6];
             int troopNumber = int.Parse(troopChar.ToString());
             int damage;
