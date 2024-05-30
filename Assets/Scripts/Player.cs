@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI textPriceUpgradeAge;
 
     public Sprite[] ageSprites = { };
-    public int[] ageScale = {8,10,10,15,15,15}; 
+    public int[] ageScale = {8,10,10,15,15,16}; 
     public List<Sprite> attackSpecialSprite = new();
     public Button specialAttackButton;
     public List<Sprite> troop1Sprite = new();
@@ -126,8 +126,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         SetAge(1);
-        AddMoney(10);
-        AddXp(2300);
+        AddMoney(1000);
+        AddXp(50000);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
