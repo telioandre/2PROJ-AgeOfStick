@@ -56,7 +56,7 @@ public class Ia : MonoBehaviour
         _frameCounter++;
         if (_frameCounter % UpdateInterval == 0)
         {
-            int randomNumber = Random.Range(1, 21);
+            int randomNumber = Random.Range(1, 31);
 
             if (player.GetAge() < 6)
             {

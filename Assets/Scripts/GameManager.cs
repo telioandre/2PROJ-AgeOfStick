@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -19,8 +20,8 @@ public class GameManager : MonoBehaviour
     public int maxLife;
     public int troopId;
     public string uniqueId;
-    public List<int> ataqueRange;
-    public bool start = false;
+    public List<int> attackRange;
+    public bool start;
 
 
     private List<int> _troop1dropsXp;
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
         _troop3dropsRange = new List<int> { 2, 6, 6, 11, 25, 20 };
         _troop4dropsRange = new List<int> { 6, 6, 15, 20, 30, 45 };
 
-        ataqueRange = new List<int> { 80, 180, 100, 80, 80};
+        attackRange = new List<int> { 80, 180, 100, 80, 80};
 
         rb2d = GetComponent<Rigidbody2D>();
     }
@@ -74,8 +75,8 @@ public class GameManager : MonoBehaviour
 
         if (id == 1)
         {
-            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), ataqueRange[troopId-1]);
-            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * ataqueRange[troopId-1], Color.red);
+            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), attackRange[troopId-1]);
+            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * attackRange[troopId-1], Color.red);
 
             // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
@@ -119,8 +120,8 @@ public class GameManager : MonoBehaviour
         }
         else if (id == 2)
         {
-            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), ataqueRange[troopId-1]);
-            Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * ataqueRange[troopId-1], Color.red);
+            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), attackRange[troopId-1]);
+            Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * attackRange[troopId-1], Color.red);
 
             // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
