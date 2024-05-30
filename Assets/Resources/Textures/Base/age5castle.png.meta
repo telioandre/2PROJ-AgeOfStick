@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 907501bea87993a458c673a73455318d
+guid: 01ae7e43625ea9141b452d05eb39937d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,110 +106,102 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: age4castle_4
+      name: age5castle_4
       rect:
         serializedVersion: 2
-        x: 2588
-        y: 9657
-        width: 747
-        height: 747
+        x: 2874
+        y: 7799
+        width: 643
+        height: 1155
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7b6c8a37a70827489b6ab1366a11249
-      internalID: 1342289683
+      spriteID: 0f331f0d97ada95429d344529ff943d9
+      internalID: 1324189186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: age4castle_1
+      name: age5castle_2
       rect:
         serializedVersion: 2
-        x: 2588
-        y: 7408
-        width: 747
-        height: 740
+        x: 2874
+        y: 6268
+        width: 636
+        height: 1082
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71c24d9d883985a4bbce3187c16f5cb9
-      internalID: 1389501136
+      spriteID: 2ad50513ffbcb344cb3cf1c5d3ab967b
+      internalID: 17081252
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: age4castle_2
+      name: age5castle_3
       rect:
         serializedVersion: 2
-        x: 2588
-        y: 5365
-        width: 747
-        height: 747
+        x: 2829
+        y: 4856
+        width: 688
+        height: 684
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24e62e03c5b350d478560e1ae6a60349
-      internalID: 2013916891
+      spriteID: 59c7b050d608c014a815d14abbd0cfbb
+      internalID: 1403096245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: age4castle_3
+      name: age5castle_
       rect:
         serializedVersion: 2
-        x: 2588
-        y: 3146
-        width: 747
-        height: 747
+        x: 1036
+        y: 286
+        width: 2482
+        height: 3856
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef9be55a4a65860428730dce56458cdc
-      internalID: 1853888413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: age4castle_
-      rect:
-        serializedVersion: 2
-        x: 421
-        y: 399
-        width: 3038
-        height: 1252
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d17927e2ed294d24c937aeb8ae2fc554
-      internalID: -1222431023
+      spriteID: 9f1c7cdb94d2bb54aa8815ad2de4dabd
+      internalID: -585880052
       vertices: []
       indices: 
       edges: []
@@ -225,11 +217,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      age4castle_: -1222431023
-      age4castle_1: 1389501136
-      age4castle_2: 2013916891
-      age4castle_3: 1853888413
-      age4castle_4: 1342289683
+      age5castle_: -585880052
+      age5castle_1: 1685235437
+      age5castle_2: 17081252
+      age5castle_3: 1403096245
+      age5castle_4: 1324189186
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

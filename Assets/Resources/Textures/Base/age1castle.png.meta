@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7658cb864689abf41804c18ef5934038
+guid: 6271d6d807ae4ac44b9bc8ce4fed8924
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,89 +106,102 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: age2castle_4
+      name: age1castle_4
       rect:
         serializedVersion: 2
-        x: 2676
-        y: 8375
-        width: 614
-        height: 740
+        x: 1007
+        y: 13070
+        width: 2518
+        height: 1157
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67a93b6fa6b9165488e5dd1cde07acab
-      internalID: -1669505935
+      spriteID: 91a741f5009329b46b33b3865d11ca0d
+      internalID: 1020366750
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: age2castle_
+      name: age1castle_3
       rect:
         serializedVersion: 2
-        x: 2676
-        y: 6794
-        width: 614
-        height: 556
+        x: 554
+        y: 8756
+        width: 3344
+        height: 2065
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 595f0c9a49161984095aab9855e21b39
-      internalID: -2105783224
+      spriteID: 0f2deba2f5b2717498431add350566d6
+      internalID: 1361906929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: age2castle_2
+      name: age1castle_2
       rect:
         serializedVersion: 2
-        x: 2676
-        y: 4882
-        width: 614
-        height: 556
+        x: 384
+        y: 5248
+        width: 3725
+        height: 2534
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3aa1b8d7de2b1d54dad7a854ca7d4e92
-      internalID: -177710481
+      spriteID: 889f19eeed664a547beeded5a198e606
+      internalID: 2033179375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: age2castle_1
+      name: age1castle_1
       rect:
         serializedVersion: 2
-        x: 194
-        y: 377
-        width: 3203
-        height: 2232
+        x: 531
+        y: 245
+        width: 4114
+        height: 3282
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce379f5754695ec438e4a9752cbd580c
-      internalID: -1934280724
+      spriteID: 2cca9b5edfc4d6647a5904bce0c698e6
+      internalID: -1528989150
       vertices: []
       indices: 
       edges: []
@@ -204,10 +217,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      age2castle_: -2105783224
-      age2castle_1: -1934280724
-      age2castle_2: -177710481
-      age2castle_4: -1669505935
+      age1castle_1: -1528989150
+      age1castle_2: 2033179375
+      age1castle_3: 1361906929
+      age1castle_4: 1020366750
+      age1castle_5: -1400819803
+      age1castle_6: -2030138304
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
