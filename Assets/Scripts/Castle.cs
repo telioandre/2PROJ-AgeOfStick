@@ -10,6 +10,7 @@ public class Castle : MonoBehaviour
     public Image bar;
     public Player player;
     public GameObject gameOverUI;
+
     void Start()
     {
         if (player == null)
