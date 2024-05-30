@@ -380,7 +380,6 @@ public class GameManager : MonoBehaviour
                 {
                     damage = troop.maxLife / 2;
                 }
-
             }
             else
             {

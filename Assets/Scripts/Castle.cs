@@ -29,7 +29,7 @@ public class Castle : MonoBehaviour
         Debug.Log("max life point = " + maxLifePoint);
     }
 
-    public IEnumerator DeleteLifePoint(int damage, int movement, Castle castle)
+    public IEnumerator DeleteLifePoint(int damage, float attackTime, int movement, Castle castle)
     {
         // Vérification des ID différents
         if (movement != castle.id)
@@ -42,14 +42,20 @@ public class Castle : MonoBehaviour
                 if (lifePoint <= 0)
                 {
                     // Opérateur ternaire qui indique qui a gagné
-                    string opponentBaseName = (player.baseName == "ally") ? "enemy" : "ally";
-                    Debug.Log(opponentBaseName + " win !");
-                    // Ferme l'appli et la preview
+                    string opponentBaseName = player.baseName == "ally" ? "enemy" : "ally";
+                    if (opponentBaseName == "ally")
+                    {
+                        print("Victoire ! Vous avez gagné");
+                    }
+                    else
+                    {
+                        print("Défaite... Vous avez perdu");
+                    }
                     gameOverUI.SetActive(true);
                     Time.timeScale = 0f;
                 }
                 // 1 seconde de délai entre chaque attaque
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(attackTime);
             }
         }
         else

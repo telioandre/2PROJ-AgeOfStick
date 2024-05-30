@@ -73,7 +73,7 @@ public class Collisions : MonoBehaviour
                 //Commence une coroutine qui va faire des dégâts au chateau
                 //Debug.Log("envoie " + castle.ID + "recoit : " + currentMovement.ID);
                 myRb.constraints = RigidbodyConstraints2D.FreezeAll;
-                StartCoroutine(castle.DeleteLifePoint(currentGameManager.attack, currentGameManager.id, castle));
+                StartCoroutine(castle.DeleteLifePoint(currentGameManager.attack, currentGameManager.attackTime, currentGameManager.id, castle));
             }
         }
 
