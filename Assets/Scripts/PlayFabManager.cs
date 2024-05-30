@@ -21,7 +21,6 @@ public class PlayFabManager : MonoBehaviour
     public GameObject mainMenu;
 
 	public PhotonChatManager photonChatManager;
-
 	private string name;
 
     // Méthode appelée lorsque l'utilisateur appuie sur le bouton de connexion
@@ -85,6 +84,11 @@ public class PlayFabManager : MonoBehaviour
         registerMenu.SetActive(false);
         mainMenu.SetActive(true);
         GetFriendList();
+    }
+
+    public string GetName()
+    {
+        return name;
     }
 
     private void OnLoginFailure(PlayFabError error)
