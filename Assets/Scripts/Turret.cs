@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
@@ -52,8 +53,10 @@ public class Turret : MonoBehaviour
             {
                 transform.position = new Vector3(138, 948, 239);
             }
-        }else if (id == 2)
+        }
+        else if (id == 2)
         {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             if (placement == 1)
             {
                 transform.position = new Vector3(4751, 690, 238);
