@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private int _age = 1;
     public Castle castle;
     public Casern casern;
+    public Ia ia;
     public Archi archi;
     public string baseName;
     public TextMeshProUGUI textMoney;
@@ -92,6 +93,9 @@ public class Player : MonoBehaviour
     private float _specialCooldown = 20f;
     private float _lastPlayer1Special;
     private float _lastPlayer2Special;
+
+    private float _moneyCooldown = 2f;
+    private float _previousMoneyDrop;
     
     List<List<int>> _troops1UpgradeCosts = new()
     {
@@ -121,8 +125,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         SetAge(1);
-        AddMoney(1250);
-        AddXp(1000000000);
+        AddMoney(10);
+        AddXp(1000);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
@@ -438,6 +442,18 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        _previousMoneyDrop += Time.deltaTime;
+        if (_previousMoneyDrop >= _moneyCooldown)
+        {
+            AddMoney(1);
+            if (castle.id == 2 && ia.GetDifficulty() == "Impossible")
+            {
+                print("done buff");
+                AddMoney(1);
+            }
+            _previousMoneyDrop = 0f;
+        }
+        
         textMoney.text = "Money : " + castle.player.GetMoney();
         textXp.text = "XP : " + castle.player.GetXp();
         textPriceTroop1.text = "" + casern.troop1Costs[_age-1];
@@ -499,11 +515,25 @@ public class Player : MonoBehaviour
         }
         if (castle.id == 1)
         {
-            textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId1];
+            if (archi.nbPlacementId1 < 4)
+            {
+                textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId1];
+            }
+            else
+            {
+                textPriceBuySpot.text = "MAX";
+            }
         }
         else
         {
-            textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId2];
+            if (archi.nbPlacementId2 < 4)
+            {
+                textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId2];
+            }
+            else
+            {
+                textPriceBuySpot.text = "MAX";
+            }
         }
         
         switch (_age)
