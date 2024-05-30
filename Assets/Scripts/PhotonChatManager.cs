@@ -18,8 +18,7 @@ public class PhotonChatManager : MonoBehaviour, IChatClientListener
 	}
 
 	void Update()
-	{		
-		print(" N ??  " + PhotonNetwork.connectionStateDetailed.ToString());
+	{
 		if(isOnline)
 		{
 			chatClient.Service();

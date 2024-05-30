@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     private List<int> _troop2dropsRange;
     private List<int> _troop3dropsRange;
     private List<int> _troop4dropsRange;
+    //public Image health;
 
     private void Start()
     {
@@ -354,7 +356,6 @@ public class GameManager : MonoBehaviour
 
         public IEnumerator TroopUnderSpecial(GameManager troop, SpecialCollision special, Player otherPlayer)
         {
-
             char troopChar = troop.name[6];
             int troopNumber = int.Parse(troopChar.ToString());
             int damage;

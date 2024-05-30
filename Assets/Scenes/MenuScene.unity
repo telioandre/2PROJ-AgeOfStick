@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &10988072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5180,7 +5180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &178064375
 Transform:
   m_ObjectHideFlags: 0
@@ -6466,6 +6466,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1449982398}
     m_Modifications:
+    - target: {fileID: 298702535559334806, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 539528602458023295, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6506,11 +6510,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 698526004247962215, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503316723870158285, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848303402077427558, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986208608122752939, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333543187377194451, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 3022553909190511731, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3110347562781591531, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3147001163926567530, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -6522,9 +6550,33 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4883692124252890519, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637355754861062457, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6182187405647270837, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
       propertyPath: m_Name
       value: Position Turret Id1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182187405647270837, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016330468280045902, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524994931282691387, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620507721920238908, guid: 58cb606692fc1fc4ebd11934ca04bb6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10559,6 +10611,14 @@ PrefabInstance:
       propertyPath: spriteRenderer4_Id2
       value: 
       objectReference: {fileID: 1303327400}
+    - target: {fileID: 4484561531123593283, guid: 70f5d0b4dcf0ad146b633bc0d06080c5, type: 3}
+      propertyPath: spotCosts.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484561531123593283, guid: 70f5d0b4dcf0ad146b633bc0d06080c5, type: 3}
+      propertyPath: spotCosts.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4484561531123593283, guid: 70f5d0b4dcf0ad146b633bc0d06080c5, type: 3}
       propertyPath: listTurretId1.Array.size
       value: 4
@@ -32069,6 +32129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castle: {fileID: 992134509}
   casern: {fileID: 2090991922}
+  ia: {fileID: 868192455}
   archi: {fileID: 366302749}
   baseName: ally
   textMoney: {fileID: 141059014}
@@ -32095,13 +32156,14 @@ MonoBehaviour:
   textPriceUpgradeTurretRange: {fileID: 1267743905}
   textPriceUpgradeTurretDamage: {fileID: 1571794146}
   textPriceUpgradeAge: {fileID: 1443587950}
-  ageColors:
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
+  ageSprites:
+  - {fileID: -1528989150, guid: 6271d6d807ae4ac44b9bc8ce4fed8924, type: 3}
+  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
+  - {fileID: 191092033, guid: ed8dcf45247374b40a51b1a0f268e9e4, type: 3}
+  - {fileID: -1222431023, guid: 907501bea87993a458c673a73455318d, type: 3}
+  - {fileID: -585880052, guid: 01ae7e43625ea9141b452d05eb39937d, type: 3}
+  - {fileID: -1222431023, guid: 907501bea87993a458c673a73455318d, type: 3}
+  ageScale: 080000000a0000000a0000000f0000000f0000000f000000
   attackSpecialSprite:
   - {fileID: 21300000, guid: 0abb5ecd1dfdfe245bfc0e0f689f0f42, type: 3}
   - {fileID: 21300000, guid: 015a908920ffb904c8edfd7c690bed50, type: 3}
@@ -32419,7 +32481,7 @@ Transform:
   m_GameObject: {fileID: 992134508}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 260, y: 486, z: 282.87}
+  m_LocalPosition: {x: 226, y: 486, z: 282.87}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47539,7 +47601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1342584524
 AudioListener:
   m_ObjectHideFlags: 0
@@ -72260,6 +72322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castle: {fileID: 2073809404}
   casern: {fileID: 2090991922}
+  ia: {fileID: 868192455}
   archi: {fileID: 366302749}
   baseName: enemy
   textMoney: {fileID: 240292419}
@@ -72286,13 +72349,14 @@ MonoBehaviour:
   textPriceUpgradeTurretRange: {fileID: 924522873}
   textPriceUpgradeTurretDamage: {fileID: 397496434}
   textPriceUpgradeAge: {fileID: 2098642326}
-  ageColors:
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
+  ageSprites:
+  - {fileID: -1528989150, guid: 6271d6d807ae4ac44b9bc8ce4fed8924, type: 3}
+  - {fileID: -1934280724, guid: 7658cb864689abf41804c18ef5934038, type: 3}
+  - {fileID: 191092033, guid: ed8dcf45247374b40a51b1a0f268e9e4, type: 3}
+  - {fileID: -1222431023, guid: 907501bea87993a458c673a73455318d, type: 3}
+  - {fileID: -585880052, guid: 01ae7e43625ea9141b452d05eb39937d, type: 3}
+  - {fileID: -1222431023, guid: 907501bea87993a458c673a73455318d, type: 3}
+  ageScale: 080000000a0000000a0000000f0000000f0000000f000000
   attackSpecialSprite:
   - {fileID: 21300000, guid: 0abb5ecd1dfdfe245bfc0e0f689f0f42, type: 3}
   - {fileID: 21300000, guid: 015a908920ffb904c8edfd7c690bed50, type: 3}

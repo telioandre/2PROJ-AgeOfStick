@@ -60,7 +60,7 @@ public class Archi : MonoBehaviour
 
     public List<int> spotCosts = new()
     {
-        20, 50, 120, 200
+        20, 50, 120, 200, 0000
     };
 
     public List<int> turret1Costs = new()

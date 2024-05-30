@@ -21,8 +21,6 @@ public class Collisions : MonoBehaviour
         Player ally = currentGameManager.GetPlayer();
         Player otherPlayer;
 
-
-
         if (collision.gameObject.CompareTag("Ground"))
         {
             myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -55,7 +53,12 @@ public class Collisions : MonoBehaviour
             {
                 otherPlayer = castle2.player;
             }
-
+            
+            if (specialID != currentGameManager.id)
+            {
+                StartCoroutine(currentGameManager.TroopUnderSpecial(currentGameManager, special, otherPlayer));
+            }
+            else
             if (specialID == currentGameManager.id)
             {
                 Destroy(collision.gameObject);

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Ia : MonoBehaviour
 {
@@ -44,6 +46,11 @@ public class Ia : MonoBehaviour
         }
     }
 
+    public string GetDifficulty()
+    {
+        return _difficulty;
+    }
+
     void Update()
     {
         _frameCounter++;
@@ -81,20 +88,21 @@ public class Ia : MonoBehaviour
                         }
                         else if(archi.nbPlacementId2 > archi.nbTowerId2)
                         {
-                            IaBuildTurret(archi.nbPlacementId2, 2);
+                            int turret = Random.Range(1, 4);
+                            IaBuildTurret(archi.nbPlacementId2, turret);
                         }
                     }
 
-                    if (randomNumber >= 15)
+                    if (randomNumber >= 20)
                     {
                         IaGenerateTroop(0);
                     }
 
                     break;
                 case "Normal":
-                    if ((castle.lifePoint < _previousLifePoint || randomNumber >= 15) && player.numberOfTroop == 0)
+                    if ((castle.lifePoint < _previousLifePoint || randomNumber >= 22) && player.numberOfTroop == 0)
                     {
-                        IaGenerateEffectiveTroop(); // sur le premier
+                        IaGenerateEffectiveTroop(1); // sur le premier
                     }
 
                     if (randomNumber <= 2)
@@ -105,7 +113,8 @@ public class Ia : MonoBehaviour
                         }
                         else if(archi.nbPlacementId2 > archi.nbTowerId2)
                         {
-                            IaBuildTurret(archi.nbPlacementId2, 2);
+                            int turret = Random.Range(1, 4);
+                            IaBuildTurret(archi.nbPlacementId2, turret);
                         }
                     }
 
@@ -121,7 +130,7 @@ public class Ia : MonoBehaviour
                         IaGenerateTroop(0);
                     }
 
-                    if (randomNumber >= 15)
+                    if (randomNumber >= 20)
                     {
                         if (opponent.numberOfTroop == 0)
                         {
@@ -130,12 +139,12 @@ public class Ia : MonoBehaviour
 
                         if (player.numberOfTroop == 0 && opponent.numberOfTroop > player.numberOfTroop)
                         {
-                            IaGenerateEffectiveTroop(); // sur le premier
+                            IaGenerateEffectiveTroop(1); // sur le premier
                         }
 
-                        List<int> possibleTroop = new List<int>() { 1, 2, 3, 4 };
+                        List<int> possibleTroop = new List<int> { 1, 2, 3, 4 };
                         int troopToAvoid = CountTroops();
-                        possibleTroop.Remove((troopToAvoid % 4) + 1);
+                        possibleTroop.Remove(troopToAvoid % 4 + 1);
                         int randomIndex = Random.Range(0, possibleTroop.Count);
                         int troopToInstantiate = possibleTroop[randomIndex];
                         int value = int.Parse("2" + troopToInstantiate);
@@ -149,11 +158,12 @@ public class Ia : MonoBehaviour
                     {
                         if (archi.nbPlacementId2 < 4 && archi.nbPlacementId2 == archi.nbTowerId2)
                         {
-                            IaBuildTowerSpot();
+                            IaBuildTowerSpot(); 
                         }
                         else if(archi.nbPlacementId2 > archi.nbTowerId2)
                         {
-                            IaBuildTurret(archi.nbPlacementId2, 2);
+                            int turret = Random.Range(1, 4);
+                            IaBuildTurret(archi.nbPlacementId2, turret);
                         }
                     }
 
@@ -166,12 +176,12 @@ public class Ia : MonoBehaviour
                     if (player.numberOfTroop + 5 <= opponent.numberOfTroop)
                     {
                         IaSpecialAttack();
-                        IaGenerateEffectiveTroop(); // sur le premier
+                        IaGenerateEffectiveTroop(1); // sur le premier
                     }
 
-                    if (randomNumber >= 16)
+                    if (randomNumber >= 20)
                     {
-                        IaGenerateEffectiveTroop(); // sur celle équivalent
+                        IaGenerateEffectiveTroop(casern.troopsPlayer2.Count); // sur celle équivalent
                     }
 
                     if (randomNumber >= 18 && Time.time - _lastCombo > -Cooldown)
@@ -184,7 +194,7 @@ public class Ia : MonoBehaviour
                     break;
 
                 case "Impossible":
-                    if (player.numberOfTroop == 0)
+                    if (player.numberOfTroop == 0 && !IsStep1Completed() && !IsStep2Completed())
                     {
                         StartCoroutine(IaGenerateCombos(3));
                     }
@@ -220,7 +230,7 @@ public class Ia : MonoBehaviour
                             IaBuildTurret(archi.nbPlacementId2, 2);
                         }
 
-                        if (randomNumber >= 15)
+                        if (randomNumber >= 18)
                         {
                             IaGenerateTroop(2);
                         }
@@ -235,13 +245,39 @@ public class Ia : MonoBehaviour
                         if (player.GetAge() != 6)
                         {
                             AgeUp();
-                            /*IaSell();
-                            IaSell();
-                            IaBuildTurret(1, 3);
-                            IaBuildTurret(2, 3);
-                            IaGenerateTroop(5);*/
                         } 
+                        IaSell(4);
+                        IaSell(3);
+                        IaBuildTurret(3, 2);
+                        IaBuildTurret(4, 2);
+                        if (player.GetAge() == 6)
+                        {
+                            IaUnlockTroop5();
+                            
+                            if (randomNumber >= 1 && randomNumber < 5)
+                            {
+                                int randomTroop = Random.Range(1, 5);
+                                IaUpgradeTroop(randomTroop);
+                            }
+
+                            if (randomNumber >= 5 && randomNumber < 8)
+                            {
+                                IaBuildTurret(1, 2);
+                            }
+                            if (randomNumber >= 8 && randomNumber < 11)
+                            {
+                                IaBuildTurret(2, 2);
+                            }
+                            
+                            if (randomNumber >= 25)
+                            {
+                                IaGenerateTroop(0);
+                            }
+                            IaGenerateTroop(5);
+                        }
                     }
+                    
+                    
 
                     break;
             }
@@ -257,7 +293,7 @@ public class Ia : MonoBehaviour
     
     private bool IsStep2Completed()
     {
-        return player.GetMoney() >= 1000 && player.GetXp() >= 50000;
+        return player.GetMoney() >= 1200 && player.GetXp() >= 47500;
     }
     
     public int CountTroops()
@@ -364,15 +400,19 @@ public class Ia : MonoBehaviour
         yield return null;
     }
 
-    void IaGenerateEffectiveTroop()
+    void IaGenerateEffectiveTroop(int index)
     {
+        if (index == -1)
+        {
+            index = casern.troopsPlayer1.Count - 1;
+        }
         if (opponent.numberOfTroop > 0)
         {
             if (opponent.numberOfTroop > player.numberOfTroop)
             {
-                int lastEnemy = casern.troopsPlayer1[casern.troopsPlayer1.Count - 1].GetComponent<GameManager>().troopId;
+                int enemyTroop = casern.troopsPlayer1[index].GetComponent<GameManager>().troopId;
                 
-                switch (lastEnemy)
+                switch (enemyTroop)
                 {
                     case 1:
                         casern.InstantiateTroop(24);
@@ -415,17 +455,20 @@ public class Ia : MonoBehaviour
 
     void AgeUp()
     {
-        //Debug.Log(" IAge Up");
         player.AgeUp();
     }
 
-    void IaSell()
+    void IaSell(int placement)
     {
-        
+        archi.SellSpot(placement, 2);
     }
     void IaSpecialAttack()
     {
-        //Debug.Log(" IAttaque spéciale");
         player.SpecialAttack(2);
+    }
+
+    void IaUnlockTroop5()
+    {
+        player.UnlockTroop5();
     }
 }

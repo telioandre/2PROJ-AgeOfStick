@@ -855,7 +855,7 @@ MonoBehaviour:
   speed: 200
   id: 0
   movementAllowed: 1
-  life: 300
+  life: 200
   attack: 35
   troopLevel: 1
   buildTime: 2

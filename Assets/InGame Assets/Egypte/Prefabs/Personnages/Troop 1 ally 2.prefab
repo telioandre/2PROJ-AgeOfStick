@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 0}
-  speed: 600
+  speed: 300
   id: 0
   movementAllowed: 1
   life: 100

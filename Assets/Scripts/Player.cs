@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private int _age = 1;
     public Castle castle;
     public Casern casern;
+    public Ia ia;
     public Archi archi;
     public string baseName;
     public TextMeshProUGUI textMoney;
@@ -41,8 +42,9 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI textPriceUpgradeTurretRange;
     public TextMeshProUGUI textPriceUpgradeTurretDamage;
     public TextMeshProUGUI textPriceUpgradeAge;
-    
-    public Color[] ageColors = { Color.blue, Color.yellow, Color.grey, Color.green, Color.magenta, Color.white };
+
+    public Sprite[] ageSprites = { };
+    public int[] ageScale = {8,10,10,15,15,15}; 
     public List<Sprite> attackSpecialSprite = new();
     public Button specialAttackButton;
     public List<Sprite> troop1Sprite = new();
@@ -92,6 +94,9 @@ public class Player : MonoBehaviour
     private float _specialCooldown = 20f;
     private float _lastPlayer1Special;
     private float _lastPlayer2Special;
+
+    private float _moneyCooldown = 7f;
+    private float _previousMoneyDrop;
     
     List<List<int>> _troops1UpgradeCosts = new()
     {
@@ -121,8 +126,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         SetAge(1);
-        AddMoney(1250);
-        AddXp(1000000000);
+        AddMoney(10);
+        AddXp(2300);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
@@ -188,8 +193,10 @@ public class Player : MonoBehaviour
                 castle.AddLifePoint(Mathf.RoundToInt(castle.lifePoint * 1.35f));
                 castle.AddMaxLifePoint(Mathf.RoundToInt(castle.maxLifePoint * 1.35f));
                 
-                SpriteRenderer spriteColor = GetComponent<SpriteRenderer>();
-                spriteColor.color = ageColors[_age - 1];
+                SpriteRenderer sprite = GetComponent<SpriteRenderer>(); 
+                sprite.sprite = ageSprites[_age - 1];
+                Transform transform = sprite.transform;
+                transform.localScale = new Vector3(ageScale[_age - 1], ageScale[_age - 1], ageScale[_age - 1]);
                 specialAttackButton.image.sprite = attackSpecialSprite[_age - 1];
                 troop1Button.image.sprite = troop1Sprite[_age - 1];
                 troop1Image.sprite = troop1Sprite[_age - 1];
@@ -438,6 +445,18 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        _previousMoneyDrop += Time.deltaTime;
+        if (_previousMoneyDrop >= _moneyCooldown)
+        {
+            AddMoney(1);
+            if (castle.id == 2 && ia.GetDifficulty() == "Impossible")
+            {
+                print("done buff");
+                AddMoney(1);
+            }
+            _previousMoneyDrop = 0f;
+        }
+        
         textMoney.text = "Money : " + castle.player.GetMoney();
         textXp.text = "XP : " + castle.player.GetXp();
         textPriceTroop1.text = "" + casern.troop1Costs[_age-1];
@@ -499,11 +518,25 @@ public class Player : MonoBehaviour
         }
         if (castle.id == 1)
         {
-            textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId1];
+            if (archi.nbPlacementId1 < 4)
+            {
+                textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId1];
+            }
+            else
+            {
+                textPriceBuySpot.text = "MAX";
+            }
         }
         else
         {
-            textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId2];
+            if (archi.nbPlacementId2 < 4)
+            {
+                textPriceBuySpot.text = "" + archi.spotCosts[archi.nbPlacementId2];
+            }
+            else
+            {
+                textPriceBuySpot.text = "MAX";
+            }
         }
         
         switch (_age)
