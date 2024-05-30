@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,10 @@ public class Castle : MonoBehaviour
     public Image bar;
     public Player player;
     public GameObject gameOverUI;
+    public GameObject winText;
+    public GameObject lostText;
+    public TextMeshProUGUI winner;
+    public PlayFabManager playFabManager;
     void Start()
     {
         if (player == null)
@@ -45,10 +50,15 @@ public class Castle : MonoBehaviour
                     string opponentBaseName = player.baseName == "ally" ? "enemy" : "ally";
                     if (opponentBaseName == "ally")
                     {
+                        //winner.text = ""
+                        winText.SetActive(true);
                         print("Victoire ! Vous avez gagné");
                     }
                     else
                     {
+                        print(playFabManager.GetName() + " le vrai");
+                        winner.text = playFabManager.GetName();
+                        lostText.SetActive(true);
                         print("Défaite... Vous avez perdu");
                     }
                     gameOverUI.SetActive(true);
