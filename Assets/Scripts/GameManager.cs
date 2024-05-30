@@ -184,6 +184,7 @@ public class GameManager : MonoBehaviour
         {
             transform.position = new Vector2(3500, 0);
             _player = GameObject.Find("Castle 2").GetComponent<Player>();
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
         char troopName = name[6];
         int troopNumber = int.Parse(troopName.ToString());
@@ -250,10 +251,10 @@ public class GameManager : MonoBehaviour
         {
             RaycastHit2D[] hitsHauteur;
 
-            hitsHauteur = Physics2D.RaycastAll(new Vector2(5100, 380), new Vector2(0, 1), 2000000);
-            Debug.DrawRay(new Vector2(5100, 380), new Vector2(0, 1) * 2000000, Color.red);
+            hitsHauteur = Physics2D.RaycastAll(new Vector2(5000, 380), new Vector2(0, 1), 2000000);
+            Debug.DrawRay(new Vector2(5000, 380), new Vector2(0, 1) * 2000000, Color.red);
 
-            transform.position = new Vector2(5100, 1000 + 500 *hitsHauteur.Length);
+            transform.position = new Vector2(5000, 1000 + 500 *hitsHauteur.Length);
 
             _casern.isForming2 = false;
         }
