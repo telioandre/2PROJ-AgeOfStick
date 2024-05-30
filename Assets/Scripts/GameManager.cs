@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         _troop3dropsRange = new List<int> { 2, 6, 6, 11, 25, 20 };
         _troop4dropsRange = new List<int> { 6, 6, 15, 20, 30, 45 };
 
-        ataqueRange = new List<int> { 50, 100, 50, 30, 50 };
+        ataqueRange = new List<int> { 80, 180, 100, 80, 80};
 
         rb2d = GetComponent<Rigidbody2D>();
     }

@@ -9,6 +9,7 @@ public class Collisions : MonoBehaviour
     private void Start()
     {
         _unitCollider = GetComponent<Collider2D>();
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,6 +24,9 @@ public class Collisions : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            currentGameManager.start = true;
+            Debug.Log("ca a toucher le sol");
+            
         }
 
         if (collision.gameObject.CompareTag("Special") && gameObject.CompareTag("Player"))
@@ -122,12 +126,12 @@ public class Collisions : MonoBehaviour
     public void OnCollisionExit2D(Collision2D collision)
     {
         //Permet qu'aucun objet ne soit figé (par exemple si 2 objets avec le même ID ne bougent pas et que le 1er bat l'ennemi et reprend sa course, alors le 2e ne sera pas figé non plus
-        if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player") && GetComponent<GameManager>().start)
         {
             Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();
             Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
-            myRb.constraints = RigidbodyConstraints2D.None;
-            enemyRb.constraints = RigidbodyConstraints2D.None;
+            myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            enemyRb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
 
