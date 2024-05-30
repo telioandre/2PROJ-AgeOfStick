@@ -303,6 +303,8 @@ MonoBehaviour:
   maxLife: 0
   troopId: 0
   uniqueId: 
+  attackRange: 
+  start: 0
 --- !u!1 &2756076322948646294
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,14 +95,14 @@ public class Ia : MonoBehaviour
 
                     if (randomNumber >= 20)
                     {
-                        IaGenerateTroop(0);
+                        //IaGenerateTroop(0);
                     }
 
                     break;
                 case "Normal":
                     if ((castle.lifePoint < _previousLifePoint || randomNumber >= 22) && player.numberOfTroop == 0)
                     {
-                        IaGenerateEffectiveTroop(1); // sur le premier
+                        IaGenerateEffectiveTroop(0);
                     }
 
                     if (randomNumber <= 2)
@@ -139,7 +139,7 @@ public class Ia : MonoBehaviour
 
                         if (player.numberOfTroop == 0 && opponent.numberOfTroop > player.numberOfTroop)
                         {
-                            IaGenerateEffectiveTroop(1); // sur le premier
+                            IaGenerateEffectiveTroop(0);
                         }
 
                         List<int> possibleTroop = new List<int> { 1, 2, 3, 4 };
@@ -176,12 +176,12 @@ public class Ia : MonoBehaviour
                     if (player.numberOfTroop + 5 <= opponent.numberOfTroop)
                     {
                         IaSpecialAttack();
-                        IaGenerateEffectiveTroop(1); // sur le premier
+                        IaGenerateEffectiveTroop(0);
                     }
 
                     if (randomNumber >= 20)
                     {
-                        IaGenerateEffectiveTroop(casern.troopsPlayer2.Count); // sur celle équivalent
+                        IaGenerateEffectiveTroop(casern.troopsPlayer2.Count);
                     }
 
                     if (randomNumber >= 18 && Time.time - _lastCombo > -Cooldown)

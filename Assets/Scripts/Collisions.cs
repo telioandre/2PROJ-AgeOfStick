@@ -66,7 +66,7 @@ public class Collisions : MonoBehaviour
         }
 
         // Si une collision concerne un chateau
-        if ((collision.gameObject.CompareTag("player 1") && currentGameManager.id == 2 || (collision.gameObject.CompareTag("player 2") && currentGameManager.id == 1)))
+        if (collision.gameObject.CompareTag("player 1") && currentGameManager.id == 2 || (collision.gameObject.CompareTag("player 2") && currentGameManager.id == 1))
         {
             if (castle != null)
             {

@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &10988072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5179,7 +5179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &178064375
 Transform:
   m_ObjectHideFlags: 0
@@ -32237,7 +32237,6 @@ MonoBehaviour:
   - {fileID: -1222431023, guid: 907501bea87993a458c673a73455318d, type: 3}
   - {fileID: -585880052, guid: 01ae7e43625ea9141b452d05eb39937d, type: 3}
   - {fileID: -585880052, guid: 01ae7e43625ea9141b452d05eb39937d, type: 3}
-  ageScale: 080000000a0000000a0000000f0000000f0000000f000000
   attackSpecialSprite:
   - {fileID: 21300000, guid: 0abb5ecd1dfdfe245bfc0e0f689f0f42, type: 3}
   - {fileID: 21300000, guid: 015a908920ffb904c8edfd7c690bed50, type: 3}
@@ -32396,20 +32395,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: acde277e3736ee54fa11d9b0f38f9500, type: 3}
   turret3Button: {fileID: 921246048}
   turret3Image: {fileID: 1762736415}
-  turretRangeSprite:
-  - {fileID: 21300000, guid: dcbaebc219586304ea2388c33f49c651, type: 3}
-  - {fileID: 21300000, guid: 018c18253cbc06542965c6ace3572e8f, type: 3}
-  - {fileID: 21300000, guid: b67bcc8a79cc8a24ab10e33959c8d0fe, type: 3}
-  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
-  turretRangeButton: {fileID: 1695883661}
-  turretRangeImage: {fileID: 1695883662}
-  turretDamageSprite:
-  - {fileID: 21300000, guid: 771d2b46f8931d442b0736ddb6690084, type: 3}
-  - {fileID: 21300000, guid: d289eefce44a7ed4290440cd9f8333e2, type: 3}
-  - {fileID: 21300000, guid: ff63d8e282cbd5a41b16c3644081f3c0, type: 3}
-  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
-  turretDamageButton: {fileID: 1073615907}
-  turretDamageImage: {fileID: 1073615908}
+  turretRangeSprite: []
+  turretRangeButton: {fileID: 0}
+  turretRangeImage: {fileID: 0}
+  turretDamageSprite: []
+  turretDamageButton: {fileID: 0}
+  turretDamageImage: {fileID: 0}
   specialAttack:
   - {fileID: 922170554763523580, guid: 82c6daea845da734f8b999a51fee4613, type: 3}
   - {fileID: 1116061920095385270, guid: cedc68f29e977cf43a3654b5dad91f68, type: 3}
@@ -35532,7 +35523,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4499.166, y: 298.04782}
+  m_Offset: {x: 4499.166, y: 601.6485}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -35543,7 +35534,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10434.441, y: 746.0151}
+  m_Size: {x: 10434.441, y: 138.8136}
   m_EdgeRadius: 0
 --- !u!4 &1061219751
 Transform:
@@ -47587,7 +47578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1342584524
 AudioListener:
   m_ObjectHideFlags: 0
@@ -63406,7 +63397,6 @@ GameObject:
   - component: {fileID: 1793643361}
   - component: {fileID: 1793643363}
   - component: {fileID: 1793643362}
-  - component: {fileID: 1793643364}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -63453,7 +63443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: -------
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -63530,46 +63520,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793643360}
   m_CullTransparentMesh: 1
---- !u!114 &1793643364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1793643360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:4a1101680a8158b4997259921328c55e
-    m_TableEntryReference:
-      m_KeyId: 10319880940556288
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1793643362}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &1795553357
 GameObject:
   m_ObjectHideFlags: 0
@@ -72759,7 +72709,6 @@ MonoBehaviour:
   - {fileID: -1222431023, guid: 907501bea87993a458c673a73455318d, type: 3}
   - {fileID: -585880052, guid: 01ae7e43625ea9141b452d05eb39937d, type: 3}
   - {fileID: -585880052, guid: 01ae7e43625ea9141b452d05eb39937d, type: 3}
-  ageScale: 080000000a0000000a0000000f0000000f0000000f000000
   attackSpecialSprite:
   - {fileID: 21300000, guid: 0abb5ecd1dfdfe245bfc0e0f689f0f42, type: 3}
   - {fileID: 21300000, guid: 015a908920ffb904c8edfd7c690bed50, type: 3}
@@ -72918,20 +72867,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: acde277e3736ee54fa11d9b0f38f9500, type: 3}
   turret3Button: {fileID: 1692714971}
   turret3Image: {fileID: 1434801288}
-  turretRangeSprite:
-  - {fileID: 21300000, guid: dcbaebc219586304ea2388c33f49c651, type: 3}
-  - {fileID: 21300000, guid: 018c18253cbc06542965c6ace3572e8f, type: 3}
-  - {fileID: 21300000, guid: b67bcc8a79cc8a24ab10e33959c8d0fe, type: 3}
-  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
-  turretRangeButton: {fileID: 1695883661}
-  turretRangeImage: {fileID: 1695883662}
-  turretDamageSprite:
-  - {fileID: 21300000, guid: 771d2b46f8931d442b0736ddb6690084, type: 3}
-  - {fileID: 21300000, guid: d289eefce44a7ed4290440cd9f8333e2, type: 3}
-  - {fileID: 21300000, guid: ff63d8e282cbd5a41b16c3644081f3c0, type: 3}
-  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
-  turretDamageButton: {fileID: 1073615907}
-  turretDamageImage: {fileID: 1073615908}
+  turretRangeSprite: []
+  turretRangeButton: {fileID: 0}
+  turretRangeImage: {fileID: 0}
+  turretDamageSprite: []
+  turretDamageButton: {fileID: 0}
+  turretDamageImage: {fileID: 0}
   specialAttack:
   - {fileID: 922170554763523580, guid: 35de6371198df414d9b773032f0870b5, type: 3}
   - {fileID: 1116061920095385270, guid: 9b940fc4026ef554084ba2ff0e41beb2, type: 3}
@@ -75870,6 +75811,18 @@ PrefabInstance:
     - target: {fileID: 3120960704655400584, guid: 4e96fab609de6cf46bef6fe795dc8e36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288172272262651731, guid: 4e96fab609de6cf46bef6fe795dc8e36, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288172272262651731, guid: 4e96fab609de6cf46bef6fe795dc8e36, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 2579ac10dd2829046b56afbeed7dda1f, type: 3}
+    - target: {fileID: 5288172272262651731, guid: 4e96fab609de6cf46bef6fe795dc8e36, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5561172286093424716, guid: 4e96fab609de6cf46bef6fe795dc8e36, type: 3}
       propertyPath: m_Name

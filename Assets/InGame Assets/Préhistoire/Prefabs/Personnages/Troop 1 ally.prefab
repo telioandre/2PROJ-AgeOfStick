@@ -761,7 +761,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!114 &-715548656633507938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,6 +786,8 @@ MonoBehaviour:
   maxLife: 0
   troopId: 0
   uniqueId: 
+  attackRange: 
+  start: 0
 --- !u!114 &-8579057442827759137
 MonoBehaviour:
   m_ObjectHideFlags: 0

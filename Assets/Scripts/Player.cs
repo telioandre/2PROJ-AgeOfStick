@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI textPriceUpgradeAge;
 
     public Sprite[] ageSprites = { };
-    public int[] ageScale = {8,10,10,15,15,16}; 
     public List<Sprite> attackSpecialSprite = new();
     public Button specialAttackButton;
     public List<Sprite> troop1Sprite = new();
@@ -147,7 +146,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         SetAge(1);
-        AddMoney(1000);
+        AddMoney(10000);
         AddXp(50000);
 
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
@@ -216,8 +215,6 @@ public class Player : MonoBehaviour
                 
                 SpriteRenderer sprite = GetComponent<SpriteRenderer>(); 
                 sprite.sprite = ageSprites[_age - 1];
-                Transform transform = sprite.transform;
-                transform.localScale = new Vector3(ageScale[_age - 1], ageScale[_age - 1], ageScale[_age - 1]);
                 specialAttackButton.image.sprite = attackSpecialSprite[_age - 1];
                 troop1Button.image.sprite = troop1Sprite[_age - 1];
                 troop1Image.sprite = troop1Sprite[_age - 1];
@@ -422,7 +419,6 @@ public class Player : MonoBehaviour
                     AddMoney(-_troops2UpgradeCosts[troop2Level][0]);
                     troop2Level += 1;
                     int imageIndex = _age + troop2Level * 6 - 1;
-                    print(imageIndex);
                     if (imageIndex > 18)
                     {
                         imageIndex = 18;
