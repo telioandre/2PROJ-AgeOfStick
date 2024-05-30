@@ -10,19 +10,12 @@ public class EnemyShooting : MonoBehaviour
     public Transform bulletPos;
     public float detectionRadius = 10f;  // Rayon de détection
     public LayerMask targetLayer;  // Layer des cibles à détecter
-    public int damage;
+    public int damage = 100;
     public float delay = 1f;
     public int ID;
 
     private float timer;
     public List<Transform> targets = new List<Transform>();
-
-    private void Start()
-    {
-        var turretScript = GetComponent<Turret>();
-        damage = turretScript.getDamage();
-        detectionRadius = turretScript.getRange();
-    }
 
     // Update is called once per frame
     void Update()
@@ -44,11 +37,9 @@ public class EnemyShooting : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             Debug.DrawLine(bulletPos.position, hit.transform.position, Color.green, 1f); // Ligne verte pour montrer la détection
-            var enemyScript = hit.GetComponent<GameManager>(); 
+            var enemyScript = hit.GetComponent<GameManager>();
             var turretScript = GetComponent<Turret>();
             ID = turretScript.GetIdTurret();
-            damage = turretScript.getDamage();
-            detectionRadius = turretScript.getRange();
 
             if (enemyScript != null)
             {

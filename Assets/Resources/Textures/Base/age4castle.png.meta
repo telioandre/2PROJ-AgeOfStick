@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7e66ff05c038ad46ac87d9fe4b9df89
+guid: 907501bea87993a458c673a73455318d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,19 +81,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -119,17 +106,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ShopBackground_Top
+      name: age4castle_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 994
-        width: 1920
-        height: 86
+        x: 2588
+        y: 9657
+        width: 747
+        height: 747
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 521f4a27fff6d234cac0b488ac884e69
-      internalID: -1561506456
+      spriteID: a7b6c8a37a70827489b6ab1366a11249
+      internalID: 1342289683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShopBackground_Bottom
+      name: age4castle_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 247
+        x: 2588
+        y: 7408
+        width: 747
+        height: 740
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0c74cdf860235340aa93fe975f33adb
-      internalID: -2038001388
+      spriteID: 71c24d9d883985a4bbce3187c16f5cb9
+      internalID: 1389501136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: age4castle_2
+      rect:
+        serializedVersion: 2
+        x: 2588
+        y: 5365
+        width: 747
+        height: 747
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24e62e03c5b350d478560e1ae6a60349
+      internalID: 2013916891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: age4castle_3
+      rect:
+        serializedVersion: 2
+        x: 2588
+        y: 3146
+        width: 747
+        height: 747
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9be55a4a65860428730dce56458cdc
+      internalID: 1853888413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: age4castle_
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 399
+        width: 3038
+        height: 1252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17927e2ed294d24c937aeb8ae2fc554
+      internalID: -1222431023
       vertices: []
       indices: 
       edges: []
@@ -175,8 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ShopBackground_Bottom: -2038001388
-      ShopBackground_Top: -1561506456
+      age4castle_: -1222431023
+      age4castle_1: 1389501136
+      age4castle_2: 2013916891
+      age4castle_3: 1853888413
+      age4castle_4: 1342289683
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
