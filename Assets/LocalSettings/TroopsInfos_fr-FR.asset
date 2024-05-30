@@ -130,6 +130,10 @@ MonoBehaviour:
     m_Localized: Rejouer
     m_Metadata:
       m_Items: []
+  - m_Id: 9953897436549120
+    m_Localized: ' a perdu la partie.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -130,6 +130,10 @@ MonoBehaviour:
     m_Localized: reproducir
     m_Metadata:
       m_Items: []
+  - m_Id: 9953897436549120
+    m_Localized: " perdi\xF3 el partido."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

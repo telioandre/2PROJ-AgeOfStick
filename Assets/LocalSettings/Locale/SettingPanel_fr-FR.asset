@@ -146,6 +146,30 @@ MonoBehaviour:
     m_Localized: confirmer
     m_Metadata:
       m_Items: []
+  - m_Id: 10317798330208256
+    m_Localized: "cr\xE9er un compte"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10318484497371136
+    m_Localized: se connecter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319266093338624
+    m_Localized: fermer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319880940556288
+    m_Localized: liste d'ami(s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10320270427820032
+    m_Localized: ajouter un ami
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10321279145349120
+    m_Localized: "se d\xE9connecter"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

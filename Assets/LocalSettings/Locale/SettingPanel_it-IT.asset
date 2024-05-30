@@ -146,6 +146,30 @@ MonoBehaviour:
     m_Localized: confermare
     m_Metadata:
       m_Items: []
+  - m_Id: 10317798330208256
+    m_Localized: creare un account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10318484497371136
+    m_Localized: vai al login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319266093338624
+    m_Localized: chiudere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319880940556288
+    m_Localized: elenco amici
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10320270427820032
+    m_Localized: Aggiungi amico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10321279145349120
+    m_Localized: logout
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

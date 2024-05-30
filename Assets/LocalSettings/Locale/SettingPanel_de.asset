@@ -146,6 +146,30 @@ MonoBehaviour:
     m_Localized: "best\xE4tigen"
     m_Metadata:
       m_Items: []
+  - m_Id: 10317798330208256
+    m_Localized: einen Account erstellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10318484497371136
+    m_Localized: Zum Login gehen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319266093338624
+    m_Localized: "schlie\xDFen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319880940556288
+    m_Localized: Freundesliste(n)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10320270427820032
+    m_Localized: Freund einladen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10321279145349120
+    m_Localized: Abmeldung
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

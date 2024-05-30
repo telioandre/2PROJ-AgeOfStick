@@ -147,6 +147,30 @@ MonoBehaviour:
     m_Key: validate
     m_Metadata:
       m_Items: []
+  - m_Id: 10317798330208256
+    m_Key: go_create
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10318484497371136
+    m_Key: go_login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319266093338624
+    m_Key: close_tab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319880940556288
+    m_Key: friendlist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10320270427820032
+    m_Key: add_friend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10321279145349120
+    m_Key: logout
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
