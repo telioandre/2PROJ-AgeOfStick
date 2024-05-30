@@ -22,8 +22,8 @@ public class Ia : MonoBehaviour
     private void Start()
     {
         _selectedDifficulty = DifficultyManager.difficulty;
-        //_difficulty = "Normal";
-        _difficulty = _selectedDifficulty.ToString().Split(' ')[0];
+        _difficulty = "Easy";
+        //_difficulty = _selectedDifficulty.ToString().Split(' ')[0];
         Debug.Log(_difficulty);
         _previousLifePoint = castle.maxLifePoint;
         _lastCombo = -Cooldown;

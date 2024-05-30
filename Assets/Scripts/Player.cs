@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
     private float _lastPlayer1Special;
     private float _lastPlayer2Special;
 
-    private float _moneyCooldown = 2f;
+    private float _moneyCooldown = 7f;
     private float _previousMoneyDrop;
     
     List<List<int>> _troops1UpgradeCosts = new()
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
     {
         SetAge(1);
         AddMoney(10);
-        AddXp(1000);
+        AddXp(2300);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
