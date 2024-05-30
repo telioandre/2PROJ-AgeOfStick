@@ -130,6 +130,10 @@ MonoBehaviour:
     m_Localized: wieder spielen
     m_Metadata:
       m_Items: []
+  - m_Id: 9953897436549120
+    m_Localized: ' das Spiel verloren hat.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

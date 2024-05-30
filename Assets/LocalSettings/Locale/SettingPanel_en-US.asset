@@ -146,6 +146,30 @@ MonoBehaviour:
     m_Localized: confirm
     m_Metadata:
       m_Items: []
+  - m_Id: 10317798330208256
+    m_Localized: go to registration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10318484497371136
+    m_Localized: go to login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319266093338624
+    m_Localized: close tab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10319880940556288
+    m_Localized: friend(s) list
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10320270427820032
+    m_Localized: add friend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10321279145349120
+    m_Localized: logout
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
