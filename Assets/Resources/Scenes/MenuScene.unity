@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &10988072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5180,7 +5180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &178064375
 Transform:
   m_ObjectHideFlags: 0
@@ -11663,10 +11663,10 @@ RectTransform:
   m_LocalScale: {x: 0.29312497, y: 3.2747, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1469317368}
   - {fileID: 460782417}
   - {fileID: 1171455291}
   - {fileID: 1262511805}
-  - {fileID: 1469317368}
   m_Father: {fileID: 143639716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -12787,7 +12787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &433808321
 Transform:
   m_ObjectHideFlags: 0
@@ -22628,7 +22628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &708647822
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31504,7 +31504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLAYER
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -32116,8 +32116,8 @@ MonoBehaviour:
   bar: {fileID: 1529071319}
   player: {fileID: 992134510}
   gameOverUI: {fileID: 750990023}
-  winner: {fileID: 0}
-  playFabManager: {fileID: 0}
+  winner: {fileID: 982627094}
+  playFabManager: {fileID: 746310389}
 --- !u!114 &992134510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47619,7 +47619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1342584524
 AudioListener:
   m_ObjectHideFlags: 0
@@ -72781,8 +72781,8 @@ MonoBehaviour:
   bar: {fileID: 1118368337}
   player: {fileID: 2073809400}
   gameOverUI: {fileID: 750990023}
-  winner: {fileID: 0}
-  playFabManager: {fileID: 0}
+  winner: {fileID: 982627094}
+  playFabManager: {fileID: 746310389}
 --- !u!4 &2073809405
 Transform:
   m_ObjectHideFlags: 0

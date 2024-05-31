@@ -305,8 +305,6 @@ public class Player : MonoBehaviour
         {
             if (casern.troopsPlayer2.Count > 0)
             {
-                start = Mathf.RoundToInt(casern.troopsPlayer2[0].transform.position.x);
-                end = Mathf.RoundToInt(casern.troopsPlayer2[casern.troopsPlayer2.Count - 1].transform.position.x);
                 for (int i = 0; i < casern.troopsPlayer2.Count; i++)
                 {
                     Rigidbody2D script = casern.troopsPlayer2[i].GetComponent<Rigidbody2D>();
