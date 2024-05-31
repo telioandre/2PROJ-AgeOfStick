@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         attackRange = new List<int> { 80, 180, 100, 80, 80};
 
         rb2d = GetComponent<Rigidbody2D>();
+        rb2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
     private void Update()
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
                     }
 
                 }
-                if (firstHit != default && firstHit != null)
+                if (firstHit != default && firstHit != null && start)
                 {
                     print("AAAAAAAAAAAAAAAAAAATAQUE");
                     StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer())); 

@@ -407,23 +407,26 @@ public class Casern : MonoBehaviour
     {
         Player currentPlayer;
         List<GameObject> currentTroops;
+        Vector2 new_position;
 
         if (id == 1)
         {
             isForming1 = true;
             currentPlayer = castle1.player;
             currentTroops = troopsPlayer1;
+            new_position = new Vector2(500, 0);
         }
         else
         {
             isForming2 = true;
             currentPlayer = castle2.player;
             currentTroops = troopsPlayer2;
+            new_position = new Vector2(5000, 0);
         }
 
         if (_isOnline)
         {
-            GameObject newObject = PhotonNetwork.Instantiate(troopToCreate.name, transform.position, Quaternion.identity, 0);
+            GameObject newObject = PhotonNetwork.Instantiate(troopToCreate.name, new_position, Quaternion.identity, 0);
             currentPlayer.numberOfTroop += 1;
             currentPlayer.AddMoney(-_cost);
             currentTroops.Add(newObject);
@@ -432,7 +435,7 @@ public class Casern : MonoBehaviour
         }
         else
         {
-            GameObject newObject = Instantiate(troopToCreate, transform.position, Quaternion.identity);
+            GameObject newObject = Instantiate(troopToCreate, new_position, Quaternion.identity);
             currentPlayer.numberOfTroop += 1;
             currentPlayer.AddMoney(-_cost);
             GameManager script = newObject.GetComponent<GameManager>();
