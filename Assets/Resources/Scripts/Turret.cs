@@ -6,21 +6,25 @@ public class Turret : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private EnemyShooting _enemyShooting;
 
-    public string name1 = "none";
     public int age = 1;
     public int type;
     public int placement;
     public int idTurret;
+    public int range;
+    public int damage;
 
 
     // Constructeur de la classe
-    public void Initialize(int placementTurret, int id)
+    public void Initialize(int placementTurret, int id, int rangeTurret, float damageTurret)
     {
         placement = placementTurret;
-        idTurret = id;
+        idTurret = id; 
+        range = rangeTurret;
+        damage = (int)damageTurret;
         // Obtenez le composant SpriteRenderer
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _enemyShooting = GetComponent<EnemyShooting>();
+
         // Assurez-vous que le composant SpriteRenderer existe
         if (_spriteRenderer == null)
         {
@@ -32,6 +36,16 @@ public class Turret : MonoBehaviour
     public int GetIdTurret()
     {
         return idTurret;
+    }
+
+    public int getDamage()
+    {
+        return damage;
+    }
+
+    public int getRange()
+    {
+        return range;
     }
 
     public void SetPosition(int id)

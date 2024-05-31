@@ -72,10 +72,16 @@ public class GameManager : MonoBehaviour
         RaycastHit2D[] hits;
         RaycastHit2D hitCastle;
 
+        int attackRangeOfLevel = attackRange[troopId - 1];
+        for (int i = 0; i < troopLevel; i++)
+        {
+            attackRangeOfLevel = Mathf.RoundToInt(attackRangeOfLevel * 1.2f);
+        }
+        print(attackRangeOfLevel);
         if (id == 1)
         {
-            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), attackRange[troopId-1]);
-            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * attackRange[troopId-1], Color.red);
+            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), attackRangeOfLevel);
+            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * attackRangeOfLevel, Color.red);
 
             // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
@@ -97,7 +103,7 @@ public class GameManager : MonoBehaviour
                     }
 
                 }
-                if (firstHit != default && firstHit != null)
+                if (firstHit != default && firstHit != null && start)
                 {
                     print("AAAAAAAAAAAAAAAAAAATAQUE");
                     StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer())); 
@@ -120,8 +126,8 @@ public class GameManager : MonoBehaviour
         }
         else if (id == 2)
         {
-            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), attackRange[troopId-1]);
-            Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * attackRange[troopId-1], Color.red);
+            hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), attackRangeOfLevel);
+            Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * attackRangeOfLevel, Color.red);
 
             // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
@@ -184,12 +190,10 @@ public class GameManager : MonoBehaviour
         _casern = GameObject.Find("Casern").GetComponent<Casern>();
         if (id == 1)
         {
-            transform.position = new Vector2(500, 0);
             _player = GameObject.Find("Castle 1").GetComponent<Player>();
         }
         else
         {
-            transform.position = new Vector2(5000, 0);
             _player = GameObject.Find("Castle 2").GetComponent<Player>();
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
@@ -308,6 +312,7 @@ public class GameManager : MonoBehaviour
 
     public void DropRewards(int troop, Player ally, Player enemy)
     {
+        Debug.Log("troop = " + troop);
         switch (troop)
         {
             case 1:

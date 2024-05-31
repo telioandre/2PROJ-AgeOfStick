@@ -78,6 +78,12 @@ public class Player : MonoBehaviour
     public List<Sprite> turret3Sprite = new();
     public Button turret3Button;
     public Image turret3Image;
+    public List<Sprite> turretRangeSprite = new();
+    public Button turretRangeButton;
+    public Image turretRangeImage;
+    public List<Sprite> turretDamageSprite = new();
+    public Button turretDamageButton;
+    public Image turretDamageImage;
     public List<GameObject> specialAttack;
     public List<int> specialCosts;
     public List<int> ageCosts;
@@ -88,7 +94,10 @@ public class Player : MonoBehaviour
     public int troop4Level;
     
     public int numberOfTroop;
-    
+
+    public int TurretRangeLevel;
+    public int TurretDamageLevel;
+
     private float _precision;
     private float _specialCooldown = 20f;
     private float _lastPlayer1Special;
@@ -120,6 +129,18 @@ public class Player : MonoBehaviour
         new() { 100, 2 },
         new() { 210, 4 },
         new() { 280, 5 }
+    };
+    List<List<int>> _turretRangeUpgradeCosts = new()
+    {
+        new() { 100, 2 },
+        new() { 200, 4 },
+        new() { 270, 6 }
+    };
+    List<List<int>> _turretDamageUpgradeCosts = new()
+    {
+        new() { 30, 1 },
+        new() { 150, 3 },
+        new() { 230, 5 }
     };
 
     private void Start()
@@ -374,6 +395,35 @@ public class Player : MonoBehaviour
         yield return null;
     }
 
+    public void UpgradeTurret(int upgrade)
+    {
+        switch (upgrade)
+        {
+            case 1:
+                if (TurretRangeLevel <= 3)
+                {
+                    if (_money >= _turretRangeUpgradeCosts[TurretRangeLevel][0] && _age >= _turretRangeUpgradeCosts[TurretRangeLevel][1])
+                    {
+                        AddMoney(-_turretRangeUpgradeCosts[TurretRangeLevel][0]);
+                        TurretRangeLevel += 1;
+                        turretRangeButton.image.sprite = turretRangeSprite[TurretRangeLevel];
+                    }
+                }
+                break;
+
+            case 2:
+                if (TurretDamageLevel <= 3)
+                {
+                    if (_money >= _turretDamageUpgradeCosts[TurretDamageLevel][0] && _age >= _turretDamageUpgradeCosts[TurretDamageLevel][1])
+                    {
+                        AddMoney(-_turretDamageUpgradeCosts[TurretDamageLevel][0]);
+                        TurretDamageLevel += 1;
+                        turretDamageButton.image.sprite = turretDamageSprite[TurretDamageLevel];
+                    }
+                }
+                break;
+        }
+    }
     public void UpgradeTroopLevel(int troop)
     {
         switch (troop)
