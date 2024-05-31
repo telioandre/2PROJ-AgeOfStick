@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
         attackRange = new List<int> { 80, 180, 100, 80, 80};
 
         rb2d = GetComponent<Rigidbody2D>();
-        rb2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
     private void Update()
@@ -100,7 +99,6 @@ public class GameManager : MonoBehaviour
                 }
                 if (firstHit != default && firstHit != null && start)
                 {
-                    print("AAAAAAAAAAAAAAAAAAATAQUE");
                     StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer())); 
                 }
 
@@ -132,7 +130,7 @@ public class GameManager : MonoBehaviour
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
+                    if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
                     {
                         // Obtenir le premier élément touché
                         firstHit = hits[i];
@@ -185,12 +183,10 @@ public class GameManager : MonoBehaviour
         _casern = GameObject.Find("Casern").GetComponent<Casern>();
         if (id == 1)
         {
-            transform.position = new Vector2(500, 0);
             _player = GameObject.Find("Castle 1").GetComponent<Player>();
         }
         else
         {
-            transform.position = new Vector2(5000, 0);
             _player = GameObject.Find("Castle 2").GetComponent<Player>();
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
@@ -230,29 +226,20 @@ public class GameManager : MonoBehaviour
         {
             attack = Mathf.RoundToInt(attack * 1.2f);
         }
-        if (id == 1)
-        {
-            transform.position = new Vector2(1500, 0);
-        }
-        else
-        { 
-            transform.position = new Vector2(3500, 0);
-        }
         maxLife = life;
         Invoke("Endbuild", buildTime);
     }
     private void Endbuild()
     {
+        RaycastHit2D[] hitsWidth;
+        hitsWidth = Physics2D.RaycastAll(new Vector2(250, 500), Vector2.right, 5000);
         if (id == 1)
         {
             RaycastHit2D[] hitsHeight;
-            RaycastHit2D[] hitsWidth;
 
-            hitsHeight = Physics2D.RaycastAll(new Vector2(-250, 380), new Vector2(0, 1), 2000000);
+            hitsHeight = Physics2D.RaycastAll(new Vector2(-250, 300), new Vector2(0, 1), 2000000);
             Debug.DrawRay(new Vector2(-250, 380), new Vector2(0, 1) * 2000000, Color.red);
 
-            hitsWidth = Physics2D.RaycastAll(new Vector2(-250, 380), Vector2.right, 2000);
-            Debug.DrawRay(new Vector2(-250, 380), Vector2.right * 2000, Color.green);
 
             int countWidth = 0;
             foreach (var hit in hitsWidth)
@@ -265,20 +252,16 @@ public class GameManager : MonoBehaviour
             
             int totalHits = hitsHeight.Length + countWidth;
 
-            transform.position = new Vector2(-250, 1000 + 1500 * totalHits);
+            transform.position = new Vector2(-250, 1000 + 2000 * totalHits);
 
             _casern.isForming1 = false;
         }
         else if (id == 2)
         {
             RaycastHit2D[] hitsHeight;
-            RaycastHit2D[] hitsWidth;
 
-            hitsHeight = Physics2D.RaycastAll(new Vector2(5200, 380), new Vector2(0, 1), 2000000);
+            hitsHeight = Physics2D.RaycastAll(new Vector2(5200, 300), new Vector2(0, 1), 2000000);
             Debug.DrawRay(new Vector2(5200, 380), new Vector2(0, 1) * 2000000, Color.red);
-
-            hitsWidth = Physics2D.RaycastAll(new Vector2(5200, 380), Vector2.right, 2000);
-            Debug.DrawRay(new Vector2(5200, 380), Vector2.left * 2000, Color.green);
             
             int countWidth = 0;
             foreach (var hit in hitsWidth)
@@ -291,7 +274,7 @@ public class GameManager : MonoBehaviour
             
             int totalHits = hitsHeight.Length + countWidth;
             
-            transform.position = new Vector2(5200, 1000 + 1500 * totalHits);
+            transform.position = new Vector2(5200, 1000 + 1000 * totalHits);
 
             _casern.isForming2 = false;
         }
