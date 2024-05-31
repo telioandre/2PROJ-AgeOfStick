@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: -1688539422982105810}
   - component: {fileID: -156921732357878458}
   - component: {fileID: 7744467926255123339}
+  - component: {fileID: 5684940805340580360}
   m_Layer: 3
   m_Name: Troop 4 ally
   m_TagString: Player
@@ -226,6 +227,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.8127017, y: 3.4413347}
   m_EdgeRadius: 0
+--- !u!95 &5684940805340580360
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032783257559137101}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f649511f0c0477c46b28b2f0d56de899, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1578141622857689487
 GameObject:
   m_ObjectHideFlags: 0
