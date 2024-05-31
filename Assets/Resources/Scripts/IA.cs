@@ -69,6 +69,7 @@ public class Ia : MonoBehaviour
             switch (_difficulty)
             {
                 case "Easy":
+                    print(randomNumber);
                     if (randomNumber == 1)
                     {
                         IaSpecialAttack();

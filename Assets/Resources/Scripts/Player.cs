@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     public Sprite[] ageSprites = { };
     public List<Sprite> attackSpecialSprite = new();
     public Button specialAttackButton;
+    public Image specialAttackImage;
     public List<Sprite> troop1Sprite = new();
     public Button troop1Button;
     public Image troop1Image;
@@ -100,8 +101,7 @@ public class Player : MonoBehaviour
 
     private float _precision;
     private float _specialCooldown = 20f;
-    private float _lastPlayer1Special;
-    private float _lastPlayer2Special;
+    private float _lastPlayerSpecial;
 
     private float _moneyCooldown = 7f;
     private float _previousMoneyDrop;
@@ -152,8 +152,7 @@ public class Player : MonoBehaviour
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
 
-        _lastPlayer1Special = -_specialCooldown;
-        _lastPlayer2Special = -_specialCooldown;
+        _lastPlayerSpecial = -_specialCooldown;
     }
     public void AddXp(int newXp)
     {
@@ -263,16 +262,11 @@ public class Player : MonoBehaviour
     {
         return _age;
     }
-    public bool CheckCooldown(int id)
+    public bool CheckCooldown()
     {
-        if (id == 1 && Time.time - _lastPlayer1Special > _specialCooldown + (_age - 1) * 5)
+        if (Time.time - _lastPlayerSpecial > _specialCooldown + (_age - 1) * 5)
         {
-            _lastPlayer1Special = Time.time;
-            return true;
-        }
-        if (id == 2 && Time.time - _lastPlayer2Special > _specialCooldown + (_age - 1) * 5)
-        {
-            _lastPlayer2Special = Time.time;
+            _lastPlayerSpecial = Time.time;
             return true;
         }
         return false;
@@ -280,7 +274,7 @@ public class Player : MonoBehaviour
 
     public void SpecialAttack(int id)
     {
-        if (CheckCooldown(id))
+        if (CheckCooldown())
         {
             int cost = specialCosts[_age - 1];
             if (GetXp() >= cost)
@@ -490,6 +484,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Time.time - _lastPlayerSpecial > _specialCooldown + (_age - 1) * 5)
+        {
+            specialAttackImage.fillAmount = 1f; // Le spécial est prêt à être utilisé
+        }
+        else
+        {
+            specialAttackImage.fillAmount = (Time.time - _lastPlayerSpecial) / (_specialCooldown + (_age - 1) * 5);
+        }
         _previousMoneyDrop += Time.deltaTime;
         if (_previousMoneyDrop >= _moneyCooldown)
         {
