@@ -60,7 +60,8 @@ public class EnemyBulletScript : MonoBehaviour
 
                     if (movementInstance != null)
                     {
-                        movementInstance.DropRewards(targetScript.name[6], enemy, player);
+                        Debug.Log("targetScript.name[6] = " + targetScript.name[6]);
+                        movementInstance.DropRewards(int.Parse(targetScript.name[6].ToString()), player, enemy);
                     }
                     else
                     {
