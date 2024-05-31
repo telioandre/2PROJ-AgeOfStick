@@ -312,6 +312,7 @@ public class GameManager : MonoBehaviour
 
     public void DropRewards(int troop, Player ally, Player enemy)
     {
+        Debug.Log("troop = " + troop);
         switch (troop)
         {
             case 1:
