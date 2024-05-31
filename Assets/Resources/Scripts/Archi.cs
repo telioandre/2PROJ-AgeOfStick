@@ -1,4 +1,5 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Archi : MonoBehaviour
@@ -58,104 +59,76 @@ public class Archi : MonoBehaviour
     private int _typeChoice;
     public int delete;
 
-    public List<int> spotCosts = new()
+    public List<int> spotCosts = new() { 20, 50, 120, 200, 0 };
+    public List<int> turret1Costs = new() { 25, 150, 300, 400, 500, 600 };
+    public List<int> turret2Costs = new() { 50, 200, 300, 400, 500, 600 };
+    public List<int> turret3Costs = new() { 75, 200, 300, 400, 500, 600 };
+    public List<List<int>> damageTurret = new()
     {
-        20, 50, 120, 200
+        new() { 40, 30, 20},
+        new() { 60, 45, 30},
+        new() { 90, 68, 45},
+        new() { 135, 102, 68},
+        new() { 203, 152, 102},
+        new() { 304, 228, 152}
     };
 
-    public List<int> turret1Costs = new()
-    {
-        25, 150, 300, 400, 500, 600
-    };
-    public List<int> turret2Costs = new()
-    {
-        50, 200, 300, 400, 500, 600
-    };
-    public List<int> turret3Costs = new()
-    {
-        75, 200, 300, 400, 500, 600
-    };
     public void SwitchToEnabled(int id)
     {
-        if(id == 1)
+        if (id == 1)
         {
-            if (nbPlacementId1 == 1)
-            { 
-                Debug.Log("id: " + id);
-                spriteRenderer1Id1.enabled = !spriteRenderer1Id1.enabled;
-
-                collider2D1Id1.enabled = !collider2D1Id1.enabled;
-            }
-            else if (nbPlacementId1 == 2)
+            switch (nbPlacementId1)
             {
-                spriteRenderer1Id1.enabled = !spriteRenderer1Id1.enabled;
-                spriteRenderer2Id1.enabled = !spriteRenderer2Id1.enabled;
-
-                collider2D1Id1.enabled = !collider2D1Id1.enabled;
-                collider2D2Id1.enabled = !collider2D2Id1.enabled;
-            }
-            else if (nbPlacementId1 == 3)
-            {
-                spriteRenderer1Id1.enabled = !spriteRenderer1Id1.enabled;
-                spriteRenderer2Id1.enabled = !spriteRenderer2Id1.enabled;
-                spriteRenderer3Id1.enabled = !spriteRenderer3Id1.enabled;
-
-                collider2D1Id1.enabled = !collider2D1Id1.enabled;
-                collider2D2Id1.enabled = !collider2D2Id1.enabled;
-                collider2D3Id1.enabled = !collider2D3Id1.enabled;
-            }
-            else if (nbPlacementId1 == 4)
-            {
-                spriteRenderer1Id1.enabled = !spriteRenderer1Id1.enabled;
-                spriteRenderer2Id1.enabled = !spriteRenderer2Id1.enabled;
-                spriteRenderer3Id1.enabled = !spriteRenderer3Id1.enabled;
-                spriteRenderer4Id1.enabled = !spriteRenderer4Id1.enabled;
-
-                collider2D1Id1.enabled = !collider2D1Id1.enabled;
-                collider2D2Id1.enabled = !collider2D2Id1.enabled;
-                collider2D3Id1.enabled = !collider2D3Id1.enabled;
-                collider2D4Id1.enabled = !collider2D4Id1.enabled;
-            }
-        }else if(id == 2)
-        {
-            if (nbPlacementId2 == 1)
-            {
-                spriteRenderer1Id2.enabled = !spriteRenderer1Id2.enabled;
-
-                collider2D1Id2.enabled = !collider2D1Id2.enabled;
-            }
-            else if (nbPlacementId2 == 2)
-            {
-                spriteRenderer1Id2.enabled = !spriteRenderer1Id2.enabled;
-                spriteRenderer2Id2.enabled = !spriteRenderer2Id2.enabled;
-
-                collider2D1Id2.enabled = !collider2D1Id2.enabled;
-                collider2D2Id2.enabled = !collider2D2Id2.enabled;
-            }
-            else if (nbPlacementId2 == 3)
-            {
-                spriteRenderer1Id2.enabled = !spriteRenderer1Id2.enabled;
-                spriteRenderer2Id2.enabled = !spriteRenderer2Id2.enabled;
-                spriteRenderer3Id2.enabled = !spriteRenderer3Id2.enabled;
-
-                collider2D1Id2.enabled = !collider2D1Id2.enabled;
-                collider2D2Id2.enabled = !collider2D2Id2.enabled;
-                collider2D3Id2.enabled = !collider2D3Id2.enabled;
-            }
-            else if (nbPlacementId2 == 4)
-            {
-                spriteRenderer1Id2.enabled = !spriteRenderer1Id2.enabled;
-                spriteRenderer2Id2.enabled = !spriteRenderer2Id2.enabled;
-                spriteRenderer3Id2.enabled = !spriteRenderer3Id2.enabled;
-                spriteRenderer4Id2.enabled = !spriteRenderer4Id2.enabled;
-
-                collider2D1Id2.enabled = !collider2D1Id2.enabled;
-                collider2D2Id2.enabled = !collider2D2Id2.enabled;
-                collider2D3Id2.enabled = !collider2D3Id2.enabled;
-                collider2D4Id2.enabled = !collider2D4Id2.enabled;
+                case 1:
+                    ToggleSpriteAndCollider(spriteRenderer1Id1, collider2D1Id1);
+                    break;
+                case 2:
+                    ToggleSpriteAndCollider(spriteRenderer1Id1, collider2D1Id1);
+                    ToggleSpriteAndCollider(spriteRenderer2Id1, collider2D2Id1);
+                    break;
+                case 3:
+                    ToggleSpriteAndCollider(spriteRenderer1Id1, collider2D1Id1);
+                    ToggleSpriteAndCollider(spriteRenderer2Id1, collider2D2Id1);
+                    ToggleSpriteAndCollider(spriteRenderer3Id1, collider2D3Id1);
+                    break;
+                case 4:
+                    ToggleSpriteAndCollider(spriteRenderer1Id1, collider2D1Id1);
+                    ToggleSpriteAndCollider(spriteRenderer2Id1, collider2D2Id1);
+                    ToggleSpriteAndCollider(spriteRenderer3Id1, collider2D3Id1);
+                    ToggleSpriteAndCollider(spriteRenderer4Id1, collider2D4Id1);
+                    break;
             }
         }
-        
+        else if (id == 2)
+        {
+            switch (nbPlacementId2)
+            {
+                case 1:
+                    ToggleSpriteAndCollider(spriteRenderer1Id2, collider2D1Id2);
+                    break;
+                case 2:
+                    ToggleSpriteAndCollider(spriteRenderer1Id2, collider2D1Id2);
+                    ToggleSpriteAndCollider(spriteRenderer2Id2, collider2D2Id2);
+                    break;
+                case 3:
+                    ToggleSpriteAndCollider(spriteRenderer1Id2, collider2D1Id2);
+                    ToggleSpriteAndCollider(spriteRenderer2Id2, collider2D2Id2);
+                    ToggleSpriteAndCollider(spriteRenderer3Id2, collider2D3Id2);
+                    break;
+                case 4:
+                    ToggleSpriteAndCollider(spriteRenderer1Id2, collider2D1Id2);
+                    ToggleSpriteAndCollider(spriteRenderer2Id2, collider2D2Id2);
+                    ToggleSpriteAndCollider(spriteRenderer3Id2, collider2D3Id2);
+                    ToggleSpriteAndCollider(spriteRenderer4Id2, collider2D4Id2);
+                    break;
+            }
+        }
+    }
+
+    private void ToggleSpriteAndCollider(SpriteRenderer spriteRenderer, Collider2D collider)
+    {
+        if (spriteRenderer != null) spriteRenderer.enabled = !spriteRenderer.enabled;
+        if (collider != null) collider.enabled = !collider.enabled;
     }
 
     public void BuySpot(int id)
@@ -165,12 +138,13 @@ public class Archi : MonoBehaviour
             castle1.player.AddMoney(-spotCosts[nbPlacementId1]);
             nbPlacementId1 += 1;
         }
-        else if(id == 2 && nbPlacementId2 < 4 && castle2.player.GetMoney() >= spotCosts[nbPlacementId2])
+        else if (id == 2 && nbPlacementId2 < 4 && castle2.player.GetMoney() >= spotCosts[nbPlacementId2])
         {
             castle2.player.AddMoney(-spotCosts[nbPlacementId2]);
             nbPlacementId2 += 1;
         }
     }
+
     public void SellSpot(int placement, int id)
     {
         if (id == 1)
@@ -201,13 +175,15 @@ public class Archi : MonoBehaviour
         {
             _typeChoice = turret;
         }
-        if (id == 1)
+
+        if (id == 1 && castle1 != null)
         {
-            if (castle1 == null)
+            if (castle1.player.GetAge() >= 4)
             {
-                Debug.LogError("castle1 is null in PlaceTurret");
-                return;
+                // Si l'�ge est 4, mettez � jour le nombre de tours d�j� plac�es en fonction du nombre de tours actuellement pr�sentes
+                nbTowerId1 = listTurretId1.Count(obj => obj != null);
             }
+
             if (nbPlacementId1 >= nbTowerId1)
             {
                 HandleTurretPlacement(_typeChoice, placement, castle1, ref nbTowerId1, listTurretId1, id);
@@ -217,13 +193,14 @@ public class Archi : MonoBehaviour
                 Debug.LogError("Invalid placement or max placements reached for ID 1");
             }
         }
-        else if (id == 2)
+        else if (id == 2 && castle2 != null)
         {
-            if (castle2 == null)
+            if (castle2.player.GetAge() >= 4)
             {
-                Debug.LogError("castle2 is null in PlaceTurret");
-                return;
+                // Si l'�ge est 4, mettez � jour le nombre de tours d�j� plac�es en fonction du nombre de tours actuellement pr�sentes
+                nbTowerId2 = listTurretId2.Count(obj => obj != null);
             }
+
             if (nbPlacementId2 >= nbTowerId2)
             {
                 HandleTurretPlacement(_typeChoice, placement, castle2, ref nbTowerId2, listTurretId2, id);
@@ -235,105 +212,60 @@ public class Archi : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Invalid id");
+            Debug.LogError("Invalid id or castle is null");
         }
     }
 
 
     private void HandleTurretPlacement(int type, int placement, Castle castle, ref int nbTowerId, List<GameObject> listTurretId, int id)
     {
-        if (castle == null)
+        if (castle == null || castle.player == null || listTurretId == null)
         {
-            Debug.LogError("Castle is null in HandleTurretPlacement");
+            Debug.LogError("Invalid parameters in HandleTurretPlacement");
             return;
         }
-        if (castle.player == null)
+
+        if (placement <= 0 || placement > listTurretId.Count)
         {
-            Debug.LogError("Player is null in HandleTurretPlacement");
-            return;
-        }
-        if (listTurretId == null)
-        {
-            Debug.LogError("listTurretId is null in HandleTurretPlacement");
-            return;
-        }
-        if (listTurretId.Count <= placement - 1)
-        {
-            Debug.LogError("listTurretId does not have enough elements");
+            Debug.LogError("Invalid placement index");
             return;
         }
 
         int age = castle.player.GetAge();
-        int cost = 0;
-
-        switch (type)
-        {
-            case 1:
-                cost = turret1Costs[age - 1];
-                break;
-            case 2:
-                cost = turret2Costs[age - 1];
-                break;
-            case 3:
-                cost = turret3Costs[age - 1];
-                break;
-            default:
-                Debug.LogError("Invalid turret type");
-                return;
-        }
+        int cost = GetTurretCost(type, age);
+        int range = GetTurretRange(castle.player.TurretRangeLevel);
+        float damage = GetTurretDamage(type, age, castle.player.TurretDamageLevel);
 
         if (castle.player.GetMoney() >= cost)
         {
             castle.player.AddMoney(-cost);
-            nbTowerId += 1;
+            nbTowerId++;
 
-            switch (age)
+            GameObject turretPrefab = GetTurretPrefab(type, age);
+            if (turretPrefab == null)
             {
-                case 1:
-                    _objectToInstantiate = type == 1 ? turretType1Age1 : type == 2 ? turretType2Age1 : turretType3Age1;
-                    break;
-                case 2:
-                    _objectToInstantiate = type == 1 ? turretType1Age2 : type == 2 ? turretType2Age2 : turretType3Age2;
-                    break;
-                case 3:
-                    _objectToInstantiate = type == 1 ? turretType1Age3 : type == 2 ? turretType2Age3 : turretType3Age3;
-                    break;
-                case 4:
-                    _objectToInstantiate = type == 1 ? turretType1Age4 : type == 2 ? turretType2Age4 : turretType3Age4;
-                    break;
-                case 5:
-                    _objectToInstantiate = type == 1 ? turretType1Age5 : type == 2 ? turretType2Age5 : turretType3Age5;
-                    break;
-                case 6:
-                    _objectToInstantiate = type == 1 ? turretType1Age6 : type == 2 ? turretType2Age6 : turretType3Age6;
-                    break;
-                default:
-                    Debug.LogError("Invalid age");
-                    return;
-            }
-
-            if (_objectToInstantiate == null)
-            {
-                Debug.LogError("objectToInstantiate is null");
+                Debug.LogError("Turret prefab not found");
                 return;
             }
 
-            GameObject newObject = Instantiate(_objectToInstantiate, transform.position, Quaternion.identity);
-            Turret script = newObject.GetComponent<Turret>();
-            if (script == null)
+            GameObject newTurret = Instantiate(turretPrefab, transform.position, Quaternion.identity);
+            Turret turretScript = newTurret.GetComponent<Turret>();
+            if (turretScript == null)
             {
-                Debug.LogError("Turret script is missing on instantiated object");
+                Debug.LogError("Turret script not found on instantiated object");
                 return;
             }
-            script.Initialize(placement, castle.id);
-            script.SetPosition(castle.id);
 
-            if (listTurretId[placement - 1] != newObject)
+            turretScript.Initialize(placement, castle.id, range, damage);
+            turretScript.SetPosition(castle.id);
+
+            if (listTurretId[placement - 1] != null)
             {
                 SellSpot(placement, id);
-                listTurretId[placement - 1] = newObject;
                 castle.player.AddMoney(cost / 2);
             }
+
+            listTurretId[placement - 1] = newTurret;
         }
         else
         {
@@ -341,4 +273,68 @@ public class Archi : MonoBehaviour
         }
     }
 
+
+
+    private int GetTurretCost(int type, int age)
+    {
+        return type switch
+        {
+            1 => turret1Costs[age - 1],
+            2 => turret2Costs[age - 1],
+            3 => turret3Costs[age - 1],
+            _ => 0
+        };
+    }
+
+    private int GetTurretRange(int turretLevelRange)
+    {
+        return turretLevelRange switch
+        {
+            1 => 1200,
+            2 => 1400,
+            3 => 1600,
+            _ => 1000
+        };
+    }
+
+    private float GetTurretDamage(int type, int age, int turretDamageUp)
+    {
+        Debug.Log("age = " + age);
+        Debug.Log("type = " + type);
+        Debug.Log("damageTurret = " + damageTurret[age - 1][type - 1]);
+        float baseDamage = damageTurret[age - 1][type - 1];
+        return turretDamageUp switch
+        {
+            1 => baseDamage * 1.2f,
+            2 => baseDamage * 1.4f,
+            3 => baseDamage * 1.6f,
+            _ => baseDamage
+        };
+    }
+
+    private GameObject GetTurretPrefab(int type, int age)
+    {
+        return (type, age) switch
+        {
+            (1, 1) => turretType1Age1,
+            (2, 1) => turretType2Age1,
+            (3, 1) => turretType3Age1,
+            (1, 2) => turretType1Age2,
+            (2, 2) => turretType2Age2,
+            (3, 2) => turretType3Age2,
+            (1, 3) => turretType1Age3,
+            (2, 3) => turretType2Age3,
+            (3, 3) => turretType3Age3,
+            (1, 4) => turretType1Age4,
+            (2, 4) => turretType2Age4,
+            (3, 4) => turretType3Age4,
+            (1, 5) => turretType1Age5,
+            (2, 5) => turretType2Age5,
+            (3, 5) => turretType3Age5,
+            (1, 6) => turretType1Age6,
+            (2, 6) => turretType2Age6,
+            (3, 6) => turretType3Age6,
+            _ => null
+        };
+    }
 }
