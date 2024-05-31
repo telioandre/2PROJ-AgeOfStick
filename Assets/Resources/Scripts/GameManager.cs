@@ -97,8 +97,9 @@ public class GameManager : MonoBehaviour
                     }
 
                 }
-                if (firstHit != default)
+                if (firstHit != default && firstHit != null)
                 {
+                    print("AAAAAAAAAAAAAAAAAAATAQUE");
                     StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer())); 
                 }
 
@@ -356,8 +357,8 @@ public class GameManager : MonoBehaviour
         bool canAttack = true;
         while (canAttack)
         {
-            Debug.Log(enemyGameManager.life);
-            Debug.Log("is life ");
+            //Debug.Log(enemyGameManager.life);
+            //Debug.Log("is life ");
             yield return new WaitForSeconds(attackTime);
             int damage = attack + Random.Range(0, 10);
             char allyChar = name[6];
@@ -375,9 +376,9 @@ public class GameManager : MonoBehaviour
                 DropRewards(enemyNumber, ally, enemy);
                 enemyGameManager.life = 0;
                 _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
-                Destroy(enemyGameManager.gameObject);
                 myRb.constraints = RigidbodyConstraints2D.None;
                 canAttack = false;
+                Destroy(enemyGameManager.gameObject);
                 StopAllCoroutines();
             }
         }
