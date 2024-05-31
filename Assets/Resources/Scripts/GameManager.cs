@@ -93,9 +93,7 @@ public class GameManager : MonoBehaviour
                         // Faire quelque chose avec le premier élément touché, par exemple :
                         GameObject objectHit = firstHit.collider.gameObject;
                         objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
-
                     }
-
                 }
                 if (firstHit != default && firstHit != null && start)
                 {
@@ -227,7 +225,7 @@ public class GameManager : MonoBehaviour
             attack = Mathf.RoundToInt(attack * 1.2f);
         }
         maxLife = life;
-        Invoke("Endbuild", buildTime);
+        Invoke(nameof(Endbuild), buildTime);
     }
     private void Endbuild()
     {
@@ -242,11 +240,14 @@ public class GameManager : MonoBehaviour
 
 
             int countWidth = 0;
-            foreach (var hit in hitsWidth)
+            if (hitsHeight.Length == 0)
             {
-                if (id == 1)
+                foreach (var hit in hitsWidth)
                 {
-                    countWidth++;
+                    if (id == 1)
+                    {
+                        countWidth++;
+                    }
                 }
             }
             
@@ -264,14 +265,17 @@ public class GameManager : MonoBehaviour
             Debug.DrawRay(new Vector2(5200, 380), new Vector2(0, 1) * 2000000, Color.red);
             
             int countWidth = 0;
-            foreach (var hit in hitsWidth)
+            if (hitsHeight.Length == 0)
             {
-                if (id == 2)
+                foreach (var hit in hitsWidth)
                 {
-                    countWidth++;
+                    if (id == 2)
+                    {
+                        countWidth++;
+                    }
                 }
             }
-            
+
             int totalHits = hitsHeight.Length + countWidth;
             
             transform.position = new Vector2(5200, 1000 + 1000 * totalHits);

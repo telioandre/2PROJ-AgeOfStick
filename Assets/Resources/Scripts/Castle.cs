@@ -11,8 +11,6 @@ public class Castle : MonoBehaviour
     public Image bar;
     public Player player;
     public GameObject gameOverUI;
-    public GameObject winText;
-    public GameObject lostText;
     public TextMeshProUGUI winner;
     public PlayFabManager playFabManager;
     void Start()
@@ -50,16 +48,12 @@ public class Castle : MonoBehaviour
                     string opponentBaseName = player.baseName == "ally" ? "enemy" : "ally";
                     if (opponentBaseName == "ally")
                     {
-                        //winner.text = ""
-                        winText.SetActive(true);
-                        print("Victoire ! Vous avez gagné");
+                        winner.text = playFabManager.GetName();
+                        print(playFabManager.GetName() + " dhskjfhdskjfhdsl");
                     }
                     else
                     {
-                        print(playFabManager.GetName() + " le vrai");
-                        winner.text = playFabManager.GetName();
-                        lostText.SetActive(true);
-                        print("Défaite... Vous avez perdu");
+                        winner.text = "IA";
                     }
                     gameOverUI.SetActive(true);
                     Time.timeScale = 0f;
