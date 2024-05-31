@@ -62,7 +62,7 @@ public class Ia : MonoBehaviour
             {
                 if (player.GetXp() >= player.ageCosts[player.GetAge() - 1] && _difficulty != "Impossible")
                 {
-                    AgeUp();
+                    //AgeUp();
                 }
             }
 

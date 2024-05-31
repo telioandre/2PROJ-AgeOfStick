@@ -444,7 +444,6 @@ public class Casern : MonoBehaviour
 
     public void DestroyTroop(int id, string uniqueTroopId)
     {
-        //Debug.Log(uniqueTroopId + " unique ID" + id + " id pas unique");
         if (id == 1)
         {
             for(int i = troopsPlayer1.Count-1; i>=0; i--)
@@ -464,7 +463,6 @@ public class Casern : MonoBehaviour
         }
         if(id == 2)
         {
-            //print(troopsPlayer2.Count + " gon't " + castle2.player.numberOfTroop );
             for (int i = troopsPlayer2.Count-1; i >= 0; i--)
             {
                 GameObject troop = troopsPlayer2[i];
