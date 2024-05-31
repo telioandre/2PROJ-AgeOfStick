@@ -232,7 +232,7 @@ public class Casern : MonoBehaviour
                             }
                             break;
                         case 5:
-                            _cost = 750;
+                            _cost = 20;
                             if (castle1.player.GetMoney() >= _cost)
                             {
                                 _troopToInstantiate = ultimateTroop;

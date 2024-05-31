@@ -95,7 +95,7 @@ public class Ia : MonoBehaviour
 
                     if (randomNumber >= 20)
                     {
-                        //IaGenerateTroop(0);
+                        IaGenerateTroop(0);
                     }
 
                     break;

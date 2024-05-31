@@ -20,8 +20,9 @@ public class GameManager : MonoBehaviour
     public int maxLife;
     public int troopId;
     public string uniqueId;
-    public List<int> attackRange;
-    public bool start;
+    public List<int> attackRange; 
+    public bool isAttacking = false;
+
 
     private List<int> _troop1dropsXp;
     private List<int> _troop2dropsXp;
@@ -37,7 +38,10 @@ public class GameManager : MonoBehaviour
     private List<int> _troop2dropsRange;
     private List<int> _troop3dropsRange;
     private List<int> _troop4dropsRange;
-    public Image health;
+    private Animator animator;
+    public Image health; 
+    private int enemyNumber; 
+
 
     private void Start()
     {
@@ -58,7 +62,9 @@ public class GameManager : MonoBehaviour
 
         attackRange = new List<int> { 80, 180, 100, 80, 80};
 
-        rb2d = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>(); 
+        animator = GetComponent<Animator>();
+        isAttacking = false;
     }
 
     private void Update()
@@ -83,42 +89,36 @@ public class GameManager : MonoBehaviour
             hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), attackRangeOfLevel);
             Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * attackRangeOfLevel, Color.red);
 
-            // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
             {
-                // Obtenir le premier élément touché
                 RaycastHit2D firstHit = default;
-
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
+                    if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id)
                     {
-                        // Obtenir le premier élément touché
                         firstHit = hits[i];
-                        // Faire quelque chose avec le premier élément touché, par exemple :
-                        GameObject objectHit = firstHit.collider.gameObject;
-                        objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
+                        Debug.Log("First hit detected");
+
+                        if (!isAttacking)
+                        {
+                            Debug.Log("Starting AttackPlayer coroutine");
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer(), enemyNumber));
+                        }
                     }
                 }
-                if (firstHit != default && firstHit != null && start)
-                {
-                    StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer())); 
-                }
-
             }
 
-            // Creation du raycast pour la rencontre avec le chateau 
             hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 200);
-            // Vérifier si l'objet touché a le tag "Castle"
+
             if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
             {
                 rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
             }
+
             if (movementAllowed)
             {
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
-
             }
         }
         else if (id == 2)
@@ -126,36 +126,35 @@ public class GameManager : MonoBehaviour
             hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), attackRangeOfLevel);
             Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * attackRangeOfLevel, Color.red);
 
-            // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
             {
-                // Obtenir le premier élément touché
                 RaycastHit2D firstHit = default;
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
+                    Debug.Log("hit.length = " + hits.Length);
+                    if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id)
                     {
-                        // Obtenir le premier élément touché
+                        Debug.Log("First hit detected");
                         firstHit = hits[i];
-                        // Faire quelque chose avec le premier élément touché, par exemple :
-                        GameObject objectHit = firstHit.collider.gameObject;
-                        objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
+                        Debug.Log(firstHit.collider.gameObject);
 
+                        if (!isAttacking)
+                        {
+                            Debug.Log("Starting AttackPlayer coroutine");
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer(), enemyNumber));
+                        }
                     }
-
-                }
-                if (firstHit != default)
-                {
-                    StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer()));
                 }
             }
+
             hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
-            // Vérifier si l'objet touché a le tag "Castle"
+
             if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
             {
                 //rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
             }
+
             if (movementAllowed)
             {
                 rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
@@ -347,27 +346,33 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy)
+    public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy, int enemyNumber)
     {
+        if (isAttacking)
+        {
+            Debug.Log("Already attacking");
+            yield break;
+        }
+
+        isAttacking = true;
+        animator = GetComponent<Animator>();
         bool canAttack = true;
         while (canAttack)
         {
-            //Debug.Log(enemyGameManager.life);
-            //Debug.Log("is life ");
+            Debug.Log("Waiting for attack time");
             yield return new WaitForSeconds(attackTime);
+            animator.SetTrigger("attack");
+
+            Debug.Log("Waiting before dealing damage");
+            yield return new WaitForSeconds(0.5f);
+
             int damage = attack + Random.Range(0, 10);
-            char allyChar = name[6];
-            char enemyChar = enemyGameManager.name[6];
-            int allyNumber = int.Parse(allyChar.ToString());
-            int enemyNumber = int.Parse(enemyChar.ToString());
-            
-            if (SuperEffective(allyNumber, enemyNumber))
-            {
-                damage = Mathf.RoundToInt(damage * 1.5f);
-            }
+            Debug.Log($"Dealing {damage} damage");
             enemyGameManager.life -= damage;
+
             if (enemyGameManager.life <= 0)
             {
+                Debug.Log("Enemy defeated, dropping rewards");
                 DropRewards(enemyNumber, ally, enemy);
                 enemyGameManager.life = 0;
                 _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
@@ -377,9 +382,12 @@ public class GameManager : MonoBehaviour
                 StopAllCoroutines();
             }
         }
+        animator.SetTrigger("walk");
+        isAttacking = false;
     }
 
-        public IEnumerator TroopUnderSpecial(GameManager troop, SpecialCollision special, Player otherPlayer)
+
+    public IEnumerator TroopUnderSpecial(GameManager troop, SpecialCollision special, Player otherPlayer)
         {
             char troopChar = troop.name[6];
             int troopNumber = int.Parse(troopChar.ToString());

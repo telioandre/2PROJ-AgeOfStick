@@ -24,7 +24,6 @@ public class Collisions : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            currentGameManager.start = true;
             Debug.Log("ca a toucher le sol");
             
         }
@@ -92,7 +91,7 @@ public class Collisions : MonoBehaviour
                 if (ally != null && enemy != null)
                 {
                     //Commence une coroutine qui diminue les pv des 2 joueurs en contact
-                    StartCoroutine(currentGameManager.AttackPlayer(otherGameManager, myRb, ally, enemy));
+                    //StartCoroutine(currentGameManager.AttackPlayer(otherGameManager, myRb, ally, enemy));
 
                 }
 
@@ -126,7 +125,7 @@ public class Collisions : MonoBehaviour
     public void OnCollisionExit2D(Collision2D collision)
     {
         //Permet qu'aucun objet ne soit figé (par exemple si 2 objets avec le même ID ne bougent pas et que le 1er bat l'ennemi et reprend sa course, alors le 2e ne sera pas figé non plus
-        if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player") && GetComponent<GameManager>().start)
+        if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player") && GetComponent<GameManager>().isAttacking)
         {
             Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();
             Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
