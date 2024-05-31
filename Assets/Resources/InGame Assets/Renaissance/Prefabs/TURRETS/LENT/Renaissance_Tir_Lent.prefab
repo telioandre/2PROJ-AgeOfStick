@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2513571270398126123}
   - component: {fileID: 2027555523267974880}
   - component: {fileID: 2946073330158223011}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renaissance_Tir_Lent
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7322855986137076034}
   - component: {fileID: -5408314958405838028}
   - component: {fileID: 9086766738980562079}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prehistoire_Tir_Moyen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
