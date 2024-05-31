@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public int troopId;
     public string uniqueId;
     public List<int> attackRange; 
-    public bool isAttacking = false;
+    public bool isAttacking;
 
 
     private List<int> _troop1dropsXp;
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         _troop3dropsRange = new List<int> { 2, 6, 6, 11, 25, 20 };
         _troop4dropsRange = new List<int> { 6, 6, 15, 20, 30, 45 };
 
-        attackRange = new List<int> { 80, 180, 100, 80, 80};
+        attackRange = new List<int> { 80, 180, 90, 90, 200};
 
         rb2d = GetComponent<Rigidbody2D>(); 
         _animator = GetComponent<Animator>();
@@ -346,51 +346,56 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy, int enemyNumber)
+    public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy,
+        int enemyNumber)
     {
-        if (isAttacking)
+        if (enemyGameManager!= null && enemy != null)
         {
-            Debug.Log("Already attacking");
-            yield break;
-        }
+            if (isAttacking)
+            {
+                Debug.Log("Already attacking");
+                yield break;
+            }
 
-        isAttacking = true;
-        _animator = GetComponent<Animator>();
-        bool canAttack = true;
-        while (canAttack)
-        {
-            Debug.Log("Waiting for attack time");
-            yield return new WaitForSeconds(attackTime);
+            isAttacking = true;
+            _animator = GetComponent<Animator>();
+            bool canAttack = true;
+            while (canAttack)
+            {
+                Debug.Log("Waiting for attack time");
+                yield return new WaitForSeconds(attackTime);
+                if (_animator != null)
+                {
+                    _animator.SetTrigger("attack");
+                }
+
+                Debug.Log("Waiting before dealing damage");
+                yield return new WaitForSeconds(0.5f);
+
+                int damage = attack + Random.Range(0, 10);
+                Debug.Log($"Dealing {damage} damage");
+                enemyGameManager.life -= damage;
+
+                if (enemyGameManager.life <= 0)
+                {
+                    Debug.Log("Enemy defeated, dropping rewards");
+                    DropRewards(enemyNumber, ally, enemy);
+                    enemyGameManager.life = 0;
+                    _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
+                    myRb.constraints = RigidbodyConstraints2D.None;
+                    canAttack = false;
+                    Destroy(enemyGameManager.gameObject);
+                    StopAllCoroutines();
+                }
+            }
+
             if (_animator != null)
             {
-                _animator.SetTrigger("attack");
+                _animator.SetTrigger("walk");
             }
 
-            Debug.Log("Waiting before dealing damage");
-            yield return new WaitForSeconds(0.5f);
-
-            int damage = attack + Random.Range(0, 10);
-            Debug.Log($"Dealing {damage} damage");
-            enemyGameManager.life -= damage;
-
-            if (enemyGameManager.life <= 0)
-            {
-                Debug.Log("Enemy defeated, dropping rewards");
-                DropRewards(enemyNumber, ally, enemy);
-                enemyGameManager.life = 0;
-                _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
-                myRb.constraints = RigidbodyConstraints2D.None;
-                canAttack = false;
-                Destroy(enemyGameManager.gameObject);
-                StopAllCoroutines();
-            }
+            isAttacking = false;
         }
-
-        if (_animator != null)
-        {
-            _animator.SetTrigger("walk");
-        }
-        isAttacking = false;
     }
 
 
@@ -401,7 +406,7 @@ public class GameManager : MonoBehaviour
             int damage;
             if (otherPlayer.GetAge() == troop._player.GetAge())
             {
-                if (troopNumber == 4)
+                if (troopNumber >= 4)
                 {
                     damage = troop.maxLife / 2;
                 }
@@ -412,7 +417,7 @@ public class GameManager : MonoBehaviour
             }
             else if (otherPlayer.GetAge() < troop._player.GetAge())
             {
-                if (troopNumber == 4)
+                if (troopNumber >= 4)
                 {
                     damage = troop.maxLife / 4;
                 }

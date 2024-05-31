@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Casern : MonoBehaviour
 {
@@ -69,7 +67,6 @@ public class Casern : MonoBehaviour
     private GameObject _troopToInstantiate;
     private int _troopId;
     private int _cost;
-    private bool _payed;
     
     public bool isForming1;
     public bool isForming2;
@@ -252,7 +249,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                         case 2:
@@ -261,7 +257,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                         case 3:
@@ -270,7 +265,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                         case 4:
@@ -279,7 +273,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                         case 5:
@@ -288,7 +281,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                     }
@@ -361,7 +353,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                         case 2:
@@ -370,7 +361,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                         case 3:
@@ -379,7 +369,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                         case 4:
@@ -388,7 +377,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                         case 5:
@@ -397,7 +385,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
-                                _payed = true;
                             }
                             break;
                     }
@@ -439,11 +426,20 @@ public class Casern : MonoBehaviour
         {
             GameObject newObject = PhotonNetwork.Instantiate(troopToCreate.name, newPosition, Quaternion.identity, 0);
             currentPlayer.numberOfTroop += 1;
-            if (_payed)
+            if (currentPlayer.castle.id == 1)
             {
-                currentPlayer.AddMoney(-_cost);
+                if (queue1.Count == 0)
+                {
+                    currentPlayer.AddMoney(-_cost);
+                }
             }
-            _payed = false;
+            if (currentPlayer.castle.id == 2)
+            {
+                if (queue2.Count == 0)
+                {
+                    currentPlayer.AddMoney(-_cost);
+                }
+            }
             currentTroops.Add(newObject);
             GameManager script = newObject.GetComponent<GameManager>();
             script.SetPlayer(id, troopId);
@@ -452,11 +448,20 @@ public class Casern : MonoBehaviour
         {
             GameObject newObject = Instantiate(troopToCreate, newPosition, Quaternion.identity);
             currentPlayer.numberOfTroop += 1;
-            if (_payed)
+            if (currentPlayer.castle.id == 1)
             {
-                currentPlayer.AddMoney(-_cost);
+                if (queue1.Count == 0)
+                {
+                    currentPlayer.AddMoney(-_cost);
+                }
             }
-            _payed = false;
+            if (currentPlayer.castle.id == 2)
+            {
+                if (queue2.Count == 0)
+                {
+                    currentPlayer.AddMoney(-_cost);
+                }
+            }
             GameManager script = newObject.GetComponent<GameManager>();
             currentTroops.Add(newObject);
             script.SetPlayer(id, troopId);
@@ -481,7 +486,6 @@ public class Casern : MonoBehaviour
                 }
             }
             castle1.player.numberOfTroop -= 1;
-            //troopsPlayer1.Remove(troop);
         }
         if(id == 2)
         {
@@ -498,7 +502,6 @@ public class Casern : MonoBehaviour
                 } 
             }
             castle2.player.numberOfTroop -= 1;
-            //troopsPlayer2.Remove(troop);
         }
     }
 }
