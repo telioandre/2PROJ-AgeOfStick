@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5593625897421233238}
   - component: {fileID: 9053142199447911912}
   - component: {fileID: 4783054354220351843}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Egypt_Tir_Rapide
   m_TagString: Untagged
   m_Icon: {fileID: 0}

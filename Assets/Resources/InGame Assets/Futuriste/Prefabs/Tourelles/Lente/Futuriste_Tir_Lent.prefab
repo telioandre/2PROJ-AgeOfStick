@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2828725221523820188}
   - component: {fileID: 3272851380326250458}
   - component: {fileID: 2840833571673215391}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Futuriste_Tir_Lent
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8007538210350846406}
   - component: {fileID: 198000332038733027}
   - component: {fileID: 1740220154052055895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Futuriste_Tir_Moyen
   m_TagString: Untagged
   m_Icon: {fileID: 0}

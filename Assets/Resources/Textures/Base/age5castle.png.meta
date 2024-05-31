@@ -106,39 +106,47 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: age5castle_4
+      name: age5castle_0
       rect:
         serializedVersion: 2
-        x: 2874
-        y: 7799
-        width: 643
-        height: 1155
+        x: 2149
+        y: 11994
+        width: 1164
+        height: 2109
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f331f0d97ada95429d344529ff943d9
-      internalID: 1324189186
+      spriteID: c675e29f7ca0c2d4d9c5db5b4c4b2dbd
+      internalID: -436179906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: age5castle_1
+      rect:
+        serializedVersion: 2
+        x: 3314
+        y: 13799
+        width: 24
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b28d3347f76c5db40b3a798ccfe21fc4
+      internalID: -519744420
       vertices: []
       indices: 
       edges: []
@@ -147,19 +155,19 @@ TextureImporter:
       name: age5castle_2
       rect:
         serializedVersion: 2
-        x: 2874
-        y: 6268
-        width: 636
-        height: 1082
+        x: 2143
+        y: 9181
+        width: 1155
+        height: 1977
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ad50513ffbcb344cb3cf1c5d3ab967b
-      internalID: 17081252
+      spriteID: 957621c2a157e58488f5a53374faaeb8
+      internalID: 775605272
       vertices: []
       indices: 
       edges: []
@@ -168,40 +176,40 @@ TextureImporter:
       name: age5castle_3
       rect:
         serializedVersion: 2
-        x: 2829
-        y: 4856
-        width: 688
-        height: 684
+        x: 2061
+        y: 6574
+        width: 1252
+        height: 1244
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59c7b050d608c014a815d14abbd0cfbb
-      internalID: 1403096245
+      spriteID: 0847c1a59a273794f912a4f97fa0198c
+      internalID: -1754323083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: age5castle_
+      name: age5castle_4
       rect:
         serializedVersion: 2
-        x: 1036
-        y: 286
-        width: 2482
-        height: 3856
+        x: 677
+        y: 15
+        width: 3521
+        height: 5473
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f1c7cdb94d2bb54aa8815ad2de4dabd
-      internalID: -585880052
+      spriteID: 4df9c8edaadfba64c865ab1ccc5bd588
+      internalID: -896980066
       vertices: []
       indices: 
       edges: []
@@ -217,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      age5castle_: -585880052
-      age5castle_1: 1685235437
-      age5castle_2: 17081252
-      age5castle_3: 1403096245
-      age5castle_4: 1324189186
+      age5castle_0: -436179906
+      age5castle_1: -519744420
+      age5castle_2: 775605272
+      age5castle_3: -1754323083
+      age5castle_4: -896980066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

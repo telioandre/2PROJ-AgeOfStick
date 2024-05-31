@@ -106,30 +106,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: age3castle_4
+      name: age3castle_0
       rect:
         serializedVersion: 2
-        x: 2925
-        y: 9393
-        width: 644
-        height: 725
+        x: 3313
+        y: 12865
+        width: 893
+        height: 1009
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b296fcb155d5cbb4f9bc96744cb95bfc
-      internalID: -276111347
+      spriteID: 1dadd6afb4de6cb47a16e66dadd3a152
+      internalID: -382951681
       vertices: []
       indices: 
       edges: []
@@ -147,10 +134,10 @@ TextureImporter:
       name: age3castle_1
       rect:
         serializedVersion: 2
-        x: 3078
-        y: 7438
-        width: 520
-        height: 1047
+        x: 3525
+        y: 10133
+        width: 717
+        height: 1465
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c89cceb3efdf9f94eb7cef4561709ebe
-      internalID: 1245904610
+      spriteID: d08186d925115b347a2db7cd0eeb18d8
+      internalID: -326027048
       vertices: []
       indices: 
       edges: []
@@ -168,10 +155,10 @@ TextureImporter:
       name: age3castle_2
       rect:
         serializedVersion: 2
-        x: 2950
-        y: 6068
-        width: 780
-        height: 650
+        x: 3349
+        y: 8236
+        width: 1084
+        height: 893
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13525b3b064fdb248880eb91f280fd23
-      internalID: 470021266
+      spriteID: e42cd1e41ad231a4dbcdf61dc8569888
+      internalID: -607386670
       vertices: []
       indices: 
       edges: []
@@ -189,10 +176,10 @@ TextureImporter:
       name: age3castle_3
       rect:
         serializedVersion: 2
-        x: 3115
-        y: 4391
-        width: 570
-        height: 796
+        x: 3583
+        y: 5892
+        width: 782
+        height: 1099
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a672eb9d62856ea4db5e06dc2a05c8e6
-      internalID: 1033303063
+      spriteID: 89feacec8fcc81a4f80633247db41e3f
+      internalID: 1285730772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: age3castle_
+      name: age3castle_4
       rect:
         serializedVersion: 2
-        x: 875
-        y: 414
-        width: 3199
-        height: 2893
+        x: 458
+        y: 348
+        width: 4450
+        height: 4021
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 991ac721d7b8dc04398473a6e0668e93
-      internalID: 191092033
+      spriteID: 71b584966605bdc45ab1297034ce6cd2
+      internalID: 1254911391
       vertices: []
       indices: 
       edges: []
@@ -238,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      age3castle_: 191092033
-      age3castle_1: 1245904610
-      age3castle_2: 470021266
-      age3castle_3: 1033303063
-      age3castle_4: -276111347
+      age3castle_0: -382951681
+      age3castle_1: -326027048
+      age3castle_2: -607386670
+      age3castle_3: 1285730772
+      age3castle_4: 1254911391
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

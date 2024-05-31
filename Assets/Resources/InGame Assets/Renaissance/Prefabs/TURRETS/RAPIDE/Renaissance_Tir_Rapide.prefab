@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6815140755239084330}
   - component: {fileID: 7768205508439354501}
   - component: {fileID: 4592111471242975402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renaissance_Tir_Rapide
   m_TagString: Untagged
   m_Icon: {fileID: 0}

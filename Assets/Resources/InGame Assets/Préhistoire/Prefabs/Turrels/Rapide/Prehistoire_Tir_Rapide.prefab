@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5284967704099437714}
   - component: {fileID: 8697080028374027870}
   - component: {fileID: 6854534188772289969}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prehistoire_Tir_Rapide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
