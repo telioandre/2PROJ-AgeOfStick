@@ -5201,6 +5201,7 @@ Transform:
   - {fileID: 868192456}
   - {fileID: 2090991923}
   - {fileID: 366302748}
+  - {fileID: 1950901058}
   - {fileID: 1449982398}
   - {fileID: 1451763173}
   - {fileID: 1061219751}
@@ -32325,20 +32326,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: acde277e3736ee54fa11d9b0f38f9500, type: 3}
   turret3Button: {fileID: 921246048}
   turret3Image: {fileID: 1762736415}
-  turretRangeSprite:
-  - {fileID: 21300000, guid: dcbaebc219586304ea2388c33f49c651, type: 3}
-  - {fileID: 21300000, guid: 018c18253cbc06542965c6ace3572e8f, type: 3}
-  - {fileID: 21300000, guid: b67bcc8a79cc8a24ab10e33959c8d0fe, type: 3}
-  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
-  turretRangeButton: {fileID: 1695883661}
-  turretRangeImage: {fileID: 1695883662}
-  turretDamageSprite:
-  - {fileID: 21300000, guid: 771d2b46f8931d442b0736ddb6690084, type: 3}
-  - {fileID: 21300000, guid: d289eefce44a7ed4290440cd9f8333e2, type: 3}
-  - {fileID: 21300000, guid: ff63d8e282cbd5a41b16c3644081f3c0, type: 3}
-  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
-  turretDamageButton: {fileID: 1073615907}
-  turretDamageImage: {fileID: 1073615908}
+  turretRangeSprite: []
+  turretRangeButton: {fileID: 0}
+  turretRangeImage: {fileID: 0}
+  turretDamageSprite: []
+  turretDamageButton: {fileID: 0}
+  turretDamageImage: {fileID: 0}
   specialAttack:
   - {fileID: 922170554763523580, guid: 82c6daea845da734f8b999a51fee4613, type: 3}
   - {fileID: 1116061920095385270, guid: cedc68f29e977cf43a3654b5dad91f68, type: 3}
@@ -35461,7 +35454,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4499.166, y: 298.04782}
+  m_Offset: {x: 4499.166, y: 593.32043}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -35472,7 +35465,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10434.441, y: 746.0151}
+  m_Size: {x: 10434.441, y: 155.46967}
   m_EdgeRadius: 0
 --- !u!4 &1061219751
 Transform:
@@ -69105,6 +69098,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949672937}
   m_CullTransparentMesh: 1
+--- !u!1 &1950901056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1950901058}
+  - component: {fileID: 1950901057}
+  m_Layer: 0
+  m_Name: Barrier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1950901057
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950901056}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 244.17566}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 687.01636}
+  m_EdgeRadius: 0
+--- !u!4 &1950901058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950901056}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 36, y: 680, z: -70.966995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 178064375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1952988484
 GameObject:
   m_ObjectHideFlags: 0
@@ -72533,20 +72603,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: acde277e3736ee54fa11d9b0f38f9500, type: 3}
   turret3Button: {fileID: 1692714971}
   turret3Image: {fileID: 1434801288}
-  turretRangeSprite:
-  - {fileID: 21300000, guid: dcbaebc219586304ea2388c33f49c651, type: 3}
-  - {fileID: 21300000, guid: 018c18253cbc06542965c6ace3572e8f, type: 3}
-  - {fileID: 21300000, guid: b67bcc8a79cc8a24ab10e33959c8d0fe, type: 3}
-  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
-  turretRangeButton: {fileID: 1695883661}
-  turretRangeImage: {fileID: 1695883662}
-  turretDamageSprite:
-  - {fileID: 21300000, guid: 771d2b46f8931d442b0736ddb6690084, type: 3}
-  - {fileID: 21300000, guid: d289eefce44a7ed4290440cd9f8333e2, type: 3}
-  - {fileID: 21300000, guid: ff63d8e282cbd5a41b16c3644081f3c0, type: 3}
-  - {fileID: 21300000, guid: d1e29352eb5fd2043920cb798cc87190, type: 3}
-  turretDamageButton: {fileID: 1073615907}
-  turretDamageImage: {fileID: 1073615908}
+  turretRangeSprite: []
+  turretRangeButton: {fileID: 0}
+  turretRangeImage: {fileID: 0}
+  turretDamageSprite: []
+  turretDamageButton: {fileID: 0}
+  turretDamageImage: {fileID: 0}
   specialAttack:
   - {fileID: 922170554763523580, guid: 35de6371198df414d9b773032f0870b5, type: 3}
   - {fileID: 1116061920095385270, guid: 9b940fc4026ef554084ba2ff0e41beb2, type: 3}
@@ -75195,6 +75257,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602410606509946428, guid: 74626b13d789fc84280e415c643b9327, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: b5d186401bc3f874694a400a26dd725d, type: 3}
     - target: {fileID: 6082477623038276466, guid: 74626b13d789fc84280e415c643b9327, type: 3}
       propertyPath: m_Name
       value: Life
@@ -75311,6 +75377,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5288172272262651731, guid: 4e96fab609de6cf46bef6fe795dc8e36, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: b5d186401bc3f874694a400a26dd725d, type: 3}
     - target: {fileID: 5561172286093424716, guid: 4e96fab609de6cf46bef6fe795dc8e36, type: 3}
       propertyPath: m_Name
       value: Life
