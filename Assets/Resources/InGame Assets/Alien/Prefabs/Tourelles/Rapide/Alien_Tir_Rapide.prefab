@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 382075400538561342}
   - component: {fileID: 2897756936055372408}
   - component: {fileID: 2822264536951038339}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Alien_Tir_Rapide
   m_TagString: Untagged
   m_Icon: {fileID: 0}

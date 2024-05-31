@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6407658138611370775}
   - component: {fileID: 1727915395697091412}
   - component: {fileID: 2349376323990852786}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Alien_Tir_Lent
   m_TagString: Untagged
   m_Icon: {fileID: 0}

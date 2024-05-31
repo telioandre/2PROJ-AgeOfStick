@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 7457058321558642161}
   - component: {fileID: -6794165476788914980}
   - component: {fileID: -800503879178442486}
+  - component: {fileID: 7570341685765066404}
   m_Layer: 3
   m_Name: Troop 4 enemy 5
   m_TagString: Player
@@ -251,6 +252,51 @@ MonoBehaviour:
   attackRange: 
   start: 0
   health: {fileID: 7606057452797886373}
+--- !u!61 &7570341685765066404
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190435050697722820}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 65
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.39998722, y: 0.22307956}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10.980307, y: 4.6320715}
+  m_EdgeRadius: 0
 --- !u!1 &5913764527954643809
 GameObject:
   m_ObjectHideFlags: 0
