@@ -38,9 +38,9 @@ public class GameManager : MonoBehaviour
     private List<int> _troop2dropsRange;
     private List<int> _troop3dropsRange;
     private List<int> _troop4dropsRange;
-    private Animator animator;
+    private Animator _animator;
     public Image health; 
-    private int enemyNumber; 
+    private int _enemyNumber; 
 
 
     private void Start()
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         attackRange = new List<int> { 80, 180, 100, 80, 80};
 
         rb2d = GetComponent<Rigidbody2D>(); 
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         isAttacking = false;
     }
 
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
                         if (!isAttacking)
                         {
                             Debug.Log("Starting AttackPlayer coroutine");
-                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer(), enemyNumber));
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer(), _enemyNumber));
                         }
                     }
                 }
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
                         if (!isAttacking)
                         {
                             Debug.Log("Starting AttackPlayer coroutine");
-                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer(), enemyNumber));
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer(), _enemyNumber));
                         }
                     }
                 }
@@ -355,13 +355,16 @@ public class GameManager : MonoBehaviour
         }
 
         isAttacking = true;
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         bool canAttack = true;
         while (canAttack)
         {
             Debug.Log("Waiting for attack time");
             yield return new WaitForSeconds(attackTime);
-            animator.SetTrigger("attack");
+            if (_animator != null)
+            {
+                _animator.SetTrigger("attack");
+            }
 
             Debug.Log("Waiting before dealing damage");
             yield return new WaitForSeconds(0.5f);
@@ -382,7 +385,11 @@ public class GameManager : MonoBehaviour
                 StopAllCoroutines();
             }
         }
-        animator.SetTrigger("walk");
+
+        if (_animator != null)
+        {
+            _animator.SetTrigger("walk");
+        }
         isAttacking = false;
     }
 
