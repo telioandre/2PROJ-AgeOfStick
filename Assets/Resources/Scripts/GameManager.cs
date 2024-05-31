@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     public List<int> attackRange;
     public bool start;
 
-
     private List<int> _troop1dropsXp;
     private List<int> _troop2dropsXp;
     private List<int> _troop3dropsXp;
@@ -87,7 +86,7 @@ public class GameManager : MonoBehaviour
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
+                    if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
                     {
                         // Obtenir le premier élément touché
                         firstHit = hits[i];
@@ -98,8 +97,9 @@ public class GameManager : MonoBehaviour
                     }
 
                 }
-                if (firstHit != default)
+                if (firstHit != default && firstHit != null)
                 {
+                    print("AAAAAAAAAAAAAAAAAAATAQUE");
                     StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer())); 
                 }
 
@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
             }
             if (movementAllowed)
             {
-                rb2d.velocity = new Vector2(-(speed), rb2d.velocity.y);
+                rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
             }
         }
     }
@@ -184,12 +184,12 @@ public class GameManager : MonoBehaviour
         _casern = GameObject.Find("Casern").GetComponent<Casern>();
         if (id == 1)
         {
-            transform.position = new Vector2(1500, 0);
+            transform.position = new Vector2(500, 0);
             _player = GameObject.Find("Castle 1").GetComponent<Player>();
         }
         else
         {
-            transform.position = new Vector2(3500, 0);
+            transform.position = new Vector2(5000, 0);
             _player = GameObject.Find("Castle 2").GetComponent<Player>();
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
@@ -244,24 +244,53 @@ public class GameManager : MonoBehaviour
     {
         if (id == 1)
         {
-            RaycastHit2D[] hitsHauteur;
+            RaycastHit2D[] hitsHeight;
+            RaycastHit2D[] hitsWidth;
 
-            hitsHauteur = Physics2D.RaycastAll(new Vector2(-250, 380), new Vector2(0, 1), 2000000);
+            hitsHeight = Physics2D.RaycastAll(new Vector2(-250, 380), new Vector2(0, 1), 2000000);
             Debug.DrawRay(new Vector2(-250, 380), new Vector2(0, 1) * 2000000, Color.red);
 
+            hitsWidth = Physics2D.RaycastAll(new Vector2(-250, 380), Vector2.right, 2000);
+            Debug.DrawRay(new Vector2(-250, 380), Vector2.right * 2000, Color.green);
 
-            transform.position = new Vector2(-250, 1000 + 500 * hitsHauteur.Length);
+            int countWidth = 0;
+            foreach (var hit in hitsWidth)
+            {
+                if (id == 1)
+                {
+                    countWidth++;
+                }
+            }
+            
+            int totalHits = hitsHeight.Length + countWidth;
+
+            transform.position = new Vector2(-250, 1000 + 1500 * totalHits);
 
             _casern.isForming1 = false;
         }
         else if (id == 2)
         {
-            RaycastHit2D[] hitsHauteur;
+            RaycastHit2D[] hitsHeight;
+            RaycastHit2D[] hitsWidth;
 
-            hitsHauteur = Physics2D.RaycastAll(new Vector2(5000, 380), new Vector2(0, 1), 2000000);
-            Debug.DrawRay(new Vector2(5000, 380), new Vector2(0, 1) * 2000000, Color.red);
+            hitsHeight = Physics2D.RaycastAll(new Vector2(5200, 380), new Vector2(0, 1), 2000000);
+            Debug.DrawRay(new Vector2(5200, 380), new Vector2(0, 1) * 2000000, Color.red);
 
-            transform.position = new Vector2(5000, 1000 + 500 *hitsHauteur.Length);
+            hitsWidth = Physics2D.RaycastAll(new Vector2(5200, 380), Vector2.right, 2000);
+            Debug.DrawRay(new Vector2(5200, 380), Vector2.left * 2000, Color.green);
+            
+            int countWidth = 0;
+            foreach (var hit in hitsWidth)
+            {
+                if (id == 2)
+                {
+                    countWidth++;
+                }
+            }
+            
+            int totalHits = hitsHeight.Length + countWidth;
+            
+            transform.position = new Vector2(5200, 1000 + 1500 * totalHits);
 
             _casern.isForming2 = false;
         }
@@ -328,8 +357,8 @@ public class GameManager : MonoBehaviour
         bool canAttack = true;
         while (canAttack)
         {
-            Debug.Log(enemyGameManager.life);
-            Debug.Log("is life ");
+            //Debug.Log(enemyGameManager.life);
+            //Debug.Log("is life ");
             yield return new WaitForSeconds(attackTime);
             int damage = attack + Random.Range(0, 10);
             char allyChar = name[6];
@@ -347,9 +376,9 @@ public class GameManager : MonoBehaviour
                 DropRewards(enemyNumber, ally, enemy);
                 enemyGameManager.life = 0;
                 _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
-                Destroy(enemyGameManager.gameObject);
                 myRb.constraints = RigidbodyConstraints2D.None;
                 canAttack = false;
+                Destroy(enemyGameManager.gameObject);
                 StopAllCoroutines();
             }
         }
