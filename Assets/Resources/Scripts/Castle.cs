@@ -50,6 +50,7 @@ public class Castle : MonoBehaviour
                     {
                         winner.text = playFabManager.GetName();
                         print(playFabManager.GetName() + " dhskjfhdskjfhdsl");
+                        playFabManager.GetCurrentVictoryCount(playFabManager.GetPlayFabId());
                     }
                     else
                     {

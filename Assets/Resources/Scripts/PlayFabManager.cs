@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.PackageManager;
 
 public class PlayFabManager : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class PlayFabManager : MonoBehaviour
 
 	public PhotonChatManager photonChatManager;
 	private string name;
+    
+    private string _playFabId;
 
     // Méthode appelée lorsque l'utilisateur appuie sur le bouton de connexion
     public void OnLoginButtonClicked()
@@ -55,8 +59,6 @@ public class PlayFabManager : MonoBehaviour
                 GetPlayerProfile = true
             }
         };
-
-
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnLoginFailure);
     }
 
@@ -84,13 +86,75 @@ public class PlayFabManager : MonoBehaviour
         registerMenu.SetActive(false);
         mainMenu.SetActive(true);
         GetFriendList();
+        _playFabId = result.PlayFabId;
+        GetCurrentVictoryCount(_playFabId);
     }
 
     public string GetName()
     {
         return name;
     }
+    public string GetPlayFabId()
+    {
+        return _playFabId;
+    }
+    public void GetCurrentVictoryCount(string playFabId)
+    {
+        var request = new GetLeaderboardAroundPlayerRequest
+        {
+            StatisticName = "Victories",
+            PlayFabId = playFabId,
+            MaxResultsCount = 1
+        };
 
+        PlayFabClientAPI.GetLeaderboardAroundPlayer(request, result => OnLeaderboardSuccess(result, playFabId), OnLeaderboardFailure);
+    }
+    
+    private void OnLeaderboardSuccess(GetLeaderboardAroundPlayerResult result, string playFabId)
+    {
+        int currentVictoryCount = 0;
+
+        if (result.Leaderboard.Count > 0)
+        {
+            currentVictoryCount = result.Leaderboard[0].StatValue;
+        }
+
+        // Incrémenter le score de victoires et mettre à jour
+        UpdateVictoryCount(playFabId, currentVictoryCount + 1);
+    }
+    
+    private void UpdateVictoryCount(string playFabId, int newVictoryCount)
+    {
+        var request = new UpdatePlayerStatisticsRequest
+        {
+            Statistics = new List<StatisticUpdate>
+            {
+                new StatisticUpdate
+                {
+                    StatisticName = "Victories",
+                    Value = newVictoryCount
+                }
+            }
+        };
+
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnUpdateStatisticsSuccess, OnUpdateStatisticsFailure);
+    }
+    
+    private void OnUpdateStatisticsSuccess(UpdatePlayerStatisticsResult result)
+    {
+        Debug.Log("Victory count updated successfully.");
+    }
+
+    private void OnUpdateStatisticsFailure(PlayFabError error)
+    {
+        Debug.LogError("Failed to update victory count: " + error.ErrorMessage);
+    }
+
+    private void OnLeaderboardFailure(PlayFabError error)
+    {
+        Debug.LogError("Failed to post score" + error.ErrorMessage);
+    }
+    
     private void OnLoginFailure(PlayFabError error)
     {
         Debug.LogError("Login failed: " + error.ErrorMessage);
