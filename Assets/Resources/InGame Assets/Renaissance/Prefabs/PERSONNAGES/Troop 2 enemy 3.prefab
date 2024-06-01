@@ -298,7 +298,7 @@ MonoBehaviour:
   id: 0
   movementAllowed: 1
   life: 75
-  attack: 15
+  attack: 10
   troopLevel: 1
   buildTime: 0.5
   attackTime: 1
@@ -306,7 +306,7 @@ MonoBehaviour:
   troopId: 0
   uniqueId: 
   attackRange: 
-  start: 0
+  isAttacking: 0
   health: {fileID: 5941399328868556819}
 --- !u!61 &-1414539042702468123
 BoxCollider2D:
