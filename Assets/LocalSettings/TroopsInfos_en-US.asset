@@ -134,6 +134,26 @@ MonoBehaviour:
     m_Localized: ' has lost the game.'
     m_Metadata:
       m_Items: []
+  - m_Id: 10666943788224512
+    m_Localized: 'number of wins :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10676604197277696
+    m_Localized: Not enough money
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10677220277620736
+    m_Localized: Not enough XP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678160468611072
+    m_Localized: Max troops reached
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678579085316096
+    m_Localized: You need to Evolve first
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

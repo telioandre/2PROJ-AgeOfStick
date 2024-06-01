@@ -134,6 +134,26 @@ MonoBehaviour:
     m_Localized: ' das Spiel verloren hat.'
     m_Metadata:
       m_Items: []
+  - m_Id: 10666943788224512
+    m_Localized: 'Anzahl der Siege :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10676604197277696
+    m_Localized: Nicht genug Geld
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10677220277620736
+    m_Localized: Nicht genug XP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678160468611072
+    m_Localized: "Erreichte Truppenst\xE4rke"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678579085316096
+    m_Localized: Du musst dich erst entwickeln
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -134,6 +134,26 @@ MonoBehaviour:
     m_Localized: ' ha perso la partita.'
     m_Metadata:
       m_Items: []
+  - m_Id: 10666943788224512
+    m_Localized: 'numero di vittorie :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10676604197277696
+    m_Localized: Non abbastanza soldi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10677220277620736
+    m_Localized: Non abbastanza XP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678160468611072
+    m_Localized: Truppe massime raggiunte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678579085316096
+    m_Localized: "Prima \xE8 necessario evolversi"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
