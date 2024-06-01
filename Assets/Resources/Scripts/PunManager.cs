@@ -2,83 +2,110 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class PunManager : MonoBehaviour
 {
-    public GameObject Castle1;
-    public GameObject Castle2;
-    public TextMeshProUGUI Infos;
+    public GameObject castle1;
+    public GameObject castle2;
+    public TextMeshProUGUI infos;
     
-    public GameObject SoloMenu;
-    public GameObject Background;
-    public GameObject Game;
-    public GameObject MenuEven;
-    public GameObject MenuCanvas;
-    public GameObject Menu;
+    public GameObject soloMenu;
+    public GameObject background;
+    public GameObject game;
+    public GameObject menuEven;
+    public GameObject menuCanvas;
+    public GameObject menu;
     public GameObject ia;
-    public AudioSource SoundEffect;
+    public AudioSource soundEffect;
     
-    void Start()
+    /*
+     * This start method launch the connection.
+     */
+    private void Start()
     {
         Connect();
     }
 
+    /*
+     * This method will connect the user to Photon.
+     */
     public void Connect()
     {
         PhotonNetwork.ConnectUsingSettings("version1");
     }
 
-    void OnJoinedLobby()
+    /*
+     * This method will set the option of the room?
+     */
+    private void OnJoinedLobby()
     {
-        RoomOptions MyRoom = new RoomOptions();
-        MyRoom.MaxPlayers = 2;
-        PhotonNetwork.JoinOrCreateRoom("war1", MyRoom, TypedLobby.Default);
+        RoomOptions myRoom = new RoomOptions();
+        myRoom.MaxPlayers = 2;
+        PhotonNetwork.JoinOrCreateRoom("war1", myRoom, TypedLobby.Default);
     }
 
-    void OnJoinedRoom()
+    /*
+     * This method will assign a castle to the player when he's on the room.
+     */
+    private void OnJoinedRoom()
     {
         AssignCastle();
     }
+    /*
+     * This method permit to disconnect from Photon.
+     */
     public void Disconnect()
     {
         PhotonNetwork.Disconnect();
     }
-
-    void AssignCastle()
+    
+    /*
+     * This method will get which user is the master then assign the castle based on it.
+     */
+    private void AssignCastle()
     {
         if (PhotonNetwork.isMasterClient)
         {
-            PhotonNetwork.player.TagObject = Castle1;
+            PhotonNetwork.player.TagObject = castle1;
             Debug.Log("Assigned Castle1 to MasterClient: " + PhotonNetwork.player.NickName);
         }
         else
         {
-            PhotonNetwork.player.TagObject = Castle2;
+            PhotonNetwork.player.TagObject = castle2;
             Debug.Log("Assigned Castle2 to player: " + PhotonNetwork.player.NickName);
         }
     }
-    void ActivateGameObjects()
+    
+    /*
+     * This method is used to change the active GameObject of the scene when the game starts.
+     */
+    private void ActivateGameObjects()
     {
-        SoloMenu.SetActive(false);
-        Background.SetActive(false);
-        Game.SetActive(true);
-        MenuEven.SetActive(true);
-        MenuCanvas.SetActive(false);
-        SoundEffect.Play();
+        soloMenu.SetActive(false);
+        background.SetActive(false);
+        game.SetActive(true);
+        menuEven.SetActive(true);
+        menuCanvas.SetActive(false);
+        soundEffect.Play();
         ia.SetActive(false);
-        Menu.SetActive(false);
+        menu.SetActive(false);
     }
     
-    void Update()
+    /*
+     * This update method is used to get the current state of connection.
+     * It also starts a game when two players joined the room.
+     */
+    private void Update()
     {
         if(PhotonNetwork.connectionStateDetailed.ToString() != "Joined")
         {
-            Infos.text = PhotonNetwork.connectionStateDetailed.ToString();
+            infos.text = PhotonNetwork.connectionStateDetailed.ToString();
             print(PhotonNetwork.connectionStateDetailed.ToString());
         }
         else
         {
-            Infos.text = "Connected to : " + PhotonNetwork.room.name + " Player(s) online : " +
+            infos.text = "Connected to : " + PhotonNetwork.room.name + " Player(s) online : " +
                          PhotonNetwork.room.playerCount + " Master ? " + PhotonNetwork.isMasterClient;
         }
         if (PhotonNetwork.room != null)

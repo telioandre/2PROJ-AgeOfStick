@@ -83,7 +83,7 @@ MonoBehaviour:
   detectionRadius: 1000
   targetLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   damage: 45
   delay: 0.5
   ID: 0
@@ -100,11 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0397d4e5654392d418e109e71b9b4c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name1: none
   age: 2
   type: 2
   placement: 0
-  IdTurret: 0
+  idTurret: 0
+  range: 0
+  damage: 0
 --- !u!1 &8348072190415996236
 GameObject:
   m_ObjectHideFlags: 0

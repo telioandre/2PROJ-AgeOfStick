@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Casern : MonoBehaviour
 {
@@ -84,6 +82,10 @@ public class Casern : MonoBehaviour
     public List<int> troop4Costs;
 
     private bool _isOnline;
+    
+    /*
+     * This Start method will set up the different costs for each troops.
+     */
     void Start()
     {
         troop1Costs = new List<int> { 2, 7, 12, 25, 60, 150 };
@@ -92,10 +94,19 @@ public class Casern : MonoBehaviour
         troop4Costs = new List<int> { 9, 20, 41, 100, 200, 300 };
     }
 
+    /*
+     * Boolean setter to see later if the player is playing online or not
+     */
     public void setOnline(bool online)
     {
         _isOnline = online;
     }
+    
+    /*
+     * This update method will check the age of the 2 players to set up the correct background for both players.
+     * It will also check each queue, it permits to automatically form troops for players if they spammed any troops button.
+     * Finally, it will check the current age for each player and change the troop's sprite depending on it.
+     */
     private void Update()
     {
         SpriteRenderer spriteRenderer = background.GetComponent<SpriteRenderer>();
@@ -179,6 +190,12 @@ public class Casern : MonoBehaviour
         }
     }
 
+    /*
+     * This method take 1 argument "value" then will split it into 2 variables.
+     * These 2 variables will be use for the differents switch case.
+     * It permits to instantiate the troop according to the player's choice then check if the amount of money is sufficient or not.
+     * If the boolean isForming is true, then the value will be save in the queue list corresponding.
+     */
     public void InstantiateTroop(int value)
     {
         bool isValid = false;
@@ -199,6 +216,10 @@ public class Casern : MonoBehaviour
                                 _troopId = 1;
                                 isValid = true;
                             }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
+                            }
                             break;
 
                         case 2:
@@ -208,6 +229,10 @@ public class Casern : MonoBehaviour
                                 _troopToInstantiate = currentTroop2;
                                 _troopId = 2;
                                 isValid = true;
+                            }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
                             }
                             break;
 
@@ -219,6 +244,10 @@ public class Casern : MonoBehaviour
                                 _troopId = 3;
                                 isValid = true;
                             }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
+                            }
                             break;
 
                         case 4:
@@ -229,6 +258,10 @@ public class Casern : MonoBehaviour
                                 _troopId = 4;
                                 isValid = true;
                             }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
+                            }
                             break;
                         case 5:
                             _cost = 750;
@@ -237,6 +270,10 @@ public class Casern : MonoBehaviour
                                 _troopToInstantiate = ultimateTroop;
                                 _troopId = 5;
                                 isValid = true;
+                            }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
                             }
                             break;
                     }
@@ -252,6 +289,10 @@ public class Casern : MonoBehaviour
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
                             }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
+                            }
                             break;
                         case 2:
                             _cost = troop2Costs[castle1.player.GetAge() - 1];
@@ -259,6 +300,10 @@ public class Casern : MonoBehaviour
                             {
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
+                            }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
                             }
                             break;
                         case 3:
@@ -268,6 +313,10 @@ public class Casern : MonoBehaviour
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
                             }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
+                            }
                             break;
                         case 4:
                             _cost = troop4Costs[castle1.player.GetAge() - 1];
@@ -275,6 +324,10 @@ public class Casern : MonoBehaviour
                             {
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
+                            }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
                             }
                             break;
                         case 5:
@@ -284,8 +337,16 @@ public class Casern : MonoBehaviour
                                 queue1.Add(value);
                                 castle1.player.AddMoney(-_cost);
                             }
+                            else
+                            {
+                                StartCoroutine(castle1.player.MoneyError());
+                            }
                             break;
                     }
+                }
+                else
+                {
+                    StartCoroutine(castle1.player.TroopsError());
                 }
 
                 break;
@@ -294,7 +355,6 @@ public class Casern : MonoBehaviour
                 {
                     switch (troop)
                     {
-
                         case 1:
                             _cost = troop1Costs[castle2.player.GetAge() - 1];
                             if (castle2.player.GetMoney() >= _cost)
@@ -302,6 +362,10 @@ public class Casern : MonoBehaviour
                                 _troopToInstantiate = currentTroop5;
                                 _troopId = 1;
                                 isValid = true;
+                            }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
                             }
                             break;
 
@@ -313,6 +377,10 @@ public class Casern : MonoBehaviour
                                 _troopId = 2;
                                 isValid = true;
                             }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
+                            }
                             break;
 
                         case 3:
@@ -322,6 +390,10 @@ public class Casern : MonoBehaviour
                                 _troopToInstantiate = currentTroop7;
                                 _troopId = 3;
                                 isValid = true;
+                            }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
                             }
                             break;
 
@@ -333,6 +405,10 @@ public class Casern : MonoBehaviour
                                 _troopId = 4;
                                 isValid = true;
                             }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
+                            }
                             break;
                         case 5:
                             _cost = 750;
@@ -341,6 +417,10 @@ public class Casern : MonoBehaviour
                                 _troopToInstantiate = ultimateTroop;
                                 _troopId = 5;
                                 isValid = true;
+                            }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
                             }
                             break;
                     }
@@ -356,6 +436,10 @@ public class Casern : MonoBehaviour
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
                             }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
+                            }
                             break;
                         case 2:
                             _cost = troop2Costs[castle2.player.GetAge() - 1];
@@ -363,6 +447,10 @@ public class Casern : MonoBehaviour
                             {
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
+                            }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
                             }
                             break;
                         case 3:
@@ -372,6 +460,10 @@ public class Casern : MonoBehaviour
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
                             }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
+                            }
                             break;
                         case 4:
                             _cost = troop4Costs[castle2.player.GetAge() - 1];
@@ -379,6 +471,10 @@ public class Casern : MonoBehaviour
                             {
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
+                            }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
                             }
                             break;
                         case 5:
@@ -388,8 +484,16 @@ public class Casern : MonoBehaviour
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
                             }
+                            else
+                            {
+                                StartCoroutine(castle2.player.MoneyError());
+                            }
                             break;
                     }
+                }
+                else
+                {
+                    StartCoroutine(castle2.player.TroopsError());
                 }
                 break;
         }
@@ -397,47 +501,75 @@ public class Casern : MonoBehaviour
         {
             CreateTroop(id, _troopId, _troopToInstantiate);
         }
-        else
-        {
-            //Debug.Log("not enough money or too fast");
-        }
     }
 
+    /*
+     * This method is called right after the InstantiateTroop() to generalize the process.
+     * It will catch the id of the player, so that the spawn points are different, and therefore they do not do premature damage.
+     * The method will check if the player is playing online to make the appropriate Instantiation.
+     * After the creation, the troop will be store in a list to count of each player.
+     */
     private void CreateTroop(int id, int troopId, GameObject troopToCreate)
     {
         Player currentPlayer;
         List<GameObject> currentTroops;
-        Vector2 new_position;
+        Vector2 newPosition;
 
         if (id == 1)
         {
             isForming1 = true;
             currentPlayer = castle1.player;
             currentTroops = troopsPlayer1;
-            new_position = new Vector2(500, 0);
+            newPosition = new Vector2(500, -500);
         }
         else
         {
             isForming2 = true;
             currentPlayer = castle2.player;
             currentTroops = troopsPlayer2;
-            new_position = new Vector2(5000, 0);
+            newPosition = new Vector2(5000, -500);
         }
 
         if (_isOnline)
         {
-            GameObject newObject = PhotonNetwork.Instantiate(troopToCreate.name, new_position, Quaternion.identity, 0);
+            GameObject newObject = PhotonNetwork.Instantiate(troopToCreate.name, newPosition, Quaternion.identity, 0);
             currentPlayer.numberOfTroop += 1;
-            currentPlayer.AddMoney(-_cost);
+            if (currentPlayer.castle.id == 1)
+            {
+                if (queue1.Count == 0)
+                {
+                    currentPlayer.AddMoney(-_cost);
+                }
+            }
+            if (currentPlayer.castle.id == 2)
+            {
+                if (queue2.Count == 0)
+                {
+                    currentPlayer.AddMoney(-_cost);
+                }
+            }
             currentTroops.Add(newObject);
             GameManager script = newObject.GetComponent<GameManager>();
             script.SetPlayer(id, troopId);
         }
         else
         {
-            GameObject newObject = Instantiate(troopToCreate, new_position, Quaternion.identity);
+            GameObject newObject = Instantiate(troopToCreate, newPosition, Quaternion.identity);
             currentPlayer.numberOfTroop += 1;
-            currentPlayer.AddMoney(-_cost);
+            if (currentPlayer.castle.id == 1)
+            {
+                if (queue1.Count == 0)
+                {
+                    currentPlayer.AddMoney(-_cost);
+                }
+            }
+            if (currentPlayer.castle.id == 2)
+            {
+                if (queue2.Count == 0)
+                {
+                    currentPlayer.AddMoney(-_cost);
+                }
+            }
             GameManager script = newObject.GetComponent<GameManager>();
             currentTroops.Add(newObject);
             script.SetPlayer(id, troopId);
@@ -445,6 +577,10 @@ public class Casern : MonoBehaviour
     }
 
 
+    /*
+     * This method will get the Player id of the troop to check on the correct list the unique Id it has.
+     * Then it will proceed to erase it from the list and destroy the GameObject from the scene.
+     */
     public void DestroyTroop(int id, string uniqueTroopId)
     {
         if (id == 1)
@@ -462,7 +598,6 @@ public class Casern : MonoBehaviour
                 }
             }
             castle1.player.numberOfTroop -= 1;
-            //troopsPlayer1.Remove(troop);
         }
         if(id == 2)
         {
@@ -479,7 +614,6 @@ public class Casern : MonoBehaviour
                 } 
             }
             castle2.player.numberOfTroop -= 1;
-            //troopsPlayer2.Remove(troop);
         }
     }
 }

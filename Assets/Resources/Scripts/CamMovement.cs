@@ -3,19 +3,19 @@ using UnityEngine;
 public class CamMovement : MonoBehaviour
 {
     public float speedMovement = 2000f;
-    public float leftLimit = -8.5f; // Bord gauche
-    public float rightLimit = 4300f; // Bord droit
+    public float leftLimit = -75f; // Left boundary
+    public float rightLimit = 2930f; // Right boundary
 
     void Update()
     {
+        // Get horizontal movement input
         float horizontalMovement = Input.GetAxis("Horizontal");
 
-        // Déplacement horizontal
+        // Calculate new horizontal position
         float newXPosition = transform.position.x + horizontalMovement * speedMovement * Time.unscaledDeltaTime;
         float newXPositionClamp = Mathf.Clamp(newXPosition, leftLimit, rightLimit);
 
-        // Appliquer la nouvelle position
+        // Apply the new position
         transform.position = new Vector2(newXPositionClamp, transform.position.y);
-        
     }
 }

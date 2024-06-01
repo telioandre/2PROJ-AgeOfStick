@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: -3233670421140167181}
   - component: {fileID: 2946156709184504131}
   - component: {fileID: 5002251312684116172}
+  - component: {fileID: -4295422202862951685}
   m_Layer: 3
   m_Name: Troop 2 ally
   m_TagString: Player
@@ -281,7 +282,7 @@ MonoBehaviour:
   id: 0
   movementAllowed: 1
   life: 75
-  attack: 15
+  attack: 10
   troopLevel: 1
   buildTime: 0.5
   attackTime: 1
@@ -289,7 +290,7 @@ MonoBehaviour:
   troopId: 0
   uniqueId: 
   attackRange: 
-  start: 0
+  isAttacking: 0
   health: {fileID: 1413636166159496734}
 --- !u!114 &2946156709184504131
 MonoBehaviour:
@@ -348,6 +349,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7920003, y: 4.3848906}
   m_EdgeRadius: 0
+--- !u!95 &-4295422202862951685
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828593304692205538}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01e244d543a147d45b96a158910e0f2d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &841492063845179270
 GameObject:
   m_ObjectHideFlags: 0

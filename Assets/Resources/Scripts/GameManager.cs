@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -20,8 +19,9 @@ public class GameManager : MonoBehaviour
     public int maxLife;
     public int troopId;
     public string uniqueId;
-    public List<int> attackRange;
-    public bool start;
+    public List<int> attackRange; 
+    public bool isAttacking;
+
 
     private List<int> _troop1dropsXp;
     private List<int> _troop2dropsXp;
@@ -37,8 +37,15 @@ public class GameManager : MonoBehaviour
     private List<int> _troop2dropsRange;
     private List<int> _troop3dropsRange;
     private List<int> _troop4dropsRange;
-    public Image health;
-
+    private Animator _animator;
+    public Image health; 
+    private int _enemyNumber; 
+    
+    /*
+     * This start method is used to set up every drop in terms of Xp and Money, and also the Range for each one.
+     * The attack range of each troop is initialized here.
+     * Other parameters such as the Rigibody and the Animator are set up.
+     */
     private void Start()
     {
         _troop1dropsXp = new List<int> { 190, 200, 210, 220, 230, 240 };
@@ -56,17 +63,29 @@ public class GameManager : MonoBehaviour
         _troop3dropsRange = new List<int> { 2, 6, 6, 11, 25, 20 };
         _troop4dropsRange = new List<int> { 6, 6, 15, 20, 30, 45 };
 
-        attackRange = new List<int> { 80, 180, 100, 80, 80};
+        attackRange = new List<int> { 80, 180, 90, 90, 200};
 
-        rb2d = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>(); 
+        _animator = GetComponent<Animator>();
+        isAttacking = false;
+        if (_animator != null)
+        {
+            _animator.SetFloat("attackTime", attackTime);
+        }
     }
 
+    /*
+     * Update method to display dynamically the troop's life points.
+     */
     private void Update()
     {
         health.fillAmount = (float)life / maxLife;
     }
 
-    //Permet de lancer le mouvement de chaque unité en fonction de leur ID
+    /*
+     * This method will create RayCast for each troop depending on his id and his range.
+     * When an opponent's troop or the opponent's castle will be detected in the Raycast, it will start a coroutine.
+     */
     void FixedUpdate()
     {
         RaycastHit2D[] hits;
@@ -83,45 +102,37 @@ public class GameManager : MonoBehaviour
             hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), attackRangeOfLevel);
             Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * attackRangeOfLevel, Color.red);
 
-            // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
             {
-                // Obtenir le premier élément touché
                 RaycastHit2D firstHit = default;
-
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
+                    if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id)
                     {
-                        // Obtenir le premier élément touché
                         firstHit = hits[i];
-                        // Faire quelque chose avec le premier élément touché, par exemple :
-                        GameObject objectHit = firstHit.collider.gameObject;
-                        objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
+                        Debug.Log("First hit detected");
 
+                        if (!isAttacking)
+                        {
+                            Debug.Log("Starting AttackPlayer coroutine");
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>()._player));
+                        }
                     }
-
                 }
-                if (firstHit != default && firstHit != null && start)
-                {
-                    print("AAAAAAAAAAAAAAAAAAATAQUE");
-                    StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer())); 
-                }
-
             }
 
-            // Creation du raycast pour la rencontre avec le chateau 
             hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), 200);
-            // Vérifier si l'objet touché a le tag "Castle"
+
             if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
             {
                 rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+                _animator.SetTrigger("attack");
             }
+
             if (movementAllowed)
             {
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
-
             }
         }
         else if (id == 2)
@@ -129,36 +140,36 @@ public class GameManager : MonoBehaviour
             hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), attackRangeOfLevel);
             Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * attackRangeOfLevel, Color.red);
 
-            // Vérifier s'il y a eu des collisions
             if (hits.Length > 0)
             {
-                // Obtenir le premier élément touché
                 RaycastHit2D firstHit = default;
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.tag == gameObject.tag && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id) //&& hits[i].collider.gameObject.GetComponent<GameManager>().id != id
+                    Debug.Log("hit.length = " + hits.Length);
+                    if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id)
                     {
-                        // Obtenir le premier élément touché
+                        Debug.Log("First hit detected");
                         firstHit = hits[i];
-                        // Faire quelque chose avec le premier élément touché, par exemple :
-                        GameObject objectHit = firstHit.collider.gameObject;
-                        objectHit.SendMessage("YourMessageHere", SendMessageOptions.DontRequireReceiver);
+                        Debug.Log(firstHit.collider.gameObject);
 
+                        if (!isAttacking)
+                        {
+                            Debug.Log("Starting AttackPlayer coroutine");
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>()._player));
+                        }
                     }
+                }
+            }
 
-                }
-                if (firstHit != default)
-                {
-                    StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer()));
-                }
-            }
             hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
-            // Vérifier si l'objet touché a le tag "Castle"
-            if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
+
+            if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 1"))
             {
-                //rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+                rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+                _animator.SetTrigger("attack");
             }
+
             if (movementAllowed)
             {
                 rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
@@ -166,22 +177,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int GetId()
-    {
-        return id;
-    }
-
-    public string GetUniqueId()
-    {
-        return uniqueId;
-    }
-
-    public Player GetPlayer()
-    {
-        return _player;
-    }
-
-    //Initialise les paramètres de l'objet prefab
+    /*
+     * This method is called when the process of the casern is done, it will set every stats of the player depending on the playerId and the troopId send.
+     * A unique Id will be given to recognize it on the list of troops of the player.
+     * The troop stats will be improve depending of the troop level associated and the age of the player.
+     * When everything is done, it will Invoke the EndBuild method to spawn the troop with the correct build time.
+     */
     public void SetPlayer(int playerId, int newTroopId)
     {
         id = playerId;
@@ -233,74 +234,75 @@ public class GameManager : MonoBehaviour
         {
             attack = Mathf.RoundToInt(attack * 1.2f);
         }
-        if (id == 1)
-        {
-            transform.position = new Vector2(1500, 0);
-        }
-        else
-        { 
-            transform.position = new Vector2(3500, 0);
-        }
         maxLife = life;
-        Invoke("Endbuild", buildTime);
+        Invoke(nameof(Endbuild), buildTime);
     }
+    
+    /*
+     * This method will end the troop creation process.
+     * It will spawn the troop depending on the other troops with the same id localization to not mess it up.
+     */
     private void Endbuild()
     {
+        RaycastHit2D[] hitsWidth;
+        hitsWidth = Physics2D.RaycastAll(new Vector2(250, 500), Vector2.right, 5000);
         if (id == 1)
         {
             RaycastHit2D[] hitsHeight;
-            RaycastHit2D[] hitsWidth;
 
-            hitsHeight = Physics2D.RaycastAll(new Vector2(-250, 380), new Vector2(0, 1), 2000000);
+            hitsHeight = Physics2D.RaycastAll(new Vector2(-250, 300), new Vector2(0, 1), 2000000);
             Debug.DrawRay(new Vector2(-250, 380), new Vector2(0, 1) * 2000000, Color.red);
 
-            hitsWidth = Physics2D.RaycastAll(new Vector2(-250, 380), Vector2.right, 2000);
-            Debug.DrawRay(new Vector2(-250, 380), Vector2.right * 2000, Color.green);
 
             int countWidth = 0;
-            foreach (var hit in hitsWidth)
+            if (hitsHeight.Length == 0)
             {
-                if (id == 1)
+                foreach (var hit in hitsWidth)
                 {
-                    countWidth++;
+                    if (id == 1)
+                    {
+                        countWidth++;
+                    }
                 }
             }
             
             int totalHits = hitsHeight.Length + countWidth;
 
-            transform.position = new Vector2(-250, 1000 + 1500 * totalHits);
+            transform.position = new Vector2(-250, 1000 + 2000 * totalHits);
 
             _casern.isForming1 = false;
         }
         else if (id == 2)
         {
             RaycastHit2D[] hitsHeight;
-            RaycastHit2D[] hitsWidth;
 
-            hitsHeight = Physics2D.RaycastAll(new Vector2(5200, 380), new Vector2(0, 1), 2000000);
+            hitsHeight = Physics2D.RaycastAll(new Vector2(5200, 300), new Vector2(0, 1), 2000000);
             Debug.DrawRay(new Vector2(5200, 380), new Vector2(0, 1) * 2000000, Color.red);
-
-            hitsWidth = Physics2D.RaycastAll(new Vector2(5200, 380), Vector2.right, 2000);
-            Debug.DrawRay(new Vector2(5200, 380), Vector2.left * 2000, Color.green);
             
             int countWidth = 0;
-            foreach (var hit in hitsWidth)
+            if (hitsHeight.Length == 0)
             {
-                if (id == 2)
+                foreach (var hit in hitsWidth)
                 {
-                    countWidth++;
+                    if (id == 2)
+                    {
+                        countWidth++;
+                    }
                 }
             }
-            
+
             int totalHits = hitsHeight.Length + countWidth;
             
-            transform.position = new Vector2(5200, 1000 + 1500 * totalHits);
+            transform.position = new Vector2(5200, 1000 + 1000 * totalHits);
 
             _casern.isForming2 = false;
         }
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
     }
 
+    /*
+     * Method that return true if a troop is plan to be super effective on the other when an attack process is in progress.
+     */
     public bool SuperEffective(int ally, int enemy)
     {
         if (ally == enemy + 1 || (ally == 4 && enemy == 1))
@@ -310,9 +312,11 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    /*
+     * This method will drop money and xp for both player depending on which troop is killed.
+     */
     public void DropRewards(int troop, Player ally, Player enemy)
     {
-        Debug.Log("troop = " + troop);
         switch (troop)
         {
             case 1:
@@ -349,47 +353,72 @@ public class GameManager : MonoBehaviour
             
             case 5:
                 ally.AddMoney(1000);
-                ally.AddXp(5000);
+                ally.AddXp(2500);
                 enemy.AddMoney(350);
-                enemy.AddXp(2000);
+                enemy.AddXp(1000);
                 break;
         }
 
     }
 
+    /*
+     * Coroutine when a troop detect on his RayCast another troop wit a different id.
+     * It will make a different animation (if there's one) and deal damage depending on his stat and the super effective state.
+     * When the opposite troop has no life point, it will drop rewards and remove the troop from the troops list.
+     */
     public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy)
     {
-        bool canAttack = true;
-        while (canAttack)
+        if (enemyGameManager!= null && enemy != null)
         {
-            //Debug.Log(enemyGameManager.life);
-            //Debug.Log("is life ");
-            yield return new WaitForSeconds(attackTime);
-            int damage = attack + Random.Range(0, 10);
-            char allyChar = name[6];
-            char enemyChar = enemyGameManager.name[6];
-            int allyNumber = int.Parse(allyChar.ToString());
-            int enemyNumber = int.Parse(enemyChar.ToString());
+            if (isAttacking)
+            {
+                _animator.SetTrigger("attack");
+                yield break;
+            }
+
+            isAttacking = true;
+            _animator = GetComponent<Animator>();
+            bool canAttack = true;
+            while (canAttack)
+            {
+                if (_animator != null)
+                {
+                    _animator.SetTrigger("attack");
+                }
+                yield return new WaitForSeconds(attackTime);
+
+                int damage = attack + Random.Range(0, 10);
+                char allyChar = name[6];
+                char enemyChar = enemyGameManager.name[6];
+                int allyNumber = int.Parse(allyChar.ToString());
+                int enemyNumber = int.Parse(enemyChar.ToString());
             
-            if (SuperEffective(allyNumber, enemyNumber))
-            {
-                damage = Mathf.RoundToInt(damage * 1.5f);
+                if (SuperEffective(allyNumber, enemyNumber))
+                {
+                    damage = Mathf.RoundToInt(damage * 1.5f);
+                }
+                enemyGameManager.life -= damage;
+
+                if (enemyGameManager.life <= 0)
+                {
+                    DropRewards(enemyNumber, ally, enemy);
+                    enemyGameManager.life = 0;
+                    _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
+                    myRb.constraints = RigidbodyConstraints2D.None;
+                    canAttack = false;
+                    Destroy(enemyGameManager.gameObject);
+                    StopAllCoroutines();
+                }
             }
-            enemyGameManager.life -= damage;
-            if (enemyGameManager.life <= 0)
-            {
-                DropRewards(enemyNumber, ally, enemy);
-                enemyGameManager.life = 0;
-                _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
-                myRb.constraints = RigidbodyConstraints2D.None;
-                canAttack = false;
-                Destroy(enemyGameManager.gameObject);
-                StopAllCoroutines();
-            }
+            isAttacking = false;
         }
     }
 
-        public IEnumerator TroopUnderSpecial(GameManager troop, SpecialCollision special, Player otherPlayer)
+    /*
+     * Coroutine that will deal damage to the troop touch by the special if the id is different.
+     * The damage is set in function the maximum possible life points of the touched troop.
+     */
+    public IEnumerator TroopUnderSpecial(GameManager troop, SpecialCollision special, Player otherPlayer)
         {
             char troopChar = troop.name[6];
             int troopNumber = int.Parse(troopChar.ToString());
@@ -399,6 +428,10 @@ public class GameManager : MonoBehaviour
                 if (troopNumber == 4)
                 {
                     damage = troop.maxLife / 2;
+                }
+                else if (troopNumber == 5)
+                {
+                    damage = troop.maxLife / 4;
                 }
                 else
                 {
@@ -410,6 +443,10 @@ public class GameManager : MonoBehaviour
                 if (troopNumber == 4)
                 {
                     damage = troop.maxLife / 4;
+                }
+                else if (troopNumber == 5)
+                {
+                    damage = troop.maxLife / 8;
                 }
                 else
                 {

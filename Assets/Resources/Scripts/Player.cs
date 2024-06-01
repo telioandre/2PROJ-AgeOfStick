@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
 
@@ -46,6 +44,7 @@ public class Player : MonoBehaviour
     public Sprite[] ageSprites = { };
     public List<Sprite> attackSpecialSprite = new();
     public Button specialAttackButton;
+    public Image specialAttackImage;
     public List<Sprite> troop1Sprite = new();
     public Button troop1Button;
     public Image troop1Image;
@@ -95,116 +94,173 @@ public class Player : MonoBehaviour
     
     public int numberOfTroop;
 
-    public int TurretRangeLevel;
-    public int TurretDamageLevel;
+    public int turretRangeLevel;
+    public int turretDamageLevel;
 
     private float _precision;
-    private float _specialCooldown = 20f;
-    private float _lastPlayer1Special;
-    private float _lastPlayer2Special;
+    private readonly float _specialCooldown = 20f;
+    private float _lastPlayerSpecial;
 
-    private float _moneyCooldown = 7f;
+    private readonly float _moneyCooldown = 7f;
     private float _previousMoneyDrop;
-    
-    List<List<int>> _troops1UpgradeCosts = new()
+
+    readonly List<List<int>> _troops1UpgradeCosts = new()
     {
         new() { 30, 1 },
         new() { 80, 2 },
         new() { 190, 4 },
     };
-    List<List<int>> _troops2UpgradeCosts = new()
+    readonly List<List<int>> _troops2UpgradeCosts = new()
     {
         new() { 20, 1 },
         new() { 50, 1 },
         new() { 110, 3 },
     };
-    List<List<int>> _troops3UpgradeCosts = new()
+    readonly List<List<int>> _troops3UpgradeCosts = new()
     {
         new() { 80, 2 },
         new() { 120, 3 },
         new() { 210, 5 },
     };
-    List<List<int>> _troops4UpgradeCosts = new()
+    readonly List<List<int>> _troops4UpgradeCosts = new()
     {
         new() { 100, 2 },
         new() { 210, 4 },
         new() { 280, 5 }
     };
-    List<List<int>> _turretRangeUpgradeCosts = new()
+    readonly List<List<int>> _turretRangeUpgradeCosts = new()
     {
         new() { 100, 2 },
         new() { 200, 4 },
         new() { 270, 6 }
     };
-    List<List<int>> _turretDamageUpgradeCosts = new()
+    readonly List<List<int>> _turretDamageUpgradeCosts = new()
     {
         new() { 30, 1 },
         new() { 150, 3 },
         new() { 230, 5 }
     };
 
+    public GameObject moneyError;
+    public GameObject xpError;
+    public GameObject troopsError;
+    public GameObject ageError;
+
+    /*
+     * This start method will set the age, money and xp for each player.
+     * It also initializes the costs for the special, the costs for the age upgrades and finally the cooldown for the special.
+     */
     private void Start()
     {
         SetAge(1);
-        AddMoney(1000);
-        AddXp(50000);
+        AddMoney(10);
+        AddXp(1000);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
 
-        _lastPlayer1Special = -_specialCooldown;
-        _lastPlayer2Special = -_specialCooldown;
+        _lastPlayerSpecial = -_specialCooldown;
     }
+
+    /*
+     * Coroutine to display a money error.
+     */
+    public IEnumerator MoneyError()
+    {
+        moneyError.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        moneyError.SetActive(false);
+    }
+    
+    /*
+     * Coroutine to display a XP error.
+     */
+    public IEnumerator XpError()
+    {
+        xpError.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        xpError.SetActive(false);
+    }
+    
+    /*
+     * Coroutine to display a number of troops error.
+     */
+    public IEnumerator TroopsError()
+    {
+        troopsError.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        troopsError.SetActive(false);
+    }
+    
+    /*
+     * Coroutine to display a age error.
+     */
+    public IEnumerator AgeError()
+    {
+        ageError.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        ageError.SetActive(false);
+    }
+    
+    
+    /*
+     * Method to change the current XP of the player.
+     */
     public void AddXp(int newXp)
     {
         _xp += newXp;
-        //Debug.Log("xp = " + xp);
     }
-
-    public void SuppXp(int newXp)
-    {
-        _xp -= newXp;
-        //Debug.Log("xp = " + xp);
-    }
-
+    
+    /*
+     * Method to get the current XP of the player.
+     */
     public int GetXp()
     {
         return _xp;
     }
 
+    /*
+     * Method to change the current money of the player.
+     */
     public void AddMoney(int newMoney)
     {
         _money += newMoney;
-        //Debug.Log("money = " + money);
     }
-
-    public void SuppMoney(int newMoney)
-    {
-        _money -= newMoney;
-        if (_money < 0)
-        {
-            _money = 0;
-        }
-        //Debug.Log("money = " + money);
-    }
-
+    
+    /*
+     * Method to get the current XP of the player.
+     */
     public int GetMoney()
     {
         return _money;
     }
 
+    /*
+     * Method to initialize the age of the player.
+     */
     public void SetAge(int newAge)
     {
         _age = newAge;
     }
+    
+    /*
+     * Method to get the current age of the player.
+     */
+    public int GetAge()
+    {
+        return _age;
+    }
 
+    /*
+     * This method will verify if the player can upgrade his age, then buff the castle's life points and change different sprites and images.
+     */
     public void AgeUp()
     {
         if (_age < 6)
         {
             if (_xp < ageCosts[_age - 1])
             {
-                //Debug.Log("XP insufisant ! Manque : " + (ageCosts[age - 1] - xp));
+                StartCoroutine(XpError());
             }
             else
             {
@@ -242,12 +298,11 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            Debug.Log("Max age reached");
-        }
     }
 
+    /*
+     * This method permit to unlock the ultimate troop.
+     */
     public void UnlockTroop5()
     {
         if (_money >= 500)
@@ -257,44 +312,49 @@ public class Player : MonoBehaviour
             troop5ButtonUnlock.SetActive(false);
             troop5ButtonUnlockInfo.SetActive(false);
         }
-    }
-
-    public int GetAge()
-    {
-        return _age;
-    }
-    public bool CheckCooldown(int id)
-    {
-        if (id == 1 && Time.time - _lastPlayer1Special > _specialCooldown + (_age - 1) * 5)
+        else
         {
-            _lastPlayer1Special = Time.time;
-            return true;
+            StartCoroutine(MoneyError());
         }
-        if (id == 2 && Time.time - _lastPlayer2Special > _specialCooldown + (_age - 1) * 5)
+    }
+    
+    /*
+     * This method will return a boolean if the user is able to launch a special based on his cooldown.
+     */
+    public bool CheckCooldown()
+    {
+        if (Time.time - _lastPlayerSpecial > _specialCooldown + (_age - 1) * 5)
         {
-            _lastPlayer2Special = Time.time;
             return true;
         }
         return false;
     }
 
+    /*
+     * This method will verify and launch the special attack.
+     */
     public void SpecialAttack(int id)
     {
-        if (CheckCooldown(id))
+        if (CheckCooldown())
         {
             int cost = specialCosts[_age - 1];
             if (GetXp() >= cost)
             {
-                SuppXp(cost);
+                _lastPlayerSpecial = Time.time;
+                AddXp(-cost);
                 StartCoroutine(SpecialAttackCoroutine(id));
             }
             else
             {
-                Debug.Log("Not enough XP");
+                StartCoroutine(XpError());
             }
         }
     }
 
+    /*
+     * Coroutine to launch the different parts of the special attack.
+     * The precision on it will depend on the current age.
+     */
     public IEnumerator SpecialAttackCoroutine(int id)
     {
         List<float> positions = new();
@@ -305,8 +365,6 @@ public class Player : MonoBehaviour
         {
             if (casern.troopsPlayer2.Count > 0)
             {
-                start = Mathf.RoundToInt(casern.troopsPlayer2[0].transform.position.x);
-                end = Mathf.RoundToInt(casern.troopsPlayer2[casern.troopsPlayer2.Count - 1].transform.position.x);
                 for (int i = 0; i < casern.troopsPlayer2.Count; i++)
                 {
                     Rigidbody2D script = casern.troopsPlayer2[i].GetComponent<Rigidbody2D>();
@@ -395,110 +453,198 @@ public class Player : MonoBehaviour
         yield return null;
     }
 
+    /*
+     * This method is used to upgrade the range or the damage of every turret.
+     */
     public void UpgradeTurret(int upgrade)
     {
         switch (upgrade)
         {
             case 1:
-                if (TurretRangeLevel <= 3)
+                if (turretRangeLevel <= 3)
                 {
-                    if (_money >= _turretRangeUpgradeCosts[TurretRangeLevel][0] && _age >= _turretRangeUpgradeCosts[TurretRangeLevel][1])
+                    if (_money >= _turretRangeUpgradeCosts[turretRangeLevel][0])
                     {
-                        AddMoney(-_turretRangeUpgradeCosts[TurretRangeLevel][0]);
-                        TurretRangeLevel += 1;
-                        turretRangeButton.image.sprite = turretRangeSprite[TurretRangeLevel];
+                        if (_age >= _turretRangeUpgradeCosts[turretRangeLevel][1])
+                        {
+                            AddMoney(-_turretRangeUpgradeCosts[turretRangeLevel][0]);
+                            turretRangeLevel += 1;
+                            turretRangeButton.image.sprite = turretRangeSprite[turretRangeLevel];
+                            
+                        }
+                        else
+                        {
+                            StartCoroutine(AgeError());
+                        }
+                    }
+                    else
+                    {
+                        StartCoroutine(MoneyError());
                     }
                 }
                 break;
 
             case 2:
-                if (TurretDamageLevel <= 3)
+                if (turretDamageLevel <= 3)
                 {
-                    if (_money >= _turretDamageUpgradeCosts[TurretDamageLevel][0] && _age >= _turretDamageUpgradeCosts[TurretDamageLevel][1])
+                    if (_money >= _turretDamageUpgradeCosts[turretDamageLevel][0])
                     {
-                        AddMoney(-_turretDamageUpgradeCosts[TurretDamageLevel][0]);
-                        TurretDamageLevel += 1;
-                        turretDamageButton.image.sprite = turretDamageSprite[TurretDamageLevel];
+                        if (_age >= _turretDamageUpgradeCosts[turretDamageLevel][1])
+                        {
+                            AddMoney(-_turretDamageUpgradeCosts[turretDamageLevel][0]);
+                            turretDamageLevel += 1;
+                            turretDamageButton.image.sprite = turretDamageSprite[turretDamageLevel];
+                        }
+                        else
+                        {
+                            StartCoroutine(AgeError());
+                        }
+                    }
+                    else
+                    {
+                        StartCoroutine(MoneyError());
                     }
                 }
                 break;
         }
     }
+    
+    /*
+     * This method is used to upgrade the selected troop.
+     */
     public void UpgradeTroopLevel(int troop)
     {
         switch (troop)
         {
             case 1:
-                if(troop1Level < 3 && _money >= _troops1UpgradeCosts[troop1Level][0] && _age >= _troops1UpgradeCosts[troop1Level][1])
+                if(troop1Level < 3 && _money >= _troops1UpgradeCosts[troop1Level][0])
                 {
-                    AddMoney(-_troops1UpgradeCosts[troop1Level][0]);
-                    troop1Level += 1;
-                    int imageIndex = _age + troop1Level * 6 - 1;
-                    print(imageIndex);
-                    if (imageIndex > 18)
+                    if (_age >= _troops1UpgradeCosts[troop1Level][1])
                     {
-                        imageIndex = 18;
+
+                        AddMoney(-_troops1UpgradeCosts[troop1Level][0]);
+                        troop1Level += 1;
+                        int imageIndex = _age + troop1Level * 6 - 1;
+                        print(imageIndex);
+                        if (imageIndex > 18)
+                        {
+                            imageIndex = 18;
+                        }
+
+                        troop1UpgradeButton.image.sprite = troop1UpgradeSprite[imageIndex];
                     }
-                    troop1UpgradeButton.image.sprite = troop1UpgradeSprite[imageIndex];
+                    else
+                    {
+                        StartCoroutine(AgeError());
+                    }
+                }
+                else
+                {
+                    StartCoroutine(MoneyError());
                 }
                 break;
 
             case 2:
-                if (troop2Level < 3 && _money >= _troops2UpgradeCosts[troop2Level][0] && _age >= _troops2UpgradeCosts[troop2Level][1])
+                if (troop2Level < 3 && _money >= _troops2UpgradeCosts[troop2Level][0])
                 {
-                    AddMoney(-_troops2UpgradeCosts[troop2Level][0]);
-                    troop2Level += 1;
-                    int imageIndex = _age + troop2Level * 6 - 1;
-                    print(imageIndex);
-                    if (imageIndex > 18)
+                    if (_age >= _troops2UpgradeCosts[troop2Level][1])
                     {
-                        imageIndex = 18;
+                        AddMoney(-_troops2UpgradeCosts[troop2Level][0]);
+                        troop2Level += 1;
+                        int imageIndex = _age + troop2Level * 6 - 1;
+                        print(imageIndex);
+                        if (imageIndex > 18)
+                        {
+                            imageIndex = 18;
+                        }
+                        troop2UpgradeButton.image.sprite = troop2UpgradeSprite[imageIndex];
                     }
-                    troop2UpgradeButton.image.sprite = troop2UpgradeSprite[imageIndex];
+                    else
+                    {
+                        StartCoroutine(AgeError());
+                    }
+                }
+                else
+                {
+                    StartCoroutine(MoneyError());
                 }
                 break;
 
             case 3:
-                if (troop3Level < 3 && _money >= _troops3UpgradeCosts[troop3Level][0] && _age >= _troops3UpgradeCosts[troop3Level][1])
+                if (troop3Level < 3 && _money >= _troops3UpgradeCosts[troop3Level][0])
                 {
-                    AddMoney(-_troops3UpgradeCosts[troop3Level][0]);
-                    troop3Level += 1;
-                    int imageIndex = _age + troop3Level * 6 - 1;
-                    print(imageIndex);
-                    if (imageIndex > 18)
+                    if (_age >= _troops3UpgradeCosts[troop3Level][1])
                     {
-                        imageIndex = 18;
+                        AddMoney(-_troops3UpgradeCosts[troop3Level][0]);
+                        troop3Level += 1;
+                        int imageIndex = _age + troop3Level * 6 - 1;
+                        print(imageIndex);
+                        if (imageIndex > 18)
+                        {
+                            imageIndex = 18;
+                        }
+                        troop3UpgradeButton.image.sprite = troop3UpgradeSprite[imageIndex];
                     }
-                    troop3UpgradeButton.image.sprite = troop3UpgradeSprite[imageIndex];
+                    else
+                    {
+                        StartCoroutine(AgeError());
+                    }
+                }
+                else
+                {
+                    StartCoroutine(MoneyError());
                 }
                 break;
 
             case 4:
-                if (troop4Level < 3 && _money >= _troops4UpgradeCosts[troop4Level][0] && _age >= _troops4UpgradeCosts[troop4Level][1])
+                if (troop4Level < 3 && _money >= _troops4UpgradeCosts[troop4Level][0])
                 {
-                    AddMoney(-_troops4UpgradeCosts[troop4Level][0]);
-                    troop4Level += 1;
-                    int imageIndex = _age + troop4Level * 6 - 1;
-                    print(imageIndex);
-                    if (imageIndex > 18)
+                    if (_age >= _troops4UpgradeCosts[troop4Level][1])
                     {
-                        imageIndex = 18;
+                        AddMoney(-_troops4UpgradeCosts[troop4Level][0]);
+                        troop4Level += 1;
+                        int imageIndex = _age + troop4Level * 6 - 1;
+                        print(imageIndex);
+                        if (imageIndex > 18)
+                        {
+                            imageIndex = 18;
+                        }
+                        troop4UpgradeButton.image.sprite = troop4UpgradeSprite[imageIndex];
                     }
-                    troop4UpgradeButton.image.sprite = troop4UpgradeSprite[imageIndex];
+                    else
+                    {
+                        StartCoroutine(AgeError());
+                    }
+                }
+                else
+                {
+                    StartCoroutine(MoneyError());
                 }
                 break;
         }
     }
 
+    /*
+     * This update method is used to dynamically show the remaining cooldown of the special attack.
+     * It also show dynamically the current amount of money, XP, and every prices for troops or turrets.
+     * The precision for the special attack is set here, based on the current age.
+     */
     private void Update()
     {
+        if (Time.time - _lastPlayerSpecial > _specialCooldown + (_age - 1) * 5)
+        {
+            specialAttackImage.fillAmount = 1f;
+        }
+        else
+        {
+            specialAttackImage.fillAmount = (Time.time - _lastPlayerSpecial) / (_specialCooldown + (_age - 1) * 5);
+        }
         _previousMoneyDrop += Time.deltaTime;
         if (_previousMoneyDrop >= _moneyCooldown)
         {
             AddMoney(1);
             if (castle.id == 2 && ia.GetDifficulty() == "Impossible")
             {
-                print("done buff");
                 AddMoney(1);
             }
             _previousMoneyDrop = 0f;
@@ -553,8 +699,15 @@ public class Player : MonoBehaviour
         {
             textPriceUpgradeTroop4.text = "MAX";
         }
-        textPriceUpgradeTurretRange.text = " ??? ";
-        textPriceUpgradeTurretDamage.text = " ??? ";
+
+        if (turretRangeLevel < 3)
+        {
+            textPriceUpgradeTurretRange.text = "" + _turretRangeUpgradeCosts[turretRangeLevel][0];
+        }
+        if (turretDamageLevel < 3)
+        {
+            textPriceUpgradeTurretDamage.text = "" + _turretDamageUpgradeCosts[turretDamageLevel][0];
+        }
         if (_age < 6)
         {
             textPriceUpgradeAge.text = "" + ageCosts[_age-1];

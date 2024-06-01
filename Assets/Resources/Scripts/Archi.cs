@@ -63,7 +63,7 @@ public class Archi : MonoBehaviour
     public List<int> turret1Costs = new() { 25, 150, 300, 400, 500, 600 };
     public List<int> turret2Costs = new() { 50, 200, 300, 400, 500, 600 };
     public List<int> turret3Costs = new() { 75, 200, 300, 400, 500, 600 };
-    public List<List<int>> damageTurret = new()
+    public List<List<int>> DamageTurret = new()
     {
         new() { 40, 30, 20},
         new() { 60, 45, 30},
@@ -233,8 +233,8 @@ public class Archi : MonoBehaviour
 
         int age = castle.player.GetAge();
         int cost = GetTurretCost(type, age);
-        int range = GetTurretRange(castle.player.TurretRangeLevel);
-        float damage = GetTurretDamage(type, age, castle.player.TurretDamageLevel);
+        int range = GetTurretRange(castle.player.turretRangeLevel);
+        float damage = GetTurretDamage(type, age, castle.player.turretDamageLevel);
 
         if (castle.player.GetMoney() >= cost)
         {
@@ -301,8 +301,8 @@ public class Archi : MonoBehaviour
     {
         Debug.Log("age = " + age);
         Debug.Log("type = " + type);
-        Debug.Log("damageTurret = " + damageTurret[age - 1][type - 1]);
-        float baseDamage = damageTurret[age - 1][type - 1];
+        Debug.Log("damageTurret = " + DamageTurret[age - 1][type - 1]);
+        float baseDamage = DamageTurret[age - 1][type - 1];
         return turretDamageUp switch
         {
             1 => baseDamage * 1.2f,

@@ -1131,7 +1131,7 @@ MonoBehaviour:
   id: 0
   movementAllowed: 1
   life: 75
-  attack: 15
+  attack: 10
   troopLevel: 1
   buildTime: 0.5
   attackTime: 1
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   troopId: 0
   uniqueId: 
   attackRange: 
-  start: 0
+  isAttacking: 0
   health: {fileID: 582083444411225561}
 --- !u!114 &-2345803138344114039
 MonoBehaviour:
