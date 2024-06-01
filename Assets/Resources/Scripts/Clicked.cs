@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Clicked : MonoBehaviour
@@ -5,93 +6,96 @@ public class Clicked : MonoBehaviour
     private Archi _archiClass;
     private Castle _castle1;
 
-
+    // Start-up function
     private void Start()
     {
-        _archiClass = FindObjectOfType<Archi>();
-        Castle[] castles = FindObjectsOfType<Castle>();
+        _archiClass = FindObjectOfType<Archi>(); // Archi recovery
+        Castle[] castles = FindObjectsOfType<Castle>(); // Castle list retrieval
 
         foreach (Castle castle in castles)
         {
-            if (castle.CompareTag("player 1"))
+            if (castle.CompareTag("player 1")) // if tag of the castle is "player 1"
             {
-                _castle1 = castle;
+                _castle1 = castle; // castle1 recovery
             }
         }
     }
     void OnMouseDown()
     {
-        // Fonction à exécuter lorsque la case est cliquée
+        // Function to be executed when the box is clicked
         StartFunction();
     }
 
     void StartFunction()
     {
-        
-        ShopTurret spriteScript = FindObjectOfType<ShopTurret>();
-        if (spriteScript != null)
+        ShopTurret shopTurret = FindObjectOfType<ShopTurret>(); // ShopTurret Recovery
+        if (shopTurret != null) // if shopTurret exists
         {
-            bool isSpriteEnabled = spriteScript.IsSpriteEnabled();
-            Debug.Log("SpriteRenderer est activé : " + isSpriteEnabled);
-            if (isSpriteEnabled)
+            bool isSpriteEnabled = shopTurret.IsSpriteEnabled(); // Recovers whether shopTurret has its Sprite activated
+            if (isSpriteEnabled) // if sprite is activate
             { 
-                if (_archiClass.delete == 1)
+                if (_archiClass.delete == 1) // if in “delete” mode
                 {
-                    Debug.Log("Del pass = 1");
                     if (gameObject.CompareTag("Turret1"))
                     {
-                        Debug.Log("Turret1 Del");
-                        _archiClass.SellSpot(1, 1);
-                        _castle1.player.AddMoney(200);
+                        _archiClass.SellSpot(1, 1); // Delete object from list 
+                        rewardDeleteSpot(1); // Recovery of gold from the sale
                     }
                     else if (gameObject.CompareTag("Turret2"))
                     {
-                        Debug.Log("Turret2 Del");
                         _archiClass.SellSpot(2, 1);
-                        _castle1.player.AddMoney(200);
+                        rewardDeleteSpot(1);
                     }
                     else if (gameObject.CompareTag("Turret3"))
                     {
-                        Debug.Log("Turret3 Del");
                         _archiClass.SellSpot(3, 1);
-                        _castle1.player.AddMoney(200);
+                        rewardDeleteSpot(1);
                     }
                     else if (gameObject.CompareTag("Turret4"))
                     {
-                        Debug.Log("Turret4 Del");
                         _archiClass.SellSpot(4, 1);
-                        _castle1.player.AddMoney(200);
+                        rewardDeleteSpot(1);
                     }
                     _archiClass.SwitchToEnabled(1);
                     _archiClass.delete = 0;
                 }
-                else
-                {
-                    Debug.Log("pass 1");
-                    // Personnalisez le comportement que vous souhaitez exécuter lors du clic sur la case
+                else // if in “creation” mode
+                { 
                     if (gameObject.CompareTag("Turret1"))
                     {
-                        Debug.Log("Turret1 cliquée");
-                        _archiClass.PlaceTurret(1, 1, 0);
+                        _archiClass.PlaceTurret(1, 1, 0); // turret creation on slot 1
                     }
                     else if (gameObject.CompareTag("Turret2"))
                     {
-                        Debug.Log("Turret2 cliquée");
-                        _archiClass.PlaceTurret(2, 1, 0);
+                        _archiClass.PlaceTurret(2, 1, 0); // turret creation on slot 2
                     }
                     else if (gameObject.CompareTag("Turret3"))
                     {
-                        Debug.Log("Turret3 cliquée");
-                        _archiClass.PlaceTurret(3, 1, 0);
+                        _archiClass.PlaceTurret(3, 1, 0); // turret creation on slot 3
                     }
                     else if (gameObject.CompareTag("Turret4"))
                     {
-                        Debug.Log("Turret4 cliquée");
-                        _archiClass.PlaceTurret(4, 1, 0);
+                        _archiClass.PlaceTurret(4, 1, 0); // turret creation on slot 4
                     }
                     _archiClass.SwitchToEnabled(1);
                 }
             }
+        }
+    }
+
+    private void rewardDeleteSpot(int placement)
+    {
+        switch (_archiClass.listTurretId1[placement-1].GetComponent<Turret>().type) // Depending on turret type
+        {
+            case 1:
+                _castle1.player.AddMoney(_archiClass.turret1Costs[_archiClass.listTurretId1[placement - 1].GetComponent<Turret>().age] / 2); // récupération de 50 % de son prix
+                break;
+            case 2:
+                _castle1.player.AddMoney(_archiClass.turret2Costs[_archiClass.listTurretId1[placement - 1].GetComponent<Turret>().age] / 2);
+                break;
+            case 3:
+                _castle1.player.AddMoney(_archiClass.turret3Costs[_archiClass.listTurretId1[placement - 1].GetComponent<Turret>().age] / 2);
+                break;
         }
     }
 }

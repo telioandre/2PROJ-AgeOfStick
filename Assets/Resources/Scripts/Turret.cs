@@ -6,29 +6,28 @@ public class Turret : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private EnemyShooting _enemyShooting;
 
-    public int age = 1;
-    public int type;
-    public int placement;
-    public int idTurret;
-    public int range;
-    public int damage;
+    public int age = 1; // age of the turret
+    public int type; // type of the turret
+    public int placement; // placement of the turret
+    public int idTurret; // id of the player who installed the turret
+    public int range; // range of the turret
+    public int damage; // damage of the turret
 
 
-    // Constructeur de la classe
+    // Class constructor
     public void Initialize(int placementTurret, int id, int rangeTurret, float damageTurret)
     {
         placement = placementTurret;
         idTurret = id; 
         range = rangeTurret;
         damage = (int)damageTurret;
-        // Obtenez le composant SpriteRenderer
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _enemyShooting = GetComponent<EnemyShooting>();
+        _spriteRenderer = GetComponent<SpriteRenderer>(); // SpriteRenderer recovery
+        _enemyShooting = GetComponent<EnemyShooting>(); // EnemyShooting recovery
 
-        // Assurez-vous que le composant SpriteRenderer existe
+        // Make sure the SpriteRenderer component exists
         if (_spriteRenderer == null)
         {
-            // Si le SpriteRenderer n'est pas trouvé sur cet objet, ajoutez-le
+            // If the SpriteRenderer is not found on this object, we add it
             _spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         }
     }
@@ -48,7 +47,7 @@ public class Turret : MonoBehaviour
         return range;
     }
 
-    public void SetPosition(int id)
+    public void SetPosition(int id) // This function lets you set turret locations according to their id.
     {
         if (id == 1)
         {
@@ -70,7 +69,8 @@ public class Turret : MonoBehaviour
         }
         else if (id == 2)
         {
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            // We reverse the direction of each turret so that it faces the correct direction of play. 
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z); 
             if (placement == 1)
             {
                 transform.position = new Vector3(4751, 690, 238);

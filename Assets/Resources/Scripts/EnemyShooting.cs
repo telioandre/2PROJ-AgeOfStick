@@ -1,27 +1,27 @@
-// EnemyShooting.cs
-
-using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class EnemyShooting : MonoBehaviour
 {
-    public GameObject bullet;
-    public Transform bulletPos;
-    public float detectionRadius = 10f;  // Rayon de détection
-    public LayerMask targetLayer;  // Layer des cibles à détecter
-    public int damage;
-    public float delay = 1f;
-    public int ID;
+    public GameObject bullet; // Itself
+    public Transform bulletPos; // starting position of the bullet
+    public float detectionRadius = 10f;  // Turret detection radius
+    public LayerMask targetLayer;  // Layer of targets to be detected
+    public int damage; // damage what the ammunition will do
+    public float delay = 1f; // delay between each pull
+    public int ID; // Player ID
 
     private float timer;
-    public List<Transform> targets = new List<Transform>();
+    public List<Transform> targets = new List<Transform>(); // List of targets for each turret
 
+    // Start-up function
     private void Start()
     {
-        var turretScript = GetComponent<Turret>();
-        damage = turretScript.getDamage();
-        detectionRadius = turretScript.getRange();
+        var turretScript = GetComponent<Turret>(); // Retrieving the turret script
+        damage = turretScript.getDamage(); // Recovery of the damage to be done by the turret
+        detectionRadius = turretScript.getRange(); // Recovery of the range to be made by the turret
     }
 
     // Update is called once per frame
@@ -30,71 +30,68 @@ public class EnemyShooting : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > delay)
         {
-            DetectTargets();  // Détecte les cibles à chaque seconde
-            ShootAtTargets(); // Tire sur les cibles détectées
+            DetectTargets();  // Detects targets every second
+            ShootAtTargets(); // Shoots at detected targets
             timer = 0;
         }
     }
 
-    void DetectTargets()
+    void DetectTargets() // Function that detects all targets and adds them to a list 
     {
         targets.Clear();
         Collider2D[] hits = Physics2D.OverlapCircleAll(bulletPos.position, detectionRadius, targetLayer);
-        Debug.Log("Nombre de cibles détectées : " + hits.Length);
         foreach (Collider2D hit in hits)
         {
-            Debug.DrawLine(bulletPos.position, hit.transform.position, Color.green, 1f); // Ligne verte pour montrer la détection
-            var enemyScript = hit.GetComponent<GameManager>();
-            var turretScript = GetComponent<Turret>();
-            ID = turretScript.GetIdTurret();
-            damage = turretScript.getDamage();
-            detectionRadius = turretScript.getRange();
-            if (enemyScript != null)
+            Debug.DrawLine(bulletPos.position, hit.transform.position, Color.green, 1f); // Green line to show detection
+            var enemyScript = hit.GetComponent<GameManager>(); // Retrieving the target's GameManager script
+            var turretScript = GetComponent<Turret>(); // Turret script recovery
+            ID = turretScript.GetIdTurret(); // Recovering the ID of the player who installed the turret
+            damage = turretScript.getDamage(); // Turret damage recovery
+            detectionRadius = turretScript.getRange(); // Turret range recovery
+            if (enemyScript != null) // Checking whether the target has the GameManager script
             {
-                int id = enemyScript.GetId();
-                int idTurret = turretScript.GetIdTurret();
+                int id = enemyScript.GetId(); // Recovering the ID of the enemy
 
-                if (id == 2 && idTurret == 1)
+                if (id == 2 && ID == 1) // If it's a turret belonging to player 1
                 {
-                    targets.Add(hit.transform);
-                    Debug.Log("Cible détectée : " + hit.name);
+                    targets.Add(hit.transform); // Add target position
+                    Debug.Log("Target detected : " + hit.name);
                 }
-                else if (id == 1 && idTurret == 2)
+                else if (id == 1 && ID == 2) // If it's a turret belonging to player 2 or IA
                 {
-                    targets.Add(hit.transform);
-                    Debug.Log("Cible détectée : " + hit.name);
+                    targets.Add(hit.transform); // Add target position
+                    Debug.Log("Target detected : " + hit.name);
                 }
             }
         }
-        Debug.Log("Nombre total de cibles : " + targets.Count);
+        Debug.Log("Total number of targets : " + targets.Count);
     }
 
+    // Function to shoot at the target
     public void ShootAtTargets()
     {
-        if (targets.Count > 0)
+        if (targets.Count > 0) // Check that there is at least 1 target
         {
-            if (targets[0] != null && bullet != null && bulletPos != null)
+            if (targets[0] != null && bullet != null && bulletPos != null) // We check that location 0 of the list is not empty and that the bullet is initialized, as well as the starting position of the bullet.
             {
-                Debug.Log("Tir à la cible : " + targets[0].name); // Vérifiez si la cible est correctement définie
+                Vector2 direction = targets[0].GetComponent<Collider2D>().bounds.center - bulletPos.position; // Create the direction in which the bullet will travel
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Create the firing angle of the bullet so that it is aimed at the target 
+                Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward); // Create the rotation of the bullet so that it is aimed at the target 
 
-                Vector2 direction = targets[0].GetComponent<Collider2D>().bounds.center - bulletPos.position;
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-                var newBullet = Instantiate(bullet, bulletPos.position, rotation);
-                var enemyBulletScript = newBullet.GetComponent<EnemyBulletScript>();
+                var newBullet = Instantiate(bullet, bulletPos.position, rotation); // Instantiate a new bullet at the position and rotation of 'bulletPos'
+                var enemyBulletScript = newBullet.GetComponent<EnemyBulletScript>(); // Get the EnemyBulletScript component from the newly created bullet
                 if (enemyBulletScript != null)
                 {
-                    enemyBulletScript.SetTarget(targets[0], bulletPos, damage, ID);
+                    enemyBulletScript.SetTarget(targets[0], bulletPos, damage, ID); // Launches the function to shoot at the selected target
                 }
                 else
                 {
-                    Debug.LogError("Le composant EnemyBulletScript n'a pas été trouvé sur le GameObject du projectile.");
+                    Debug.LogError("The EnemyBulletScript component was not found on the projectile's GameObject.");
                 }
             }
             else
             {
-                Debug.LogError("Une des références requises (bullet, bulletPos ou target) est null.");
+                Debug.LogError("One of the required references(bullet, bulletPos or target) is null.");
             }
         }
     }
