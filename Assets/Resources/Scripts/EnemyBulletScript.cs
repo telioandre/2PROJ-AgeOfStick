@@ -1,24 +1,20 @@
-// EnemyBulletScript.cs
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBulletScript : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float force;
-    private int damage;
+    private int _damage;
     public Castle castle1;
     public Castle castle2;
-    public int ID;
-    private Casern casern;
+    public int id;
+    private Casern _casern;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        casern = FindObjectOfType<Casern>();
+        _casern = FindObjectOfType<Casern>();
     }
 
     public void SetTarget(Transform target, Transform bulletPos, int bulletDamage, int id)
@@ -27,8 +23,8 @@ public class EnemyBulletScript : MonoBehaviour
         {
             Vector3 direction = target.GetComponent<Collider2D>().bounds.center - bulletPos.position; // Utilisez le centre du collider de l'ennemi comme point de départ
             rb.velocity = direction.normalized * force; // Utilisez juste la direction normalisée
-            damage = bulletDamage;
-            ID = id;
+            _damage = bulletDamage;
+            this.id = id;
 
             // Débogage : Afficher la direction de tir de la balle
             Debug.Log("Direction de tir : " + rb.velocity);
@@ -44,16 +40,16 @@ public class EnemyBulletScript : MonoBehaviour
     {
         var targetScript = collision.GetComponent<GameManager>();
 
-        if (collision.CompareTag("Player") && targetScript.id != ID)
+        if (collision.CompareTag("Player") && targetScript.id != id)
         {
             if (targetScript != null)
             {
-                targetScript.life -= damage;
+                targetScript.life -= _damage;
                 Debug.Log(targetScript.life);
                 if (targetScript.life <= 0)
                 {
                     Player enemy = FindPlayerByCastleId(targetScript.id);
-                    Player player = FindPlayerByCastleId(ID);
+                    Player player = FindPlayerByCastleId(id);
 
                     // Obtenir une référence à l'instance de Movement
                     var movementInstance = collision.GetComponent<GameManager>();
@@ -68,7 +64,7 @@ public class EnemyBulletScript : MonoBehaviour
                         Debug.LogWarning("Movement instance not found on the collided object.");
                     }
                     Destroy(targetScript.gameObject);
-                    casern.DestroyTroop(targetScript.id, targetScript.uniqueId);
+                    _casern.DestroyTroop(targetScript.id, targetScript.uniqueId);
                 }
                 // Détruisez la balle
                 Destroy(gameObject);

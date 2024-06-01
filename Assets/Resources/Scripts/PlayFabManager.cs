@@ -27,7 +27,9 @@ public class PlayFabManager : MonoBehaviour
     
     private string _playFabId;
 
-    // Méthode appelée lorsque l'utilisateur appuie sur le bouton de connexion
+    /*
+     * This method start the log in process.
+     */
     public void OnLoginButtonClicked()
     {
         string username = usernameLoginInput.text;
@@ -35,9 +37,11 @@ public class PlayFabManager : MonoBehaviour
         usernameLoginInput.text = "";
         passwordLoginInput.text = "";
         Login(username, password);
-    }
-
-    // Méthode appelée lorsque l'utilisateur appuie sur le bouton d'enregistrement
+        }
+    
+    /*
+     * This method start the register process.
+    */
     public void OnRegisterButtonClicked()
     {
         string username = usernameRegisterInput.text;
@@ -46,7 +50,10 @@ public class PlayFabManager : MonoBehaviour
         passwordRegisterInput.text = "";
         Register(username, password);
     }
-    // Méthode pour se connecter à un compte PlayFab
+    
+    /*
+     * This method permits the user to log in to his PlayFab account.
+     */
     public void Login(string username, string password)
     {
         var request = new LoginWithPlayFabRequest
@@ -62,7 +69,9 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnLoginFailure);
     }
 
-    // Méthode pour s'enregistrer avec un nouveau compte PlayFab
+    /*
+     * This method permits the user to register a new PlayFab account, then redirect to the login page. 
+     */
     private void Register(string username, string password)
     {
         var request = new RegisterPlayFabUserRequest
@@ -78,6 +87,9 @@ public class PlayFabManager : MonoBehaviour
 		loginMenu.SetActive(true);
     }
 
+    /*
+     * This method is called when the user is log, it changes the active elements in the scene.
+     */
     private void OnLoginSuccess(LoginResult result)
     {
         _name = result.InfoResultPayload.PlayerProfile.DisplayName;
@@ -87,19 +99,29 @@ public class PlayFabManager : MonoBehaviour
         mainMenu.SetActive(true);
         GetFriendList();
         _playFabId = result.PlayFabId;
-        GetCurrentVictoryCount(_playFabId);
+        GetCurrentVictoryCount();
     }
 
+    /*
+     * Getter for the username of the current user.
+     */
     public string GetName()
     {
         return _name;
     }
+    
+    /*
+     * Getter for the id of the current user.
+     */
     public string GetPlayFabId()
     {
         return _playFabId;
     }
     
-    public void GetCurrentVictoryCount(string playFabId)
+    /*
+     * Method to get the Victories statistic of the current user and start the display.
+     */
+    public void GetCurrentVictoryCount()
     {
         var request = new GetLeaderboardAroundPlayerRequest
         {
@@ -111,6 +133,9 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderboardSuccess, OnLeaderboardFailure);
     }
     
+    /*
+     * Method to display the statistic.
+     */
     private void OnLeaderboardSuccess(GetLeaderboardAroundPlayerResult result)
     {
         int currentVictoryCount = 0;
@@ -123,7 +148,10 @@ public class PlayFabManager : MonoBehaviour
         victoryCountText.text = "" + currentVictoryCount;
     }
     
-    public void PostNewVictoryCount(string playFabId)
+    /*
+     * Method to get the Victories statistic of the current user and update it.
+     */
+    public void PostNewVictoryCount()
     {
         var request = new GetLeaderboardAroundPlayerRequest
         {
@@ -135,6 +163,9 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderboardPostSuccess, OnLeaderboardFailure);
     }
     
+    /*
+     * Method to update the statistic.
+     */
     private void OnLeaderboardPostSuccess(GetLeaderboardAroundPlayerResult result)
     {
         int currentVictoryCount = 0;
@@ -147,6 +178,9 @@ public class PlayFabManager : MonoBehaviour
         UpdateVictoryCount(currentVictoryCount + 1);
     }
     
+    /*
+     * This method update the statistic on PlayFab.
+     */
     private void UpdateVictoryCount(int newVictoryCount)
     {
         var request = new UpdatePlayerStatisticsRequest
@@ -164,36 +198,57 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.UpdatePlayerStatistics(request, OnUpdateStatisticsSuccess, OnUpdateStatisticsFailure);
     }
     
+    /*
+     * Logs a message when the player statistics are updated successfully
+     */
     private void OnUpdateStatisticsSuccess(UpdatePlayerStatisticsResult result)
     {
         Debug.Log("Victory count updated successfully.");
     }
-
+    
+    /*
+     * Logs an error message when updating player statistics fails.
+     */
     private void OnUpdateStatisticsFailure(PlayFabError error)
     {
         Debug.LogError("Failed to update victory count: " + error.ErrorMessage);
     }
 
+    /*
+     * Logs an error message when posting the score to the leaderboard fails
+     */
     private void OnLeaderboardFailure(PlayFabError error)
     {
         Debug.LogError("Failed to post score" + error.ErrorMessage);
     }
     
+    /*
+     * Logs an error message when login fails.
+     */
     private void OnLoginFailure(PlayFabError error)
     {
         Debug.LogError("Login failed: " + error.ErrorMessage);
     }
 
+    /*
+     * Logs a message when registration is successful.
+     */
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
         Debug.Log("Registered successfully!");
     }
 
+    /*
+     * Logs an error message when registration fails.
+     */
     private void OnRegisterFailure(PlayFabError error)
     {
         Debug.LogError("Registration failed: " + error.ErrorMessage);
     }
 
+    /*
+     * Method to get a user in PlayFab based on his name.
+     */
     public void AddFriend()
     {
         string friendName = addFriendField.text;
@@ -204,6 +259,9 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetAccountInfo(request, OnGetAccountInfoSuccess, OnGetAccountInfoFailure);
     }
     
+    /*
+     * Method to get the id of the user found.
+     */
     private void OnGetAccountInfoSuccess(GetAccountInfoResult result)
     {
         if (result.AccountInfo != null)
@@ -211,17 +269,19 @@ public class PlayFabManager : MonoBehaviour
             string friendPlayFabId = result.AccountInfo.PlayFabId;
             SendFriendRequest(friendPlayFabId);
         }
-        else
-        {
-            Debug.LogError("AccountInfo is null");
-        }
     }
 
+    /*
+     * Logs an error message when retrieving account information fails.
+     */
     private void OnGetAccountInfoFailure(PlayFabError error)
     {
         Debug.LogError("Failed to get account info: " + error.ErrorMessage);
     }
     
+    /*
+     * Method to add as friend the user.
+     */
     private void SendFriendRequest(string friendPlayFabId)
     {
         var request = new AddFriendRequest
@@ -232,6 +292,9 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.AddFriend(request, OnAddFriendSuccess, OnAddFriendFailure);
     }
 
+    /*
+     * Method to reset the field when the friend is added.
+     */
     private void OnAddFriendSuccess(AddFriendResult result)
     {
         addFriendField.text = "";
@@ -239,11 +302,17 @@ public class PlayFabManager : MonoBehaviour
         GetFriendList();
     }
 
+    /*
+     * Logs an error message when sending a friend request fails.
+     */
     private void OnAddFriendFailure(PlayFabError error)
     {
         Debug.LogError("Failed to send friend request: " + error.ErrorMessage);
     }
     
+    /*
+     * Method to get the friend list of the current user.
+     */
     public void GetFriendList()
     {
         var request = new GetFriendsListRequest();
@@ -251,6 +320,9 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetFriendsList(request, OnGetFriendListSuccess, OnGetFriendListFailure);
     }
 
+    /*
+     * Method to display every friend found and attach a listener to every button created.
+     */
     private void OnGetFriendListSuccess(GetFriendsListResult result)
     {
         for (int i = 0; i < result.Friends.Count; i++)
@@ -276,10 +348,11 @@ public class PlayFabManager : MonoBehaviour
                 buttonComponent.onClick.AddListener(() => photonChatManager.ChatConnectOnClick(_name, friendName));
             }
         }
-
-        //Debug.Log("success");
     }
     
+    /*
+     * Method to clear the display when a new friend is added or when the current user change.
+     */
     public void ClearFriendButtons()
     {
         foreach (Transform child in friendList.transform)
@@ -291,11 +364,17 @@ public class PlayFabManager : MonoBehaviour
         }
     }
 
+    /*
+     * Logs an error message when retrieving the friend list fails.
+     */
     private void OnGetFriendListFailure(PlayFabError error)
     {
         Debug.LogError("Failed to get friend list: " + error.ErrorMessage);
     }
 
+    /*
+     * This method is used to disconnect from PlayFab.
+     */
     public void Logout()
     {
         PlayFabClientAPI.ForgetAllCredentials();

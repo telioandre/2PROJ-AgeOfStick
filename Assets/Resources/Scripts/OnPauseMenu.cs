@@ -1,15 +1,12 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class OnPauseMenu : MonoBehaviour
 {
-    [FormerlySerializedAs("ObjectToActiveAndDeactivate")] public GameObject objectToActiveAndDeactivate;
+    public GameObject objectToActiveAndDeactivate;
 
-    private void Start()
-    {
-
-    }
-
+    /*
+     * Method to escape the pause menu when it's activated.
+     */
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -31,6 +28,9 @@ public class OnPauseMenu : MonoBehaviour
         }
     }
 
+    /*
+     * Method to deliver the game after it was on pause.
+     */
     public void PauseStop()
     {
         Time.timeScale = 1f;

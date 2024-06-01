@@ -13,43 +13,42 @@ public class Castle : MonoBehaviour
     public GameObject gameOverUI;
     public TextMeshProUGUI winner;
     public PlayFabManager playFabManager;
-    void Start()
-    {
-        if (player == null)
-        {
-            Debug.LogError("Player reference is not set in Castle.");
-        }
-    }
-
+    
+    /*
+     * Method to manage life point of each castle when the age is upgraded.
+     */
     public void AddLifePoint(int newLifePoint)
     {
         lifePoint = newLifePoint;
-        Debug.Log("life point = " + lifePoint);
     }
+    
+    /*
+     * Method called when a player upgrade his age so the health bar of the castle will be updated.
+     */
     public void AddMaxLifePoint(int newMaxLifePoint)
     {
         maxLifePoint = newMaxLifePoint;
-        Debug.Log("max life point = " + maxLifePoint);
     }
 
-    public IEnumerator DeleteLifePoint(int damage, float attackTime, int movement, Castle castle)
+    /*
+     * Method to delete castle's life points depending on the attack stat and the attack time stat of the troop attacking it.
+     * It will consider the id of the troop to not get killed by allies.
+     * When a castle has no life points, the winner is show and the win count statistic of the player may improve.
+     */
+    public IEnumerator DeleteLifePoint(int damage, float attackTime, int attackingId, Castle castle)
     {
-        // Vérification des ID différents
-        if (movement != castle.id)
+        if (attackingId != castle.id)
         {
-            //Debug.Log("num 1 :  " + movement + " num 2 : " + castle.ID);
             while (lifePoint > 0)
             {
                 lifePoint -= damage;
-                //Debug.Log("life point = " + player.GetName() + " " + lifePoint);
                 if (lifePoint <= 0)
                 {
-                    // Opérateur ternaire qui indique qui a gagné
                     string opponentBaseName = player.baseName == "ally" ? "enemy" : "ally";
                     if (opponentBaseName == "ally")
                     {
                         winner.text = playFabManager.GetName();
-                        playFabManager.PostNewVictoryCount(playFabManager.GetPlayFabId());
+                        playFabManager.PostNewVictoryCount();
                     }
                     else
                     {
@@ -58,7 +57,6 @@ public class Castle : MonoBehaviour
                     gameOverUI.SetActive(true);
                     Time.timeScale = 0f;
                 }
-                // 1 seconde de délai entre chaque attaque
                 yield return new WaitForSeconds(attackTime);
             }
         }
@@ -68,6 +66,9 @@ public class Castle : MonoBehaviour
         }
     }
 
+    /*
+     * Update method to display dynamically the castle's life points.
+     */
     public void Update()
     {
         bar.fillAmount = (float)lifePoint / maxLifePoint;

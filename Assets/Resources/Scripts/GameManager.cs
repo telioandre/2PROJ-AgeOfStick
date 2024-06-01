@@ -40,8 +40,12 @@ public class GameManager : MonoBehaviour
     private Animator _animator;
     public Image health; 
     private int _enemyNumber; 
-
-
+    
+    /*
+     * This start method is used to set up every drop in terms of Xp and Money, and also the Range for each one.
+     * The attack range of each troop is initialized here.
+     * Other parameters such as the Rigibody and the Animator are set up.
+     */
     private void Start()
     {
         _troop1dropsXp = new List<int> { 190, 200, 210, 220, 230, 240 };
@@ -70,12 +74,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+     * Update method to display dynamically the troop's life points.
+     */
     private void Update()
     {
         health.fillAmount = (float)life / maxLife;
     }
 
-    //Permet de lancer le mouvement de chaque unité en fonction de leur ID
+    /*
+     * This method will create RayCast for each troop depending on his id and his range.
+     * When an opponent's troop or the opponent's castle will be detected in the Raycast, it will start a coroutine.
+     */
     void FixedUpdate()
     {
         RaycastHit2D[] hits;
@@ -106,7 +116,7 @@ public class GameManager : MonoBehaviour
                         if (!isAttacking)
                         {
                             Debug.Log("Starting AttackPlayer coroutine");
-                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer()));
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>()._player));
                         }
                     }
                 }
@@ -146,7 +156,7 @@ public class GameManager : MonoBehaviour
                         if (!isAttacking)
                         {
                             Debug.Log("Starting AttackPlayer coroutine");
-                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer()));
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>()._player));
                         }
                     }
                 }
@@ -167,22 +177,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int GetId()
-    {
-        return id;
-    }
-
-    public string GetUniqueId()
-    {
-        return uniqueId;
-    }
-
-    public Player GetPlayer()
-    {
-        return _player;
-    }
-
-    //Initialise les paramètres de l'objet prefab
+    /*
+     * This method is called when the process of the casern is done, it will set every stats of the player depending on the playerId and the troopId send.
+     * A unique Id will be given to recognize it on the list of troops of the player.
+     * The troop stats will be improve depending of the troop level associated and the age of the player.
+     * When everything is done, it will Invoke the EndBuild method to spawn the troop with the correct build time.
+     */
     public void SetPlayer(int playerId, int newTroopId)
     {
         id = playerId;
@@ -237,6 +237,11 @@ public class GameManager : MonoBehaviour
         maxLife = life;
         Invoke(nameof(Endbuild), buildTime);
     }
+    
+    /*
+     * This method will end the troop creation process.
+     * It will spawn the troop depending on the other troops with the same id localization to not mess it up.
+     */
     private void Endbuild()
     {
         RaycastHit2D[] hitsWidth;
@@ -295,6 +300,9 @@ public class GameManager : MonoBehaviour
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
     }
 
+    /*
+     * Method that return true if a troop is plan to be super effective on the other when an attack process is in progress.
+     */
     public bool SuperEffective(int ally, int enemy)
     {
         if (ally == enemy + 1 || (ally == 4 && enemy == 1))
@@ -304,9 +312,11 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    /*
+     * This method will drop money and xp for both player depending on which troop is killed.
+     */
     public void DropRewards(int troop, Player ally, Player enemy)
     {
-        Debug.Log("troop = " + troop);
         switch (troop)
         {
             case 1:
@@ -351,13 +361,17 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /*
+     * Coroutine when a troop detect on his RayCast another troop wit a different id.
+     * It will make a different animation (if there's one) and deal damage depending on his stat and the super effective state.
+     * When the opposite troop has no life point, it will drop rewards and remove the troop from the troops list.
+     */
     public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy)
     {
         if (enemyGameManager!= null && enemy != null)
         {
             if (isAttacking)
             {
-                Debug.Log("Already attacking");
                 _animator.SetTrigger("attack");
                 yield break;
             }
@@ -367,16 +381,11 @@ public class GameManager : MonoBehaviour
             bool canAttack = true;
             while (canAttack)
             {
-                Debug.Log("Waiting for attack time");
                 if (_animator != null)
                 {
                     _animator.SetTrigger("attack");
                 }
                 yield return new WaitForSeconds(attackTime);
-                
-
-                Debug.Log("Waiting before dealing damage");
-                yield return new WaitForSeconds(0.5f);
 
                 int damage = attack + Random.Range(0, 10);
                 char allyChar = name[6];
@@ -401,11 +410,14 @@ public class GameManager : MonoBehaviour
                     StopAllCoroutines();
                 }
             }
-
             isAttacking = false;
         }
     }
 
+    /*
+     * Coroutine that will deal damage to the troop touch by the special if the id is different.
+     * The damage is set in function the maximum possible life points of the touched troop.
+     */
     public IEnumerator TroopUnderSpecial(GameManager troop, SpecialCollision special, Player otherPlayer)
         {
             char troopChar = troop.name[6];

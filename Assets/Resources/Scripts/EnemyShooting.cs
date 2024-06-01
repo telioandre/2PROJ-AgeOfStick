@@ -1,6 +1,3 @@
-// EnemyShooting.cs
-
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,9 +9,9 @@ public class EnemyShooting : MonoBehaviour
     public LayerMask targetLayer;  // Layer des cibles à détecter
     public int damage;
     public float delay = 1f;
-    public int ID;
+    public int id;
 
-    private float timer;
+    private float _timer;
     public List<Transform> targets = new List<Transform>();
 
     private void Start()
@@ -27,12 +24,12 @@ public class EnemyShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > delay)
+        _timer += Time.deltaTime;
+        if (_timer > delay)
         {
             DetectTargets();  // Détecte les cibles à chaque seconde
             ShootAtTargets(); // Tire sur les cibles détectées
-            timer = 0;
+            _timer = 0;
         }
     }
 
@@ -46,12 +43,12 @@ public class EnemyShooting : MonoBehaviour
             Debug.DrawLine(bulletPos.position, hit.transform.position, Color.green, 1f); // Ligne verte pour montrer la détection
             var enemyScript = hit.GetComponent<GameManager>();
             var turretScript = GetComponent<Turret>();
-            ID = turretScript.GetIdTurret();
+            id = turretScript.GetIdTurret();
             damage = turretScript.getDamage();
             detectionRadius = turretScript.getRange();
             if (enemyScript != null)
             {
-                int id = enemyScript.GetId();
+                int id = enemyScript.id;
                 int idTurret = turretScript.GetIdTurret();
 
                 if (id == 2 && idTurret == 1)
@@ -85,7 +82,7 @@ public class EnemyShooting : MonoBehaviour
                 var enemyBulletScript = newBullet.GetComponent<EnemyBulletScript>();
                 if (enemyBulletScript != null)
                 {
-                    enemyBulletScript.SetTarget(targets[0], bulletPos, damage, ID);
+                    enemyBulletScript.SetTarget(targets[0], bulletPos, damage, id);
                 }
                 else
                 {

@@ -82,6 +82,10 @@ public class Casern : MonoBehaviour
     public List<int> troop4Costs;
 
     private bool _isOnline;
+    
+    /*
+     * This Start method will set up the different costs for each troops.
+     */
     void Start()
     {
         troop1Costs = new List<int> { 2, 7, 12, 25, 60, 150 };
@@ -90,10 +94,19 @@ public class Casern : MonoBehaviour
         troop4Costs = new List<int> { 9, 20, 41, 100, 200, 300 };
     }
 
+    /*
+     * Boolean setter to see later if the player is playing online or not
+     */
     public void setOnline(bool online)
     {
         _isOnline = online;
     }
+    
+    /*
+     * This update method will check the age of the 2 players to set up the correct background for both players.
+     * It will also check each queue, it permits to automatically form troops for players if they spammed any troops button.
+     * Finally, it will check the current age for each player and change the troop's sprite depending on it.
+     */
     private void Update()
     {
         SpriteRenderer spriteRenderer = background.GetComponent<SpriteRenderer>();
@@ -177,6 +190,12 @@ public class Casern : MonoBehaviour
         }
     }
 
+    /*
+     * This method take 1 argument "value" then will split it into 2 variables.
+     * These 2 variables will be use for the differents switch case.
+     * It permits to instantiate the troop according to the player's choice then check if the amount of money is sufficient or not.
+     * If the boolean isForming is true, then the value will be save in the queue list corresponding.
+     */
     public void InstantiateTroop(int value)
     {
         bool isValid = false;
@@ -482,12 +501,14 @@ public class Casern : MonoBehaviour
         {
             CreateTroop(id, _troopId, _troopToInstantiate);
         }
-        else
-        {
-            //Debug.Log("not enough money or too fast");
-        }
     }
 
+    /*
+     * This method is called right after the InstantiateTroop() to generalize the process.
+     * It will catch the id of the player, so that the spawn points are different, and therefore they do not do premature damage.
+     * The method will check if the player is playing online to make the appropriate Instantiation.
+     * After the creation, the troop will be store in a list to count of each player.
+     */
     private void CreateTroop(int id, int troopId, GameObject troopToCreate)
     {
         Player currentPlayer;
@@ -556,6 +577,10 @@ public class Casern : MonoBehaviour
     }
 
 
+    /*
+     * This method will get the Player id of the troop to check on the correct list the unique Id it has.
+     * Then it will proceed to erase it from the list and destroy the GameObject from the scene.
+     */
     public void DestroyTroop(int id, string uniqueTroopId)
     {
         if (id == 1)
