@@ -170,6 +170,14 @@ MonoBehaviour:
     m_Localized: logout
     m_Metadata:
       m_Items: []
+  - m_Id: 11079299559198720
+    m_Localized: Enter your password ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11092857349083136
+    m_Localized: Click
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
