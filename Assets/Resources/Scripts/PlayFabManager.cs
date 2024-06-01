@@ -11,8 +11,8 @@ public class PlayFabManager : MonoBehaviour
     public TMP_InputField  passwordLoginInput;
     public TMP_InputField  usernameRegisterInput;
     public TMP_InputField  passwordRegisterInput;
+    public TextMeshProUGUI usernameText;
     public TMP_InputField  addFriendField;
-    public GameObject friendListPanel;
     public GameObject friendList;
     public GameObject friendButtonPrefab;
     public TextMeshProUGUI victoryCountText;
@@ -80,10 +80,10 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnLoginSuccess(LoginResult result)
     {
-        //Debug.Log("Logged in successfully!");
         _name = result.InfoResultPayload.PlayerProfile.DisplayName;
         loginMenu.SetActive(false);
         registerMenu.SetActive(false);
+        usernameText.text = _name;
         mainMenu.SetActive(true);
         GetFriendList();
         _playFabId = result.PlayFabId;
@@ -104,7 +104,7 @@ public class PlayFabManager : MonoBehaviour
         var request = new GetLeaderboardAroundPlayerRequest
         {
             StatisticName = "Victories",
-            PlayFabId = playFabId,
+            PlayFabId = _playFabId,
             MaxResultsCount = 1
         };
 
@@ -128,14 +128,14 @@ public class PlayFabManager : MonoBehaviour
         var request = new GetLeaderboardAroundPlayerRequest
         {
             StatisticName = "Victories",
-            PlayFabId = playFabId,
+            PlayFabId = _playFabId,
             MaxResultsCount = 1
         };
 
-        PlayFabClientAPI.GetLeaderboardAroundPlayer(request, result => OnLeaderboardPostSuccess(result, playFabId), OnLeaderboardFailure);
+        PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderboardPostSuccess, OnLeaderboardFailure);
     }
     
-    private void OnLeaderboardPostSuccess(GetLeaderboardAroundPlayerResult result, string playFabId)
+    private void OnLeaderboardPostSuccess(GetLeaderboardAroundPlayerResult result)
     {
         int currentVictoryCount = 0;
 
@@ -144,16 +144,16 @@ public class PlayFabManager : MonoBehaviour
             currentVictoryCount = result.Leaderboard[0].StatValue;
         }
 
-        UpdateVictoryCount(playFabId, currentVictoryCount + 1);
+        UpdateVictoryCount(currentVictoryCount + 1);
     }
     
-    private void UpdateVictoryCount(string playFabId, int newVictoryCount)
+    private void UpdateVictoryCount(int newVictoryCount)
     {
         var request = new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate>
             {
-                new StatisticUpdate
+                new()
                 {
                     StatisticName = "Victories",
                     Value = newVictoryCount
@@ -186,7 +186,7 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        //Debug.Log("Registered successfully!");
+        Debug.Log("Registered successfully!");
     }
 
     private void OnRegisterFailure(PlayFabError error)
@@ -273,7 +273,7 @@ public class PlayFabManager : MonoBehaviour
             {
                 var friend = result.Friends[i];
 				string friendName = friend.TitleDisplayName;
-                buttonComponent.onClick.AddListener(() => photonChatManager.ChatConnectOnClick(name, friendName));
+                buttonComponent.onClick.AddListener(() => photonChatManager.ChatConnectOnClick(_name, friendName));
             }
         }
 
