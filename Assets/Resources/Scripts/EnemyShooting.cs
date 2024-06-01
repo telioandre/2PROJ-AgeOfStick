@@ -27,8 +27,8 @@ public class EnemyShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > delay)
+        _timer += Time.deltaTime;
+        if (_timer > delay)
         {
             DetectTargets();  // Detects targets every second
             ShootAtTargets(); // Shoots at detected targets

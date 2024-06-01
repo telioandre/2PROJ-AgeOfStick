@@ -6,11 +6,20 @@ public class Collisions : MonoBehaviour
 
     private Collider2D _unitCollider;
 
+    /*
+     * Start method to initialize the Collider component and set up the constraints of the Rigibody
+     */
     private void Start()
     {
         _unitCollider = GetComponent<Collider2D>();
         gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
     }
+    
+    /*
+     * This method will get every component it needs from each GameObjects in the collision, then proceed to compare the Tags to make different actions.
+     * It will update the constraints of the troop's Rigibody when it's the ground.
+     * It will start different Coroutine (Special Attack, Enemy troop or Enemy castle).
+     */
     public void OnCollisionEnter2D(Collision2D collision)
     {
         GameManager currentGameManager = GetComponent<GameManager>();
@@ -18,14 +27,11 @@ public class Collisions : MonoBehaviour
         Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();
         Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
         Castle castle = collision.gameObject.GetComponent<Castle>();
-        Player ally = currentGameManager.GetPlayer();
         Player otherPlayer;
 
         if (collision.gameObject.CompareTag("Ground"))
         {
             myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            Debug.Log("ca a toucher le sol");
-            
         }
 
         if (collision.gameObject.CompareTag("Special") && gameObject.CompareTag("Player"))
@@ -64,40 +70,27 @@ public class Collisions : MonoBehaviour
             }
         }
 
-        // Si une collision concerne un chateau
         if ((collision.gameObject.CompareTag("player 1") && currentGameManager.id == 2 || (collision.gameObject.CompareTag("player 2") && currentGameManager.id == 1)))
         {
             if (castle != null)
             {
-                //Commence une coroutine qui va faire des dégâts au chateau
-                //Debug.Log("envoie " + castle.ID + "recoit : " + currentMovement.ID);
                 myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 StartCoroutine(castle.DeleteLifePoint(currentGameManager.attack, currentGameManager.attackTime, currentGameManager.id, castle));
             }
         }
 
-        // Si une collision concerne un autre joueur
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
         {
             if (otherGameManager != null && currentGameManager.id != otherGameManager.id)
             {
-                Player enemy = otherGameManager.GetPlayer();
-                //Permet de stop le mouvement 
                 if (currentGameManager != null && otherGameManager != null && myRb != null && enemyRb != null)
                 {
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                     enemyRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }
-                if (ally != null && enemy != null)
-                {
-                    //Commence une coroutine qui diminue les pv des 2 joueurs en contact
-                    //StartCoroutine(currentGameManager.AttackPlayer(otherGameManager, myRb, ally, enemy));
-
-                }
 
                 else
                 {
-                    // Si les 2 objets en contact ont le même ID ils ne se font pas de dégâts
                     myRb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }
             }
@@ -109,22 +102,11 @@ public class Collisions : MonoBehaviour
         }
     }
 
-    /*public void OnCollisionStay2D(Collision2D collision)
-    {
-        Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();
-        Rigidbody2D enemyRb = collision.gameObject.GetComponent<Rigidbody2D>();
-        if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player"))
-        {
-            if (myRb.constraints == RigidbodyConstraints2D.FreezeAll)
-            {
-                enemyRb.constraints = RigidbodyConstraints2D.FreezeAll;
-            }
-        }
-    }*/
-
+    /*
+     * This method permits to a group of troops with the same id to not get block when the first one passed from being freeze to moving.
+     */
     public void OnCollisionExit2D(Collision2D collision)
     {
-        //Permet qu'aucun objet ne soit figé (par exemple si 2 objets avec le même ID ne bougent pas et que le 1er bat l'ennemi et reprend sa course, alors le 2e ne sera pas figé non plus
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Player") && GetComponent<GameManager>().isAttacking)
         {
             Rigidbody2D myRb = gameObject.GetComponent<Rigidbody2D>();
@@ -141,13 +123,14 @@ public class Collisions : MonoBehaviour
         }
     }
 
+    /*
+     * This method permits to get rid of the castle's collision when a unit with the same id of the castle spawn.
+     */
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("player " + gameObject.GetComponent<GameManager>().id))
         {
             Physics2D.IgnoreCollision(other, _unitCollider, true);
-            Debug.Log("Ignoring trigger collision with wall: " + other.gameObject.name);
         }
     }
-
 }

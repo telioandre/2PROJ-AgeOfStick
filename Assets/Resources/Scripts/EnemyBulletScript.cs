@@ -4,11 +4,11 @@ public class EnemyBulletScript : MonoBehaviour
 {
     public Rigidbody2D rb; //
     public float force;
-    private int damage;
+    private int _damage;
     public Castle castle1;
     public Castle castle2;
-    public int ID;
-    private Casern casern;
+    public int id;
+    private Casern _casern;
 
     // Start is called before the first frame update
     void Start()
