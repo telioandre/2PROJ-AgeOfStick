@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
     {
         SetAge(1);
         AddMoney(1000);
-        AddXp(100);
+        AddXp(100000);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
@@ -285,10 +285,10 @@ public class Player : MonoBehaviour
     {
         if (CheckCooldown())
         {
-            _lastPlayerSpecial = Time.time;
             int cost = specialCosts[_age - 1];
             if (GetXp() >= cost)
             {
+                _lastPlayerSpecial = Time.time;
                 AddXp(-cost);
                 StartCoroutine(SpecialAttackCoroutine(id));
             }

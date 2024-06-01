@@ -64,7 +64,10 @@ public class GameManager : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>(); 
         _animator = GetComponent<Animator>();
         isAttacking = false;
-        _animator.SetFloat("attackTime", attackTime);
+        if (_animator != null)
+        {
+            _animator.SetFloat("attackTime", attackTime);
+        }
     }
 
     private void Update()
@@ -339,11 +342,10 @@ public class GameManager : MonoBehaviour
                 break;
             
             case 5:
-                // a modif
                 ally.AddMoney(1000);
-                ally.AddXp(5000);
+                ally.AddXp(2500);
                 enemy.AddMoney(350);
-                enemy.AddXp(2000);
+                enemy.AddXp(1000);
                 break;
         }
 
@@ -404,7 +406,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public IEnumerator TroopUnderSpecial(GameManager troop, SpecialCollision special, Player otherPlayer)
         {
             char troopChar = troop.name[6];
@@ -412,9 +413,13 @@ public class GameManager : MonoBehaviour
             int damage;
             if (otherPlayer.GetAge() == troop._player.GetAge())
             {
-                if (troopNumber >= 4)
+                if (troopNumber == 4)
                 {
                     damage = troop.maxLife / 2;
+                }
+                else if (troopNumber == 5)
+                {
+                    damage = troop.maxLife / 4;
                 }
                 else
                 {
@@ -423,9 +428,13 @@ public class GameManager : MonoBehaviour
             }
             else if (otherPlayer.GetAge() < troop._player.GetAge())
             {
-                if (troopNumber >= 4)
+                if (troopNumber == 4)
                 {
                     damage = troop.maxLife / 4;
+                }
+                else if (troopNumber == 5)
+                {
+                    damage = troop.maxLife / 8;
                 }
                 else
                 {
