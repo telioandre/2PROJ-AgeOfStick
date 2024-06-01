@@ -134,6 +134,26 @@ MonoBehaviour:
     m_Localized: " perdi\xF3 el partido."
     m_Metadata:
       m_Items: []
+  - m_Id: 10666943788224512
+    m_Localized: "n\xFAmero de victorias :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10676604197277696
+    m_Localized: Falta de dinero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10677220277620736
+    m_Localized: XP insuficiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678160468611072
+    m_Localized: "Tropas m\xE1ximas alcanzadas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678579085316096
+    m_Localized: Primero debes evolucionar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -134,6 +134,26 @@ MonoBehaviour:
     m_Localized: ' a perdu la partie.'
     m_Metadata:
       m_Items: []
+  - m_Id: 10666943788224512
+    m_Localized: 'nombre de victoires :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10676604197277696
+    m_Localized: Pas assez d'argent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10677220277620736
+    m_Localized: Pas assez d'XP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678160468611072
+    m_Localized: Effectifs maximums atteints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678579085316096
+    m_Localized: "Vous devez d'abord \xE9voluer"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -131,6 +131,26 @@ MonoBehaviour:
     m_Key: gamelostby
     m_Metadata:
       m_Items: []
+  - m_Id: 10666943788224512
+    m_Key: victory_nb
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10676604197277696
+    m_Key: no_money
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10677220277620736
+    m_Key: no_xp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678160468611072
+    m_Key: max_troops
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10678579085316096
+    m_Key: upgrade_first
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
