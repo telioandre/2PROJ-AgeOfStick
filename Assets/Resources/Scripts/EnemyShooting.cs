@@ -11,9 +11,9 @@ public class EnemyShooting : MonoBehaviour
     public LayerMask targetLayer;  // Layer of targets to be detected
     public int damage; // damage what the ammunition will do
     public float delay = 1f; // delay between each pull
-    public int ID; // Player ID
+    public int id; // Player ID
 
-    private float timer;
+    private float _timer;
     public List<Transform> targets = new List<Transform>(); // List of targets for each turret
 
     // Start-up function
@@ -32,7 +32,7 @@ public class EnemyShooting : MonoBehaviour
         {
             DetectTargets();  // Detects targets every second
             ShootAtTargets(); // Shoots at detected targets
-            timer = 0;
+            _timer = 0;
         }
     }
 
@@ -45,19 +45,19 @@ public class EnemyShooting : MonoBehaviour
             Debug.DrawLine(bulletPos.position, hit.transform.position, Color.green, 1f); // Green line to show detection
             var enemyScript = hit.GetComponent<GameManager>(); // Retrieving the target's GameManager script
             var turretScript = GetComponent<Turret>(); // Turret script recovery
-            ID = turretScript.GetIdTurret(); // Recovering the ID of the player who installed the turret
+            id = turretScript.GetIdTurret(); // Recovering the ID of the player who installed the turret
             damage = turretScript.getDamage(); // Turret damage recovery
             detectionRadius = turretScript.getRange(); // Turret range recovery
             if (enemyScript != null) // Checking whether the target has the GameManager script
             {
-                int id = enemyScript.GetId(); // Recovering the ID of the enemy
+                int enemyId = enemyScript.id; // Recovering the ID of the enemy
 
-                if (id == 2 && ID == 1) // If it's a turret belonging to player 1
+                if (enemyId == 2 && id == 1) // If it's a turret belonging to player 1
                 {
                     targets.Add(hit.transform); // Add target position
                     Debug.Log("Target detected : " + hit.name);
                 }
-                else if (id == 1 && ID == 2) // If it's a turret belonging to player 2 or IA
+                else if (enemyId == 1 && id == 2) // If it's a turret belonging to player 2 or IA
                 {
                     targets.Add(hit.transform); // Add target position
                     Debug.Log("Target detected : " + hit.name);
@@ -82,7 +82,7 @@ public class EnemyShooting : MonoBehaviour
                 var enemyBulletScript = newBullet.GetComponent<EnemyBulletScript>(); // Get the EnemyBulletScript component from the newly created bullet
                 if (enemyBulletScript != null)
                 {
-                    enemyBulletScript.SetTarget(targets[0], bulletPos, damage, ID); // Launches the function to shoot at the selected target
+                    enemyBulletScript.SetTarget(targets[0], bulletPos, damage, id); // Launches the function to shoot at the selected target
                 }
                 else
                 {
