@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -103,7 +102,7 @@ public class GameManager : MonoBehaviour
                         if (!isAttacking)
                         {
                             Debug.Log("Starting AttackPlayer coroutine");
-                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer(), _enemyNumber));
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer()));
                         }
                     }
                 }
@@ -142,7 +141,7 @@ public class GameManager : MonoBehaviour
                         if (!isAttacking)
                         {
                             Debug.Log("Starting AttackPlayer coroutine");
-                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer(), _enemyNumber));
+                            StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>().GetPlayer()));
                         }
                     }
                 }
@@ -337,6 +336,7 @@ public class GameManager : MonoBehaviour
                 break;
             
             case 5:
+                // a modif
                 ally.AddMoney(1000);
                 ally.AddXp(5000);
                 enemy.AddMoney(350);
@@ -346,8 +346,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy,
-        int enemyNumber)
+    public IEnumerator AttackPlayer(GameManager enemyGameManager, Rigidbody2D myRb, Player ally, Player enemy)
     {
         if (enemyGameManager!= null && enemy != null)
         {
@@ -373,12 +372,19 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
 
                 int damage = attack + Random.Range(0, 10);
-                Debug.Log($"Dealing {damage} damage");
+                char allyChar = name[6];
+                char enemyChar = enemyGameManager.name[6];
+                int allyNumber = int.Parse(allyChar.ToString());
+                int enemyNumber = int.Parse(enemyChar.ToString());
+            
+                if (SuperEffective(allyNumber, enemyNumber))
+                {
+                    damage = Mathf.RoundToInt(damage * 1.5f);
+                }
                 enemyGameManager.life -= damage;
 
                 if (enemyGameManager.life <= 0)
                 {
-                    Debug.Log("Enemy defeated, dropping rewards");
                     DropRewards(enemyNumber, ally, enemy);
                     enemyGameManager.life = 0;
                     _casern.DestroyTroop(enemyGameManager.id, enemyGameManager.uniqueId);
