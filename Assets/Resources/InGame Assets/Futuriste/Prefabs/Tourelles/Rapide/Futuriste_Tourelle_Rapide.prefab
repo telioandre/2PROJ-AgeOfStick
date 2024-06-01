@@ -162,11 +162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0397d4e5654392d418e109e71b9b4c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name1: none
   age: 5
   type: 2
   placement: 0
   idTurret: 0
+  range: 0
+  damage: 0
 --- !u!114 &7922086068474017210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +185,7 @@ MonoBehaviour:
   detectionRadius: 1000
   targetLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   damage: 152
   delay: 0.5
   ID: 0

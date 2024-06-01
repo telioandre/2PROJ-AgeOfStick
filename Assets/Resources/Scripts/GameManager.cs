@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>(); 
         _animator = GetComponent<Animator>();
         isAttacking = false;
+        _animator.SetFloat("attackTime", attackTime);
     }
 
     private void Update()
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour
             if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
             {
                 rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+                _animator.SetTrigger("attack");
             }
 
             if (movementAllowed)
@@ -149,9 +151,10 @@ public class GameManager : MonoBehaviour
 
             hitCastle = Physics2D.Raycast(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), 200);
 
-            if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 2"))
+            if (hitCastle.collider != null && hitCastle.collider.CompareTag("player 1"))
             {
-                //rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+                rb2d.constraints = RigidbodyConstraints2D.FreezePositionX;
+                _animator.SetTrigger("attack");
             }
 
             if (movementAllowed)
@@ -353,6 +356,7 @@ public class GameManager : MonoBehaviour
             if (isAttacking)
             {
                 Debug.Log("Already attacking");
+                _animator.SetTrigger("attack");
                 yield break;
             }
 
@@ -362,11 +366,12 @@ public class GameManager : MonoBehaviour
             while (canAttack)
             {
                 Debug.Log("Waiting for attack time");
-                yield return new WaitForSeconds(attackTime);
                 if (_animator != null)
                 {
                     _animator.SetTrigger("attack");
                 }
+                yield return new WaitForSeconds(attackTime);
+                
 
                 Debug.Log("Waiting before dealing damage");
                 yield return new WaitForSeconds(0.5f);
@@ -393,11 +398,6 @@ public class GameManager : MonoBehaviour
                     Destroy(enemyGameManager.gameObject);
                     StopAllCoroutines();
                 }
-            }
-
-            if (_animator != null)
-            {
-                _animator.SetTrigger("walk");
             }
 
             isAttacking = false;

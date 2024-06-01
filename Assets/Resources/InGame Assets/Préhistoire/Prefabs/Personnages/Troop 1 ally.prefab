@@ -1043,7 +1043,7 @@ MonoBehaviour:
   troopId: 0
   uniqueId: 
   attackRange: 
-  start: 0
+  isAttacking: 0
   health: {fileID: 1105119017638754868}
 --- !u!114 &-8579057442827759137
 MonoBehaviour:
