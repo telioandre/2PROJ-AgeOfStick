@@ -49,8 +49,7 @@ public class Castle : MonoBehaviour
                     if (opponentBaseName == "ally")
                     {
                         winner.text = playFabManager.GetName();
-                        print(playFabManager.GetName() + " dhskjfhdskjfhdsl");
-                        playFabManager.GetCurrentVictoryCount(playFabManager.GetPlayFabId());
+                        playFabManager.PostNewVictoryCount(playFabManager.GetPlayFabId());
                     }
                     else
                     {

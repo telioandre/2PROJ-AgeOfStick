@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
 
@@ -96,74 +94,88 @@ public class Player : MonoBehaviour
     
     public int numberOfTroop;
 
-    public int TurretRangeLevel;
-    public int TurretDamageLevel;
+    public int turretRangeLevel;
+    public int turretDamageLevel;
 
     private float _precision;
-    private float _specialCooldown = 20f;
+    private readonly float _specialCooldown = 20f;
     private float _lastPlayerSpecial;
 
-    private float _moneyCooldown = 7f;
+    private readonly float _moneyCooldown = 7f;
     private float _previousMoneyDrop;
-    
-    List<List<int>> _troops1UpgradeCosts = new()
+
+    readonly List<List<int>> _troops1UpgradeCosts = new()
     {
         new() { 30, 1 },
         new() { 80, 2 },
         new() { 190, 4 },
     };
-    List<List<int>> _troops2UpgradeCosts = new()
+    readonly List<List<int>> _troops2UpgradeCosts = new()
     {
         new() { 20, 1 },
         new() { 50, 1 },
         new() { 110, 3 },
     };
-    List<List<int>> _troops3UpgradeCosts = new()
+    readonly List<List<int>> _troops3UpgradeCosts = new()
     {
         new() { 80, 2 },
         new() { 120, 3 },
         new() { 210, 5 },
     };
-    List<List<int>> _troops4UpgradeCosts = new()
+    readonly List<List<int>> _troops4UpgradeCosts = new()
     {
         new() { 100, 2 },
         new() { 210, 4 },
         new() { 280, 5 }
     };
-    List<List<int>> _turretRangeUpgradeCosts = new()
+    readonly List<List<int>> _turretRangeUpgradeCosts = new()
     {
         new() { 100, 2 },
         new() { 200, 4 },
         new() { 270, 6 }
     };
-    List<List<int>> _turretDamageUpgradeCosts = new()
+    readonly List<List<int>> _turretDamageUpgradeCosts = new()
     {
         new() { 30, 1 },
         new() { 150, 3 },
         new() { 230, 5 }
     };
 
+    public GameObject moneyError;
+
     private void Start()
     {
         SetAge(1);
         AddMoney(1000);
-        AddXp(50000);
+        AddXp(100);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
 
         _lastPlayerSpecial = -_specialCooldown;
     }
+
+    public IEnumerator MoneyError()
+    {
+        moneyError.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        moneyError.SetActive(false);
+    }
+    public IEnumerator XpError()
+    {
+        return null;
+    }
+    public IEnumerator TroopsError()
+    {
+        return null;
+    }
+    public IEnumerator AgeError()
+    {
+        return null;
+    }
     public void AddXp(int newXp)
     {
         _xp += newXp;
-        //Debug.Log("xp = " + xp);
-    }
-
-    public void SuppXp(int newXp)
-    {
-        _xp -= newXp;
-        //Debug.Log("xp = " + xp);
     }
 
     public int GetXp()
@@ -174,17 +186,6 @@ public class Player : MonoBehaviour
     public void AddMoney(int newMoney)
     {
         _money += newMoney;
-        //Debug.Log("money = " + money);
-    }
-
-    public void SuppMoney(int newMoney)
-    {
-        _money -= newMoney;
-        if (_money < 0)
-        {
-            _money = 0;
-        }
-        //Debug.Log("money = " + money);
     }
 
     public int GetMoney()
@@ -203,6 +204,7 @@ public class Player : MonoBehaviour
         {
             if (_xp < ageCosts[_age - 1])
             {
+                StartCoroutine(MoneyError());
                 //Debug.Log("XP insufisant ! Manque : " + (ageCosts[age - 1] - xp));
             }
             else
@@ -279,7 +281,7 @@ public class Player : MonoBehaviour
             int cost = specialCosts[_age - 1];
             if (GetXp() >= cost)
             {
-                SuppXp(cost);
+                AddXp(-cost);
                 StartCoroutine(SpecialAttackCoroutine(id));
             }
             else
@@ -392,25 +394,25 @@ public class Player : MonoBehaviour
         switch (upgrade)
         {
             case 1:
-                if (TurretRangeLevel <= 3)
+                if (turretRangeLevel <= 3)
                 {
-                    if (_money >= _turretRangeUpgradeCosts[TurretRangeLevel][0] && _age >= _turretRangeUpgradeCosts[TurretRangeLevel][1])
+                    if (_money >= _turretRangeUpgradeCosts[turretRangeLevel][0] && _age >= _turretRangeUpgradeCosts[turretRangeLevel][1])
                     {
-                        AddMoney(-_turretRangeUpgradeCosts[TurretRangeLevel][0]);
-                        TurretRangeLevel += 1;
-                        turretRangeButton.image.sprite = turretRangeSprite[TurretRangeLevel];
+                        AddMoney(-_turretRangeUpgradeCosts[turretRangeLevel][0]);
+                        turretRangeLevel += 1;
+                        turretRangeButton.image.sprite = turretRangeSprite[turretRangeLevel];
                     }
                 }
                 break;
 
             case 2:
-                if (TurretDamageLevel <= 3)
+                if (turretDamageLevel <= 3)
                 {
-                    if (_money >= _turretDamageUpgradeCosts[TurretDamageLevel][0] && _age >= _turretDamageUpgradeCosts[TurretDamageLevel][1])
+                    if (_money >= _turretDamageUpgradeCosts[turretDamageLevel][0] && _age >= _turretDamageUpgradeCosts[turretDamageLevel][1])
                     {
-                        AddMoney(-_turretDamageUpgradeCosts[TurretDamageLevel][0]);
-                        TurretDamageLevel += 1;
-                        turretDamageButton.image.sprite = turretDamageSprite[TurretDamageLevel];
+                        AddMoney(-_turretDamageUpgradeCosts[turretDamageLevel][0]);
+                        turretDamageLevel += 1;
+                        turretDamageButton.image.sprite = turretDamageSprite[turretDamageLevel];
                     }
                 }
                 break;

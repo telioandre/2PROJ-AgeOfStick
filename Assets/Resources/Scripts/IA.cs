@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Ia : MonoBehaviour
 {
@@ -69,7 +67,6 @@ public class Ia : MonoBehaviour
             switch (_difficulty)
             {
                 case "Easy":
-                    print(randomNumber);
                     if (randomNumber == 1)
                     {
                         IaSpecialAttack();
@@ -92,6 +89,11 @@ public class Ia : MonoBehaviour
                             int turret = Random.Range(1, 4);
                             IaBuildTurret(archi.nbPlacementId2, turret);
                         }
+                    }
+
+                    if (randomNumber == 4)
+                    {
+                        IaUpgradeTurret();
                     }
 
                     if (randomNumber >= 20)
@@ -125,6 +127,11 @@ public class Ia : MonoBehaviour
                         IaUpgradeTroop(randomTroop);
                     }
 
+                    if (randomNumber == 7)
+                    {
+                        IaUpgradeTurret();
+                    }
+                    
                     if (player.numberOfTroop + 7 <= opponent.numberOfTroop)
                     {
                         IaSpecialAttack();
@@ -173,6 +180,11 @@ public class Ia : MonoBehaviour
                         int randomTroop = Random.Range(1, 5);
                         IaUpgradeTroop(randomTroop);
                     }
+                    
+                    if (randomNumber > 8  && randomNumber <= 10)
+                    {
+                        IaUpgradeTurret();
+                    }
 
                     if (player.numberOfTroop + 5 <= opponent.numberOfTroop)
                     {
@@ -202,7 +214,6 @@ public class Ia : MonoBehaviour
 
                     if (!IsStep1Completed())
                     {
-                        print("step 1");
                         if (opponent.numberOfTroop > 3)
                         {
                             IaSpecialAttack();
@@ -220,7 +231,6 @@ public class Ia : MonoBehaviour
                     }
                     else if (IsStep1Completed() && !IsStep2Completed())
                     {
-                        print("step 2");
                         if (archi.nbPlacementId2 < 4 && archi.nbPlacementId2 == archi.nbTowerId2)
                         {
                             IaBuildTowerSpot();
@@ -242,7 +252,6 @@ public class Ia : MonoBehaviour
                     }
                     else
                     {
-                        print("step 3");
                         if (player.GetAge() != 6)
                         {
                             AgeUp();
@@ -277,12 +286,8 @@ public class Ia : MonoBehaviour
                             IaGenerateTroop(5);
                         }
                     }
-                    
-                    
-
                     break;
             }
-
             _frameCounter = 0;
         }
     }
@@ -448,9 +453,10 @@ public class Ia : MonoBehaviour
         player.UpgradeTroopLevel(troop);
     }
 
-    void IaUpgradeTower()
+    void IaUpgradeTurret()
     {
-
+        int upgrade = Random.Range(1, 3);
+        player.UpgradeTurret(upgrade);
     }
 
     void AgeUp()
