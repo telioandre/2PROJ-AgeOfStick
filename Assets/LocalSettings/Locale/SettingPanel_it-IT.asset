@@ -182,6 +182,10 @@ MonoBehaviour:
     m_Localized: Accesso al menu Pausa dal gioco
     m_Metadata:
       m_Items: []
+  - m_Id: 11326410464825344
+    m_Localized: Invia richiesta di amicizia
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
