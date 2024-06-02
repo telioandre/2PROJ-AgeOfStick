@@ -154,6 +154,18 @@ MonoBehaviour:
     m_Localized: "Prima \xE8 necessario evolversi"
     m_Metadata:
       m_Items: []
+  - m_Id: 10927689818312704
+    m_Localized: aggiornamenti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10927894999470080
+    m_Localized: Troupes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10928101971595264
+    m_Localized: torrette
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

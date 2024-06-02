@@ -178,6 +178,10 @@ MonoBehaviour:
     m_Localized: Cliccare
     m_Metadata:
       m_Items: []
+  - m_Id: 11303571825233920
+    m_Localized: Accesso al menu Pausa dal gioco
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

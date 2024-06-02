@@ -73,7 +73,8 @@ public class Restart : MonoBehaviour
         {
             casern.troopsPlayer2.Remove(casern.troopsPlayer2[i]);
         }
-        
+        Time.timeScale = 1f;
+
     }
 
 }

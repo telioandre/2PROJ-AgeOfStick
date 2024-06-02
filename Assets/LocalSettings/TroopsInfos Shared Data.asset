@@ -151,6 +151,18 @@ MonoBehaviour:
     m_Key: upgrade_first
     m_Metadata:
       m_Items: []
+  - m_Id: 10927689818312704
+    m_Key: btn_upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10927894999470080
+    m_Key: btn_troops
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10928101971595264
+    m_Key: btn_turrets
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

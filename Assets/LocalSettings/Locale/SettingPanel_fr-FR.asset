@@ -178,6 +178,10 @@ MonoBehaviour:
     m_Localized: Clic
     m_Metadata:
       m_Items: []
+  - m_Id: 11303571825233920
+    m_Localized: "Acc\xE9der au Menu Pause depuis le jeu"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

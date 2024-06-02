@@ -178,6 +178,10 @@ MonoBehaviour:
     m_Localized: Klicken
     m_Metadata:
       m_Items: []
+  - m_Id: 11303571825233920
+    m_Localized: "Vom Spiel aus auf das Pausenmen\xFC zugreifen"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

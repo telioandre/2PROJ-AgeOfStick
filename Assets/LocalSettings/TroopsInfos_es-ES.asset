@@ -154,6 +154,18 @@ MonoBehaviour:
     m_Localized: Primero debes evolucionar
     m_Metadata:
       m_Items: []
+  - m_Id: 10927689818312704
+    m_Localized: mejoras
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10927894999470080
+    m_Localized: Grupos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10928101971595264
+    m_Localized: torretas
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
