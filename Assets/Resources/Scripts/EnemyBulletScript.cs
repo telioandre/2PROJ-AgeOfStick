@@ -18,14 +18,14 @@ public class EnemyBulletScript : MonoBehaviour
     }
 
     // Target setup function
-    public void SetTarget(Transform target, Transform bulletPos, int bulletDamage, int id)
+    public void SetTarget(Transform target, Transform bulletPos, int bulletDamage, int ID)
     {
         if (target != null && bulletPos != null)
         {
             Vector3 direction = target.GetComponent<Collider2D>().bounds.center - bulletPos.position; // Use the center of the enemy's collider as a starting point
             rb.velocity = direction.normalized * force; // Just use the direction normalized by the bullet's power.
             _damage = bulletDamage;
-            id = id;
+            id = ID;
 
             // Debugging: Display bullet firing direction
             Debug.Log("Shooting direction : " + rb.velocity);
@@ -61,8 +61,9 @@ public class EnemyBulletScript : MonoBehaviour
                         // Affiche un avertissement si l'instance de GameManager n'est pas trouvée
                         Debug.LogWarning("Movement instance not found on the collided object.");
                     }
-                    _casern.DestroyTroop(targetScript.id, targetScript.uniqueId); // Destroys the troop associated with the target ID and its uniqueId in target lists
                     Destroy(targetScript.gameObject); // Destroys the target game object
+                    _casern.DestroyTroop(targetScript.id, targetScript.uniqueId); // Destroys the troop associated with the target ID and its uniqueId in target lists
+                    
                 }
                 Destroy(gameObject); //
             }
