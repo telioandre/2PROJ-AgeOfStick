@@ -45,7 +45,6 @@ public class EnemyShooting : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(bulletPos.position, detectionRadius, targetLayer);
         foreach (Collider2D hit in hits)
         {
-            Debug.DrawLine(bulletPos.position, hit.transform.position, Color.green, 1f); 
             var enemyScript = hit.GetComponent<GameManager>(); 
             var turretScript = GetComponent<Turret>(); 
             id = turretScript.GetIdTurret(); 
@@ -58,13 +57,11 @@ public class EnemyShooting : MonoBehaviour
                 if (enemyId == 2 && id == 1) 
                 {
                     targets.Add(hit.transform); 
-                    Debug.Log("Target detected : " + hit.name);
 
                 }
                 else if (enemyId == 1 && id == 2) 
                 {
                     targets.Add(hit.transform); 
-                    Debug.Log("Target detected : " + hit.name);
                 }
             }
         }

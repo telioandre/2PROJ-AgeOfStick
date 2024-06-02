@@ -217,15 +217,6 @@ public class Archi : MonoBehaviour
             {
                 HandleTurretPlacement(_typeChoice, placement, castle2, ref nbTowerId2, listTurretId2, id);
             }
-            else
-            {
-                Debug.LogError("Invalid placement or max placements reached for ID 2");
-            }
-        }
-        else
-        {
-            Debug.LogError("Invalid id or castle is null");
-
         }
     }
 

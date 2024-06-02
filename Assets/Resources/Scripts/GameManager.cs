@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         _troop3dropsRange = new List<int> { 2, 6, 6, 11, 25, 20 };
         _troop4dropsRange = new List<int> { 6, 6, 15, 20, 30, 45 };
 
-        attackRange = new List<int> { 80, 180, 90, 90, 200};
+        attackRange = new List<int> { 75, 180, 90, 90, 200};
 
         rb2d = GetComponent<Rigidbody2D>(); 
         _animator = GetComponent<Animator>();
@@ -96,7 +96,6 @@ public class GameManager : MonoBehaviour
         {
             attackRangeOfLevel = Mathf.RoundToInt(attackRangeOfLevel * 1.2f);
         }
-        print(attackRangeOfLevel);
         if (id == 1)
         {
             hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), attackRangeOfLevel);
