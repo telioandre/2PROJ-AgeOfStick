@@ -407,7 +407,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.9922122, y: -0.21943402}
+  m_Offset: {x: -1.3340951, y: -0.21943402}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -418,7 +418,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.325575, y: 2.9873996}
+  m_Size: {x: 7.6418095, y: 2.9873996}
   m_EdgeRadius: 0
 --- !u!50 &4863008615349527718
 Rigidbody2D:
@@ -484,7 +484,7 @@ MonoBehaviour:
   troopId: 0
   uniqueId: 
   attackRange: 
-  start: 0
+  isAttacking: 0
   health: {fileID: 8759152592588095742}
 --- !u!61 &8817383289813902396
 BoxCollider2D:
@@ -518,7 +518,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08963537, y: 0.40962315}
+  m_Offset: {x: -1.4563255, y: 0.15026248}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -529,5 +529,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.099685, y: 4.464383}
+  m_Size: {x: 8.366304, y: 3.9456646}
   m_EdgeRadius: 0

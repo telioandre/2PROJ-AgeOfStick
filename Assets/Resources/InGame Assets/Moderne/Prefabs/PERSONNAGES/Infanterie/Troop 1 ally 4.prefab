@@ -346,7 +346,7 @@ MonoBehaviour:
   troopId: 0
   uniqueId: 
   attackRange: 
-  start: 0
+  isAttacking: 0
   health: {fileID: 8494857231326524707}
 --- !u!61 &-688410774045222528
 BoxCollider2D:
@@ -360,10 +360,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

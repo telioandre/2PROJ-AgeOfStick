@@ -87,16 +87,13 @@ public class Clicked : MonoBehaviour
         switch (_archiClass.listTurretId1[placement].GetComponent<Turret>().type) // Depending on turret type
         {
             case 1:
-                Debug.Log("vente 1");
                 _castle1.player.AddMoney(_archiClass.turret1Costs[_archiClass.listTurretId1[placement].GetComponent<Turret>().age - 1] / 2); // récupération de 50 % de son prix
 
                 break;
             case 2:
-                Debug.Log("vente 1");
                 _castle1.player.AddMoney(_archiClass.turret2Costs[_archiClass.listTurretId1[placement].GetComponent<Turret>().age - 1] / 2);
                 break;
             case 3:
-                Debug.Log("vente 1");
                 _castle1.player.AddMoney(_archiClass.turret3Costs[_archiClass.listTurretId1[placement].GetComponent<Turret>().age - 1] / 2);
                 break;
         }

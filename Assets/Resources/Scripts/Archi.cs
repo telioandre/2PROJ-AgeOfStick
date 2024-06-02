@@ -269,7 +269,10 @@ public class Archi : MonoBehaviour
         }
         else
         {
-            StartCoroutine(castle.player.MoneyError());
+            if (castle.id == 1)
+            {
+                StartCoroutine(castle.player.MoneyError());
+            }
         }
     }
 

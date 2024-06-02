@@ -363,10 +363,6 @@ public class Casern : MonoBehaviour
                                 _troopId = 1;
                                 isValid = true;
                             }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
-                            }
                             break;
 
                         case 2:
@@ -377,10 +373,7 @@ public class Casern : MonoBehaviour
                                 _troopId = 2;
                                 isValid = true;
                             }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
-                            }
+
                             break;
 
                         case 3:
@@ -390,10 +383,6 @@ public class Casern : MonoBehaviour
                                 _troopToInstantiate = currentTroop7;
                                 _troopId = 3;
                                 isValid = true;
-                            }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
                             }
                             break;
 
@@ -405,10 +394,6 @@ public class Casern : MonoBehaviour
                                 _troopId = 4;
                                 isValid = true;
                             }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
-                            }
                             break;
                         case 5:
                             _cost = 750;
@@ -417,10 +402,6 @@ public class Casern : MonoBehaviour
                                 _troopToInstantiate = ultimateTroop;
                                 _troopId = 5;
                                 isValid = true;
-                            }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
                             }
                             break;
                     }
@@ -436,10 +417,6 @@ public class Casern : MonoBehaviour
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
                             }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
-                            }
                             break;
                         case 2:
                             _cost = troop2Costs[castle2.player.GetAge() - 1];
@@ -447,10 +424,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
-                            }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
                             }
                             break;
                         case 3:
@@ -460,10 +433,6 @@ public class Casern : MonoBehaviour
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
                             }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
-                            }
                             break;
                         case 4:
                             _cost = troop4Costs[castle2.player.GetAge() - 1];
@@ -471,10 +440,6 @@ public class Casern : MonoBehaviour
                             {
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
-                            }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
                             }
                             break;
                         case 5:
@@ -484,16 +449,8 @@ public class Casern : MonoBehaviour
                                 queue2.Add(value);
                                 castle2.player.AddMoney(-_cost);
                             }
-                            else
-                            {
-                                StartCoroutine(castle2.player.MoneyError());
-                            }
                             break;
                     }
-                }
-                else
-                {
-                    StartCoroutine(castle2.player.TroopsError());
                 }
                 break;
         }
