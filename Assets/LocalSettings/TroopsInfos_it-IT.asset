@@ -107,11 +107,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6950940474478592
-    m_Localized: AGGIORNAMENTO - Danno delle torrette
+    m_Localized: AGGIORNAMENTO - Distanza di tiro
     m_Metadata:
       m_Items: []
   - m_Id: 6951336148340736
-    m_Localized: AGGIORNAMENTO - Distanza di tiro
+    m_Localized: AGGIORNAMENTO - Danno delle torrette
     m_Metadata:
       m_Items: []
   - m_Id: 6951638624768000
