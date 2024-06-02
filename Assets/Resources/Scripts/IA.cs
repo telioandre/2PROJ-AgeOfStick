@@ -24,7 +24,8 @@ public class Ia : MonoBehaviour
     private void Start()
     {
         _selectedDifficulty = DifficultyManager.difficulty;
-        _difficulty = _selectedDifficulty.ToString().Split(' ')[0];
+        _difficulty = "Easy";
+        //_difficulty = _selectedDifficulty.ToString().Split(' ')[0];
         _previousLifePoint = castle.maxLifePoint;
         _lastCombo = -Cooldown;
         switch (_difficulty)
@@ -109,7 +110,7 @@ public class Ia : MonoBehaviour
                         IaUpgradeTurret();
                     }
 
-                    if (randomNumber >= 22)
+                    if (randomNumber >= 24)
                     {
                         IaGenerateTroop(0);
                     }
@@ -151,7 +152,7 @@ public class Ia : MonoBehaviour
                         IaGenerateTroop(0);
                     }
 
-                    if (randomNumber >= 21)
+                    if (randomNumber >= 22)
                     {
                         if (opponent.numberOfTroop == 0)
                         {
@@ -201,12 +202,12 @@ public class Ia : MonoBehaviour
                         IaGenerateEffectiveTroop(0);
                     }
 
-                    if (randomNumber >= 20)
+                    if (randomNumber >= 23 && randomNumber < 28)
                     {
                         IaGenerateEffectiveTroop(casern.troopsPlayer2.Count);
                     }
 
-                    if (randomNumber >= 18 && Time.time - _lastCombo > -Cooldown)
+                    if (randomNumber >= 28 && Time.time - _lastCombo > -Cooldown)
                     {
                         StartCoroutine(IaGenerateCombos(0));
                         _lastCombo = Time.time;
