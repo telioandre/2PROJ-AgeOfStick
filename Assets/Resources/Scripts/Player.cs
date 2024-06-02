@@ -220,6 +220,14 @@ public class Player : MonoBehaviour
     }
 
     /*
+     * Method to set a new amount of XP.
+     */
+    public void SetXp(int newXp)
+    {
+        _xp = newXp;
+    }
+
+    /*
      * Method to change the current money of the player.
      */
     public void AddMoney(int newMoney)
@@ -233,6 +241,14 @@ public class Player : MonoBehaviour
     public int GetMoney()
     {
         return _money;
+    }
+    
+    /*
+     * Method to set a new amount of money.
+     */
+    public void SetMoney(int newMoney)
+    {
+        _money = newMoney;
     }
 
     /*

@@ -18,7 +18,7 @@ public class Ia : MonoBehaviour
     private float _lastCombo;
 
     /*
-     * This start method will set the IA level depending on the selected difficulty previously set with the DifficultyManager script.
+     * This start method will set the IA level depending on the selected difficulty send by the DifficultyManager script.
      * Depending on the difficulty, the IA will get a start buff.
      */
     private void Start()
