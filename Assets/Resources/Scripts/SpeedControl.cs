@@ -1,7 +1,16 @@
+using System;
 using UnityEngine;
 
 public class SpeedControl : MonoBehaviour
 {
+    /*
+     * Method to automatically set the normal speed at the start.
+     */
+    public void Start()
+    {
+        Replay();
+    }
+
     /*
      * Method to speed up the game.
      */

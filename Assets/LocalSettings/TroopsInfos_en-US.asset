@@ -107,11 +107,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6950940474478592
-    m_Localized: UPGRADE - Turrets Damage
+    m_Localized: UPGRADE - Shooting distance
     m_Metadata:
       m_Items: []
   - m_Id: 6951336148340736
-    m_Localized: UPGRADE - Shooting distance
+    m_Localized: '
+
+      UPGRADE - Turrets Damage'
     m_Metadata:
       m_Items: []
   - m_Id: 6951638624768000
