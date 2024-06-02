@@ -68,9 +68,6 @@ public class Turret : MonoBehaviour
                 case 4:
                     transform.position = new Vector3(138, 948, 239);
                     break;
-                default:
-                    Debug.LogError("Invalid placement for player 1");
-                    break;
             }
         }
         else if (id == 2)
@@ -91,14 +88,7 @@ public class Turret : MonoBehaviour
                 case 4:
                     transform.position = new Vector3(4751, 946, 238);
                     break;
-                default:
-                    Debug.LogError("Invalid placement for player 2");
-                    break;
             }
-        }
-        else
-        {
-            Debug.LogError("Invalid player ID");
         }
     }
 }

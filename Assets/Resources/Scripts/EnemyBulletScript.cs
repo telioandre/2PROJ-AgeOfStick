@@ -29,12 +29,6 @@ public class EnemyBulletScript : MonoBehaviour
             rb.velocity = direction.normalized * force; 
             _damage = bulletDamage;
             id = ID;
-            Debug.Log("Shooting direction : " + rb.velocity);
-            Debug.DrawLine(bulletPos.position, target.GetComponent<Collider2D>().bounds.center, Color.red, 1f); 
-        }
-        else
-        {
-            Debug.LogWarning("The target or starting position of the ball is zero. Impossible to define bullet direction.");
         }
     }
 
@@ -56,11 +50,6 @@ public class EnemyBulletScript : MonoBehaviour
                     {
                         
                         movementInstance.DropRewards(int.Parse(targetScript.name[6].ToString()), player, enemy);
-                    }
-                    else
-                    {
-                        
-                        Debug.LogWarning("Movement instance not found on the collided object.");
                     }
                     Destroy(targetScript.gameObject); 
                     _casern.DestroyTroop(targetScript.id, targetScript.uniqueId); 
