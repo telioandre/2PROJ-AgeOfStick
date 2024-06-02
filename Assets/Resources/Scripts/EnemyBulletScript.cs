@@ -29,8 +29,6 @@ public class EnemyBulletScript : MonoBehaviour
             rb.velocity = direction.normalized * force; 
             _damage = bulletDamage;
             id = ID;
-
-            
             Debug.Log("Shooting direction : " + rb.velocity);
             Debug.DrawLine(bulletPos.position, target.GetComponent<Collider2D>().bounds.center, Color.red, 1f); 
         }
@@ -66,7 +64,7 @@ public class EnemyBulletScript : MonoBehaviour
                     }
                     Destroy(targetScript.gameObject); 
                     _casern.DestroyTroop(targetScript.id, targetScript.uniqueId); 
-                    
+                   
                 }
                 Destroy(gameObject); 
             }

@@ -3,6 +3,7 @@
 using System;
 using UnityEngine;
 
+
 public class Clicked : MonoBehaviour
 {
     private Archi _archiClass;

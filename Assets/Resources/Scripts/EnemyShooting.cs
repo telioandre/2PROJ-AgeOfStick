@@ -59,6 +59,7 @@ public class EnemyShooting : MonoBehaviour
                 {
                     targets.Add(hit.transform); 
                     Debug.Log("Target detected : " + hit.name);
+
                 }
                 else if (enemyId == 1 && id == 2) 
                 {
@@ -67,7 +68,6 @@ public class EnemyShooting : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Total number of targets : " + targets.Count);
     }
 
     // Function to shoot at the target
@@ -87,14 +87,6 @@ public class EnemyShooting : MonoBehaviour
                 {
                     enemyBulletScript.SetTarget(targets[0], bulletPos, damage, id); 
                 }
-                else
-                {
-                    Debug.LogError("The EnemyBulletScript component was not found on the projectile's GameObject.");
-                }
-            }
-            else
-            {
-                Debug.LogError("One of the required references(bullet, bulletPos or target) is null.");
             }
         }
     }

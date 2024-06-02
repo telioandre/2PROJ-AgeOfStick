@@ -100,7 +100,6 @@ public class GameManager : MonoBehaviour
         if (id == 1)
         {
             hits = Physics2D.RaycastAll(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0), attackRangeOfLevel);
-            Debug.DrawRay(rb2d.position + new Vector2(1, 0) * 50, new Vector2(1, 0) * attackRangeOfLevel, Color.red);
 
             if (hits.Length > 0)
             {
@@ -111,11 +110,9 @@ public class GameManager : MonoBehaviour
                     if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id)
                     {
                         firstHit = hits[i];
-                        Debug.Log("First hit detected");
 
                         if (!isAttacking)
                         {
-                            Debug.Log("Starting AttackPlayer coroutine");
                             StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>()._player));
                         }
                     }
@@ -138,7 +135,6 @@ public class GameManager : MonoBehaviour
         else if (id == 2)
         {
             hits = Physics2D.RaycastAll(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0), attackRangeOfLevel);
-            Debug.DrawRay(rb2d.position + new Vector2(-1, 0) * 50, new Vector2(-1, 0) * attackRangeOfLevel, Color.red);
 
             if (hits.Length > 0)
             {
@@ -146,16 +142,12 @@ public class GameManager : MonoBehaviour
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    Debug.Log("hit.length = " + hits.Length);
                     if (hits[i].collider.gameObject.CompareTag(gameObject.tag) && firstHit == default && hits[i].collider.gameObject.GetComponent<GameManager>().id != id)
                     {
-                        Debug.Log("First hit detected");
                         firstHit = hits[i];
-                        Debug.Log(firstHit.collider.gameObject);
 
                         if (!isAttacking)
                         {
-                            Debug.Log("Starting AttackPlayer coroutine");
                             StartCoroutine(AttackPlayer(firstHit.collider.gameObject.GetComponent<GameManager>(), rb2d, _player, firstHit.collider.gameObject.GetComponent<GameManager>()._player));
                         }
                     }
@@ -223,16 +215,16 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 1; i < _player.GetAge(); i++)
             {
-                life = Mathf.RoundToInt(life * 1.5f);
+                life = Mathf.RoundToInt(life * 1.75f);
                 speed = Mathf.RoundToInt(speed * 1.05f);
-                attack = Mathf.RoundToInt(attack * 1.5f);
+                attack = Mathf.RoundToInt(attack * 1.65f);
                 buildTime = Mathf.RoundToInt(buildTime * 1.25f);
-                attackTime *= (float)0.9;
+                attackTime *= (float)0.95;
             }
         }
         for (int i = 0; i < troopLevel; i++)
         {
-            attack = Mathf.RoundToInt(attack * 1.2f);
+            attack = Mathf.RoundToInt(attack * 1.3f);
         }
         maxLife = life;
         Invoke(nameof(Endbuild), buildTime);
@@ -251,7 +243,6 @@ public class GameManager : MonoBehaviour
             RaycastHit2D[] hitsHeight;
 
             hitsHeight = Physics2D.RaycastAll(new Vector2(-250, 300), new Vector2(0, 1), 2000000);
-            Debug.DrawRay(new Vector2(-250, 380), new Vector2(0, 1) * 2000000, Color.red);
 
 
             int countWidth = 0;
@@ -277,7 +268,6 @@ public class GameManager : MonoBehaviour
             RaycastHit2D[] hitsHeight;
 
             hitsHeight = Physics2D.RaycastAll(new Vector2(5200, 300), new Vector2(0, 1), 2000000);
-            Debug.DrawRay(new Vector2(5200, 380), new Vector2(0, 1) * 2000000, Color.red);
             
             int countWidth = 0;
             if (hitsHeight.Length == 0)

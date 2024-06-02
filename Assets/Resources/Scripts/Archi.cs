@@ -148,10 +148,15 @@ public class Archi : MonoBehaviour
             castle1.player.AddMoney(-spotCosts[nbPlacementId1]);
             nbPlacementId1 += 1;
         }
+        
         else if (id == 2 && nbPlacementId2 < 4 && castle2.player.GetMoney() >= spotCosts[nbPlacementId2])
         {
             castle2.player.AddMoney(-spotCosts[nbPlacementId2]);
             nbPlacementId2 += 1;
+        }
+        else
+        {
+            StartCoroutine(castle1.player.MoneyError());
         }
     }
 
@@ -200,10 +205,6 @@ public class Archi : MonoBehaviour
             {
                 HandleTurretPlacement(_typeChoice, placement, castle1, ref nbTowerId1, listTurretId1, id);
             }
-            else
-            {
-                Debug.LogError("Invalid placement or max placements reached for ID 1");
-            }
         }
         else if (id == 2 && castle2 != null)
         {
@@ -223,9 +224,8 @@ public class Archi : MonoBehaviour
         }
         else
         {
-            Debug
+            Debug.LogError("Invalid id or castle is null");
 
-.LogError("Invalid id or castle is null");
         }
     }
 
@@ -234,13 +234,11 @@ public class Archi : MonoBehaviour
     {
         if (castle == null || castle.player == null || listTurretId == null)
         {
-            Debug.LogError("Invalid parameters in HandleTurretPlacement");
             return;
         }
 
         if (placement <= 0 || placement > listTurretId.Count)
         {
-            Debug.LogError("Invalid placement index");
             return;
         }
 
@@ -257,7 +255,6 @@ public class Archi : MonoBehaviour
             GameObject turretPrefab = GetTurretPrefab(type, age);
             if (turretPrefab == null)
             {
-                Debug.LogError("Turret prefab not found");
                 return;
             }
 
@@ -265,7 +262,6 @@ public class Archi : MonoBehaviour
             Turret turretScript = newTurret.GetComponent<Turret>();
             if (turretScript == null)
             {
-                Debug.LogError("Turret script not found on instantiated object");
                 return;
             }
 
@@ -282,7 +278,7 @@ public class Archi : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not enough money to place turret");
+            StartCoroutine(castle.player.MoneyError());
         }
     }
 
@@ -313,9 +309,6 @@ public class Archi : MonoBehaviour
     // Returns the damage of a turret based on its type, age, and upgrade level
     private float GetTurretDamage(int type, int age, int turretDamageUp)
     {
-        Debug.Log("age = " + age);
-        Debug.Log("type = " + type);
-        Debug.Log("damageTurret = " + DamageTurret[age - 1][type - 1]);
         float baseDamage = DamageTurret[age - 1][type - 1];
         return turretDamageUp switch
         {
