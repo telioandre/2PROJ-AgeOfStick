@@ -105,7 +105,7 @@ public class Ia : MonoBehaviour
                         IaUpgradeTurret();
                     }
 
-                    if (randomNumber >= 20)
+                    if (randomNumber >= 22)
                     {
                         IaGenerateTroop(0);
                     }
@@ -147,7 +147,7 @@ public class Ia : MonoBehaviour
                         IaGenerateTroop(0);
                     }
 
-                    if (randomNumber >= 20)
+                    if (randomNumber >= 21)
                     {
                         if (opponent.numberOfTroop == 0)
                         {
