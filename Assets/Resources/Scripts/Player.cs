@@ -153,8 +153,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         SetAge(1);
-        AddMoney(1000);
-        AddXp(100000);
+        AddMoney(10);
+        AddXp(1000);
         
         specialCosts = new List<int> { 2300, 2900, 3000, 3800, 4200, 5800 };
         ageCosts = new List<int> { 6500, 8000, 9500, 11000, 12500 };
