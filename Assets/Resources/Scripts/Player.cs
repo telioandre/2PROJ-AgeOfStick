@@ -642,7 +642,7 @@ public class Player : MonoBehaviour
 
     /*
      * This update method is used to dynamically show the remaining cooldown of the special attack.
-     * It also show dynamically the current amount of money, XP, and every prices for troops or turrets.
+     * It also shows dynamically the current amount of money, XP, and every price for troops or turrets.
      * The precision for the special attack is set here, based on the current age.
      */
     private void Update()

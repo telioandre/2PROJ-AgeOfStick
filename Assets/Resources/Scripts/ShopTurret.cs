@@ -1,3 +1,6 @@
+// This script manages the turret shop in a castle defense game.
+// It handles turret selection and placement, as well as UI interactions with buttons.
+
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -19,33 +22,32 @@ public class ShopTurret : MonoBehaviour
 
     public Button button;  // Reference to the button (itself)
 
-
     // Function called when button is clicked
     void OnButtonClick()
     {
-        _archiClass.SwitchToEnabled(1); // Invert sprite visibility when button is clicked
+        _archiClass.SwitchToEnabled(1);
 
-        if (gameObject.CompareTag("Turret Slow")) // If the button is the slow turret button
+        if (gameObject.CompareTag("Turret Slow"))
         {
-            _archiClass.ChoiceType(1); // Function that sends the turret selection made
-            _archiClass.delete = 0; // Initialize delete to 0 to build a turret
+            _archiClass.ChoiceType(1);
+            _archiClass.delete = 0;
             Debug.Log("Turret Slow clicked");
         }
         else if (gameObject.CompareTag("Turret Medium"))
         {
-            _archiClass.ChoiceType(2); // Function that sends the turret selection made
-            _archiClass.delete = 0; // Initialize delete to 0 to build a turret
+            _archiClass.ChoiceType(2);
+            _archiClass.delete = 0;
             Debug.Log("Turret Medium clicked");
         }
         else if (gameObject.CompareTag("Turret Fast"))
         {
-            _archiClass.ChoiceType(3); // Function that sends the turret selection made
-            _archiClass.delete = 0; // Initialize delete to 0 to build a turret
+            _archiClass.ChoiceType(3);
+            _archiClass.delete = 0;
             Debug.Log("Turret Fast clicked");
         }
         else if (gameObject.CompareTag("Delete Turret"))
         {
-            _archiClass.delete = 1; // Initialize delete to 0 to delete the selected turret 
+            _archiClass.delete = 1;
             Debug.Log("Delete Turret clicked");
         }
     }
@@ -73,12 +75,10 @@ public class ShopTurret : MonoBehaviour
     // Start-up function 
     void Start()
     {
-        _archiClass = FindObjectOfType<Archi>(); // Retrieving the Archi class
+        _archiClass = FindObjectOfType<Archi>();
 
-        // Make sure the button is non-null
         if (button != null)
         {
-            // Add event listener to detect button click
             button.onClick.AddListener(OnButtonClick);
         }
         else
@@ -86,7 +86,6 @@ public class ShopTurret : MonoBehaviour
             Debug.LogError("Attach a button to the script in the Unity inspector.");
         }
 
-        // Check that the necessary GameObjects are attached
         if (position1Id1 == null || position2Id1 == null || position3Id1 == null || position4Id1 == null ||
             position1Id2 == null || position2Id2 == null || position3Id2 == null || position4Id2 == null)
         {

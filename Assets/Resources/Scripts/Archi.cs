@@ -1,9 +1,14 @@
-﻿using System.Collections.Generic;
+﻿// This script manages the placement and interaction of turrets within a castle defense game.
+// It includes functionality for enabling/disabling turrets, buying and selling spots,
+// placing turrets, and calculating costs and properties based on turret type and age.
+
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class Archi : MonoBehaviour
 {
+    // Public fields for managing the state and properties of player 1's turrets and placements
     public int nbPlacementId1;
     public int nbTowerId1;
     public Castle castle1;
@@ -17,6 +22,7 @@ public class Archi : MonoBehaviour
     public Collider2D collider2D3Id1;
     public Collider2D collider2D4Id1;
 
+    // Public fields for managing the state and properties of player 2's turrets and placements
     public int nbPlacementId2;
     public int nbTowerId2;
     public Castle castle2;
@@ -30,49 +36,51 @@ public class Archi : MonoBehaviour
     public Collider2D collider2D3Id2;
     public Collider2D collider2D4Id2;
 
+    // Private field for storing the object to be instantiated
     private GameObject _objectToInstantiate;
 
+    // Public fields for different types of turrets available in different ages
     public GameObject turretType1Age1;
     public GameObject turretType2Age1;
     public GameObject turretType3Age1;
-
     public GameObject turretType1Age2;
     public GameObject turretType2Age2;
     public GameObject turretType3Age2;
-
     public GameObject turretType1Age3;
     public GameObject turretType2Age3;
     public GameObject turretType3Age3;
-
     public GameObject turretType1Age4;
     public GameObject turretType2Age4;
     public GameObject turretType3Age4;
-
     public GameObject turretType1Age5;
     public GameObject turretType2Age5;
     public GameObject turretType3Age5;
-
     public GameObject turretType1Age6;
     public GameObject turretType2Age6;
     public GameObject turretType3Age6;
 
+    // Private field for storing the turret type choice
     private int _typeChoice;
     public int delete;
 
+    // Public lists for storing the costs of spots and turrets
     public List<int> spotCosts = new() { 20, 50, 120, 200, 0 };
     public List<int> turret1Costs = new() { 25, 150, 300, 400, 500, 600 };
     public List<int> turret2Costs = new() { 50, 200, 300, 400, 500, 600 };
     public List<int> turret3Costs = new() { 75, 200, 300, 400, 500, 600 };
+
+    // Public list for storing the damage values of turrets
     public List<List<int>> DamageTurret = new()
     {
-        new() { 40, 30, 20},
-        new() { 60, 45, 30},
-        new() { 90, 68, 45},
-        new() { 135, 102, 68},
-        new() { 203, 152, 102},
-        new() { 304, 228, 152}
+        new() { 40, 30, 20 },
+        new() { 60, 45, 30 },
+        new() { 90, 68, 45 },
+        new() { 135, 102, 68 },
+        new() { 203, 152, 102 },
+        new() { 304, 228, 152 }
     };
 
+    // Toggles the enabled state of sprite renderers and colliders for a given player
     public void SwitchToEnabled(int id)
     {
         if (id == 1)
@@ -125,12 +133,14 @@ public class Archi : MonoBehaviour
         }
     }
 
+    // Toggles the enabled state of a sprite renderer and a collider
     private void ToggleSpriteAndCollider(SpriteRenderer spriteRenderer, Collider2D collider)
     {
         if (spriteRenderer != null) spriteRenderer.enabled = !spriteRenderer.enabled;
         if (collider != null) collider.enabled = !collider.enabled;
     }
 
+    // Buys a spot for placing a turret if the player has enough money
     public void BuySpot(int id)
     {
         if (id == 1 && nbPlacementId1 < 4 && castle1.player.GetMoney() >= spotCosts[nbPlacementId1])
@@ -145,6 +155,7 @@ public class Archi : MonoBehaviour
         }
     }
 
+    // Sells a spot and removes the turret if present
     public void SellSpot(int placement, int id)
     {
         if (id == 1)
@@ -167,8 +178,10 @@ public class Archi : MonoBehaviour
         }
     }
 
+    // Sets the turret type choice
     public int ChoiceType(int type) => _typeChoice = type;
 
+    // Places a turret at the specified placement and id if conditions are met
     public void PlaceTurret(int placement, int id, int turret)
     {
         if (turret != 0)
@@ -180,7 +193,6 @@ public class Archi : MonoBehaviour
         {
             if (castle1.player.GetAge() >= 4)
             {
-                // Si l'�ge est 4, mettez � jour le nombre de tours d�j� plac�es en fonction du nombre de tours actuellement pr�sentes
                 nbTowerId1 = listTurretId1.Count(obj => obj != null);
             }
 
@@ -197,7 +209,6 @@ public class Archi : MonoBehaviour
         {
             if (castle2.player.GetAge() >= 4)
             {
-                // Si l'�ge est 4, mettez � jour le nombre de tours d�j� plac�es en fonction du nombre de tours actuellement pr�sentes
                 nbTowerId2 = listTurretId2.Count(obj => obj != null);
             }
 
@@ -212,11 +223,13 @@ public class Archi : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Invalid id or castle is null");
+            Debug
+
+.LogError("Invalid id or castle is null");
         }
     }
 
-
+    // Handles the turret placement process including cost deduction and turret instantiation
     private void HandleTurretPlacement(int type, int placement, Castle castle, ref int nbTowerId, List<GameObject> listTurretId, int id)
     {
         if (castle == null || castle.player == null || listTurretId == null)
@@ -273,8 +286,7 @@ public class Archi : MonoBehaviour
         }
     }
 
-
-
+    // Returns the cost of a turret based on its type and age
     private int GetTurretCost(int type, int age)
     {
         return type switch
@@ -286,6 +298,7 @@ public class Archi : MonoBehaviour
         };
     }
 
+    // Returns the range of a turret based on its upgrade level
     private int GetTurretRange(int turretLevelRange)
     {
         return turretLevelRange switch
@@ -297,6 +310,7 @@ public class Archi : MonoBehaviour
         };
     }
 
+    // Returns the damage of a turret based on its type, age, and upgrade level
     private float GetTurretDamage(int type, int age, int turretDamageUp)
     {
         Debug.Log("age = " + age);
@@ -312,6 +326,7 @@ public class Archi : MonoBehaviour
         };
     }
 
+    // Returns the appropriate turret prefab based on its type and age
     private GameObject GetTurretPrefab(int type, int age)
     {
         return (type, age) switch

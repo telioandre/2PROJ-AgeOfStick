@@ -1,8 +1,11 @@
+// Class responsible for managing enemy bullet behavior.
+// This class controls the behavior of enemy bullets, including movement, collision detection, and damage calculation.
+
 using UnityEngine;
 
 public class EnemyBulletScript : MonoBehaviour
 {
-    public Rigidbody2D rb; //
+    public Rigidbody2D rb; 
     public float force;
     private int _damage;
     public Castle castle1;
@@ -13,8 +16,8 @@ public class EnemyBulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // RigidBody2D recovery 
-        _casern = FindObjectOfType<Casern>(); // Casern recovery 
+        rb = GetComponent<Rigidbody2D>();
+        _casern = FindObjectOfType<Casern>(); 
     }
 
     // Target setup function
@@ -22,14 +25,14 @@ public class EnemyBulletScript : MonoBehaviour
     {
         if (target != null && bulletPos != null)
         {
-            Vector3 direction = target.GetComponent<Collider2D>().bounds.center - bulletPos.position; // Use the center of the enemy's collider as a starting point
-            rb.velocity = direction.normalized * force; // Just use the direction normalized by the bullet's power.
+            Vector3 direction = target.GetComponent<Collider2D>().bounds.center - bulletPos.position; 
+            rb.velocity = direction.normalized * force; 
             _damage = bulletDamage;
             id = ID;
 
-            // Debugging: Display bullet firing direction
+            
             Debug.Log("Shooting direction : " + rb.velocity);
-            Debug.DrawLine(bulletPos.position, target.GetComponent<Collider2D>().bounds.center, Color.red, 1f); // Red line to show shooting direction
+            Debug.DrawLine(bulletPos.position, target.GetComponent<Collider2D>().bounds.center, Color.red, 1f); 
         }
         else
         {
@@ -40,51 +43,51 @@ public class EnemyBulletScript : MonoBehaviour
     // Method triggered when an object collides with the trigger
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var targetScript = collision.GetComponent<GameManager>(); // Retrieves the GameManager component attached to the object in collision
-        if (collision.CompareTag("Player") && targetScript.id != id) // Checks whether the object in collision has the “Player” tag and whether its ID is different from the current ID
+        var targetScript = collision.GetComponent<GameManager>(); 
+        if (collision.CompareTag("Player") && targetScript.id != id) 
         {
-            if (targetScript != null) // If targetScript is not null
+            if (targetScript != null) 
             {
-                targetScript.life -= _damage; // Reduces the target player's life by the damage value
-                if (targetScript.life <= 0) // If the target player's life is less than or equal to 0
+                targetScript.life -= _damage; 
+                if (targetScript.life <= 0) 
                 {
-                    Player enemy = FindPlayerByCastleId(targetScript.id);// Find enemy by castle ID
-                    Player player = FindPlayerByCastleId(id); //Find current players by castle ID
-                    var movementInstance = collision.GetComponent<GameManager>(); // Retrieves GameManager attached to the object in collision
-                    if (movementInstance != null) // If the GameManager instance is found
+                    Player enemy = FindPlayerByCastleId(targetScript.id);
+                    Player player = FindPlayerByCastleId(id); 
+                    var movementInstance = collision.GetComponent<GameManager>(); 
+                    if (movementInstance != null) 
                     {
-                        // Appelle la méthode DropRewards avec l'Id partir du nom du targetScript
+                        
                         movementInstance.DropRewards(int.Parse(targetScript.name[6].ToString()), player, enemy);
                     }
                     else
                     {
-                        // Affiche un avertissement si l'instance de GameManager n'est pas trouvée
+                        
                         Debug.LogWarning("Movement instance not found on the collided object.");
                     }
-                    Destroy(targetScript.gameObject); // Destroys the target game object
-                    _casern.DestroyTroop(targetScript.id, targetScript.uniqueId); // Destroys the troop associated with the target ID and its uniqueId in target lists
+                    Destroy(targetScript.gameObject); 
+                    _casern.DestroyTroop(targetScript.id, targetScript.uniqueId); 
                     
                 }
-                Destroy(gameObject); //
+                Destroy(gameObject); 
             }
         }
-        else if (collision.CompareTag("Ground")) // If the object in collision has the “Ground” tag
+        else if (collision.CompareTag("Ground")) 
         { 
-            Destroy(gameObject); // Destroys the bullet
+            Destroy(gameObject); 
         }
     }
 
     // Function that finds the player using his castle id
     Player FindPlayerByCastleId(int id)
     {
-        Castle[] castles = GameObject.FindObjectsOfType<Castle>(); // List les chateaux
+        Castle[] castles = GameObject.FindObjectsOfType<Castle>(); 
         foreach (Castle castle in castles)
         {
-            if (castle.id == id) // if the castle id is the same as the bullet id
+            if (castle.id == id) 
             {
                 return castle.GetComponent<Player>(); 
             }
         }
-        return null; // Returns null if no Castle with the specified ID is found
+        return null; 
     }
 }
