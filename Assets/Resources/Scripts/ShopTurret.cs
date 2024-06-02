@@ -31,24 +31,20 @@ public class ShopTurret : MonoBehaviour
         {
             _archiClass.ChoiceType(1);
             _archiClass.delete = 0;
-            Debug.Log("Turret Slow clicked");
         }
         else if (gameObject.CompareTag("Turret Medium"))
         {
             _archiClass.ChoiceType(2);
             _archiClass.delete = 0;
-            Debug.Log("Turret Medium clicked");
         }
         else if (gameObject.CompareTag("Turret Fast"))
         {
             _archiClass.ChoiceType(3);
             _archiClass.delete = 0;
-            Debug.Log("Turret Fast clicked");
         }
         else if (gameObject.CompareTag("Delete Turret"))
         {
             _archiClass.delete = 1;
-            Debug.Log("Delete Turret clicked");
         }
     }
 
@@ -80,16 +76,6 @@ public class ShopTurret : MonoBehaviour
         if (button != null)
         {
             button.onClick.AddListener(OnButtonClick);
-        }
-        else
-        {
-            Debug.LogError("Attach a button to the script in the Unity inspector.");
-        }
-
-        if (position1Id1 == null || position2Id1 == null || position3Id1 == null || position4Id1 == null ||
-            position1Id2 == null || position2Id2 == null || position3Id2 == null || position4Id2 == null)
-        {
-            Debug.LogError("Please attach all the GameObjects required for the script in the Unity inspector.");
         }
     }
 }

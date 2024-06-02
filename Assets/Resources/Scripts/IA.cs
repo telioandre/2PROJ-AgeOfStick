@@ -37,7 +37,7 @@ public class Ia : MonoBehaviour
                 break;
             case "Hard":
                 player.AddMoney(30);
-                player.AddXp(300);
+                player.AddXp(500);
                 break;
             case "Impossible":
                 player.AddMoney(40);
@@ -78,7 +78,11 @@ public class Ia : MonoBehaviour
                 case "Easy":
                     if (randomNumber == 1)
                     {
-                        IaSpecialAttack();
+                        int specialSpawn = Random.Range(1, 3);
+                        if (specialSpawn == 1)
+                        {
+                            IaSpecialAttack();
+                        }
                     }
 
                     if (randomNumber == 2)
