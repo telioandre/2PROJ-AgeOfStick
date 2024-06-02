@@ -42,7 +42,6 @@ public class EnemyShooting : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(bulletPos.position, detectionRadius, targetLayer);
         foreach (Collider2D hit in hits)
         {
-            Debug.DrawLine(bulletPos.position, hit.transform.position, Color.green, 1f); // Green line to show detection
             var enemyScript = hit.GetComponent<GameManager>(); // Retrieving the target's GameManager script
             var turretScript = GetComponent<Turret>(); // Turret script recovery
             id = turretScript.GetIdTurret(); // Recovering the ID of the player who installed the turret
@@ -55,16 +54,13 @@ public class EnemyShooting : MonoBehaviour
                 if (enemyId == 2 && id == 1) // If it's a turret belonging to player 1
                 {
                     targets.Add(hit.transform); // Add target position
-                    Debug.Log("Target detected : " + hit.name);
                 }
                 else if (enemyId == 1 && id == 2) // If it's a turret belonging to player 2 or IA
                 {
                     targets.Add(hit.transform); // Add target position
-                    Debug.Log("Target detected : " + hit.name);
                 }
             }
         }
-        Debug.Log("Total number of targets : " + targets.Count);
     }
 
     // Function to shoot at the target
@@ -84,14 +80,6 @@ public class EnemyShooting : MonoBehaviour
                 {
                     enemyBulletScript.SetTarget(targets[0], bulletPos, damage, id); // Launches the function to shoot at the selected target
                 }
-                else
-                {
-                    Debug.LogError("The EnemyBulletScript component was not found on the projectile's GameObject.");
-                }
-            }
-            else
-            {
-                Debug.LogError("One of the required references(bullet, bulletPos or target) is null.");
             }
         }
     }

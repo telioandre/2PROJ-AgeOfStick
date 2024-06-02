@@ -29,24 +29,20 @@ public class ShopTurret : MonoBehaviour
         {
             _archiClass.ChoiceType(1); // Function that sends the turret selection made
             _archiClass.delete = 0; // Initialize delete to 0 to build a turret
-            Debug.Log("Turret Slow clicked");
         }
         else if (gameObject.CompareTag("Turret Medium"))
         {
             _archiClass.ChoiceType(2); // Function that sends the turret selection made
             _archiClass.delete = 0; // Initialize delete to 0 to build a turret
-            Debug.Log("Turret Medium clicked");
         }
         else if (gameObject.CompareTag("Turret Fast"))
         {
             _archiClass.ChoiceType(3); // Function that sends the turret selection made
             _archiClass.delete = 0; // Initialize delete to 0 to build a turret
-            Debug.Log("Turret Fast clicked");
         }
         else if (gameObject.CompareTag("Delete Turret"))
         {
             _archiClass.delete = 1; // Initialize delete to 0 to delete the selected turret 
-            Debug.Log("Delete Turret clicked");
         }
     }
 
@@ -80,17 +76,6 @@ public class ShopTurret : MonoBehaviour
         {
             // Add event listener to detect button click
             button.onClick.AddListener(OnButtonClick);
-        }
-        else
-        {
-            Debug.LogError("Attach a button to the script in the Unity inspector.");
-        }
-
-        // Check that the necessary GameObjects are attached
-        if (position1Id1 == null || position2Id1 == null || position3Id1 == null || position4Id1 == null ||
-            position1Id2 == null || position2Id2 == null || position3Id2 == null || position4Id2 == null)
-        {
-            Debug.LogError("Please attach all the GameObjects required for the script in the Unity inspector.");
         }
     }
 }

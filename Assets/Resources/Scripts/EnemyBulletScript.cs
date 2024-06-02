@@ -26,14 +26,6 @@ public class EnemyBulletScript : MonoBehaviour
             rb.velocity = direction.normalized * force; // Just use the direction normalized by the bullet's power.
             _damage = bulletDamage;
             id = ID;
-
-            // Debugging: Display bullet firing direction
-            Debug.Log("Shooting direction : " + rb.velocity);
-            Debug.DrawLine(bulletPos.position, target.GetComponent<Collider2D>().bounds.center, Color.red, 1f); // Red line to show shooting direction
-        }
-        else
-        {
-            Debug.LogWarning("The target or starting position of the ball is zero. Impossible to define bullet direction.");
         }
     }
 
@@ -55,11 +47,6 @@ public class EnemyBulletScript : MonoBehaviour
                     {
                         // Appelle la méthode DropRewards avec l'Id partir du nom du targetScript
                         movementInstance.DropRewards(int.Parse(targetScript.name[6].ToString()), player, enemy);
-                    }
-                    else
-                    {
-                        // Affiche un avertissement si l'instance de GameManager n'est pas trouvée
-                        Debug.LogWarning("Movement instance not found on the collided object.");
                     }
                     Destroy(targetScript.gameObject); // Destroys the target game object
                     _casern.DestroyTroop(targetScript.id, targetScript.uniqueId); // Destroys the troop associated with the target ID and its uniqueId in target lists
