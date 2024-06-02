@@ -182,6 +182,10 @@ MonoBehaviour:
     m_Localized: Accessing the Pause Menu from within the game
     m_Metadata:
       m_Items: []
+  - m_Id: 11326410464825344
+    m_Localized: Send Friend Request
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

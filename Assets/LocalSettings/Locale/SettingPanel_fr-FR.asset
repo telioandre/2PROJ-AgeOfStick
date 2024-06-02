@@ -182,6 +182,10 @@ MonoBehaviour:
     m_Localized: "Acc\xE9der au Menu Pause depuis le jeu"
     m_Metadata:
       m_Items: []
+  - m_Id: 11326410464825344
+    m_Localized: Envoyer la demande d'ami
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
